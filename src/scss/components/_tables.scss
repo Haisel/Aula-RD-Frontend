@@ -1,0 +1,84 @@
+// ----------------------------------------------------------------------------
+// Tablas
+// ----------------------------------------------------------------------------
+.table {
+  --bs-table-bg: var(--au-surface);
+  --bs-table-color: var(--au-text);
+  --bs-table-border-color: var(--au-border);
+  --bs-table-hover-bg: var(--au-surface-2);
+  --bs-table-hover-color: var(--au-text);
+  --bs-table-striped-bg: var(--au-bg);
+  --bs-table-striped-color: var(--au-text);
+
+  font-size: 0.875rem;
+  margin-bottom: 0;
+
+  > thead th {
+    background: var(--au-surface-2);
+    color: var(--au-text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  td.au-cell-entity {
+    font-weight: 600;
+  }
+  .au-cell-meta {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--au-text-muted);
+    font-weight: 400;
+  }
+}
+
+.au-table-card {
+  @include au-surface('radius-lg');
+
+  overflow: hidden;
+
+  .au-table-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--au-border);
+
+    h2,
+    h3 {
+      @include au-type('h3');
+      margin: 0 auto 0 0;
+    }
+  }
+
+  .au-table-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--au-border);
+    font-size: 0.875rem;
+    color: var(--au-text-muted);
+  }
+}
+
+.pagination {
+  --bs-pagination-color: var(--au-text);
+  --bs-pagination-bg: var(--au-surface);
+  --bs-pagination-border-color: var(--au-border);
+  --bs-pagination-hover-bg: var(--au-surface-2);
+  --bs-pagination-hover-color: var(--au-text);
+  --bs-pagination-hover-border-color: var(--au-border);
+  --bs-pagination-focus-box-shadow: 0 0 0 3px var(--au-focus-halo);
+  --bs-pagination-active-bg: var(--au-primary);
+  --bs-pagination-active-border-color: var(--au-primary);
+  --bs-pagination-active-color: var(--au-on-primary);
+  --bs-pagination-disabled-bg: var(--au-surface);
+  --bs-pagination-disabled-color: var(--au-text-muted);
+  --bs-pagination-disabled-border-color: var(--au-border);
+}

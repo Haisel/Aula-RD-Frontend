@@ -1,0 +1,6 @@
+{{!-- {{> components/stat-card label="…" value="…" icon="people" delta="4.2%" note="vs. …" trend="up|down|warning" tone="warning|danger|success|info" title="valor completo"}} --}}
+<div class="au-stat">
+  <div class="au-stat-label">{{label}}<span class="au-stat-icon{{#if tone}} is-{{tone}}{{/if}}"><i class="bi bi-{{icon}}" aria-hidden="true"></i></span></div>
+  <div class="au-stat-value"{{#if title}} title="{{title}}"{{/if}}>{{value}}</div>
+  {{#if delta}}<div class="au-stat-delta is-{{trend}}"><i class="bi bi-{{#if (eq trend "up")}}arrow-up-right{{else if (eq trend "down")}}arrow-down-right{{else}}clock{{/if}}" aria-hidden="true"></i> {{delta}} <span>{{note}}</span></div>{{/if}}
+</div>

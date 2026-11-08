@@ -1,0 +1,8 @@
+{{!-- {{> components/page-header title="…" subtitle="…"}} + bloque opcional de acciones con {{#> components/page-header}}…{{/components/page-header}} --}}
+<div class="au-page-header">
+  <div>
+    <h1 class="au-page-title">{{title}}</h1>
+    {{#if subtitle}}<p class="au-page-subtitle">{{subtitle}}</p>{{/if}}
+  </div>
+  <div class="au-page-actions">{{> @partial-block}}</div>
+</div>

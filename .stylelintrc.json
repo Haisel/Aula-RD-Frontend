@@ -1,0 +1,47 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "ignoreFiles": ["src/scss/abstracts/_tokens.scss"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9-]*$|^swal2-[a-z0-9-]+$|^ql-[a-z0-9-]+$|^fc-[a-z0-9-]+$|^choices__[a-z-]+(--[a-z]+)?$|^dataTable$|^dt-[a-z-]+$|^flatpickr-[a-zA-Z-]+$|^(inRange|startRange|endRange|prevMonthDay|nextMonthDay|cur-year|today|selected)$",
+      {
+        "message": "Clases en kebab-case; propias con prefijo au-"
+      }
+    ],
+    "color-no-hex": null,
+    "scss/load-no-partial-leading-underscore": null,
+    "no-invalid-position-at-import-rule": null,
+    "import-notation": null,
+    "scss/dollar-variable-pattern": "^(au|enable|font|headings|primary|secondary|success|info|warning|danger|light|dark|body|border|link|spacer|spacers|input|form|card|btn|table|grid|container|theme|navbar|nav|dropdown|modal|alert|badge|progress|pagination|focus|box|min|emphasis|component|color|toast|line)[a-z0-9-]*$|^_$|^[a-z]$|^(fam|value|map|s|c|txt|sub|name|theme|shadows|theme-name|bs|key|variant|pair|family|step)$",
+    "no-descending-specificity": null,
+    "selector-no-qualifying-type": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "scss/no-global-function-names": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "color-function-alias-notation": null,
+    "media-feature-range-notation": null,
+    "selector-not-notation": null,
+    "property-no-vendor-prefix": null,
+    "value-keyword-case": null,
+    "font-family-name-quotes": null,
+    "declaration-block-single-line-max-declarations": null,
+    "rule-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "scss/double-slash-comment-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "scss/at-mixin-argumentless-call-parentheses": null,
+    "number-max-precision": null,
+    "scss/operator-no-newline-after": null,
+    "selector-attribute-quotes": null,
+    "scss/at-if-no-null": null,
+    "shorthand-property-no-redundant-values": null,
+    "keyframes-name-pattern": null,
+    "length-zero-no-unit": null,
+    "scss/comment-no-empty": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "custom-property-pattern": null
+  }
+}

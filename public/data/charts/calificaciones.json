@@ -1,0 +1,10 @@
+{
+  "type": "line",
+  "labels": ["P1 2025", "P2 2025", "P3 2025", "P4 2025", "P1 2026"],
+  "series": [
+    { "label": "María F. Peña", "data": [84, 86, 85, 89, 91], "color": "accent" },
+    { "label": "Promedio de la sección", "data": [80, 81, 82, 82, 83], "color": "navy" }
+  ],
+  "min": 60,
+  "max": 100
+}

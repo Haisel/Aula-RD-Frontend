@@ -1,0 +1,13 @@
+/* Aula RD — colores de marca para la documentación JSDoc (docdash) */
+body { font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1f2937; }
+h1, h2, h3, h4 { color: #142b4a; font-weight: 700; letter-spacing: -0.01em; }
+a, a:visited, nav a, nav a:visited, .name a { color: #0e766b; }
+a:hover { color: #142b4a; }
+nav { background: #f4f6f8; border-right: 1px solid #dce2e9; }
+nav h2 a, nav h3 { color: #142b4a !important; }
+h4.name, .prettyprint.source, pre.prettyprint { border-radius: 10px; }
+h4.name { background: #142b4a; color: #fff; padding: 0.5rem 1rem; }
+h4.name .signature, h4.name .type-signature { color: #8eddd3; }
+.type-signature, .signature-attributes { color: #0e766b; }
+table .name code, code { color: #142b4a; background: #ebeff3; border-radius: 4px; padding: 1px 4px; }
+.navicon-button { background: #142b4a; }

@@ -1,0 +1,61 @@
+// Flatpickr (calendario) — tema Aula RD
+.flatpickr-calendar {
+  background: var(--au-surface);
+  border: 1px solid var(--au-border);
+  border-radius: var(--bs-border-radius-lg);
+  box-shadow: var(--au-shadow-md);
+  font-family: var(--bs-body-font-family);
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year,
+span.flatpickr-weekday {
+  color: var(--au-text);
+  background: transparent;
+  fill: var(--au-text);
+  font-weight: 600;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  color: var(--au-text);
+  fill: var(--au-text);
+}
+
+.flatpickr-day {
+  color: var(--au-text);
+  border-radius: var(--bs-border-radius-sm);
+
+  &:hover {
+    background: var(--au-surface-2);
+    border-color: var(--au-surface-2);
+  }
+  &.today {
+    border-color: var(--au-accent);
+  }
+  &.selected,
+  &.selected:hover,
+  &.startRange,
+  &.endRange {
+    background: var(--au-primary);
+    border-color: var(--au-primary);
+    color: var(--au-on-primary);
+  }
+  &.inRange {
+    background: var(--au-accent-subtle);
+    border-color: var(--au-accent-subtle);
+    box-shadow: none;
+  }
+  &.flatpickr-disabled,
+  &.prevMonthDay,
+  &.nextMonthDay {
+    color: var(--au-text-muted);
+    opacity: 0.6;
+  }
+}

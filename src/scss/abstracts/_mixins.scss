@@ -1,0 +1,33 @@
+// ----------------------------------------------------------------------------
+// Mixins de marca
+// ----------------------------------------------------------------------------
+@use 'sass:map';
+
+/// Aplica un estilo tipográfico del sistema (display-1, h1, body-sm, kpi…).
+/// @param {String} $name - nombre del estilo en $au-type-styles
+@mixin au-type($name) {
+  $s: map.get($au-type-styles, $name);
+
+  @if not $s {
+    @error "Estilo tipográfico desconocido: #{$name}";
+  }
+
+  font-size: map.get($s, size);
+  font-weight: map.get($s, weight);
+  line-height: map.get($s, line-height);
+  letter-spacing: map.get($s, letter-spacing);
+}
+
+/// Anillo de foco accesible (2px sólido + halo). Contraste ≥ 3:1 en ambos temas.
+@mixin au-focus-ring {
+  outline: 2px solid var(--au-focus-ring);
+  outline-offset: 2px;
+}
+
+/// Superficie de tarjeta estándar.
+@mixin au-surface($radius: 'radius-lg') {
+  background: var(--au-surface);
+  border: 1px solid var(--au-border);
+  border-radius: map.get($au-radius, $radius);
+  box-shadow: var(--au-shadow-sm);
+}

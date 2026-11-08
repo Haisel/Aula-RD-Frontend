@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Buenos días, Luis" subtitle="Hoy tiene 4 clases · 2 evaluaciones por registrar"}}
+    <a class="btn btn-primary" href="#asistencia-rapida"><i class="bi bi-calendar-check" aria-hidden="true"></i>Pasar asistencia</a>
+  {{/components/page-header}}
+
+  <section class="au-grid-kpi" aria-label="Indicadores">
+    {{> components/stat-card label="Mis secciones" value="4" icon="collection" delta="132 estudiantes" note="en total" trend="up"}}
+    {{> components/stat-card label="Asistencia de hoy" value="3 de 4" icon="calendar-check" tone="warning" delta="falta 4.º B" trend="warning"}}
+    {{> components/stat-card label="Calificaciones pendientes" value="2" icon="journal-text" tone="danger" delta="cierre 20/11" trend="down"}}
+    {{> components/stat-card label="Promedio de mis secciones" value="83.4" icon="graph-up" delta="1.2 pts" note="vs. período anterior" trend="up"}}
+  </section>
+
+  <div class="au-split">
+    <section class="au-table-card is-main" id="asistencia-rapida" aria-labelledby="asis-title">
+      <div class="au-table-toolbar"><h2 id="asis-title">Asistencia · 4.º B Matemática</h2><span class="au-status au-status-warning">Pendiente</span></div>
+      <form data-au-submit="event" data-au-validate="asistencia" data-au-success="Asistencia validada (demostración)." novalidate>
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead><tr><th>Estudiante</th><th>Presente</th><th>Tardanza</th><th>Ausente</th></tr></thead>
+            <tbody>
+              <tr><td class="au-cell-entity">Alejandro Cruz</td><td><input class="form-check-input" type="radio" name="e1" value="presente" aria-label="Alejandro Cruz presente" checked></td><td><input class="form-check-input" type="radio" name="e1" value="tardanza" aria-label="Alejandro Cruz tardanza"></td><td><input class="form-check-input" type="radio" name="e1" value="ausente" aria-label="Alejandro Cruz ausente"></td></tr>
+              <tr><td class="au-cell-entity">Beatriz Guzmán</td><td><input class="form-check-input" type="radio" name="e2" value="presente" aria-label="Beatriz Guzmán presente" checked></td><td><input class="form-check-input" type="radio" name="e2" value="tardanza" aria-label="Beatriz Guzmán tardanza"></td><td><input class="form-check-input" type="radio" name="e2" value="ausente" aria-label="Beatriz Guzmán ausente"></td></tr>
+              <tr><td class="au-cell-entity">Carlos Jiménez</td><td><input class="form-check-input" type="radio" name="e3" value="presente" aria-label="Carlos Jiménez presente"></td><td><input class="form-check-input" type="radio" name="e3" value="tardanza" aria-label="Carlos Jiménez tardanza" checked></td><td><input class="form-check-input" type="radio" name="e3" value="ausente" aria-label="Carlos Jiménez ausente"></td></tr>
+              <tr><td class="au-cell-entity">Daniela Ruiz</td><td><input class="form-check-input" type="radio" name="e4" value="presente" aria-label="Daniela Ruiz presente"></td><td><input class="form-check-input" type="radio" name="e4" value="tardanza" aria-label="Daniela Ruiz tardanza"></td><td><input class="form-check-input" type="radio" name="e4" value="ausente" aria-label="Daniela Ruiz ausente" checked></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="au-table-footer"><span>4 de 34 estudiantes · ejemplo</span><button class="btn btn-primary btn-sm" type="submit">Guardar asistencia</button></div>
+      </form>
+    </section>
+
+    <section class="card is-side" aria-labelledby="com-title">
+      <div class="card-body">
+        <div class="au-card-header"><h2 class="au-card-title" id="com-title">Nuevo comunicado</h2></div>
+        <form class="d-grid gap-3" data-au-validate="comunicado" data-au-submit="event" data-au-success="Comunicado validado (demostración)." novalidate>
+          <div><label class="form-label is-required" for="com-grados">Para</label>
+            <select class="form-select" id="com-grados" name="grados" multiple data-au-select data-au-placeholder="Elija secciones"><option value="4A">4.º A</option><option value="4B" selected>4.º B</option><option value="5A">5.º A</option><option value="5B">5.º B</option></select></div>
+          <div><label class="form-label is-required" for="com-asunto">Asunto</label><input class="form-control" id="com-asunto" name="asunto" placeholder="Ej.: Evaluación del martes"></div>
+          <div><span class="form-label d-block" id="com-msg-label">Mensaje</span>
+            <div data-au-editor data-au-input="#com-html" data-au-placeholder="Escriba el comunicado…" aria-labelledby="com-msg-label"></div>
+            <input type="hidden" name="mensaje" id="com-html"></div>
+          <button class="btn btn-primary" type="submit"><i class="bi bi-send" aria-hidden="true"></i>Enviar</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="calendario-title">
+    <div class="card-body">
+      <div class="au-card-header"><div class="me-auto"><h2 class="au-card-title" id="calendario-title">Calendario escolar</h2><p class="au-card-subtitle">Evaluaciones, reuniones y feriados</p></div></div>
+      <div data-au-calendar="data/eventos.json" data-au-initial-date="2026-11-01"></div>
+    </div>
+  </section>
+{{/layouts/app}}
+</body>
+</html>

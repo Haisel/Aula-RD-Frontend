@@ -1,0 +1,130 @@
+// ----------------------------------------------------------------------------
+// Tarjetas, modales, dropdowns, list-group, toasts, offcanvas
+// ----------------------------------------------------------------------------
+.card {
+  --bs-card-bg: var(--au-surface);
+  --bs-card-color: var(--au-text);
+  --bs-card-border-color: var(--au-border);
+  --bs-card-cap-bg: transparent;
+
+  box-shadow: var(--au-shadow-sm);
+}
+
+.au-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1.25rem;
+
+  .au-card-title {
+    margin-right: auto;
+  }
+}
+
+.au-card-title {
+  @include au-type('h3');
+  margin: 0;
+}
+
+.au-card-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.875rem;
+  color: var(--au-text-muted);
+}
+
+.modal {
+  --bs-modal-bg: var(--au-surface);
+  --bs-modal-color: var(--au-text);
+  --bs-modal-border-color: var(--au-border);
+  --bs-modal-header-border-color: var(--au-border);
+  --bs-modal-footer-border-color: var(--au-border);
+}
+
+.modal-backdrop {
+  --bs-backdrop-bg: #{au-scale('navy', '900')};
+  --bs-backdrop-opacity: 0.55;
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--au-surface);
+  --bs-dropdown-color: var(--au-text);
+  --bs-dropdown-border-color: var(--au-border);
+  --bs-dropdown-link-color: var(--au-text);
+  --bs-dropdown-link-hover-color: var(--au-text);
+  --bs-dropdown-link-hover-bg: var(--au-surface-2);
+  --bs-dropdown-link-active-bg: var(--au-primary);
+  --bs-dropdown-link-active-color: var(--au-on-primary);
+  --bs-dropdown-border-radius: var(--bs-border-radius);
+
+  box-shadow: var(--au-shadow-md);
+}
+
+.list-group {
+  --bs-list-group-bg: var(--au-surface);
+  --bs-list-group-color: var(--au-text);
+  --bs-list-group-border-color: var(--au-border);
+  --bs-list-group-active-bg: var(--au-primary);
+  --bs-list-group-active-border-color: var(--au-primary);
+  --bs-list-group-active-color: var(--au-on-primary);
+}
+
+.toast {
+  --bs-toast-bg: var(--au-surface);
+  --bs-toast-color: var(--au-text);
+  --bs-toast-border-color: var(--au-border);
+  --bs-toast-box-shadow: var(--au-shadow-md);
+}
+
+.au-toast-icon {
+  font-size: 1.125rem;
+}
+.au-toast-success .au-toast-icon {
+  color: var(--au-success-text);
+}
+.au-toast-warning .au-toast-icon {
+  color: var(--au-warning-text);
+}
+.au-toast-danger .au-toast-icon {
+  color: var(--au-danger-text);
+}
+.au-toast-info .au-toast-icon {
+  color: var(--au-info-text);
+}
+
+.accordion {
+  --bs-accordion-bg: var(--au-surface);
+  --bs-accordion-color: var(--au-text);
+  --bs-accordion-border-color: var(--au-border);
+  --bs-accordion-border-radius: var(--bs-border-radius-lg);
+  --bs-accordion-inner-border-radius: calc(var(--bs-border-radius-lg) - 1px);
+  --bs-accordion-btn-color: var(--au-text);
+  --bs-accordion-btn-bg: var(--au-surface);
+  --bs-accordion-active-bg: var(--au-surface);
+  --bs-accordion-active-color: var(--au-text);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 3px var(--au-focus-halo);
+  --bs-accordion-btn-padding-y: 1.25rem;
+  --bs-accordion-body-padding-y: 0 1.25rem 1.25rem;
+
+  .accordion-button {
+    font-weight: 700;
+    font-size: 1.0625rem;
+  }
+  .accordion-body {
+    color: var(--au-text-muted);
+    padding-top: 0;
+  }
+}
+
+.au-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  background: var(--au-accent);
+  color: var(--au-on-accent);
+}

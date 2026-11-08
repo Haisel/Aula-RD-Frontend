@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Buenos días, Ana" subtitle="Domingo 8 de noviembre de 2026 · Primer período"}}
+    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-pago"><i class="bi bi-receipt" aria-hidden="true"></i>Registrar pago</button>
+    <a class="btn btn-primary" href="#"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar estudiante</a>
+  {{/components/page-header}}
+
+  <div class="alert alert-info mb-0" role="status">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+    <div class="flex-grow-1"><p class="au-alert-title">Cierre del primer período</p>Los docentes deben registrar las calificaciones antes del 20/11/2026. Faltan 4 secciones por completar.</div>
+    <a class="btn btn-sm btn-outline-primary align-self-center" href="#">Ver secciones</a>
+  </div>
+
+  <section class="au-grid-kpi" aria-label="Indicadores">
+    {{> components/stat-card label="Estudiantes inscritos" value="1,248" icon="people" delta="4.2%" note="vs. período anterior" trend="up"}}
+    {{> components/stat-card label="Asistencia de hoy" value="94.6%" icon="calendar-check" delta="1.1%" note="vs. ayer" trend="up"}}
+    {{> components/stat-card label="Cuotas pendientes" value="RD$ 386K" title="RD$ 386,450.00" icon="cash-coin" tone="warning" delta="37 familias" note="con atraso" trend="down"}}
+    {{> components/stat-card label="Promedio general" value="86.3" icon="journal-text" delta="0.8 pts" note="vs. período anterior" trend="up"}}
+  </section>
+
+  <div class="au-split">
+    <section class="card is-main" aria-labelledby="asis-title">
+      <div class="card-body">
+        <div class="au-card-header"><div class="me-auto"><h2 class="au-card-title" id="asis-title">Asistencia de la semana</h2><p class="au-card-subtitle">Porcentaje de estudiantes presentes por día</p></div></div>
+        <div class="au-chart"><canvas data-au-chart="data/charts/asistencia-semana.json" role="img" aria-label="Gráfico de barras comparando la asistencia de esta semana (89 a 96 %) con la semana anterior (86 a 93 %)"></canvas></div>
+      </div>
+    </section>
+    <section class="card is-side" aria-labelledby="cal-title">
+      <div class="card-body d-grid gap-3">
+        <div class="au-card-header mb-0"><div class="me-auto"><h2 class="au-card-title" id="cal-title">Calificaciones registradas</h2><p class="au-card-subtitle">Primer período, por nivel</p></div></div>
+        <div><div class="d-flex justify-content-between small fw-semibold mb-1"><span>Inicial</span><span class="au-tabular">100%</span></div><div class="progress" role="progressbar" aria-label="Inicial" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar au-w-100"></div></div></div>
+        <div><div class="d-flex justify-content-between small fw-semibold mb-1"><span>Primaria</span><span class="au-tabular">92%</span></div><div class="progress" role="progressbar" aria-label="Primaria" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar au-w-92"></div></div></div>
+        <div><div class="d-flex justify-content-between small fw-semibold mb-1"><span>Secundaria</span><span class="au-tabular">78%</span></div><div class="progress" role="progressbar" aria-label="Secundaria" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar is-warning au-w-78"></div></div></div>
+        <div><div class="d-flex justify-content-between small fw-semibold mb-1"><span>Técnico profesional</span><span class="au-tabular">85%</span></div><div class="progress" role="progressbar" aria-label="Técnico profesional" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar au-w-85"></div></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="au-split">
+    <section class="au-table-card is-main" aria-labelledby="cobros-title">
+      <div class="au-table-toolbar">
+        <h2 id="cobros-title">Cobros de noviembre</h2>
+        <button class="btn btn-ghost btn-sm" type="button" data-au-export="#tabla-cobros" data-au-filename="cobros-noviembre"><i class="bi bi-file-earmark-excel" aria-hidden="true"></i>Excel</button>
+        <button class="btn btn-ghost btn-sm" type="button" data-au-export="#tabla-cobros" data-au-format="csv" data-au-filename="cobros-noviembre"><i class="bi bi-filetype-csv" aria-hidden="true"></i>CSV</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle" id="tabla-cobros">
+          <thead><tr><th>Estudiante</th><th>Grado</th><th>Tutor</th><th class="text-end">Monto</th><th>Estado</th></tr></thead>
+          <tbody data-au-render="#tpl-fila-cobro" data-au-source="data/cobros.json">
+            <tr><td colspan="5" class="text-center text-body-secondary py-4"><span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Cargando cobros…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <template id="tpl-fila-cobro">
+        <tr><td class="au-cell-entity">\{{estudiante}}</td><td>\{{grado}}</td><td>\{{tutor}}</td><td class="text-end au-tabular">\{{currency monto}}</td><td>\{{status estado}}</td></tr>
+      </template>
+    </section>
+
+    <section class="card is-side" aria-labelledby="ev-title">
+      <div class="card-body">
+        <div class="au-card-header"><h2 class="au-card-title" id="ev-title">Próximos eventos</h2></div>
+        <ul class="au-feed">
+          <li><div class="au-date-tile"><div class="month">NOV</div><div class="day">12</div></div><div><strong>Reunión de tutores — Secundaria</strong><small>6:00 p. m. · Salón de actos</small></div></li>
+          <li><div class="au-date-tile"><div class="month">NOV</div><div class="day">20</div></div><div><strong>Cierre de calificaciones</strong><small>Primer período</small></div></li>
+          <li><div class="au-date-tile"><div class="month">NOV</div><div class="day">27</div></div><div><strong>Entrega de boletines</strong><small>Todos los niveles</small></div></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal fade" id="modal-pago" tabindex="-1" aria-labelledby="modal-pago-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" data-au-validate="pago" data-au-submit="event" data-au-success="Pago validado (demostración)." novalidate>
+        <div class="modal-header"><h2 class="modal-title h4" id="modal-pago-title">Registrar pago</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+        <div class="modal-body d-grid gap-3">
+          <div><label class="form-label is-required" for="pago-estudiante">Estudiante</label>
+            <select class="form-select" id="pago-estudiante" name="estudiante" data-au-select data-au-placeholder="Buscar estudiante"><option value="">Buscar estudiante</option><option value="1">María Fernanda Peña · 4.º Secundaria</option><option value="2">José Luis Almonte · 2.º Primaria</option><option value="3">Camila Reyes · 6.º Primaria</option></select></div>
+          <div class="row g-3">
+            <div class="col-sm-6"><label class="form-label is-required" for="pago-monto">Monto</label><div class="input-group"><span class="input-group-text">RD$</span><input class="form-control text-end au-tabular" id="pago-monto" name="monto" data-au-mask="moneda" placeholder="0.00"></div></div>
+            <div class="col-sm-6"><label class="form-label is-required" for="pago-fecha">Fecha</label><input class="form-control" id="pago-fecha" name="fecha" data-au-datepicker placeholder="DD/MM/AAAA" autocomplete="off"></div>
+          </div>
+          <div><label class="form-label is-required" for="pago-metodo">Método</label>
+            <select class="form-select" id="pago-metodo" name="metodo"><option value="">Seleccione…</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="cheque">Cheque</option></select></div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button><button type="submit" class="btn btn-primary">Registrar pago</button></div>
+      </form>
+    </div>
+  </div>
+{{/layouts/app}}
+<script type="application/json" id="au-context">{"user":{"name":"Ana Martínez","role":"Directora"},"institution":{"name":"Colegio San Rafael","plan":"Profesional"},"roles":["institution-admin"],"permissions":["estudiantes.ver","cobros.registrar"]}</script>
+</body>
+</html>

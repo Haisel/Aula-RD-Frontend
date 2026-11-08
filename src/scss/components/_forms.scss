@@ -1,0 +1,118 @@
+// ----------------------------------------------------------------------------
+// Formularios
+// ----------------------------------------------------------------------------
+.form-label {
+  font-size: 0.875rem;
+  color: var(--au-text);
+}
+.form-text {
+  color: var(--au-text-muted);
+}
+
+.form-control,
+.form-select {
+  background-color: var(--au-surface);
+  color: var(--au-text);
+  border-color: var(--au-border-control);
+
+  &::placeholder {
+    color: var(--au-text-muted);
+    opacity: 0.85;
+  }
+
+  &:focus {
+    background-color: var(--au-surface);
+    color: var(--au-text);
+    border-color: var(--au-focus-ring);
+    box-shadow: 0 0 0 3px var(--au-focus-halo);
+  }
+
+  &:disabled {
+    background-color: var(--au-surface-2);
+  }
+}
+
+.form-select {
+  padding-right: 2.5rem;
+  background-position: right 0.875rem center;
+}
+
+.form-check-input {
+  background-color: var(--au-surface);
+  border-color: var(--au-border-control);
+
+  &:checked {
+    background-color: var(--au-primary);
+    border-color: var(--au-primary);
+  }
+
+  &:focus {
+    border-color: var(--au-focus-ring);
+    box-shadow: 0 0 0 3px var(--au-focus-halo);
+  }
+}
+
+.form-switch .form-check-input:checked {
+  background-color: var(--au-accent);
+  border-color: var(--au-accent);
+}
+
+.input-group-text {
+  background-color: var(--au-surface-2);
+  border-color: var(--au-border-control);
+  color: var(--au-text-muted);
+}
+
+.invalid-feedback {
+  font-weight: 500;
+}
+
+// Marca de campo obligatorio: <label class="form-label is-required">
+.form-label.is-required::after {
+  content: ' *';
+  color: var(--au-danger-text);
+}
+
+// Tarjeta seleccionable (planes en el registro): <label class="au-choice"><input type="radio">…</label>
+.au-choice {
+  @include au-surface('radius-lg');
+
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+
+  &:hover {
+    border-color: var(--au-border-control);
+  }
+
+  &:has(input:checked) {
+    border-color: var(--au-primary);
+    box-shadow: 0 0 0 1px var(--au-primary);
+  }
+
+  &:has(input:focus-visible) {
+    @include au-focus-ring;
+  }
+
+  .form-check-input {
+    margin-top: 0.25rem;
+    flex: none;
+  }
+}
+
+// Secciones de formulario largo
+.au-form-section {
+  display: grid;
+  gap: 1rem;
+
+  & + & {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--au-border);
+  }
+}

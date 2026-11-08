@@ -1,0 +1,113 @@
+// ----------------------------------------------------------------------------
+// Estados (píldoras), planes y alertas
+// ----------------------------------------------------------------------------
+.au-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--bs-border-radius-pill);
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentcolor;
+  }
+}
+
+$au-status-variants: (
+  'success': (
+    'success-subtle',
+    'success-text',
+  ),
+  'warning': (
+    'warning-subtle',
+    'warning-text',
+  ),
+  'danger': (
+    'danger-subtle',
+    'danger-text',
+  ),
+  'info': (
+    'info-subtle',
+    'info-text',
+  ),
+  'neutral': (
+    'surface-2',
+    'text-muted',
+  ),
+  'brand': (
+    'accent-subtle',
+    'accent-text',
+  ),
+);
+
+@each $variant, $pair in $au-status-variants {
+  .au-status-#{$variant} {
+    background: var(--au-#{nth($pair, 1)});
+    color: var(--au-#{nth($pair, 2)});
+  }
+}
+
+.au-plan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--bs-border-radius-sm);
+  border: 1px solid var(--au-border-control);
+  color: var(--au-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.au-plan-pro {
+  border-color: var(--au-accent);
+  color: var(--au-accent-text);
+}
+.au-plan-premium {
+  border-color: var(--au-gold-accent);
+  color: var(--au-gold-text);
+  background: var(--au-gold-subtle);
+}
+
+.alert {
+  --bs-alert-border-radius: 12px;
+  --bs-alert-border-color: transparent;
+
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+
+  > .bi {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+}
+
+@each $variant in (success, warning, danger, info) {
+  .alert-#{$variant} {
+    --bs-alert-bg: var(--au-#{$variant}-subtle);
+    --bs-alert-color: var(--au-#{$variant}-text);
+    --bs-alert-link-color: var(--au-#{$variant}-text);
+  }
+}
+
+.au-alert-title {
+  font-weight: 700;
+  margin: 0 0 2px;
+  color: inherit;
+}
+
+.badge.bg-accent {
+  background: var(--au-accent) !important;
+  color: var(--au-on-accent);
+}

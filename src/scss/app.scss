@@ -1,0 +1,45 @@
+// ============================================================================
+// Aula RD — hoja de estilos principal (se compila a dist/css/app.css)
+//
+// Orden:
+//   1. abstracts   tokens generados, funciones, variables de Bootstrap
+//   2. bootstrap   framework completo (5.3)
+//   3. abstracts   mixins (usan mixins de Bootstrap)
+//   4. base        variables CSS por tema, reglas globales, tipografía
+//   5. components  componentes .au-* y temas de componentes de Bootstrap
+//   6. layouts     app (dashboards), landing, auth
+//   7. vendors     SweetAlert2, Choices.js, Flatpickr, DataTables 2, Quill, FullCalendar, Signature Pad
+//   8. utilities   utilidades propias
+// ============================================================================
+
+@import 'abstracts/tokens';
+@import 'abstracts/functions';
+@import 'abstracts/bootstrap-variables';
+
+@import 'bootstrap/scss/bootstrap';
+
+@import 'abstracts/mixins';
+
+@import 'base/root';
+@import 'base/base';
+@import 'base/typography';
+
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/cards';
+@import 'components/tables';
+@import 'components/status';
+@import 'components/stat';
+
+@import 'layouts/app-shell';
+@import 'layouts/landing';
+@import 'layouts/auth';
+
+@import 'vendors/sweetalert2';
+@import 'vendors/choices';
+@import 'vendors/flatpickr';
+@import 'vendors/datatables';
+@import 'vendors/quill';
+@import 'vendors/fullcalendar';
+
+@import 'utilities/utilities';

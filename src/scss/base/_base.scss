@@ -1,0 +1,66 @@
+// ----------------------------------------------------------------------------
+// Base global
+// ----------------------------------------------------------------------------
+body {
+  font-family: var(--bs-body-font-family);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  @include au-focus-ring;
+}
+
+::selection {
+  background: var(--au-accent-subtle);
+  color: var(--au-text);
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+// Movimiento reducido: respeta la preferencia del sistema
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Enlace "saltar al contenido"
+.au-skip-link {
+  position: absolute;
+  left: 16px;
+  top: -64px;
+  z-index: 2000;
+  padding: 8px 16px;
+  border-radius: var(--bs-border-radius);
+  background: var(--au-primary);
+  color: var(--au-on-primary);
+  font-weight: 600;
+
+  &:focus {
+    top: 16px;
+  }
+}

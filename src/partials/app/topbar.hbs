@@ -1,0 +1,40 @@
+<header class="au-topbar">
+  <button class="btn btn-ghost au-btn-icon d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#au-sidebar" aria-controls="au-sidebar" aria-label="Abrir menú"><i class="bi bi-list" aria-hidden="true"></i></button>
+  <button class="btn btn-ghost au-btn-icon d-none d-lg-inline-flex" type="button" data-au-sidebar-toggle aria-expanded="true" aria-controls="au-sidebar" aria-label="Contraer menú"><i class="bi bi-layout-sidebar" aria-hidden="true"></i></button>
+  <form class="au-search" role="search" action="#" method="get">
+    <i class="bi bi-search" aria-hidden="true"></i>
+    <label class="visually-hidden" for="au-search-input">Buscar</label>
+    <input id="au-search-input" class="form-control" type="search" name="q" placeholder="Buscar estudiante, tutor o factura…">
+  </form>
+  {{#unless isSuperAdmin}}
+  <label class="visually-hidden" for="au-periodo">Período escolar</label>
+  <select id="au-periodo" class="form-select w-auto d-none d-md-block"><option>Período 2026–2027</option><option>Período 2025–2026</option></select>
+  {{/unless}}
+  <div class="au-topbar-actions">
+    <button class="btn btn-ghost au-btn-icon" type="button" data-au-theme-toggle aria-label="Cambiar tema"><i class="bi bi-moon-stars" aria-hidden="true"></i></button>
+    <div class="dropdown">
+      <button class="btn btn-ghost au-btn-icon position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notificaciones (3 nuevas)">
+        <i class="bi bi-bell" aria-hidden="true"></i><span class="au-notification-dot" aria-hidden="true"></span>
+      </button>
+      <div class="dropdown-menu dropdown-menu-end p-0 au-notifications">
+        <div class="au-notifications-head">Notificaciones</div>
+        <a class="dropdown-item" href="#"><i class="bi bi-cash-coin au-text-accent" aria-hidden="true"></i><span>Pago registrado de María Peña<small><time data-au-relative-time="2026-11-08T08:40:00-04:00">hoy</time></small></span></a>
+        <a class="dropdown-item" href="#"><i class="bi bi-exclamation-triangle au-text-warning" aria-hidden="true"></i><span>4 secciones sin calificaciones<small><time data-au-relative-time="2026-11-07T15:10:00-04:00">ayer</time></small></span></a>
+        <a class="dropdown-item" href="#"><i class="bi bi-megaphone au-text-accent" aria-hidden="true"></i><span>Nuevo comunicado publicado<small><time data-au-relative-time="2026-11-06T10:00:00-04:00">hace 2 días</time></small></span></a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="au-user" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="au-avatar" aria-hidden="true">{{user.initials}}</span>
+        <span class="d-none d-md-block"><span class="au-user-name d-block" data-au-bind="user.name">{{user.name}}</span><span class="au-user-role d-block" data-au-bind="user.role">{{user.role}}</span></span>
+        <i class="bi bi-chevron-down small" aria-hidden="true"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2" aria-hidden="true"></i>Mi perfil</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2" aria-hidden="true"></i>Preferencias</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="login.html" data-au-confirm="Se cerrará su sesión en este dispositivo." data-au-confirm-title="¿Cerrar sesión?" data-au-confirm-text="Cerrar sesión"><i class="bi bi-box-arrow-right me-2" aria-hidden="true"></i>Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</header>

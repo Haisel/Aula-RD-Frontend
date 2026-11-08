@@ -1,0 +1,329 @@
+// ----------------------------------------------------------------------------
+// Estructura de los dashboards: sidebar + topbar + contenido
+//
+// <div class="au-app" data-au-app>
+//   <aside class="au-sidebar offcanvas-lg offcanvas-start" id="au-sidebar">…</aside>
+//   <div class="au-main"> <header class="au-topbar">…</header> <main class="au-content">…</main> </div>
+// </div>
+//
+// ≥ lg: sidebar fija a la izquierda (264px; colapsada 76px con .is-collapsed en .au-app)
+// < lg: sidebar como offcanvas de Bootstrap (botón [data-bs-toggle="offcanvas"])
+// ----------------------------------------------------------------------------
+@use 'sass:map';
+
+$au-sidebar-w: map.get($au-layout, 'sidebar-width');
+$au-sidebar-w-collapsed: map.get($au-layout, 'sidebar-collapsed');
+$au-topbar-h: map.get($au-layout, 'topbar-height');
+
+.au-app {
+  display: flex;
+  min-height: 100vh;
+  background: var(--au-bg);
+}
+
+.au-sidebar {
+  --bs-offcanvas-width: #{$au-sidebar-w};
+  --bs-offcanvas-bg: var(--au-sidebar-bg);
+  --bs-offcanvas-color: var(--au-sidebar-text);
+
+  // Bootstrap fuerza `background-color: transparent !important` en .offcanvas-lg ≥ lg;
+  // por eso el fondo de marca va en el cuerpo y la cabecera, no en el contenedor.
+  color: var(--au-sidebar-text);
+  display: flex;
+  flex-direction: column;
+
+  .offcanvas-header {
+    padding: 1.25rem 1rem 0.5rem;
+    background: var(--au-sidebar-bg);
+  }
+  .btn-close {
+    filter: invert(1) grayscale(1) brightness(2);
+  }
+
+  .au-sidebar-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 1.25rem 1rem;
+    overflow-y: auto;
+    flex: 1;
+    background: var(--au-sidebar-bg);
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: $au-sidebar-w;
+    flex: none;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    transition: width 0.2s ease;
+  }
+}
+
+.au-sidebar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem 1.25rem;
+
+  img {
+    height: 34px;
+    width: auto;
+  }
+  .au-brand-iso {
+    display: none;
+    height: 34px;
+  }
+}
+
+.au-sidebar-section {
+  padding: 1rem 0.75rem 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--au-sidebar-text);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.au-sidebar .nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--bs-border-radius);
+  color: var(--au-sidebar-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  .bi {
+    font-size: 1.125rem;
+    flex: none;
+  }
+
+  &:hover {
+    color: #fff;
+    background: rgb(255 255 255 / 6%);
+  }
+
+  &.active {
+    background: var(--au-sidebar-active-bg);
+    color: var(--au-sidebar-active-text);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 4px;
+      border-radius: 0 4px 4px 0;
+      background: var(--au-accent);
+    }
+  }
+
+  .badge {
+    margin-left: auto;
+    background: var(--au-accent);
+    color: var(--au-on-accent);
+  }
+}
+
+.au-tenant {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border: 0;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 6%);
+  color: #fff;
+  text-align: left;
+
+  .au-tenant-name {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  small {
+    display: block;
+    color: var(--au-sidebar-text);
+    font-size: 0.75rem;
+  }
+  .bi {
+    margin-left: auto;
+  }
+}
+
+.au-role-chip {
+  padding: 2px 10px;
+  border-radius: var(--bs-border-radius-pill);
+  background: rgb(24 182 164 / 16%);
+  color: #{au-scale('turquoise', '300')};
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+// Sidebar colapsada (solo íconos), solo ≥ lg
+@include media-breakpoint-up(lg) {
+  .au-app.is-collapsed {
+    .au-sidebar {
+      width: $au-sidebar-w-collapsed;
+    }
+
+    .au-sidebar-brand {
+      justify-content: center;
+
+      .au-brand-full,
+      .au-role-chip {
+        display: none;
+      }
+      .au-brand-iso {
+        display: block;
+      }
+    }
+
+    .au-sidebar .nav-link {
+      justify-content: center;
+
+      .au-nav-text,
+      .badge {
+        display: none;
+      }
+    }
+
+    .au-sidebar-section {
+      visibility: hidden;
+      height: 1rem;
+      padding: 0;
+    }
+    .au-tenant {
+      justify-content: center;
+      .au-tenant-text,
+      .bi {
+        display: none;
+      }
+    }
+  }
+}
+
+.au-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.au-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: $au-topbar-h;
+  padding: 0.75rem 1.5rem;
+  background: var(--au-surface);
+  border-bottom: 1px solid var(--au-border);
+
+  .au-topbar-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+.au-search {
+  position: relative;
+  flex: 1 1 220px;
+  max-width: 380px;
+
+  .bi {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--au-text-muted);
+    pointer-events: none;
+  }
+  .form-control {
+    padding-left: 2.375rem;
+    background: var(--au-bg);
+  }
+}
+
+.au-user {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-left: 0.5rem;
+  padding: 0.25rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  line-height: 1.2;
+
+  .au-user-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .au-user-role {
+    font-size: 0.75rem;
+    color: var(--au-text-muted);
+  }
+}
+
+.au-content {
+  width: 100%;
+  max-width: map.get($au-layout, 'content-max');
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include media-breakpoint-down(md) {
+    padding: 1.25rem 1rem;
+  }
+}
+
+.au-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+
+  .au-page-title {
+    @include au-type('h1');
+    margin: 0;
+  }
+  .au-page-subtitle {
+    margin: 4px 0 0;
+    color: var(--au-text-muted);
+  }
+  .au-page-actions {
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.au-notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--au-danger);
+  box-shadow: 0 0 0 2px var(--au-surface);
+}

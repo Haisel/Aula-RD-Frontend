@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<div class="au-auth">
+  {{> layouts/auth-aside asideTitle="Suscriba su institución en minutos."}}
+  <main id="contenido" class="au-auth-main">
+    <form class="au-auth-form" data-au-validate="registro-institucion" data-au-submit="event"
+          data-au-success="Solicitud lista. Conecte este formulario a su API con data-au-submit=&quot;ajax&quot;." action="#" method="post" novalidate>
+      <div class="d-flex justify-content-between align-items-start gap-3">
+        <div>
+          <p class="au-eyebrow mb-2">Suscripción</p>
+          <h1>Registre su institución</h1>
+          <p class="text-body-secondary mb-0">Complete los datos. Los campos con * son obligatorios.</p>
+        </div>
+        <button class="btn btn-ghost au-btn-icon" type="button" data-au-theme-toggle aria-label="Cambiar tema"><i class="bi bi-moon-stars" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+
+      <fieldset class="au-form-section">
+        <legend class="h4">Institución</legend>
+        <div class="row g-3">
+          <div class="col-12">
+            <label class="form-label is-required" for="institucion">Nombre de la institución</label>
+            <input class="form-control" id="institucion" name="institucion" autocomplete="organization" placeholder="Ej.: Colegio San Rafael">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label is-required" for="rnc">RNC</label>
+            <input class="form-control" id="rnc" name="rnc" data-au-mask="rnc" placeholder="0-00-00000-0" aria-describedby="rnc-help">
+            <div class="form-text" id="rnc-help">9 dígitos. Se valida el dígito verificador.</div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label is-required" for="telefono">Teléfono</label>
+            <input class="form-control" id="telefono" name="telefono" type="tel" autocomplete="tel-national" data-au-mask="telefono" placeholder="(809) 000-0000">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label is-required" for="provincia">Provincia</label>
+            <select class="form-select" id="provincia" name="provincia" data-au-select data-au-placeholder="Seleccione la provincia">
+              <option value="">Seleccione la provincia</option>
+              <option>Distrito Nacional</option><option>Santo Domingo</option><option>Santiago</option><option>La Vega</option>
+              <option>San Cristóbal</option><option>Puerto Plata</option><option>La Romana</option><option>San Pedro de Macorís</option>
+              <option>Duarte</option><option>La Altagracia</option><option>Espaillat</option><option>Peravia</option>
+              <option>Monseñor Nouel</option><option>Azua</option><option>Barahona</option><option>Otra provincia</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label is-required" for="inicio">Inicio del período escolar</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-calendar3" aria-hidden="true"></i></span>
+              <input class="form-control" id="inicio" name="inicio" data-au-datepicker placeholder="DD/MM/AAAA" autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="au-form-section">
+        <legend class="h4">Plan</legend>
+        <div class="au-choice-group d-grid gap-2" role="radiogroup" aria-label="Plan">
+          <label class="au-choice"><input class="form-check-input" type="radio" name="plan" value="basico"><span><strong class="d-block">Básico</strong><span class="text-body-secondary small">Módulo académico y asistencia.</span></span></label>
+          <label class="au-choice"><input class="form-check-input" type="radio" name="plan" value="profesional" checked><span><strong class="d-block">Profesional <span class="au-plan au-plan-pro ms-1">Recomendado</span></strong><span class="text-body-secondary small">Académico, cobros y comunicados.</span></span></label>
+          <label class="au-choice"><input class="form-check-input" type="radio" name="plan" value="premium"><span><strong class="d-block">Premium</strong><span class="text-body-secondary small">Varias sedes y acompañamiento dedicado.</span></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="au-form-section">
+        <legend class="h4">Cuenta de la dirección</legend>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label is-required" for="director">Nombre completo</label>
+            <input class="form-control" id="director" name="director" autocomplete="name">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label is-required" for="cedula">Cédula</label>
+            <input class="form-control" id="cedula" name="cedula" data-au-mask="cedula" placeholder="000-0000000-0">
+          </div>
+          <div class="col-12">
+            <label class="form-label is-required" for="email">Correo institucional</label>
+            <input class="form-control" id="email" name="email" type="email" autocomplete="email" placeholder="direccion@colegio.edu.do">
+          </div>
+          <div class="col-12">
+            <label class="form-label is-required" for="password">Contraseña</label>
+            <div class="input-group">
+              <input class="form-control" id="password" name="password" type="password" autocomplete="new-password" aria-describedby="password-help">
+              <button class="btn btn-outline-primary" type="button" data-au-password-toggle="#password"><i class="bi bi-eye" aria-hidden="true"></i></button>
+            </div>
+            <div class="form-text" id="password-help">Al menos 8 caracteres, con letras y números.</div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terminos" name="terminos">
+              <label class="form-check-label" for="terminos">Acepto los <a href="#">términos de uso</a> y la <a href="#">política de privacidad</a>.</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="d-flex flex-wrap gap-2 justify-content-end">
+        <a class="btn btn-outline-primary btn-lg" href="index.html">Cancelar</a>
+        <button class="btn btn-primary btn-lg" type="submit">Crear cuenta de la institución</button>
+      </div>
+      <p class="text-center text-body-secondary small mb-0">¿Ya tiene cuenta? <a href="login.html">Inicie sesión</a></p>
+    </form>
+  </main>
+</div>
+</body>
+</html>

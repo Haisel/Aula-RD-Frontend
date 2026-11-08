@@ -1,0 +1,15 @@
+{{!--
+  Estructura de los dashboards. Uso:
+    {{#> layouts/app}} …contenido de la página… {{/layouts/app}}
+  Contexto: nav[], user, org, isSuperAdmin, title.
+--}}
+<a class="au-skip-link" href="#contenido">Saltar al contenido</a>
+<div class="au-app" data-au-app>
+  {{> app/sidebar}}
+  <div class="au-main">
+    {{> app/topbar}}
+    <main id="contenido" class="au-content" tabindex="-1">
+      {{> @partial-block}}
+    </main>
+  </div>
+</div>

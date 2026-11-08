@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Hola, Rosa" subtitle="María Fernanda Peña · 4.º de Secundaria · Sección A"}}
+    <a class="btn btn-outline-primary" href="#cuenta"><i class="bi bi-receipt" aria-hidden="true"></i>Estado de cuenta</a>
+  {{/components/page-header}}
+
+  <div class="alert alert-warning mb-0" role="status">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i>
+    <div class="flex-grow-1"><p class="au-alert-title">Cuota de noviembre pendiente</p>Vence el 15/11/2026. Puede pagar por transferencia o en la caja del colegio.</div>
+  </div>
+
+  <section class="au-grid-kpi" aria-label="Indicadores de María">
+    {{> components/stat-card label="Promedio actual" value="91" icon="journal-text" delta="2 pts" note="vs. período anterior" trend="up"}}
+    {{> components/stat-card label="Asistencia del período" value="97.8%" icon="calendar-check" delta="1 tardanza" note="este mes" trend="up"}}
+    {{> components/stat-card label="Saldo pendiente" value="RD$ 12,500.00" icon="cash-coin" tone="warning" delta="vence 15/11" trend="warning"}}
+  </section>
+
+  <div class="au-split">
+    <section class="card is-main" aria-labelledby="rend-title">
+      <div class="card-body">
+        <div class="au-card-header"><div class="me-auto"><h2 class="au-card-title" id="rend-title">Evolución del rendimiento</h2><p class="au-card-subtitle">Promedio por período comparado con la sección</p></div></div>
+        <div class="au-chart"><canvas data-au-chart="data/charts/calificaciones.json" role="img" aria-label="Gráfico de líneas: el promedio de María sube de 84 a 91; el de la sección de 80 a 83"></canvas></div>
+      </div>
+    </section>
+    <section class="card is-side" aria-labelledby="carne-title">
+      <div class="card-body d-grid gap-3 text-center">
+        <h2 class="au-card-title text-start" id="carne-title">Carné digital</h2>
+        <div class="au-id-card">
+          <img src="img/brand/logo-horizontal-claro.svg" alt="Aula RD" class="au-logo-light">
+          <img src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD" class="au-logo-dark">
+          <div class="au-id-card-name">María Fernanda Peña</div>
+          <div class="text-body-secondary small">4.º Secundaria · Matrícula 20260001</div>
+          <div class="au-id-card-qr" data-au-qrcode="https://example.com/verificar/20260001" data-au-size="150" role="img" aria-label="Código QR de verificación del carné"></div>
+          <svg class="au-id-card-barcode" data-au-barcode="20260001" role="img" aria-label="Código de barras 20260001"></svg>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="au-split">
+    <section class="au-table-card is-main" id="cuenta" aria-labelledby="cuenta-title">
+      <div class="au-table-toolbar"><h2 id="cuenta-title">Estado de cuenta</h2><button class="btn btn-ghost btn-sm" type="button" data-au-export="#tabla-cuenta" data-au-format="csv" data-au-filename="estado-de-cuenta"><i class="bi bi-download" aria-hidden="true"></i>Descargar</button></div>
+      <div class="table-responsive">
+        <table class="table align-middle" id="tabla-cuenta">
+          <thead><tr><th>Concepto</th><th>Vence</th><th class="text-end">Monto</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="au-cell-entity">Cuota de noviembre</td><td class="au-tabular">15/11/2026</td><td class="text-end au-tabular">RD$ 12,500.00</td><td><span class="au-status au-status-warning">Pendiente</span></td></tr>
+            <tr><td class="au-cell-entity">Cuota de octubre</td><td class="au-tabular">15/10/2026</td><td class="text-end au-tabular">RD$ 12,500.00</td><td><span class="au-status au-status-success">Pagado</span></td></tr>
+            <tr><td class="au-cell-entity">Feria científica</td><td class="au-tabular">16/11/2026</td><td class="text-end au-tabular">RD$ 800.00</td><td><span class="au-status au-status-success">Pagado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="card is-side" aria-labelledby="aut-title">
+      <div class="card-body">
+        <div class="au-card-header"><div class="me-auto"><h2 class="au-card-title" id="aut-title">Autorización de salida</h2><p class="au-card-subtitle">Feria científica · 16/11/2026</p></div></div>
+        <form class="d-grid gap-3" data-au-validate="autorizacion" data-au-submit="event" data-au-success="Autorización validada (demostración)." novalidate>
+          <p class="small text-body-secondary mb-0">Autorizo a María Fernanda Peña a participar en la actividad fuera del plantel.</p>
+          <div>
+            <span class="form-label d-block" id="firma-label">Firma del tutor</span>
+            <canvas class="au-signature" id="firma-canvas" data-au-signature data-au-input="#firma" aria-labelledby="firma-label"></canvas>
+            <input type="hidden" name="firma" id="firma">
+          </div>
+          <div class="d-flex gap-2 justify-content-end">
+            <button class="btn btn-outline-primary btn-sm" type="button" data-au-signature-clear="#firma-canvas">Borrar firma</button>
+            <button class="btn btn-primary btn-sm" type="submit">Firmar y enviar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

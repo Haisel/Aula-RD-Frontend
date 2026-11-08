@@ -1,0 +1,132 @@
+// SweetAlert2 — tema Aula RD (alertas, confirmaciones, carga y toasts)
+.swal2-container {
+  font-family: var(--bs-body-font-family);
+}
+
+.swal2-container.swal2-backdrop-show {
+  background: rgb(10 22 40 / 55%);
+}
+
+.au-swal.swal2-popup {
+  width: min(28rem, 92vw);
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: var(--bs-border-radius-lg);
+  background: var(--au-surface);
+  color: var(--au-text);
+  border: 1px solid var(--au-border);
+  box-shadow: var(--au-shadow-lg);
+}
+
+.au-swal-title.swal2-title {
+  @include au-type('h2');
+  padding: 0.5rem 1rem 0;
+  color: var(--au-text);
+}
+.au-swal-text.swal2-html-container {
+  margin: 0.5rem 1rem 0;
+  color: var(--au-text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.au-swal-actions.swal2-actions {
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.swal2-icon {
+  transform: scale(0.8);
+  margin: 0.25rem auto 0;
+
+  &.swal2-success {
+    border-color: var(--au-success);
+    color: var(--au-success);
+  }
+  &.swal2-success [class^='swal2-success-line'] {
+    background-color: var(--au-success);
+  }
+  &.swal2-success .swal2-success-ring {
+    border-color: rgb(27 122 67 / 30%);
+  }
+  &.swal2-error {
+    border-color: var(--au-danger);
+    color: var(--au-danger);
+  }
+  &.swal2-error [class^='swal2-x-mark-line'] {
+    background-color: var(--au-danger);
+  }
+  &.swal2-warning {
+    border-color: var(--au-warning);
+    color: var(--au-warning-text);
+  }
+  &.swal2-info {
+    border-color: var(--au-info);
+    color: var(--au-info);
+  }
+  &.swal2-question {
+    border-color: var(--au-accent);
+    color: var(--au-accent-text);
+  }
+}
+
+.swal2-loader {
+  border-color: var(--au-accent) transparent var(--au-accent) transparent;
+}
+
+.swal2-popup .swal2-success-circular-line-left,
+.swal2-popup .swal2-success-circular-line-right,
+.swal2-popup .swal2-success-fix {
+  background-color: var(--au-surface) !important;
+} // SweetAlert2 pinta estas máscaras en blanco fijo
+
+.au-swal-in {
+  animation: au-swal-in 0.18s ease-out;
+}
+.au-swal-out {
+  animation: au-swal-out 0.12s ease-in forwards;
+}
+
+@keyframes au-swal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes au-swal-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+// Toast
+.au-swal-toast.swal2-popup.swal2-toast {
+  padding: 0.75rem 1rem;
+  border-radius: var(--bs-border-radius);
+  background: var(--au-surface);
+  color: var(--au-text);
+  border: 1px solid var(--au-border);
+  box-shadow: var(--au-shadow-md);
+
+  .swal2-icon {
+    transform: none;
+    margin: 0 0.25rem 0 0;
+  }
+  .swal2-timer-progress-bar {
+    background: var(--au-accent);
+  }
+}
+
+.au-swal-toast-title.swal2-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--au-text);
+  margin: 0 0.5rem;
+}
+.au-swal-toast-close.swal2-close {
+  color: var(--au-text-muted);
+  font-size: 1.25rem;
+}

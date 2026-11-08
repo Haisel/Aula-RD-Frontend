@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Componentes" subtitle="Catálogo vivo de la plantilla Aula RD. Todo lo que ve aquí se activa con clases de Bootstrap y atributos data-au-*."}}
+    <a class="btn btn-outline-primary" href="#colores">Colores</a>
+    <a class="btn btn-outline-primary" href="#formularios">Formularios</a>
+    <a class="btn btn-outline-primary" href="#datos">Datos</a>
+  {{/components/page-header}}
+
+  <section class="au-specimen" id="colores" aria-labelledby="c-colores">
+    <h2 id="c-colores">Colores de marca y semánticos</h2>
+    <p>Use siempre las variables <code>--au-*</code> o las clases; nunca hex sueltos. Cambie el tema con el botón de la barra superior para ver ambos.</p>
+    <div class="au-swatches">
+      <div class="au-swatch"><div class="au-swatch-color is-navy"></div><div class="au-swatch-meta"><strong>Navy</strong><code>#142B4A</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-turquoise"></div><div class="au-swatch-meta"><strong>Turquoise</strong><code>#18B6A4</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-gold"></div><div class="au-swatch-meta"><strong>Champagne</strong><code>#C6A15B</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-bg"></div><div class="au-swatch-meta"><strong>bg</strong><code>--au-bg</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-surface"></div><div class="au-swatch-meta"><strong>surface</strong><code>--au-surface</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-primary"></div><div class="au-swatch-meta"><strong>primary</strong><code>--au-primary</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-success"></div><div class="au-swatch-meta"><strong>success</strong><code>--au-success</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-warning"></div><div class="au-swatch-meta"><strong>warning</strong><code>--au-warning</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-danger"></div><div class="au-swatch-meta"><strong>danger</strong><code>--au-danger</code></div></div>
+      <div class="au-swatch"><div class="au-swatch-color is-info"></div><div class="au-swatch-meta"><strong>info</strong><code>--au-info</code></div></div>
+    </div>
+  </section>
+
+  <section class="au-specimen" aria-labelledby="c-tipo">
+    <h2 id="c-tipo">Tipografía · Plus Jakarta Sans</h2>
+    <div class="d-grid gap-2">
+      <p class="au-display-2 mb-0">Display 2 · landing</p>
+      <p class="au-type-h1 mb-0">H1 · título de página 32/40</p>
+      <p class="au-type-h2 mb-0">H2 · bloque y modal 24/32</p>
+      <p class="au-type-h3 mb-0">H3 · título de tarjeta 20/28</p>
+      <p class="au-type-body mb-0">Body 16/24 · Texto base de formularios y contenido.</p>
+      <p class="au-type-body-sm text-body-secondary mb-0">Body-sm 14/20 · Tablas y texto denso del dashboard.</p>
+      <p class="au-eyebrow">Overline · eyebrow de sección</p>
+      <p class="au-type-kpi mb-0 au-tabular">RD$ 1,284,500</p>
+    </div>
+  </section>
+
+  <section class="au-specimen" aria-labelledby="c-botones">
+    <h2 id="c-botones">Botones</h2>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+      <button class="btn btn-primary" type="button"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar estudiante</button>
+      <button class="btn btn-outline-primary" type="button">Cancelar</button>
+      <button class="btn btn-accent" type="button">Suscribir mi institución</button>
+      <button class="btn btn-ghost" type="button"><i class="bi bi-download" aria-hidden="true"></i>Exportar</button>
+      <button class="btn btn-link" type="button">Ver detalle</button>
+      <button class="btn btn-danger" type="button"><i class="bi bi-trash3" aria-hidden="true"></i>Eliminar</button>
+      <button class="btn btn-primary is-loading" type="button" aria-busy="true" disabled>Guardando</button>
+      <button class="btn btn-primary" type="button" disabled>Deshabilitado</button>
+      <button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Más opciones" data-bs-toggle="tooltip" data-bs-title="Más opciones"><i class="bi bi-three-dots" aria-hidden="true"></i></button>
+    </div>
+  </section>
+
+  <section class="au-specimen" aria-labelledby="c-estados">
+    <h2 id="c-estados">Estados, planes y alertas</h2>
+    <div class="d-flex flex-wrap gap-2">
+      <span class="au-status au-status-success">Pagado</span><span class="au-status au-status-warning">Pendiente</span><span class="au-status au-status-danger">Vencido</span>
+      <span class="au-status au-status-info">En revisión</span><span class="au-status au-status-neutral">Inactivo</span><span class="au-status au-status-brand">Período de prueba</span>
+      <span class="au-plan">Básico</span><span class="au-plan au-plan-pro">Profesional</span><span class="au-plan au-plan-premium"><i class="bi bi-star-fill" aria-hidden="true"></i>Premium</span>
+    </div>
+    <div class="au-grid-auto">
+      <div class="alert alert-success mb-0"><i class="bi bi-check-circle" aria-hidden="true"></i><div><p class="au-alert-title">Pago registrado</p>Se aplicó RD$ 12,500.00 a la cuota de noviembre.</div></div>
+      <div class="alert alert-warning mb-0"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i><div><p class="au-alert-title">Suscripción por vencer</p>Renueve antes del 13/11/2026.</div></div>
+      <div class="alert alert-danger mb-0"><i class="bi bi-x-octagon" aria-hidden="true"></i><div><p class="au-alert-title">No se pudo importar</p>La fila 14 no tiene cédula.</div></div>
+      <div class="alert alert-info mb-0"><i class="bi bi-info-circle" aria-hidden="true"></i><div>El período 2026–2027 inicia el 18/08/2026.</div></div>
+    </div>
+  </section>
+
+  <section class="au-specimen" aria-labelledby="c-dialogos">
+    <h2 id="c-dialogos">Diálogos (SweetAlert2) · <code>AU.success()</code>, <code>AU.toast()</code>, <code>AU.confirm()</code>…</h2>
+    <div class="d-flex flex-wrap gap-2">
+      <button class="btn btn-outline-primary" type="button" data-au-action="success" data-au-message="El estudiante se guardó correctamente.">AU.success</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="error" data-au-message="No se pudo conectar con el servidor. Intente de nuevo.">AU.error</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="warning" data-au-message="Hay 4 secciones sin calificaciones.">AU.warning</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="toast" data-au-message="Pago registrado">AU.toast</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="confirm" data-au-message="Se enviará el boletín a 1,248 tutores.">AU.confirm</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="confirm-delete" data-au-message="Se eliminará a Camila Reyes de 6.º Primaria.">AU.confirmDelete</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="loading" data-au-message="Importando estudiantes…">AU.loading</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-demo">Modal de Bootstrap</button>
+    </div>
+  </section>
+
+  <section class="au-specimen" id="formularios" aria-labelledby="c-forms">
+    <h2 id="c-forms">Formularios · validación Zod + máscaras + Choices + Flatpickr</h2>
+    <p>Envíe vacío para ver los mensajes. Esquema: <code>data-au-validate="estudiante"</code>.</p>
+    <form class="row g-3" data-au-validate="estudiante" data-au-submit="event" data-au-success="Estudiante válido (demostración)." novalidate>
+      <div class="col-md-6"><label class="form-label is-required" for="f-nombre">Nombre del estudiante</label><input class="form-control" id="f-nombre" name="nombre" placeholder="Ej.: María Fernanda Peña"></div>
+      <div class="col-md-6"><label class="form-label is-required" for="f-grado">Grado</label>
+        <select class="form-select" id="f-grado" name="grado" data-au-select data-au-placeholder="Seleccione el grado"><option value="">Seleccione el grado</option><option>1.º Primaria</option><option>2.º Primaria</option><option>3.º Primaria</option><option>4.º Primaria</option><option>5.º Primaria</option><option>6.º Primaria</option><option>1.º Secundaria</option><option>2.º Secundaria</option><option>3.º Secundaria</option><option>4.º Secundaria</option><option>5.º Secundaria</option><option>6.º Secundaria</option></select></div>
+      <div class="col-md-6"><label class="form-label is-required" for="f-tutor">Tutor</label><input class="form-control" id="f-tutor" name="tutor"></div>
+      <div class="col-md-6"><label class="form-label is-required" for="f-cedula">Cédula del tutor</label><input class="form-control" id="f-cedula" name="cedulaTutor" data-au-mask="cedula" placeholder="000-0000000-0"></div>
+      <div class="col-md-4"><label class="form-label is-required" for="f-tel">Teléfono del tutor</label><input class="form-control" id="f-tel" name="telefonoTutor" type="tel" data-au-mask="telefono" placeholder="(809) 000-0000"></div>
+      <div class="col-md-4"><label class="form-label is-required" for="f-cuota">Cuota mensual</label><div class="input-group"><span class="input-group-text">RD$</span><input class="form-control text-end au-tabular" id="f-cuota" name="cuota" data-au-mask="moneda" placeholder="0.00"></div></div>
+      <div class="col-md-4"><label class="form-label" for="f-fecha">Fecha de ingreso</label><input class="form-control" id="f-fecha" name="ingreso" data-au-datepicker placeholder="DD/MM/AAAA" autocomplete="off"></div>
+      <div class="col-12 d-flex flex-wrap gap-4">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="f-beca" name="beca"><label class="form-check-label" for="f-beca">Becado</label></div>
+        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="f-notif" name="notificar" checked><label class="form-check-label" for="f-notif">Notificar al tutor por correo</label></div>
+      </div>
+      <div class="col-12 d-flex justify-content-end gap-2"><button class="btn btn-outline-primary" type="reset">Limpiar</button><button class="btn btn-primary" type="submit">Guardar estudiante</button></div>
+    </form>
+  </section>
+
+  <section class="au-specimen" id="datos" aria-labelledby="c-kpi">
+    <h2 id="c-kpi">Indicadores y gráficos (Chart.js)</h2>
+    <div class="au-grid-kpi">
+      {{> components/stat-card label="Estudiantes inscritos" value="1,248" icon="people" delta="4.2%" note="vs. período anterior" trend="up"}}
+      {{> components/stat-card label="Cuotas pendientes" value="RD$ 386K" title="RD$ 386,450.00" icon="cash-coin" tone="warning" delta="37 familias" note="con atraso" trend="down"}}
+    </div>
+    <div class="au-grid-auto">
+      <div class="au-chart is-sm"><canvas data-au-chart="data/charts/asistencia-semana.json" role="img" aria-label="Barras: asistencia por día"></canvas></div>
+      <div class="au-chart is-sm"><canvas data-au-chart="data/charts/calificaciones.json" role="img" aria-label="Líneas: evolución de calificaciones"></canvas></div>
+      <div class="au-chart is-sm"><canvas data-au-chart="data/charts/planes.json" role="img" aria-label="Dona: instituciones por plan"></canvas></div>
+    </div>
+  </section>
+
+  <section class="au-specimen" aria-labelledby="c-tabla">
+    <h2 id="c-tabla">Tabla interactiva (DataTables 2) + plantilla Handlebars desde JSON</h2>
+    <p>Las filas se pintan en el navegador con <code>data-au-render="#tpl"</code> + <code>data-au-source="data/cobros.json"</code>; cambie la URL por su endpoint.</p>
+    <div class="au-table-card">
+      <div class="au-table-toolbar"><h3>Cobros (fixture)</h3><button class="btn btn-ghost btn-sm" type="button" data-au-export="#tabla-demo" data-au-filename="cobros"><i class="bi bi-file-earmark-excel" aria-hidden="true"></i>Excel</button></div>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle" id="tabla-demo">
+          <thead><tr><th>Estudiante</th><th>Grado</th><th>Tutor</th><th class="text-end">Monto</th><th>Estado</th></tr></thead>
+          <tbody data-au-render="#tpl-demo" data-au-source="data/cobros.json"></tbody>
+        </table>
+      </div>
+    </div>
+    <template id="tpl-demo"><tr><td class="au-cell-entity">\{{estudiante}}</td><td>\{{grado}}</td><td>\{{tutor}}</td><td class="text-end au-tabular">\{{currency monto}}</td><td>\{{status estado}}</td></tr></template>
+  </section>
+
+  <div class="au-grid-auto">
+    <section class="au-specimen" aria-labelledby="c-sort">
+      <h2 id="c-sort">Ordenar arrastrando (SortableJS)</h2>
+      <ul class="list-group" data-au-sortable data-au-input="#orden-asignaturas">
+        <li class="list-group-item d-flex gap-2" data-id="mat"><i class="bi bi-grip-vertical" data-au-handle aria-hidden="true"></i>Matemática</li>
+        <li class="list-group-item d-flex gap-2" data-id="esp"><i class="bi bi-grip-vertical" data-au-handle aria-hidden="true"></i>Lengua Española</li>
+        <li class="list-group-item d-flex gap-2" data-id="nat"><i class="bi bi-grip-vertical" data-au-handle aria-hidden="true"></i>Ciencias de la Naturaleza</li>
+        <li class="list-group-item d-flex gap-2" data-id="soc"><i class="bi bi-grip-vertical" data-au-handle aria-hidden="true"></i>Ciencias Sociales</li>
+      </ul>
+      <input type="hidden" id="orden-asignaturas" name="orden">
+    </section>
+    <section class="au-specimen" aria-labelledby="c-codes">
+      <h2 id="c-codes">QR y código de barras</h2>
+      <div class="d-flex flex-wrap align-items-center gap-4">
+        <div data-au-qrcode="https://example.com/verificar/20260001" data-au-size="140" role="img" aria-label="Código QR de ejemplo"></div>
+        <svg data-au-barcode="20260001" role="img" aria-label="Código de barras 20260001"></svg>
+      </div>
+    </section>
+    <section class="au-specimen" aria-labelledby="c-firma">
+      <h2 id="c-firma">Firma (Signature Pad)</h2>
+      <canvas class="au-signature" id="demo-firma" data-au-signature aria-label="Área de firma"></canvas>
+      <button class="btn btn-outline-primary btn-sm justify-self-start" type="button" data-au-signature-clear="#demo-firma">Borrar</button>
+    </section>
+  </div>
+
+  <section class="au-specimen" aria-labelledby="c-editor">
+    <h2 id="c-editor">Editor (Quill)</h2>
+    <div data-au-editor data-au-placeholder="Escriba un comunicado de prueba…"></div>
+  </section>
+
+  <section class="au-specimen" aria-labelledby="c-vacio">
+    <h2 id="c-vacio">Estado vacío</h2>
+    <div class="au-empty">
+      <span class="au-stat-icon is-lg"><i class="bi bi-people" aria-hidden="true"></i></span>
+      <h3>Aún no hay estudiantes en esta sección</h3>
+      <p>Importe la lista desde Excel o agréguelos uno por uno.</p>
+      <div class="d-flex flex-wrap gap-2 justify-content-center"><button class="btn btn-outline-primary" type="button"><i class="bi bi-file-earmark-arrow-up" aria-hidden="true"></i>Importar desde Excel</button><button class="btn btn-primary" type="button"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar estudiante</button></div>
+    </div>
+  </section>
+
+  <div class="modal fade" id="modal-demo" tabindex="-1" aria-labelledby="modal-demo-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="modal-demo-title">Modal de ejemplo</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body text-body-secondary">Los modales de Bootstrap heredan superficie, borde y radio de la marca. Con <code>AU.openModal('#id', datos)</code> puede abrirlos pasando datos.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button></div>
+    </div></div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

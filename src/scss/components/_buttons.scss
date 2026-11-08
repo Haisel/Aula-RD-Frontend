@@ -1,0 +1,133 @@
+// ----------------------------------------------------------------------------
+// Botones. Variantes: primary · outline-primary · accent · ghost · link · danger · inverse
+// ----------------------------------------------------------------------------
+.btn {
+  --bs-btn-font-weight: 600;
+  --bs-btn-padding-x: 1.125rem;
+  --bs-btn-padding-y: 0.5625rem;
+  --bs-btn-border-radius: var(--bs-border-radius);
+  --bs-btn-focus-box-shadow: 0 0 0 3px var(--au-focus-halo);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.btn-sm {
+  --bs-btn-padding-x: 0.75rem;
+  --bs-btn-padding-y: 0.3125rem;
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-border-radius: 8px;
+}
+.btn-lg {
+  --bs-btn-padding-x: 1.5rem;
+  --bs-btn-padding-y: 0.8125rem;
+  --bs-btn-font-size: 1.0625rem;
+  --bs-btn-border-radius: 12px;
+}
+
+@mixin au-btn-solid($bg, $hover, $fg) {
+  --bs-btn-bg: #{$bg};
+  --bs-btn-border-color: #{$bg};
+  --bs-btn-color: #{$fg};
+  --bs-btn-hover-bg: #{$hover};
+  --bs-btn-hover-border-color: #{$hover};
+  --bs-btn-hover-color: #{$fg};
+  --bs-btn-active-bg: #{$hover};
+  --bs-btn-active-border-color: #{$hover};
+  --bs-btn-active-color: #{$fg};
+  --bs-btn-disabled-bg: #{$bg};
+  --bs-btn-disabled-border-color: #{$bg};
+  --bs-btn-disabled-color: #{$fg};
+}
+
+.btn-primary {
+  @include au-btn-solid(var(--au-primary), var(--au-primary-hover), var(--au-on-primary));
+}
+.btn-accent {
+  @include au-btn-solid(var(--au-accent), #{au-scale('turquoise', '300')}, var(--au-on-accent));
+}
+.btn-danger {
+  @include au-btn-solid(var(--au-danger), #{au-token('danger-text')}, #fff);
+}
+.btn-inverse {
+  @include au-btn-solid(#fff, #{au-scale('turquoise', '50')}, #{au-scale('navy', '700')});
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--au-text);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--au-border-control);
+  --bs-btn-hover-bg: var(--au-surface-2);
+  --bs-btn-hover-color: var(--au-text);
+  --bs-btn-hover-border-color: var(--au-border-control);
+  --bs-btn-active-bg: var(--au-surface-2);
+  --bs-btn-active-color: var(--au-text);
+  --bs-btn-active-border-color: var(--au-text);
+  --bs-btn-disabled-color: var(--au-text-muted);
+  --bs-btn-disabled-border-color: var(--au-border);
+}
+
+.btn-ghost {
+  --bs-btn-color: var(--au-text);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-bg: var(--au-surface-2);
+  --bs-btn-hover-color: var(--au-text);
+  --bs-btn-active-bg: var(--au-surface-2);
+  --bs-btn-active-color: var(--au-text);
+}
+
+// Botón de contorno sobre bandas oscuras (.au-band)
+.btn-outline-inverse {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: #{au-scale('navy', '300')};
+  --bs-btn-hover-bg: rgb(255 255 255 / 8%);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-border-color: #fff;
+}
+
+.btn-link {
+  --bs-btn-color: var(--au-accent-text);
+  --bs-btn-hover-color: var(--au-primary-hover);
+
+  font-weight: 600;
+}
+
+// Botón solo-ícono cuadrado (requiere aria-label)
+.au-btn-icon {
+  --bs-btn-padding-x: 0;
+
+  width: 40px;
+  height: 40px;
+
+  &.btn-sm {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+// Estado de carga: <button class="btn btn-primary is-loading">
+.btn.is-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--bs-btn-color);
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: au-spin 0.7s linear infinite;
+  }
+}
+
+@keyframes au-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

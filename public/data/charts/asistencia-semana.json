@@ -1,0 +1,11 @@
+{
+  "type": "bar",
+  "labels": ["Lun", "Mar", "Mié", "Jue", "Vie"],
+  "series": [
+    { "label": "Semana anterior", "data": [91.2, 93.4, 90.1, 92.0, 86.5], "color": "navy" },
+    { "label": "Esta semana", "data": [95.1, 96.0, 93.2, 94.4, 89.3], "color": "accent" }
+  ],
+  "format": "percent",
+  "min": 70,
+  "max": 100
+}

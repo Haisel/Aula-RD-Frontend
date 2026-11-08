@@ -1,0 +1,40 @@
+// ----------------------------------------------------------------------------
+// Estilos tipográficos del sistema como clases (.au-type-<nombre>) + atajos.
+// ----------------------------------------------------------------------------
+@each $name, $_ in $au-type-styles {
+  .au-type-#{$name} {
+    @include au-type($name);
+  }
+}
+
+.au-display-1 {
+  @include au-type('display-1');
+
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.14;
+}
+
+.au-display-2 {
+  @include au-type('display-2');
+
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.18;
+}
+
+.au-eyebrow {
+  @include au-type('overline');
+
+  text-transform: uppercase;
+  color: var(--au-accent-text);
+  margin: 0;
+}
+
+.au-lead {
+  @include au-type('body-lg');
+
+  color: var(--au-text-muted);
+}
+
+.au-tabular {
+  font-variant-numeric: tabular-nums;
+}

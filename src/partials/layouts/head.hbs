@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}} · Aula RD</title>
+{{#if description}}<meta name="description" content="{{description}}">{{/if}}
+<meta name="theme-color" content="#142B4A">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/icons/apple-touch-icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+{{!-- Tema antes de pintar (evita destello). Archivo externo: constitución 6.10 (sin JS en línea). --}}
+<script src="js/theme-boot.js"></script>
+{{#if dev}}
+<script type="module" src="/js/app.js"></script>
+{{else}}
+<link rel="stylesheet" href="css/app.css">
+<script {{#if single}}defer{{else}}type="module"{{/if}} src="js/app.js"></script>
+{{/if}}

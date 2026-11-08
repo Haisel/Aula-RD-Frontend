@@ -1,0 +1,35 @@
+{
+  "source": {
+    "include": ["src/js", "README.md"],
+    "includePattern": "\\.js$",
+    "excludePattern": "(node_modules|entries)"
+  },
+  "plugins": ["plugins/markdown", "scripts/jsdoc/ts-types.cjs"],
+  "opts": {
+    "destination": "docs/api",
+    "recurse": true,
+    "template": "node_modules/docdash",
+    "encoding": "utf8",
+    "readme": "docs/api-intro.md"
+  },
+  "templates": {
+    "cleverLinks": true,
+    "default": {
+      "includeDate": false,
+      "staticFiles": {
+        "include": ["docs/jsdoc-theme"]
+      }
+    }
+  },
+  "docdash": {
+    "sectionOrder": ["Modules", "Classes", "Namespaces", "Global"],
+    "search": true,
+    "collapse": true,
+    "typedefs": true,
+    "meta": {
+      "title": "Aula RD \u2014 API JavaScript",
+      "description": "Documentaci\u00f3n t\u00e9cnica generada con JSDoc"
+    },
+    "scripts": ["aulard.css"]
+  }
+}

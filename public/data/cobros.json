@@ -1,0 +1,44 @@
+[
+  {
+    "estudiante": "María Fernanda Peña",
+    "grado": "4.º Secundaria",
+    "tutor": "Rosa Peña",
+    "monto": 12500,
+    "estado": "Pagado"
+  },
+  {
+    "estudiante": "José Luis Almonte",
+    "grado": "2.º Primaria",
+    "tutor": "Luis Almonte",
+    "monto": 9800,
+    "estado": "Pendiente"
+  },
+  {
+    "estudiante": "Camila Reyes",
+    "grado": "6.º Primaria",
+    "tutor": "Ana Reyes",
+    "monto": 9800,
+    "estado": "Vencido"
+  },
+  {
+    "estudiante": "Daniel Ortiz Mejía",
+    "grado": "1.º Secundaria",
+    "tutor": "Carmen Mejía",
+    "monto": 11200,
+    "estado": "Pagado"
+  },
+  {
+    "estudiante": "Valeria Santos",
+    "grado": "3.º Primaria",
+    "tutor": "Pedro Santos",
+    "monto": 9800,
+    "estado": "Becada 50%"
+  },
+  {
+    "estudiante": "Samuel Báez",
+    "grado": "5.º Secundaria",
+    "tutor": "Yolanda Báez",
+    "monto": 12500,
+    "estado": "Pendiente"
+  }
+]

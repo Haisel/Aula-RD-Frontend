@@ -1,0 +1,194 @@
+// ============================================================================
+// ARCHIVO GENERADO por scripts/build-tokens.mjs desde src/tokens/tokens.json
+// NO EDITAR A MANO. Cambie tokens.json y ejecute: npm run tokens
+// ============================================================================
+
+$au-font-stack: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+$au-scales: (
+  "navy": (
+    "50": #eef2f7,
+    "100": #d9e1ec,
+    "200": #b3c3d8,
+    "300": #8299b8,
+    "400": #4f6b92,
+    "500": #2b4a72,
+    "600": #1e3a5f,
+    "700": #142b4a,
+    "800": #0f2139,
+    "900": #0a1628,
+    "950": #060e1a
+  ),
+  "turquoise": (
+    "50": #e8f8f6,
+    "100": #c5eee9,
+    "200": #8eddd3,
+    "300": #52cabb,
+    "400": #18b6a4,
+    "500": #129b8c,
+    "600": #0e766b,
+    "700": #0c665d,
+    "800": #0a4f48,
+    "900": #083b36
+  ),
+  "gold": (
+    "50": #faf5eb,
+    "100": #f2e6cc,
+    "200": #e5cd9f,
+    "300": #d6b57a,
+    "400": #c6a15b,
+    "500": #ae8743,
+    "600": #8e6c33,
+    "700": #6e5328,
+    "800": #533e1e,
+    "900": #3a2b15
+  ),
+  "gray": (
+    "0": #ffffff,
+    "50": #f4f6f8,
+    "100": #ebeff3,
+    "200": #dce2e9,
+    "300": #c3ccd7,
+    "400": #97a3b3,
+    "500": #6b788a,
+    "600": #4e5b6c,
+    "700": #374354,
+    "800": #1f2937,
+    "900": #111827
+  )
+);
+
+$au-theme-light: (
+  "bg": #f4f6f8,
+  "surface": #ffffff,
+  "surface-2": #ebeff3,
+  "band": #142b4a,
+  "border": #dce2e9,
+  "border-control": #7d8a9c,
+  "text": #1f2937,
+  "text-muted": #4e5b6c,
+  "text-inverse": #ffffff,
+  "primary": #142b4a,
+  "primary-hover": #1e3a5f,
+  "on-primary": #ffffff,
+  "accent": #18b6a4,
+  "accent-subtle": #e8f8f6,
+  "accent-text": #0e766b,
+  "on-accent": #142b4a,
+  "gold-accent": #c6a15b,
+  "gold-subtle": #faf5eb,
+  "gold-text": #6e5328,
+  "focus-ring": #0e766b,
+  "success": #1b7a43,
+  "success-subtle": #e6f4ec,
+  "success-text": #166b3a,
+  "warning": #e09a1a,
+  "warning-subtle": #fdf3df,
+  "warning-text": #7a4f00,
+  "danger": #c0392b,
+  "danger-subtle": #fbeae8,
+  "danger-text": #a12e22,
+  "info": #2f6fdb,
+  "info-subtle": #e8f0fc,
+  "info-text": #1f55b3,
+  "sidebar-bg": #142b4a,
+  "sidebar-text": #b3c3d8,
+  "sidebar-active-bg": #1e3a5f,
+  "sidebar-active-text": #ffffff
+);
+
+$au-theme-dark: (
+  "bg": #0a1628,
+  "surface": #0f2139,
+  "surface-2": #142b4a,
+  "band": #0f2139,
+  "border": #22385a,
+  "border-control": #5a77a0,
+  "text": #e7edf4,
+  "text-muted": #9fb0c6,
+  "text-inverse": #ffffff,
+  "primary": #18b6a4,
+  "primary-hover": #52cabb,
+  "on-primary": #0a1628,
+  "accent": #18b6a4,
+  "accent-subtle": #0e3533,
+  "accent-text": #52cabb,
+  "on-accent": #0a1628,
+  "gold-accent": #c6a15b,
+  "gold-subtle": #2e2615,
+  "gold-text": #d6b57a,
+  "focus-ring": #52cabb,
+  "success": #3fbf78,
+  "success-subtle": #0f2e22,
+  "success-text": #6fd39a,
+  "warning": #e09a1a,
+  "warning-subtle": #3a2c10,
+  "warning-text": #f2c063,
+  "danger": #c0392b,
+  "danger-subtle": #3a1a1a,
+  "danger-text": #f28b7f,
+  "info": #2f6fdb,
+  "info-subtle": #13284a,
+  "info-text": #8db5f5,
+  "sidebar-bg": #060e1a,
+  "sidebar-text": #9fb0c6,
+  "sidebar-active-bg": #142b4a,
+  "sidebar-active-text": #ffffff
+);
+
+$au-spacing: (
+  "space-4": 4px,
+  "space-8": 8px,
+  "space-12": 12px,
+  "space-16": 16px,
+  "space-24": 24px,
+  "space-32": 32px,
+  "space-48": 48px,
+  "space-64": 64px,
+  "space-96": 96px
+);
+
+$au-radius: (
+  "radius-sm": 6px,
+  "radius-md": 10px,
+  "radius-lg": 16px,
+  "radius-xl": 24px,
+  "radius-pill": 999px
+);
+
+$au-layout: (
+  "sidebar-width": 264px,
+  "sidebar-collapsed": 76px,
+  "topbar-height": 64px,
+  "container-max": 1200px,
+  "content-max": 1440px
+);
+
+$au-shadow-light: (
+  "shadow-sm": (0 1px 2px rgba(20, 43, 74, 0.06), 0 1px 3px rgba(20, 43, 74, 0.08)),
+  "shadow-md": (0 6px 16px rgba(20, 43, 74, 0.08)),
+  "shadow-lg": (0 18px 44px rgba(20, 43, 74, 0.14))
+);
+
+$au-shadow-dark: (
+  "shadow-sm": (0 1px 2px rgba(0, 0, 0, 0.40)),
+  "shadow-md": (0 6px 16px rgba(0, 0, 0, 0.45)),
+  "shadow-lg": (0 18px 44px rgba(0, 0, 0, 0.55))
+);
+
+$au-type-styles: (
+  "display-1": (size: 56px, line-height: 64px, weight: 800, letter-spacing: -0.02em),
+  "display-2": (size: 44px, line-height: 52px, weight: 800, letter-spacing: -0.015em),
+  "h1": (size: 32px, line-height: 40px, weight: 700, letter-spacing: -0.01em),
+  "h2": (size: 24px, line-height: 32px, weight: 700, letter-spacing: normal),
+  "h3": (size: 20px, line-height: 28px, weight: 700, letter-spacing: normal),
+  "h4": (size: 16px, line-height: 24px, weight: 700, letter-spacing: normal),
+  "body-lg": (size: 18px, line-height: 28px, weight: 400, letter-spacing: normal),
+  "body": (size: 16px, line-height: 24px, weight: 400, letter-spacing: normal),
+  "body-sm": (size: 14px, line-height: 20px, weight: 400, letter-spacing: normal),
+  "label": (size: 14px, line-height: 20px, weight: 600, letter-spacing: normal),
+  "caption": (size: 12px, line-height: 16px, weight: 500, letter-spacing: normal),
+  "overline": (size: 12px, line-height: 16px, weight: 700, letter-spacing: 0.08em),
+  "kpi": (size: 32px, line-height: 40px, weight: 700, letter-spacing: -0.01em),
+  "table-num": (size: 14px, line-height: 20px, weight: 500, letter-spacing: normal)
+);

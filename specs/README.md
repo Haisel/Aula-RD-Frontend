@@ -1,0 +1,22 @@
+# Especificaciones (SDD)
+
+Cada capacidad tiene **una carpeta y un archivo**: `specs/NNN-nombre/NNN-nombre.md` (mismo formato que el proyecto v1). Las specs 001–004 están en el repositorio original (`E:\AulaRD\specs`) y siguen siendo la base; estas continúan la numeración.
+
+| Spec | Capacidad | Estado |
+|---|---|---|
+| [000](000-plantilla/000-plantilla.md) | Plantilla para nuevas specs | — |
+| [005](005-identidad-visual-b/005-identidad-visual-b.md) | Identidad visual B en la interfaz (tokens, temas, SCSS) | Implementada · pendiente de aprobación |
+| [006](006-plantilla-neutra-dist/006-plantilla-neutra-dist.md) | Plantilla neutra y salida `dist/` | Implementada · pendiente de aprobación |
+| [007](007-fachada-au/007-fachada-au.md) | Fachada `window.AU` | Implementada · pendiente de aprobación |
+| [008](008-componentes-declarativos/008-componentes-declarativos.md) | Componentes declarativos `data-au-*` y librerías diferidas | Implementada · pendiente de aprobación |
+| [009](009-paginas-de-ejemplo/009-paginas-de-ejemplo.md) | Páginas de ejemplo (landing, auth, 4 portales, catálogo) | Implementada · pendiente de aprobación |
+
+**Nota de proceso:** estas specs se redactaron junto con la implementación porque el propietario pidió la plantilla completa en una sola entrega (08/11/2026). Según la constitución §5.3 deben **revisarse y aprobarse**; cualquier cambio que surja de la revisión se implementa después de aprobado.
+
+## Flujo para una spec nueva
+
+1. Copiar `000-plantilla/000-plantilla.md` a `NNN-nombre/NNN-nombre.md`.
+2. Completar todas las secciones (sin "TBD": lo que falte va en "Información faltante").
+3. Estado `Borrador` → pedir revisión → `Aprobada` (con fecha y quién aprobó).
+4. Implementar; cada `RF` debe tener `CA` y prueba.
+5. `npm run check` en verde → estado `Implementada` + fecha.

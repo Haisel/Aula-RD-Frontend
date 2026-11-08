@@ -1,0 +1,49 @@
+// Quill 2 (tema snow) — tema Aula RD
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+  border-color: var(--au-border-control);
+}
+
+.ql-toolbar.ql-snow {
+  border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0;
+  background: var(--au-surface-2);
+
+  .ql-stroke {
+    stroke: var(--au-text);
+  }
+  .ql-fill {
+    fill: var(--au-text);
+  }
+  .ql-picker {
+    color: var(--au-text);
+  }
+  .ql-picker-options {
+    background: var(--au-surface);
+    border-color: var(--au-border);
+  }
+
+  button:hover .ql-stroke,
+  button.ql-active .ql-stroke {
+    stroke: var(--au-accent-text);
+  }
+}
+
+.ql-container.ql-snow {
+  min-height: 180px;
+  border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius);
+  background: var(--au-surface);
+  color: var(--au-text);
+  font-family: var(--bs-body-font-family);
+  font-size: 1rem;
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--au-text-muted);
+  font-style: normal;
+}
+.ql-snow .ql-tooltip {
+  background: var(--au-surface);
+  color: var(--au-text);
+  border-color: var(--au-border);
+  box-shadow: var(--au-shadow-md);
+}

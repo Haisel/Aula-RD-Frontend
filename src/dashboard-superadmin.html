@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Resumen de la plataforma" subtitle="Noviembre 2026 · Todas las instituciones"}}
+    <button class="btn btn-outline-primary" type="button" data-au-export="#tabla-instituciones" data-au-filename="instituciones"><i class="bi bi-download" aria-hidden="true"></i>Exportar</button>
+    <a class="btn btn-primary" href="#"><i class="bi bi-plus-lg" aria-hidden="true"></i>Nueva institución</a>
+  {{/components/page-header}}
+
+  <section class="au-grid-kpi" aria-label="Indicadores">
+    {{> components/stat-card label="Instituciones activas" value="48" icon="building" delta="3 nuevas" note="este mes" trend="up"}}
+    {{> components/stat-card label="Ingreso recurrente mensual" value="RD$ 412.6K" title="RD$ 412,600.00" icon="graph-up-arrow" delta="6.8%" note="vs. octubre" trend="up"}}
+    {{> components/stat-card label="Suscripciones por vencer" value="7" icon="hourglass-split" tone="warning" delta="próximos 15 días" trend="warning"}}
+    {{> components/stat-card label="Tickets abiertos" value="12" icon="life-preserver" tone="danger" delta="4 urgentes" trend="down"}}
+  </section>
+
+  <div class="au-split">
+    <section class="card is-main" aria-labelledby="mrr-title">
+      <div class="card-body">
+        <div class="au-card-header">
+          <div class="me-auto"><h2 class="au-card-title" id="mrr-title">Ingreso recurrente mensual</h2><p class="au-card-subtitle">Últimos 12 meses · meta en línea discontinua</p></div>
+        </div>
+        <div class="au-chart"><canvas data-au-chart="data/charts/mrr.json" role="img" aria-label="Gráfico de barras: ingreso recurrente de diciembre a noviembre, de RD$ 214 mil a RD$ 412.6 mil; meta RD$ 450 mil"></canvas></div>
+      </div>
+    </section>
+    <section class="card is-side" aria-labelledby="planes-title">
+      <div class="card-body">
+        <div class="au-card-header"><div class="me-auto"><h2 class="au-card-title" id="planes-title">Instituciones por plan</h2><p class="au-card-subtitle">48 activas · 5 en prueba</p></div></div>
+        <div class="au-chart is-sm"><canvas data-au-chart="data/charts/planes.json" role="img" aria-label="Gráfico de dona: Básico 18, Profesional 24, Premium 6"></canvas></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="au-split">
+    <section class="au-table-card is-main" aria-labelledby="inst-title">
+      <div class="au-table-toolbar"><h2 id="inst-title">Instituciones</h2></div>
+      <table class="table table-hover align-middle w-100" id="tabla-instituciones" data-au-datatable data-au-page-length="5" data-au-no-sort="5">
+        <thead><tr><th>Institución</th><th>Plan</th><th class="text-end">Estudiantes</th><th>Próximo cobro</th><th>Estado</th><th><span class="visually-hidden">Acciones</span></th></tr></thead>
+        <tbody>
+          <tr><td class="au-cell-entity">Colegio San Rafael<span class="au-cell-meta">Santo Domingo Este</span></td><td><span class="au-plan au-plan-pro">Profesional</span></td><td class="text-end au-tabular">1,248</td><td class="au-tabular">01/12/2026</td><td><span class="au-status au-status-success">Activa</span></td><td class="text-end"><button class="btn btn-ghost btn-sm au-btn-icon" type="button" aria-label="Opciones de Colegio San Rafael"><i class="bi bi-three-dots" aria-hidden="true"></i></button></td></tr>
+          <tr><td class="au-cell-entity">Politécnico Las Américas<span class="au-cell-meta">Santiago</span></td><td><span class="au-plan au-plan-premium"><i class="bi bi-star-fill" aria-hidden="true"></i>Premium</span></td><td class="text-end au-tabular">2,310</td><td class="au-tabular">05/12/2026</td><td><span class="au-status au-status-success">Activa</span></td><td class="text-end"><button class="btn btn-ghost btn-sm au-btn-icon" type="button" aria-label="Opciones de Politécnico Las Américas"><i class="bi bi-three-dots" aria-hidden="true"></i></button></td></tr>
+          <tr><td class="au-cell-entity">Centro Educativo Luz del Saber<span class="au-cell-meta">La Romana</span></td><td><span class="au-plan">Básico</span></td><td class="text-end au-tabular">186</td><td class="au-tabular">13/11/2026</td><td><span class="au-status au-status-warning">Por vencer</span></td><td class="text-end"><button class="btn btn-ghost btn-sm au-btn-icon" type="button" aria-label="Opciones de Centro Educativo Luz del Saber"><i class="bi bi-three-dots" aria-hidden="true"></i></button></td></tr>
+          <tr><td class="au-cell-entity">Colegio Nuevo Horizonte<span class="au-cell-meta">San Francisco de Macorís</span></td><td><span class="au-plan au-plan-pro">Profesional</span></td><td class="text-end au-tabular">642</td><td class="au-tabular">—</td><td><span class="au-status au-status-brand">En prueba</span></td><td class="text-end"><button class="btn btn-ghost btn-sm au-btn-icon" type="button" aria-label="Opciones de Colegio Nuevo Horizonte"><i class="bi bi-three-dots" aria-hidden="true"></i></button></td></tr>
+          <tr><td class="au-cell-entity">Academia Mi Primer Paso<span class="au-cell-meta">Punta Cana</span></td><td><span class="au-plan">Básico</span></td><td class="text-end au-tabular">94</td><td class="au-tabular">28/10/2026</td><td><span class="au-status au-status-danger">Suspendida</span></td><td class="text-end"><button class="btn btn-ghost btn-sm au-btn-icon" type="button" aria-label="Opciones de Academia Mi Primer Paso"><i class="bi bi-three-dots" aria-hidden="true"></i></button></td></tr>
+          <tr><td class="au-cell-entity">Liceo Científico del Este<span class="au-cell-meta">San Pedro de Macorís</span></td><td><span class="au-plan au-plan-pro">Profesional</span></td><td class="text-end au-tabular">874</td><td class="au-tabular">03/12/2026</td><td><span class="au-status au-status-success">Activa</span></td><td class="text-end"><button class="btn btn-ghost btn-sm au-btn-icon" type="button" aria-label="Opciones de Liceo Científico del Este"><i class="bi bi-three-dots" aria-hidden="true"></i></button></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card is-side" aria-labelledby="act-title">
+      <div class="card-body">
+        <div class="au-card-header"><h2 class="au-card-title" id="act-title">Actividad reciente</h2></div>
+        <ul class="au-feed">
+          <li><span class="au-stat-icon is-success"><i class="bi bi-check2-circle" aria-hidden="true"></i></span><div><strong>Politécnico Las Américas</strong> renovó Premium anual<time data-au-relative-time="2026-11-08T08:20:00-04:00">hace un momento</time></div></li>
+          <li><span class="au-stat-icon"><i class="bi bi-building-add" aria-hidden="true"></i></span><div><strong>Colegio Nuevo Horizonte</strong> inició período de prueba<time data-au-relative-time="2026-11-08T06:45:00-04:00">hoy</time></div></li>
+          <li><span class="au-stat-icon is-danger"><i class="bi bi-exclamation-octagon" aria-hidden="true"></i></span><div><strong>Academia Mi Primer Paso</strong> suspendida por falta de pago<time data-au-relative-time="2026-11-07T18:10:00-04:00">ayer</time></div></li>
+          <li><span class="au-stat-icon is-info"><i class="bi bi-chat-left-text" aria-hidden="true"></i></span><div>Nuevo ticket de <strong>Colegio San Rafael</strong>: importación de notas<time data-au-relative-time="2026-11-07T15:45:00-04:00">ayer</time></div></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

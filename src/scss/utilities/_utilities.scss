@@ -1,0 +1,233 @@
+@use 'sass:math';
+// ----------------------------------------------------------------------------
+// Utilidades propias (complementan las de Bootstrap)
+// ----------------------------------------------------------------------------
+.au-grid-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.au-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.au-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  > .is-main {
+    flex: 2 1 520px;
+    min-width: 0;
+  }
+  > .is-side {
+    flex: 1 1 300px;
+    min-width: 0;
+  }
+}
+.au-text-accent {
+  color: var(--au-accent-text);
+}
+.au-text-gold {
+  color: var(--au-gold-text);
+}
+.au-bg-surface {
+  background: var(--au-surface);
+}
+.au-bg-surface-2 {
+  background: var(--au-surface-2);
+}
+.au-border {
+  border: 1px solid var(--au-border);
+}
+.au-hidden {
+  display: none;
+}
+
+// Sección del catálogo de componentes (componentes.html)
+.au-specimen {
+  @include au-surface('radius-lg');
+
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+
+  > h2 {
+    @include au-type('h3');
+    margin: 0;
+  }
+  > p {
+    margin: 0;
+    color: var(--au-text-muted);
+    font-size: 0.875rem;
+  }
+}
+
+.au-swatch {
+  border-radius: var(--bs-border-radius);
+  border: 1px solid var(--au-border);
+  overflow: hidden;
+  font-size: 0.75rem;
+
+  .au-swatch-color {
+    height: 56px;
+  }
+  .au-swatch-meta {
+    padding: 0.5rem 0.625rem;
+    display: grid;
+    gap: 2px;
+  }
+  code {
+    color: var(--au-text-muted);
+    font-size: 0.6875rem;
+  }
+}
+
+// Anchos porcentuales para barras de progreso (evita style="width:…", constitución 6.9)
+@for $i from 0 through 100 {
+  .au-w-#{$i} {
+    width: percentage(math.div($i, 100));
+  }
+}
+
+.au-text-warning {
+  color: var(--au-warning-text);
+}
+.justify-self-start {
+  justify-self: start;
+}
+
+// Menú de notificaciones
+.au-notifications {
+  width: min(22rem, 92vw);
+  overflow: hidden;
+
+  .au-notifications-head {
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--au-border);
+  }
+
+  .dropdown-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+    white-space: normal;
+    font-size: 0.875rem;
+
+    small {
+      display: block;
+      color: var(--au-text-muted);
+      font-size: 0.75rem;
+    }
+    .bi {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+// Carné digital (portal de familia)
+.au-id-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  border: 1px solid var(--au-border);
+  border-radius: var(--bs-border-radius-lg);
+  background: var(--au-surface);
+
+  > img {
+    height: 30px;
+    width: auto;
+  }
+  .au-id-card-name {
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+  .au-id-card-qr {
+    padding: 6px;
+    background: #fff;
+    border-radius: var(--bs-border-radius);
+  }
+  .au-id-card-barcode {
+    max-width: 220px;
+    padding: 6px 10px;
+    background: #fff;
+    border-radius: var(--bs-border-radius-sm);
+  }
+}
+
+// Paleta (componentes.html)
+.au-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+.au-swatch-color.is-navy {
+  background: #{au-scale('navy', '700')};
+}
+.au-swatch-color.is-turquoise {
+  background: #{au-scale('turquoise', '400')};
+}
+.au-swatch-color.is-gold {
+  background: #{au-scale('gold', '400')};
+}
+.au-swatch-color.is-bg {
+  background: var(--au-bg);
+}
+.au-swatch-color.is-surface {
+  background: var(--au-surface);
+}
+.au-swatch-color.is-primary {
+  background: var(--au-primary);
+}
+.au-swatch-color.is-success {
+  background: var(--au-success);
+}
+.au-swatch-color.is-warning {
+  background: var(--au-warning);
+}
+.au-swatch-color.is-danger {
+  background: var(--au-danger);
+}
+.au-swatch-color.is-info {
+  background: var(--au-info);
+}
+
+// Estado vacío
+.au-empty {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border: 1px dashed var(--au-border-control);
+  border-radius: var(--bs-border-radius-lg);
+
+  h3 {
+    @include au-type('h3');
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    color: var(--au-text-muted);
+    max-width: 420px;
+  }
+}
+
+// Contenedor con error de carga de un widget (data-au-error)
+[data-au-error]::after {
+  content: 'No se pudo cargar este contenido.';
+  display: block;
+  padding: 1rem;
+  color: var(--au-danger-text);
+  font-size: 0.875rem;
+}
+
+// El tiempo relativo en listas va en su propia línea
+.au-feed time {
+  display: block;
+  color: var(--au-text-muted);
+  font-size: 0.75rem;
+}

@@ -1,0 +1,173 @@
+// ----------------------------------------------------------------------------
+// KPI (StatCard), barras de progreso y gráficos
+// ----------------------------------------------------------------------------
+.au-stat {
+  @include au-surface('radius-lg');
+
+  padding: 1.25rem 1.5rem;
+}
+
+.au-stat-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--au-text-muted);
+}
+
+.au-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  font-size: 1.125rem;
+  background: var(--au-accent-subtle);
+  color: var(--au-accent-text);
+
+  &.is-warning {
+    background: var(--au-warning-subtle);
+    color: var(--au-warning-text);
+  }
+  &.is-danger {
+    background: var(--au-danger-subtle);
+    color: var(--au-danger-text);
+  }
+  &.is-success {
+    background: var(--au-success-subtle);
+    color: var(--au-success-text);
+  }
+  &.is-info {
+    background: var(--au-info-subtle);
+    color: var(--au-info-text);
+  }
+  &.is-lg {
+    width: 44px;
+    height: 44px;
+    font-size: 1.375rem;
+  }
+}
+
+.au-stat-value {
+  @include au-type('kpi');
+
+  margin-top: 0.5rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--au-text);
+}
+
+.au-stat-delta {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+
+  &.is-up {
+    color: var(--au-success-text);
+  }
+  &.is-down {
+    color: var(--au-danger-text);
+  }
+  &.is-warning {
+    color: var(--au-warning-text);
+  }
+
+  span {
+    color: var(--au-text-muted);
+    font-weight: 500;
+  }
+}
+
+.progress {
+  --bs-progress-bg: var(--au-surface-2);
+  --bs-progress-bar-bg: var(--au-accent);
+  --bs-progress-border-radius: var(--bs-border-radius-pill);
+  --bs-progress-height: 0.5rem;
+}
+
+.progress-bar.is-neutral {
+  background: var(--au-text-muted);
+}
+.progress-bar.is-gold {
+  background: var(--au-gold-accent);
+}
+.progress-bar.is-warning {
+  background: var(--au-warning);
+}
+
+.au-chart {
+  position: relative;
+  width: 100%;
+  height: 240px;
+
+  &.is-sm {
+    height: 180px;
+  }
+}
+
+.au-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8125rem;
+  color: var(--au-text-muted);
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  i {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+}
+
+// Lista de actividad / eventos
+.au-feed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+
+  li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: 0.875rem;
+  }
+  time,
+  small {
+    display: block;
+    color: var(--au-text-muted);
+    font-size: 0.75rem;
+  }
+}
+
+.au-date-tile {
+  width: 52px;
+  flex: none;
+  text-align: center;
+  border: 1px solid var(--au-border);
+  border-radius: 12px;
+  padding: 6px 0;
+
+  .month {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--au-accent-text);
+  }
+  .day {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+}

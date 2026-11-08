@@ -1,0 +1,76 @@
+// DataTables 2 (Bootstrap 5) — tema Aula RD
+// La integración BS5 envuelve controles y tabla en filas de Bootstrap (.row) dentro de .dt-container.
+div.dt-container {
+  > .row {
+    margin: 0;
+    padding: 0.75rem 1.25rem;
+    row-gap: 0.5rem;
+    align-items: center;
+  }
+  > .row > * {
+    padding-inline: 0;
+  }
+  > .row.dt-layout-table {
+    padding: 0;
+  }
+  > .row.dt-layout-table > * {
+    overflow-x: auto;
+  }
+  > .row:first-child {
+    border-bottom: 1px solid var(--au-border);
+  }
+  > .row:last-child {
+    border-top: 1px solid var(--au-border);
+    font-size: 0.875rem;
+    color: var(--au-text-muted);
+  }
+  > .row.mt-2 {
+    margin-top: 0;
+  }
+
+  .dt-search input,
+  .dt-length select {
+    background-color: var(--au-surface);
+    color: var(--au-text);
+    border-color: var(--au-border-control);
+    border-radius: var(--bs-border-radius);
+  }
+
+  .dt-search input {
+    min-width: 220px;
+    margin-left: 0.5rem;
+  }
+  .dt-length select {
+    min-width: 4.75rem;
+    padding: 0.3125rem 2rem 0.3125rem 0.75rem;
+    background-position: right 0.625rem center;
+  }
+  .dt-search label,
+  .dt-length label {
+    color: var(--au-text-muted);
+    font-size: 0.875rem;
+  }
+  .dt-info {
+    color: var(--au-text-muted);
+  }
+  .dt-paging .pagination {
+    margin: 0;
+  }
+
+  table.dataTable {
+    margin: 0 !important; // DataTables fija márgenes con !important; se neutraliza aquí (excepción documentada)
+
+    > thead > tr > th {
+      border-bottom: 1px solid var(--au-border);
+    }
+    > thead .dt-column-order::before,
+    > thead .dt-column-order::after {
+      color: var(--au-text-muted);
+    }
+  }
+
+  .dt-empty {
+    color: var(--au-text-muted);
+    padding: 2rem;
+  }
+}

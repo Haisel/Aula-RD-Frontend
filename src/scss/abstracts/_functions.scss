@@ -1,0 +1,57 @@
+// ----------------------------------------------------------------------------
+// Funciones de acceso a tokens. Úselas en lugar de hex sueltos.
+//   color: au-scale("navy", "700");
+//   padding: au-space("space-24");
+// ----------------------------------------------------------------------------
+@use 'sass:map';
+@use 'sass:color';
+
+/// Color de una escala de marca.
+/// @param {String} $family - "navy" | "turquoise" | "gold" | "gray"
+/// @param {String} $step - "50" … "950"
+/// @return {Color}
+@function au-scale($family, $step) {
+  $fam: map.get($au-scales, $family);
+
+  @if not $fam {
+    @error "Escala desconocida: #{$family}";
+  }
+
+  $value: map.get($fam, '#{$step}');
+
+  @if not $value {
+    @error "Paso #{$step} no existe en #{$family}";
+  }
+
+  @return $value;
+}
+
+/// Valor de un token semántico en un tema (por defecto, claro). Para CSS use var(--au-*).
+/// @param {String} $name - p. ej. "primary", "text-muted"
+/// @param {String} $theme - "light" | "dark"
+@function au-token($name, $theme: 'light') {
+  $map: if($theme == 'dark', $au-theme-dark, $au-theme-light);
+  $value: map.get($map, $name);
+
+  @if not $value {
+    @error "Token semántico desconocido: #{$name}";
+  }
+
+  @return $value;
+}
+
+/// Espaciado por nombre de token ("space-16" → 16px).
+@function au-space($name) {
+  @return map.get($au-spacing, $name);
+}
+
+/// Radio por nombre de token ("radius-lg" → 16px).
+@function au-radius($name) {
+  @return map.get($au-radius, $name);
+}
+
+/// Triplete RGB "r, g, b" para variables --bs-*-rgb de Bootstrap.
+@function au-rgb($c) {
+  @return color.channel($c, 'red', $space: rgb), color.channel($c, 'green', $space: rgb),
+    color.channel($c, 'blue', $space: rgb);
+}

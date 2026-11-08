@@ -1,0 +1,9 @@
+dist/
+node_modules/
+docs/api/
+coverage/
+src/**/*.html
+src/partials/
+src/scss/abstracts/_tokens.scss
+package-lock.json
+*.md

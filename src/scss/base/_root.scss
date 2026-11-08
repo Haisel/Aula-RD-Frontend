@@ -1,0 +1,76 @@
+// ----------------------------------------------------------------------------
+// Variables CSS por tema (--au-*) y puente a las variables de Bootstrap (--bs-*).
+// Cambio de tema: <html data-bs-theme="light|dark">  (ver js/core/theme.js)
+// ----------------------------------------------------------------------------
+@use 'sass:map';
+
+@mixin au-theme-vars($theme, $shadows, $theme-name) {
+  @each $name, $value in $theme {
+    --au-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $shadows {
+    --au-#{$name}: #{$value};
+  }
+
+  // Bootstrap necesita tripletes RGB que no se pueden derivar con var()
+  @each $bs,
+    $key in (primary: 'primary', success: 'success', info: 'info', warning: 'warning', danger: 'danger')
+  {
+    $c: map.get($theme, $key);
+    $txt: if($key == 'primary', map.get($theme, 'accent-text'), map.get($theme, '#{$key}-text'));
+    $sub: if($key == 'primary', map.get($theme, 'accent-subtle'), map.get($theme, '#{$key}-subtle'));
+
+    --bs-#{$bs}: #{$c};
+    --bs-#{$bs}-rgb: #{au-rgb($c)};
+    --bs-#{$bs}-text-emphasis: #{$txt};
+    --bs-#{$bs}-bg-subtle: #{$sub};
+    --bs-#{$bs}-border-subtle: #{rgba($txt, 0.25)};
+  }
+
+  --bs-secondary: #{map.get($theme, 'text-muted')};
+  --bs-secondary-rgb: #{au-rgb(map.get($theme, 'text-muted'))};
+  --bs-body-bg-rgb: #{au-rgb(map.get($theme, 'bg'))};
+  --bs-body-color-rgb: #{au-rgb(map.get($theme, 'text'))};
+  --bs-link-color-rgb: #{au-rgb(map.get($theme, 'accent-text'))};
+  --bs-link-hover-color-rgb: #{au-rgb(map.get($theme, 'primary-hover'))};
+  --au-focus-halo: #{rgba(map.get($theme, 'focus-ring'), 0.25)};
+
+  color-scheme: $theme-name;
+}
+
+:root,
+[data-bs-theme='light'] {
+  @include au-theme-vars($au-theme-light, $au-shadow-light, light);
+}
+
+[data-bs-theme='dark'] {
+  @include au-theme-vars($au-theme-dark, $au-shadow-dark, dark);
+}
+
+// Puente: se repite en cada elemento con tema para ganar a los valores de Bootstrap.
+:root,
+[data-bs-theme] {
+  --bs-font-sans-serif: #{$au-font-stack};
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-bg: var(--au-bg);
+  --bs-body-color: var(--au-text);
+  --bs-emphasis-color: var(--au-text);
+  --bs-heading-color: var(--au-text);
+  --bs-secondary-color: var(--au-text-muted);
+  --bs-tertiary-color: var(--au-text-muted);
+  --bs-secondary-bg: var(--au-surface-2);
+  --bs-tertiary-bg: var(--au-bg);
+  --bs-border-color: var(--au-border);
+  --bs-border-color-translucent: var(--au-border);
+  --bs-link-color: var(--au-accent-text);
+  --bs-link-hover-color: var(--au-primary-hover);
+  --bs-focus-ring-color: var(--au-focus-halo);
+  --bs-box-shadow-sm: var(--au-shadow-sm);
+  --bs-box-shadow: var(--au-shadow-md);
+  --bs-box-shadow-lg: var(--au-shadow-lg);
+  --bs-form-invalid-color: var(--au-danger-text);
+  --bs-form-invalid-border-color: var(--au-danger);
+  --bs-form-valid-color: var(--au-success-text);
+  --bs-form-valid-border-color: var(--au-success);
+}

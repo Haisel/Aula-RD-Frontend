@@ -1,0 +1,15 @@
+{
+  "type": "bar",
+  "labels": ["Dic", "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov"],
+  "series": [
+    {
+      "label": "Ingreso recurrente",
+      "data": [
+        214000, 226500, 238000, 249000, 262300, 268100, 276400, 291000, 309500, 322700, 386300, 412600
+      ],
+      "color": "accent"
+    }
+  ],
+  "format": "compact-currency",
+  "target": { "value": 450000, "label": "Meta RD$ 450K" }
+}
