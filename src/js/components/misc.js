@@ -13,6 +13,7 @@
  */
 import { Tooltip } from 'bootstrap';
 import * as d from './dialogs.js';
+import { customGet } from '../helpers/browser.js';
 import {
   formatCurrency,
   formatCompactCurrency,
@@ -161,7 +162,7 @@ export const actionComponent = {
   name: 'action',
   selector: '[data-au-action]',
   init(el) {
-    const onClick = async () => {
+    const onClick = async (/** @type {MouseEvent} */ event) => {
       const msg = el.dataset.auMessage ?? '';
       const action = el.dataset.auAction;
       if (action === 'success' || action === 'error' || action === 'warning' || action === 'info')
@@ -174,6 +175,11 @@ export const actionComponent = {
       else if (action === 'loading') {
         d.loading(msg || 'Procesando…');
         setTimeout(d.close, Number(el.dataset.auDuration ?? 1500));
+      } else if (action) {
+        // Acción propia registrada con AU.customSet('nombre', (el, event) => …)
+        const fn = customGet(action);
+        if (fn) await fn(el, event);
+        else console.warn(`[AU] data-au-action="${action}" no está registrada (AU.customSet).`);
       }
     };
     el.addEventListener('click', onClick);

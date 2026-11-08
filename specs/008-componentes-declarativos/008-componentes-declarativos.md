@@ -6,7 +6,7 @@
 Que cualquier backend obtenga comportamiento completo solo con HTML: atributos `data-au-*` que activan componentes y librerías del ecosistema, inicializados una sola vez y con carga diferida.
 
 ## Alcance
-23 componentes registrados (lista y opciones en `docs/03-componentes.md` §3): estructura de app, navbar, tema, confirmación, acciones, formularios, máscaras, contraseña, facturación, tiempo relativo, formato, tooltip, gráfico, tabla, select, fecha, calendario, editor, firma, ordenable, código de barras, QR, render de plantillas, exportación.
+24 componentes registrados (lista y opciones en `docs/03-componentes.md` §3): estructura de app, navbar, tema, confirmación, acciones, formularios, máscaras, contraseña, facturación, tiempo relativo, formato, tooltip, gráfico, tabla, select, fecha, calendario, editor, firma, ordenable, código de barras, QR, render de plantillas, exportación, pestañas accesibles (spec 010).
 
 ## Requisitos funcionales
 | Id | Requisito |

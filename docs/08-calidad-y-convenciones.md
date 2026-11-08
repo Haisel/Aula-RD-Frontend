@@ -7,7 +7,7 @@
 | Clases propias | kebab-case con prefijo `au-`; modificadores `is-*` | `.au-stat`, `.au-stat-icon.is-warning` |
 | Variables CSS | `--au-<token>` | `--au-accent-text` |
 | Atributos | `data-au-<componente>[-opción]` | `data-au-page-length` |
-| Eventos | `au:<evento>` | `au:theme-change` |
+| Eventos | `au:<ámbito>:<evento>` | `au:theme:changed`, `au:session:expired` |
 | Archivos JS | kebab-case | `schema-registry.js` |
 | Funciones | camelCase, verbo | `createDataTable`, `formatCurrency` |
 | Componentes registrados | `{ name, selector, init }` | `name: 'datatable'` |
@@ -35,7 +35,7 @@
 
 - Vitest + jsdom en `tests/*.test.js`. Toda función de `helpers/` y la lógica pura de `core/`/`adapters/` lleva prueba.
 - No usar cédulas ni RNC reales: los tests **calculan** el dígito verificador.
-- Cobertura actual: formato, validadores, esquemas Zod, normalización de errores HTTP, sanitización, estados, configuración de gráficos, exportación, contexto, tema y registro (62 casos).
+- Cobertura actual: formato, validadores, esquemas Zod, normalización de errores HTTP, sanitización, estados, configuración de gráficos, exportación, contexto, tema y registro; kernel (errores, eventos, logger, scope, contenedor, módulos, almacenamiento), servicios (sesión, institución, acceso, cliente HTTP) y helpers portados (106 casos).
 
 ## 4. Calidad automática
 

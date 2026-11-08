@@ -43,6 +43,9 @@ analizar → especificar (spec.md) → criterios de aceptación → pruebas → 
 | Integrar una librería de terceros | `src/js/adapters/` con `lazy()` (carga diferida) |
 | Comportamiento declarativo `data-au-*` | `src/js/components/` + registrarlo en `src/js/app.js` |
 | Exponer algo a las páginas | `src/js/facade.js` (y documentarlo en `docs/04-api-au.md`) |
+| Hablar con el backend (sesión, institución, endpoints) | `src/js/services/` (dependencias por constructor) y cablearlo en `src/js/kernel.js` |
+| Un error nuevo | No cree clases sueltas: use `AU.errors` / `core/errors.js` y un `code` estable |
+| Un evento nuevo | Constante en `EVENTS` (`core/events.js`) con el patrón `au:<ámbito>:<evento>` + fila en `docs/04-api-au.md` |
 | Esquema de validación de formulario | `src/js/helpers/schemas.js` (o `AU.registerSchema` desde la app) |
 | Parcial HTML reutilizable | `src/partials/` (Handlebars, solo para las páginas de ejemplo) |
 | Datos de ejemplo | `public/data/` (marcados como fixtures, nunca en componentes) |
@@ -57,7 +60,9 @@ analizar → especificar (spec.md) → criterios de aceptación → pruebas → 
 6. **JSDoc en toda función pública**, con descripción de cada `@param` y `@returns`. `npm run typecheck` verifica los tipos.
 7. **Texto de interfaz en español de RD**, tratamiento de usted, verbos en infinitivo en botones, sentence case. Formatos: `RD$ 12,500.00`, `08/11/2026`.
 8. **Contraste AA.** Turquesa `#18B6A4` y champagne `#C6A15B` **nunca** como color de texto sobre blanco: use `--au-accent-text` y `--au-gold-text`.
-9. **Seguridad real en el backend.** `data-au-can` y `AU.can()` solo ocultan; no protegen.
+9. **Seguridad real en el backend.** `data-au-can` y `AU.can()` solo ocultan; no protegen. Nunca invente identidad, roles ni institución: solo vienen de `#au-context` o de los puertos (`AU.configurePorts`).
+11. **Nada de `window.AR`.** El kernel de la Fase 4 ya vive dentro de `AU` (spec 010). Si migra código viejo, traduzca `AR.*` → `AU.*` y los eventos `ar:*` → `au:*`.
+12. **HTTP solo por `AU.api` / `AU.request`.** No importe axios en componentes ni páginas; los errores ya llegan tipados.
 10. **HTML dinámico siempre sanitizado** (`AU.sanitize`, `AU.render` ya lo hace). Nunca `{{{triple}}}` con datos del usuario.
 
 ## 5. Receta: agregar un componente declarativo

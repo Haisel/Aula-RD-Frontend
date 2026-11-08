@@ -1,11 +1,11 @@
 {
   "name": "aulard-frontend",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Aula RD — frontend (Bootstrap 5.3 + Vite + Handlebars + JS con JSDoc). Landing de suscripción y dashboards.",
   "scripts": {
     "dev": "npm run tokens && vite",
     "build": "npm run tokens && vite build && node scripts/build-html.mjs",
-    "preview": "npx vite preview --outDir dist",
+    "preview": "vite preview",
     "tokens": "node scripts/build-tokens.mjs",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint .",

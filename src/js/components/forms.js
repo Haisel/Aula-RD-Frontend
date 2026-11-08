@@ -8,8 +8,8 @@
  * - `data-au-submit`:
  *   - `native` (por defecto): si es válido, el navegador envía el formulario normalmente.
  *   - `ajax`: envía JSON con `AU.http` a `action`/`method`; aplica errores del servidor
- *     por campo; emite `au:form-success` / `au:form-error`.
- *   - `event`: no envía; emite `au:submit` con `{ form, data }` para que su código decida.
+ *     por campo; emite `au:form:success` / `au:form:error`.
+ *   - `event`: no envía; emite `au:form:submit` con `{ form, data }` para que su código decida.
  * - `data-au-success="Mensaje"`: toast al terminar con éxito (modo ajax).
  * - `data-au-redirect="/ruta"`: redirige tras el éxito (modo ajax).
  *
@@ -18,8 +18,9 @@
  * @module components/forms
  */
 import { getSchema, validateWith } from '../helpers/schema-registry.js';
-import { http } from '../core/http.js';
+import { client } from '../core/http.js';
 import { emit, EVENTS } from '../core/events.js';
+import { toAppError } from '../core/errors.js';
 import { toast } from './dialogs.js';
 
 /**
@@ -180,22 +181,22 @@ export const formComponent = {
         return;
       }
       if (mode === 'event') {
-        emit(EVENTS.SUBMIT, { form, data }, form);
+        emit(EVENTS.FORM_SUBMIT, { form, data }, form);
         if (form.dataset.auSuccess) toast(form.dataset.auSuccess, 'success');
         return;
       }
       setLoading(form, true);
       try {
-        const response = await http.request({
+        const response = await client.request({
           url: form.getAttribute('action') ?? '',
           method: form.getAttribute('method') ?? 'post',
-          data,
+          body: data,
         });
         emit(EVENTS.FORM_SUCCESS, { form, data, response }, form);
         if (form.dataset.auSuccess) toast(form.dataset.auSuccess, 'success');
         if (form.dataset.auRedirect) window.location.assign(form.dataset.auRedirect);
       } catch (error) {
-        const err = /** @type {import('../types.js').ApiErrorShape} */ (error);
+        const err = toAppError(error);
         showErrors(form, err.fieldErrors ?? {}, err.message);
         if (!form.querySelector('[data-au-form-error]')) toast(err.message, 'error');
         emit(EVENTS.FORM_ERROR, { form, error: err }, form);

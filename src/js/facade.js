@@ -17,10 +17,10 @@ import { sanitize, escapeHtml } from './helpers/sanitize.js';
 import { statusVariant } from './helpers/status.js';
 import { downloadBlob, readText, readJson, copyText, groupBy } from './helpers/files.js';
 import * as theme from './core/theme.js';
-import * as events from './core/events.js';
-import * as storage from './core/storage.js';
+import { bus, EVENTS } from './core/events.js';
+import { storage } from './core/storage.js';
 import { initAll, destroy, registered } from './core/registry.js';
-import { api, configureHttp } from './core/http.js';
+import { api, configureHttp, request } from './core/http.js';
 import { render, registerHelper } from './core/templates.js';
 import { getContext, setContext, can, hasRole } from './core/context.js';
 import * as dialogs from './components/dialogs.js';
@@ -38,7 +38,19 @@ import { exportRows } from './adapters/excel.js';
 import { barcode, qrcode } from './adapters/codes.js';
 import { attachSignature } from './adapters/signature.js';
 import { dragSort } from './adapters/sortable.js';
-import { resolveElement } from './core/errors.js';
+import { resolveElement, ERRORS } from './core/errors.js';
+import { session, institution, appScope, errorHandler } from './kernel.js';
+import { truncate, normalizeSpaces } from './helpers/strings.js';
+import {
+  toggleFullscreen,
+  isFullscreen,
+  createIframe,
+  assetUrl,
+  listen,
+  customSet,
+  customGet,
+} from './helpers/browser.js';
+import { setBusy, isBusy, setProgress, showInlineAlert, dismissInlineAlert } from './components/feedback.js';
 
 /**
  * Construye la fachada inmutable.
@@ -48,12 +60,17 @@ import { resolveElement } from './core/errors.js';
  * @returns {Readonly<Record<string, any>>} `AU`.
  */
 export function createFacade({ config, breakpoints }) {
-  const once = (/** @type {string} */ name, /** @type {(e: CustomEvent) => void} */ fn) => {
-    const off = events.on(name, (e) => {
-      off();
-      fn(e);
-    });
-    return off;
+  /**
+   * Conecta los puertos del backend y vuelve a resolver sesión/institución.
+   * @param {{ session?: import('./services/session-service.js').SessionPorts, institution?: import('./services/institution-context.js').InstitutionPorts }} ports Puertos.
+   * @returns {Promise<import('./core/context.js').AppContext>} Contexto resultante.
+   */
+  const configurePorts = async ({ session: sp, institution: ip } = {}) => {
+    if (sp) session.setPorts(sp);
+    if (ip) institution.setPorts(ip);
+    if (sp) await session.resolve();
+    if (ip) await institution.resolve();
+    return getContext();
   };
 
   const AU = {
@@ -113,6 +130,21 @@ export function createFacade({ config, breakpoints }) {
     setModalBody: modal.setModalBody,
     onModalOpen: modal.onModalOpen,
     onModalClose: modal.onModalClose,
+    toggleModal: modal.toggleModal,
+    getModal: modal.getModal,
+    destroyModal: modal.destroyModal,
+    setModalContent: modal.setModalContent,
+
+    // ── Retroalimentación en la página
+    busy: (
+      /** @type {string|HTMLElement} */ t,
+      /** @type {boolean} */ on,
+      /** @type {{label?: string}} */ o,
+    ) => setBusy(t, on, o),
+    isBusy,
+    progress: setProgress,
+    inlineAlert: showInlineAlert,
+    dismissInlineAlert,
 
     // ── DOM
     q: dom.qs,
@@ -120,14 +152,11 @@ export function createFacade({ config, breakpoints }) {
     el: dom.h,
     ready: dom.ready,
     on: (
-      /** @type {EventTarget} */ target,
+      /** @type {EventTarget|string} */ target,
       /** @type {string} */ type,
-      /** @type {EventListener} */ fn,
-      /** @type {AddEventListenerOptions} */ opts,
-    ) => {
-      target.addEventListener(type, fn, opts);
-      return () => target.removeEventListener(type, fn, opts);
-    },
+      /** @type {(e: Event, match?: Element) => void} */ fn,
+      /** @type {AddEventListenerOptions & { delegate?: string }} */ opts,
+    ) => listen(typeof target === 'string' ? resolveElement(target, 'el elemento') : target, type, fn, opts),
     show: (/** @type {string|HTMLElement} */ t) => (resolveElement(t, 'el elemento').hidden = false),
     hide: (/** @type {string|HTMLElement} */ t) => (resolveElement(t, 'el elemento').hidden = true),
     toggle: (/** @type {string|HTMLElement} */ t, /** @type {boolean} */ force) => {
@@ -135,6 +164,13 @@ export function createFacade({ config, breakpoints }) {
       el.hidden = force === undefined ? !el.hidden : !force;
       return !el.hidden;
     },
+    isHidden: (/** @type {string|HTMLElement} */ t) => {
+      const el = typeof t === 'string' ? document.querySelector(t) : t;
+      return !el || /** @type {HTMLElement} */ (el).hidden || el.classList.contains('d-none');
+    },
+    toggleFullscreen: (/** @type {string|Element} */ t) =>
+      toggleFullscreen(t ? resolveElement(t, 'el elemento') : undefined),
+    isFullscreen,
 
     // ── Formularios y validación (Zod)
     validForm: (/** @type {HTMLFormElement|string} */ f, /** @type {string} */ schema) =>
@@ -154,6 +190,10 @@ export function createFacade({ config, breakpoints }) {
     isValidRnc: validators.isValidRnc,
     isValidPhone: validators.isValidPhoneDO,
     isValidEmail: validators.isValidEmail,
+    isValidPlaca: validators.isValidPlaca,
+    isValidCurrency: validators.isValidCurrency,
+    isNullOrEmpty: validators.isNullOrEmpty,
+    isEmpty: validators.isEmpty,
     mask: (/** @type {HTMLInputElement|string} */ input, /** @type {string|object} */ type) =>
       applyMask(resolveElement(input, 'el campo'), /** @type {any} */ (type)),
 
@@ -170,6 +210,9 @@ export function createFacade({ config, breakpoints }) {
     formatRnc: format.formatRnc,
     formatPhone: format.formatPhone,
     initials: format.initials,
+    humanize: format.humanize,
+    truncate,
+    normalizeSpaces,
     date: format.dayjs,
     statusVariant,
 
@@ -179,11 +222,32 @@ export function createFacade({ config, breakpoints }) {
     sanitize,
     escapeHtml,
 
-    // ── API (Axios, neutro respecto al backend)
+    // ── API (neutro respecto al backend; errores tipados en AU.errors)
     api,
+    request,
     configureApi: configureHttp,
+    errors: ERRORS,
+    report: (/** @type {unknown} */ error, /** @type {{context?: string}} */ o) =>
+      errorHandler.report(error, o),
+    createScope: () => appScope.child(),
 
-    // ── Contexto de sesión/institución (solo presentación)
+    // ── Sesión, institución y contexto (datos del backend; autorización SOLO visual)
+    session: Object.freeze({
+      status: () => session.status(),
+      user: () => session.user(),
+      resolve: () => session.resolve(),
+      signOut: () => session.signOut(),
+      subscribe: (/** @type {(s: string) => void} */ fn) => session.subscribe(fn),
+    }),
+    institution: Object.freeze({
+      status: () => institution.status(),
+      current: () => institution.current(),
+      resolve: () => institution.resolve(),
+      available: () => institution.available(),
+      select: (/** @type {string} */ id) => institution.select(id),
+      subscribe: (/** @type {(i: unknown) => void} */ fn) => institution.subscribe(fn),
+    }),
+    configurePorts,
     getContext,
     setContext,
     can,
@@ -211,11 +275,22 @@ export function createFacade({ config, breakpoints }) {
     copy: copyText,
     groupBy,
     print: () => window.print(),
-    storeGet: storage.getItem,
-    storeSet: storage.setItem,
+    openIframe: createIframe,
+    assetUrl: (/** @type {string} */ path) => assetUrl(path, config.assetBaseUrl),
+    customSet,
+    customGet,
+    storeGet: (/** @type {string} */ key, /** @type {unknown} */ fallback) => storage.get(key, fallback),
+    storeSet: (/** @type {string} */ key, /** @type {unknown} */ value) => storage.set(key, value),
+    storeRemove: (/** @type {string} */ key) => storage.remove(key),
 
-    // ── Eventos (au:*)
-    events: Object.freeze({ on: events.on, once, emit: events.emit, names: events.EVENTS }),
+    // ── Eventos (au:<ámbito>:<evento>)
+    events: Object.freeze({
+      on: (/** @type {string} */ n, /** @type {(e: CustomEvent) => void} */ fn) => bus.on(n, fn),
+      once: (/** @type {string} */ n, /** @type {(e: CustomEvent) => void} */ fn) => bus.once(n, fn),
+      off: (/** @type {string} */ n, /** @type {(e: CustomEvent) => void} */ fn) => bus.off(n, fn),
+      emit: (/** @type {string} */ n, /** @type {object} */ detail) => bus.emit(n, detail),
+      names: EVENTS,
+    }),
   };
 
   return Object.freeze(AU);

@@ -12,3 +12,4 @@ Las ADR 001–005 viven en el repositorio original (`E:\AulaRD\docs\decisions`) 
 | [010](010-versiones-del-ecosistema.md) | Versiones fijadas del ecosistema | Propuesta | 002 |
 | [011](011-tema-data-bs-theme.md) | Tema con `data-bs-theme` y preferencia `system` | Propuesta | 004 |
 | [012](012-validacion-asincrona.md) | Validación asíncrona con Zod diferido | Propuesta | — |
+| [013](013-fachada-unica-y-kernel.md) | Fachada única `AU` con el kernel de la Fase 4 | Propuesta — fusión pedida por el propietario | 008, fachada `AR`, eventos de la 1.0 |

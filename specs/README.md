@@ -10,6 +10,7 @@ Cada capacidad tiene **una carpeta y un archivo**: `specs/NNN-nombre/NNN-nombre.
 | [007](007-fachada-au/007-fachada-au.md) | Fachada `window.AU` | Implementada · pendiente de aprobación |
 | [008](008-componentes-declarativos/008-componentes-declarativos.md) | Componentes declarativos `data-au-*` y librerías diferidas | Implementada · pendiente de aprobación |
 | [009](009-paginas-de-ejemplo/009-paginas-de-ejemplo.md) | Páginas de ejemplo (landing, auth, 4 portales, catálogo) | Implementada · pendiente de aprobación |
+| [010](010-integracion-kernel/010-integracion-kernel.md) | Integración del kernel y servicios de la Fase 4 en `AU` | Implementada · pendiente de aprobación |
 
 **Nota de proceso:** estas specs se redactaron junto con la implementación porque el propietario pidió la plantilla completa en una sola entrega (08/11/2026). Según la constitución §5.3 deben **revisarse y aprobarse**; cualquier cambio que surja de la revisión se implementa después de aprobado.
 

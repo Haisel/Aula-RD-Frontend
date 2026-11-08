@@ -63,7 +63,7 @@ export function initAll(root = document) {
       }
     }
   }
-  emit(EVENTS.READY, { root, count });
+  emit(EVENTS.COMPONENTS_READY, { root, count });
   return count;
 }
 

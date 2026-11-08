@@ -30,6 +30,7 @@ import { attachSignature } from '../adapters/signature.js';
 import { dragSort } from '../adapters/sortable.js';
 import { barcode, qrcode } from '../adapters/codes.js';
 import { exportRows } from '../adapters/excel.js';
+import { emit, EVENTS } from '../core/events.js';
 import { api } from '../core/http.js';
 import { render } from '../core/templates.js';
 import { initAll } from '../core/registry.js';
@@ -171,7 +172,7 @@ export const widgetComponents = [
         const list = el.dataset.auPath ? el.dataset.auPath.split('.').reduce((a, k) => a?.[k], data) : data;
         el.innerHTML = await render(el.dataset.auRender ?? '', list);
         initAll(el);
-        el.dispatchEvent(new CustomEvent('au:rendered', { bubbles: true, detail: { data: list } }));
+        emit(EVENTS.RENDER_DONE, { data: list }, el);
       });
     },
   },

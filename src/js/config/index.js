@@ -18,6 +18,10 @@
  * @property {'light' | 'dark' | 'system'} defaultTheme Tema inicial si el usuario no eligió.
  * @property {string} apiBaseUrl URL base del API (vacía = mismo origen).
  * @property {number} apiTimeoutMs Tiempo máximo de las peticiones.
+ * @property {number} apiRetries Reintentos de lecturas (GET) ante red caída o 5xx. Nunca reintenta escrituras.
+ * @property {string} loginUrl Ruta del login (mismo origen) a la que se redirige tras un 401. Vacía = no redirige.
+ * @property {string} assetBaseUrl Base para `AU.assetUrl()` (p. ej. un CDN). Vacía = rutas tal cual.
+ * @property {boolean} debug `true` baja el logger a nivel `debug` (solo desarrollo).
  */
 
 /** @type {AppConfig} */
@@ -28,6 +32,10 @@ const DEFAULTS = {
   defaultTheme: 'system',
   apiBaseUrl: '',
   apiTimeoutMs: 20000,
+  apiRetries: 0,
+  loginUrl: '',
+  assetBaseUrl: '',
+  debug: false,
 };
 
 /** Portales de la plataforma (constitución 4.4). */

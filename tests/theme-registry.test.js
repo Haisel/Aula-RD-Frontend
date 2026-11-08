@@ -5,7 +5,7 @@ import { register, initAll, destroy } from '../src/js/core/registry.js';
 describe('tema', () => {
   it('aplica, guarda y alterna', () => {
     const seen = [];
-    document.addEventListener('au:theme-change', (e) => seen.push(e.detail.theme));
+    document.addEventListener('au:theme:changed', (e) => seen.push(e.detail.theme));
     expect(setTheme('dark')).toBe('dark');
     expect(document.documentElement.getAttribute('data-bs-theme')).toBe('dark');
     expect(localStorage.getItem('au-theme')).toBe('"dark"');

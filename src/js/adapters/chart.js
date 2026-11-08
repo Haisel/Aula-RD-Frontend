@@ -91,7 +91,7 @@ export async function createChart(canvas, spec) {
   return chart;
 }
 
-on(EVENTS.THEME_CHANGE, () => {
+on(EVENTS.THEME_CHANGED, () => {
   for (const entry of live) {
     if (!entry.chart.canvas?.isConnected) {
       live.delete(entry);

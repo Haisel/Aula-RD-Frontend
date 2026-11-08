@@ -50,7 +50,7 @@ El propietario eligió el logo B y la paleta Navy/Turquoise/Champagne/White (08/
 | CA-03 | Tema `system` | El SO cambia a oscuro | La página cambia sin recargar | Manual |
 | CA-04 | Cualquier página | Se revisa con herramienta de contraste | Pares de `docs/02` §4 cumplen AA | Verificado (tabla) |
 | CA-05 | Tema oscuro | Se abre un SweetAlert, Choices, Flatpickr, DataTable | Superficie, texto y bordes del tema oscuro | Revisión visual 08/11/2026 |
-| CA-06 | Gráfico visible | Se cambia el tema | Se recolorea sin recargar | Manual (evento `au:theme-change`) |
+| CA-06 | Gráfico visible | Se cambia el tema | Se recolorea sin recargar | Manual (evento `au:theme:changed`) |
 | CA-07 | Código SCSS | `npm run lint:css` | Sin errores | Stylelint |
 
 ## Información faltante

@@ -16,7 +16,7 @@ Copie de `dist/` a su carpeta pública: `css/`, `js/` (incluida `js/chunks/`), `
 <script type="module" src="/js/app.js"></script>      <!-- build:single → <script defer src="/js/app.js"> -->
 ```
 
-`au-config` admite: `apiBaseUrl`, `apiTimeoutMs`, `defaultTheme` (`light|dark|system`), `locale`.
+`au-config` admite: `apiBaseUrl`, `apiTimeoutMs`, `apiRetries` (reintentos de GET ante red caída o 5xx; por defecto 0), `loginUrl` (ruta del mismo origen a la que se redirige tras un 401; vacía = no redirige), `assetBaseUrl` (base para `AU.assetUrl`), `defaultTheme` (`light|dark|system`), `locale`, `debug` (`true` muestra el log `debug` en consola; solo desarrollo).
 
 ## 3. Contexto de sesión e institución
 
@@ -33,6 +33,39 @@ Serialícelo con el codificador JSON de su lenguaje (escapa `</script>`): PHP `j
 
 Luego: `data-au-bind="institution.name"` muestra valores; `data-au-can="cobros.registrar"` oculta lo no permitido (**solo visual**; su API debe validar cada operación).
 
+Desde la 1.1 ese JSON alimenta el núcleo: la sesión pasa a `authenticated`, la institución a `selected` y la política de acceso toma `roles` y `permissions`. Envíe `id` en `user` e `institution`: el cambio de institución se detecta por `id`.
+
+**Alternativa por API: puertos.** Si prefiere no imprimir el contexto, conecte funciones que consulten su backend. La plantilla las llama al arrancar y cuando usted lo pida:
+
+```js
+await AU.configurePorts({
+  session: {
+    resolve: async () => {                       // GET /api/me → { user, roles, permissions } o 401
+      try { const me = await AU.api.get('/me'); return { status: 'authenticated', user: { ...me.user, roles: me.roles, permissions: me.permissions } }; }
+      catch { return { status: 'unauthenticated' }; }
+    },
+    signOut: () => AU.api.post('/logout'),
+  },
+  institution: {
+    resolveCurrent: () => AU.api.get('/institucion-activa'),   // { id, name, plan } o null
+    available: () => AU.api.get('/mis-instituciones'),
+    select: (id) => AU.api.post('/institucion-activa', { id }),
+  },
+});
+```
+
+Sin contexto ni puertos, la sesión queda en `unauthenticated` y la institución en `none`. La plantilla nunca inventa identidad.
+
+**Superadmin.** `AU.can()` ya no da todos los permisos a quien tenga el rol `super-admin`. Envíe la lista completa de permisos de cada rol: una sola regla, la de su backend.
+
+**Cómo viaja la institución en cada petición (D-02, pendiente).** Por defecto no se añade nada; basta con la sesión del servidor. Si su API la necesita en cada solicitud, defina la estrategia una vez:
+
+```js
+AU.configureApi({ contextStrategy: { apply: (req, inst) => ({ ...req, headers: { ...req.headers, 'X-Institution-Id': inst?.id ?? '' } }) } });
+```
+
+La estrategia lee la institución vigente en cada solicitud. Su backend debe comprobar siempre que el usuario pertenece a esa institución.
+
 ## 4. API HTTP
 
 **Petición.** `AU.api` envía `Accept: application/json`, `X-Requested-With: XMLHttpRequest`, cookies (`withCredentials`) y, si hay `<meta name="csrf-token">`, `X-CSRF-TOKEN` y `X-XSRF-TOKEN`. Para un token Bearer: `AU.configureApi({ headers: { Authorization: 'Bearer …' } })`.
@@ -48,7 +81,9 @@ Luego: `data-au-bind="institution.name"` muestra valores; `data-au-can="cobros.r
 
 Las claves de `errors` deben coincidir con el `name` de los campos (PascalCase se convierte a camelCase). Con `data-au-submit="ajax"` se pintan solas debajo de cada campo.
 
-Mensajes por defecto si no envía `message`: 0 (sin conexión), 401 (sesión expirada → llama `onUnauthorized`), 403, 404, 419, 400/422, 5xx.
+Cada respuesta de error llega como una clase de `AU.errors` (`ValidationError`, `ForbiddenError`, `ServerError`…, ver `docs/04-api-au.md` §Errores). Si no envía `message`, se usa uno en español: sin conexión, 401 (sesión expirada), 403, 404, 419, 400/422 y 5xx.
+
+Ante un **401**: la sesión pasa a `expired`, se emite `au:session:expired` y se llama `onUnauthorized`. La plantilla muestra un aviso y, si `au-config` tiene `loginUrl`, redirige allí. Solo **reintenta** lecturas `GET` ante fallos de red o 5xx, y solo con `apiRetries > 0`; nunca reintenta un 4xx ni una escritura.
 
 ## 5. Formularios: tres modos
 
@@ -56,11 +91,11 @@ Mensajes por defecto si no envía `message`: 0 (sin conexión), 401 (sesión exp
 |---|---|---|
 | `native` (por defecto) | Backends con formularios clásicos (PHP, MVC) | `form.submit()` normal al `action` |
 | `ajax` | APIs JSON | `AU.api` envía JSON al `action` con el `method`; éxito → `data-au-success` (toast) y `data-au-redirect`; error → mensajes por campo |
-| `event` | Lógica propia | Emite `au:submit` con `{ form, data }` |
+| `event` | Lógica propia | Emite `au:form:submit` con `{ form, data }` |
 
 ```js
 // Modo event:
-document.addEventListener('au:submit', async (e) => {
+document.addEventListener('au:form:submit', async (e) => {
   if (e.target.id !== 'form-estudiante') return;
   try { await AU.api.post('/estudiantes', e.detail.data); AU.toastSuccess('Estudiante guardado'); }
   catch (err) { AU.showErrors(e.target, err.fieldErrors, err.message); }

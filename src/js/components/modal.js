@@ -94,3 +94,48 @@ export function onModalClose(target, fn) {
   el.addEventListener('hidden.bs.modal', h);
   return () => el.removeEventListener('hidden.bs.modal', h);
 }
+
+/**
+ * Abre o cierra un modal según su estado.
+ * @param {string | HTMLElement} target Modal.
+ * @param {unknown} [data] Datos (solo si se abre).
+ * @returns {Modal} Instancia.
+ */
+export function toggleModal(target, data) {
+  const el = resolveElement(target, 'el modal');
+  if (data !== undefined) payloads.set(el, data);
+  const m = Modal.getOrCreateInstance(el);
+  m.toggle();
+  return m;
+}
+
+/**
+ * Instancia de Bootstrap del modal (la crea si no existe).
+ * @param {string | HTMLElement} target Modal.
+ * @returns {Modal} Instancia.
+ */
+export function getModal(target) {
+  return Modal.getOrCreateInstance(resolveElement(target, 'el modal'));
+}
+
+/**
+ * Destruye la instancia de Bootstrap y olvida los datos asociados (el HTML queda).
+ * @param {string | HTMLElement} target Modal.
+ * @returns {void}
+ */
+export function destroyModal(target) {
+  const el = resolveElement(target, 'el modal');
+  Modal.getInstance(el)?.dispose();
+  payloads.delete(el);
+}
+
+/**
+ * Cambia título y cuerpo de una vez.
+ * @param {string | HTMLElement} target Modal.
+ * @param {{ title?: string, body?: string }} content Título (texto) y cuerpo (HTML sanitizado).
+ * @returns {void}
+ */
+export function setModalContent(target, { title, body } = {}) {
+  if (title !== undefined) setModalTitle(target, title);
+  if (body !== undefined) setModalBody(target, body);
+}

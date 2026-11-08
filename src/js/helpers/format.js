@@ -196,3 +196,17 @@ export function initials(name) {
 }
 
 export { dayjs };
+
+/**
+ * Abrevia una cantidad grande (`1234567` → `1.2 M`). Acepta texto numérico.
+ * @param {number | string | null | undefined} value Cantidad.
+ * @param {object} [options] Opciones.
+ * @param {number} [options.maximumFractionDigits=1] Decimales máximos.
+ * @param {'compact' | 'standard'} [options.notation='compact'] Notación.
+ * @returns {string} Texto, o `''` si no es un número.
+ */
+export function humanize(value, { maximumFractionDigits = 1, notation = 'compact' } = {}) {
+  const n = typeof value === 'string' ? Number(value.replace(/,/g, '')) : Number(value);
+  if (value === null || value === undefined || value === '' || !Number.isFinite(n)) return '';
+  return new Intl.NumberFormat('es-DO', { notation, maximumFractionDigits }).format(n);
+}

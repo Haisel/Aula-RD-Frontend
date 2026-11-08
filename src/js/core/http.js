@@ -1,24 +1,27 @@
 /**
- * Cliente HTTP (axios) neutro respecto al backend.
+ * Capa HTTP compartida: instancia de axios + cliente de aplicación.
  *
  * - Envía el token CSRF si existe `<meta name="csrf-token" content="…">`
  *   (cabeceras `X-CSRF-TOKEN` y `X-XSRF-TOKEN`), válido para Laravel, Django, Rails, ASP.NET, etc.
- * - Normaliza los errores a {@link ApiErrorShape} entendiendo los formatos más comunes:
- *   `{ message, errors: { campo: [..] } }` (Laravel/Express),
- *   ProblemDetails `{ title, detail, errors }` (ASP.NET), `{ detail }` (Django REST),
- *   `{ error: "…" }` y texto plano.
+ * - Todas las solicitudes pasan por {@link module:services/http-client~HttpClient}:
+ *   estrategia de contexto institucional, reintentos seguros y errores tipados.
+ * - `AU.api.*` devuelve directamente `data`; `AU.request(spec)` devuelve `{ data, meta }`.
  *
  * ```js
- * AU.configureHttp({ baseURL: '/api/v1' });
- * const { data } = await AU.http.get('/estudiantes');
+ * AU.configureApi({ baseURL: '/api/v1', endpoints: { 'estudiante.ver': '/estudiantes/:id' } });
+ * const estudiantes = await AU.api.get('/estudiantes', { params: { grado: '4S' } });
+ * const { data } = await AU.request({ endpointKey: 'estudiante.ver', pathParams: { id: 42 } });
  * ```
  * @module core/http
  */
 import axios from 'axios';
+import { HttpClient, parseErrorResponse, toHttpError } from '../services/http-client.js';
+import { logger } from './logger.js';
 
 /** @typedef {import('../types.js').ApiErrorShape} ApiErrorShape */
+/** @typedef {import('../services/http-client.js').RequestSpec} RequestSpec */
 
-/** Instancia compartida. */
+/** Instancia de axios compartida (solo la usa el cliente). */
 export const http = axios.create({
   timeout: 20000,
   headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
@@ -34,79 +37,79 @@ http.interceptors.request.use((config) => {
   return config;
 });
 
-/** @type {((error: ApiErrorShape) => void) | null} */
-let unauthorizedHandler = null;
-
-http.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    const normalized = normalizeError(error);
-    if (normalized.status === 401 && unauthorizedHandler) unauthorizedHandler(normalized);
-    return Promise.reject(normalized);
-  },
-);
+/** Cliente de aplicación compartido. */
+export const client = new HttpClient({ axios: http, logger: logger.child('http') });
 
 /**
- * Configura la instancia HTTP.
- * @param {object} options Opciones.
- * @param {string} [options.baseURL] URL base del API.
- * @param {number} [options.timeout] Tiempo máximo en ms.
- * @param {Record<string, string>} [options.headers] Cabeceras adicionales.
- * @param {(error: ApiErrorShape) => void} [options.onUnauthorized] Se llama ante un 401 (p. ej. redirigir al login).
- * @returns {import('axios').AxiosInstance} La instancia configurada.
+ * @typedef {object} HttpOptions
+ * @property {string} [baseURL] URL base del API.
+ * @property {number} [timeout] Tiempo máximo en ms.
+ * @property {number} [retries] Reintentos de lecturas idempotentes ante red caída o 5xx.
+ * @property {Record<string, string>} [headers] Cabeceras fijas adicionales.
+ * @property {Record<string, string>} [endpoints] Registro clave → ruta (`/estudiantes/:id`).
+ * @property {import('../services/http-client.js').ContextStrategy} [contextStrategy] Cómo enviar la institución activa.
+ * @property {(error: import('./errors.js').AppError) => void} [onUnauthorized] Se llama ante un 401.
  */
-export function configureHttp({ baseURL, timeout, headers, onUnauthorized } = {}) {
-  if (baseURL !== undefined) http.defaults.baseURL = baseURL;
-  if (timeout !== undefined) http.defaults.timeout = timeout;
+
+/**
+ * Configura la capa HTTP.
+ * @param {HttpOptions} [options] Opciones.
+ * @returns {HttpClient} El cliente configurado.
+ */
+export function configureHttp({
+  baseURL,
+  timeout,
+  retries,
+  headers,
+  endpoints,
+  contextStrategy,
+  onUnauthorized,
+} = {}) {
   if (headers) Object.entries(headers).forEach(([k, v]) => (http.defaults.headers.common[k] = v));
-  if (onUnauthorized) unauthorizedHandler = onUnauthorized;
-  return http;
+  client.configure({ baseURL, timeout, retries, endpoints, contextStrategy, onUnauthorized });
+  return client;
 }
 
 /**
- * Convierte cualquier error (axios, red, desconocido) en un {@link ApiErrorShape}.
- * Es una función pura y está probada en `tests/http.test.js`.
+ * Convierte cualquier error en un {@link ApiErrorShape} (`status`, `message`, `fieldErrors`, `raw`).
+ * Se conserva por compatibilidad: los errores que rechaza `AU.api` ya son `AppError`
+ * con esas mismas propiedades.
  * @param {unknown} error Error recibido.
  * @returns {ApiErrorShape} Error normalizado.
  */
 export function normalizeError(error) {
-  const err = /** @type {any} */ (error);
-  const status = err?.response?.status ?? 0;
-  const data = err?.response?.data;
-
-  /** @type {Record<string, string[]>} */
-  const fieldErrors = {};
-  const rawErrors = data && typeof data === 'object' ? data.errors : undefined;
-  if (rawErrors && typeof rawErrors === 'object' && !Array.isArray(rawErrors)) {
-    for (const [field, msgs] of Object.entries(rawErrors)) {
-      const key = field.charAt(0).toLowerCase() + field.slice(1);
-      fieldErrors[key] = Array.isArray(msgs) ? msgs.map(String) : [String(msgs)];
-    }
-  }
-
-  let message = '';
-  if (typeof data === 'string' && data.trim() && !data.trim().startsWith('<')) message = data.trim();
-  else if (data && typeof data === 'object')
-    message = data.message ?? data.detail ?? data.title ?? data.error ?? '';
-
-  if (!message) {
-    if (status === 0)
-      message = 'No se pudo conectar con el servidor. Verifique su conexión e intente de nuevo.';
-    else if (status === 401) message = 'Su sesión expiró. Inicie sesión de nuevo.';
-    else if (status === 403) message = 'No tiene permiso para realizar esta acción.';
-    else if (status === 404) message = 'No encontramos lo que busca.';
-    else if (status === 419) message = 'La página expiró. Recárguela e intente de nuevo.';
-    else if (status === 422 || status === 400) message = 'Revise los datos marcados en el formulario.';
-    else if (status >= 500) message = 'Ocurrió un error en el servidor. Intente de nuevo en unos minutos.';
-    else message = 'Ocurrió un error inesperado.';
-  }
-
-  return { status, message: String(message), fieldErrors, raw: data };
+  const typed = toHttpError(error);
+  const parsed = parseErrorResponse(error);
+  return { status: parsed.status, message: typed.message, fieldErrors: typed.fieldErrors, raw: parsed.raw };
 }
 
 /**
- * Atajos que devuelven directamente `response.data`. Los errores llegan normalizados
- * ({@link ApiErrorShape}).
+ * Traduce opciones al estilo axios (`params`, `headers`, `signal`) a un {@link RequestSpec}.
+ * @param {string} method Método.
+ * @param {string} url Ruta.
+ * @param {unknown} body Cuerpo.
+ * @param {{ params?: Record<string, unknown>, headers?: Record<string, string>, signal?: AbortSignal, retries?: number }} [config] Opciones.
+ * @returns {RequestSpec} Solicitud.
+ */
+function spec(method, url, body, config = {}) {
+  return {
+    method,
+    url,
+    body,
+    query: config.params,
+    headers: config.headers,
+    signal: config.signal,
+    policy: config.retries === undefined ? undefined : { retries: config.retries },
+  };
+}
+
+/**
+ * @typedef {{ params?: Record<string, unknown>, headers?: Record<string, string>, signal?: AbortSignal, retries?: number }} ApiOptions
+ */
+
+/**
+ * Atajos que devuelven directamente `data`. Rechazan con un `AppError` tipado
+ * (`ValidationError` trae `fieldErrors`).
  *
  * ```js
  * const estudiantes = await AU.api.get('/estudiantes', { params: { grado: '4S' } });
@@ -116,35 +119,44 @@ export function normalizeError(error) {
 export const api = Object.freeze({
   /**
    * @param {string} url Ruta.
-   * @param {import('axios').AxiosRequestConfig} [config] Configuración (params, headers…).
+   * @param {ApiOptions} [config] Opciones.
    * @returns {Promise<any>} Datos.
    */
-  get: async (url, config) => (await http.get(url, config)).data,
+  get: async (url, config) => (await client.request(spec('GET', url, undefined, config))).data,
   /**
    * @param {string} url Ruta.
    * @param {unknown} [data] Cuerpo.
-   * @param {import('axios').AxiosRequestConfig} [config] Configuración.
+   * @param {ApiOptions} [config] Opciones.
    * @returns {Promise<any>} Datos.
    */
-  post: async (url, data, config) => (await http.post(url, data, config)).data,
+  post: async (url, data, config) => (await client.request(spec('POST', url, data, config))).data,
   /**
    * @param {string} url Ruta.
    * @param {unknown} [data] Cuerpo.
-   * @param {import('axios').AxiosRequestConfig} [config] Configuración.
+   * @param {ApiOptions} [config] Opciones.
    * @returns {Promise<any>} Datos.
    */
-  put: async (url, data, config) => (await http.put(url, data, config)).data,
+  put: async (url, data, config) => (await client.request(spec('PUT', url, data, config))).data,
   /**
    * @param {string} url Ruta.
    * @param {unknown} [data] Cuerpo.
-   * @param {import('axios').AxiosRequestConfig} [config] Configuración.
+   * @param {ApiOptions} [config] Opciones.
    * @returns {Promise<any>} Datos.
    */
-  patch: async (url, data, config) => (await http.patch(url, data, config)).data,
+  patch: async (url, data, config) => (await client.request(spec('PATCH', url, data, config))).data,
   /**
    * @param {string} url Ruta.
-   * @param {import('axios').AxiosRequestConfig} [config] Configuración.
+   * @param {ApiOptions} [config] Opciones.
    * @returns {Promise<any>} Datos.
    */
-  delete: async (url, config) => (await http.delete(url, config)).data,
+  delete: async (url, config) => (await client.request(spec('DELETE', url, undefined, config))).data,
 });
+
+/**
+ * Solicitud completa con `endpointKey`, `pathParams`, `signal`, etc.
+ * @param {RequestSpec} requestSpec Solicitud.
+ * @returns {Promise<import('../services/http-client.js').Result>} `{ data, meta }`.
+ */
+export function request(requestSpec) {
+  return client.request(requestSpec);
+}

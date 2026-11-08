@@ -2,10 +2,11 @@
  * Punto de entrada único de Aula RD (decisión 003 · constitución 1.3).
  *
  * 1. Importa los estilos (que Vite compila a `dist/css/app.css`).
- * 2. Lee la configuración y el contexto entregados por el backend.
+ * 2. Lee la configuración y cablea el núcleo (`kernel.js`: errores, sesión, institución, acceso).
  * 3. Registra los componentes declarativos `data-au-*`.
  * 4. Publica la fachada congelada `window.AU` y Bootstrap en `window.bootstrap`.
- * 5. Inicializa la página cuando el DOM está listo.
+ * 5. Con el DOM listo: lee `#au-context`, inicializa componentes, resuelve sesión e
+ *    institución con los puertos conectados y emite `au:app:ready`.
  * @module app
  */
 
@@ -29,8 +30,11 @@ import { configureHttp } from './core/http.js';
 import { initTheme } from './core/theme.js';
 import { register, initAll } from './core/registry.js';
 import { readContextFromPage, applyContext } from './core/context.js';
+import { bus, EVENTS } from './core/events.js';
+import { wireKernel, bootKernel, session, errorHandler } from './kernel.js';
+import { tabsComponent } from './components/tabs.js';
 import { ready } from './helpers/dom.js';
-import { confirmComponent } from './components/dialogs.js';
+import { confirmComponent, toast } from './components/dialogs.js';
 import { appShellComponent } from './components/sidebar.js';
 import { formComponent } from './components/forms.js';
 import { maskComponent } from './components/masks.js';
@@ -47,7 +51,9 @@ import { widgetComponents } from './components/widgets.js';
 import { createFacade } from './facade.js';
 
 const config = loadConfig();
-configureHttp({ baseURL: config.apiBaseUrl, timeout: config.apiTimeoutMs });
+configureHttp({ baseURL: config.apiBaseUrl, timeout: config.apiTimeoutMs, retries: config.apiRetries });
+wireKernel({ config, notify: (msg, type) => toast(msg, type) });
+errorHandler.install();
 
 [
   appShellComponent,
@@ -61,6 +67,7 @@ configureHttp({ baseURL: config.apiBaseUrl, timeout: config.apiTimeoutMs });
   formatComponent,
   tooltipComponent,
   actionComponent,
+  tabsComponent,
   ...widgetComponents,
 ].forEach(register);
 
@@ -70,9 +77,11 @@ Object.defineProperty(window, 'AU', { value: AU, writable: false, configurable: 
 window.bootstrap = bootstrap;
 
 initTheme();
-ready(() => {
+ready(async () => {
   readContextFromPage();
   initAll(document);
+  await bootKernel();
   applyContext(document);
   document.documentElement.classList.add('au-ready');
+  bus.emit(EVENTS.APP_READY, { session: session.status() });
 });

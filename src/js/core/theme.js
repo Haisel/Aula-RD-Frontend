@@ -50,7 +50,7 @@ export function getTheme() {
 }
 
 /**
- * Aplica y guarda una preferencia de tema. Emite `au:theme-change`.
+ * Aplica y guarda una preferencia de tema. Emite `au:theme:changed`.
  * @param {ThemePreference} pref Preferencia a aplicar.
  * @returns {ThemeName} Tema efectivo aplicado.
  */
@@ -59,7 +59,7 @@ export function setTheme(pref) {
   document.documentElement.setAttribute('data-bs-theme', theme);
   setItem(STORAGE_KEY, pref);
   syncToggles(theme);
-  emit(EVENTS.THEME_CHANGE, { theme, preference: pref });
+  emit(EVENTS.THEME_CHANGED, { theme, preference: pref });
   return theme;
 }
 
