@@ -23,16 +23,7 @@ const MENUS = [
 ];
 
 /** Ítems de menú que aún apuntan a una página que no existe (portal | etiqueta | destino). */
-const PENDIENTES_MENU = [
-  'dashboard-superadmin.html | Planes | #planes',
-  'dashboard-superadmin.html | Configuración | #configuracion',
-  'dashboard-institucion.html | Configuración | #configuracion',
-  'dashboard-docente.html | Asistencia | #asistencia',
-  'dashboard-docente.html | Calificaciones | #calificaciones',
-  'dashboard-docente.html | Planificación | #planificacion',
-  'dashboard-docente.html | Mensajes | #mensajes',
-  'dashboard-tutor.html | Horario | #horario',
-];
+const PENDIENTES_MENU = [];
 
 /** Archivos con `href="#"` vacío y cuántos tienen (páginas y parciales). */
 const PENDIENTES_VACIOS = {

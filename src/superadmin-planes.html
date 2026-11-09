@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=module.title subtitle=module.subtitle}}
+    {{#if module.primary}}<button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre el formulario de alta."><i class="bi bi-plus-lg" aria-hidden="true"></i>{{module.primary}}</button>{{/if}}
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  {{> archetypes/plans}}
+{{/layouts/app}}
+</body>
+</html>

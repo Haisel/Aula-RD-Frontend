@@ -1,0 +1,19 @@
+{{!-- Arquetipo "Planes" (spec 013): tarjetas de precios. Contexto: module.rows = [{ nombre, precio, estudiantes, instituciones, destacado, descripcion, incluye[] }]. --}}
+<section class="au-plans" aria-labelledby="mod-planes">
+  <h2 class="visually-hidden" id="mod-planes">Planes disponibles</h2>
+  <div class="au-grid-auto pt-2">
+    {{#each module.rows}}
+    <article class="au-pricing{{#if destacado}} is-featured{{/if}}">
+      {{#if destacado}}<span class="au-pricing-flag">MÁS ELEGIDO</span>{{/if}}
+      <div><span class="au-plan{{#if (eq nombre "Profesional")}} au-plan-pro{{/if}}{{#if (eq nombre "Premium")}} au-plan-premium{{/if}}">{{nombre}}</span><p class="au-pricing-desc">{{descripcion}}</p></div>
+      <div class="au-pricing-price"><span>{{money precio}}</span><small> /mes</small></div>
+      <ul>
+        <li><i class="bi bi-check2" aria-hidden="true"></i>Hasta {{num estudiantes}} estudiantes</li>
+        {{#each incluye}}<li><i class="bi bi-check2" aria-hidden="true"></i>{{this}}</li>{{/each}}
+      </ul>
+      <p class="small text-body-secondary mb-0">{{instituciones}} instituciones usan este plan</p>
+      <button class="btn {{#if destacado}}btn-primary{{else}}btn-outline-primary{{/if}} btn-lg" type="button" aria-label="Editar el plan {{nombre}}" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se edita el plan {{nombre}}.">Editar plan</button>
+    </article>
+    {{/each}}
+  </div>
+</section>

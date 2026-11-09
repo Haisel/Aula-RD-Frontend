@@ -1,0 +1,45 @@
+[
+  {
+    "id": "basico",
+    "nombre": "Básico",
+    "precio": 2500,
+    "estudiantes": 300,
+    "destacado": false,
+    "descripcion": "Para centros que inician su gestión digital.",
+    "incluye": [
+      "Módulo académico",
+      "Asistencia",
+      "Soporte por correo"
+    ],
+    "instituciones": 12
+  },
+  {
+    "id": "profesional",
+    "nombre": "Profesional",
+    "precio": 6900,
+    "estudiantes": 1000,
+    "destacado": true,
+    "descripcion": "Académico y administrativo en un solo lugar.",
+    "incluye": [
+      "Todo lo del plan Básico",
+      "Cobros y estados de cuenta",
+      "Comunicados a tutores",
+      "Soporte prioritario"
+    ],
+    "instituciones": 8
+  },
+  {
+    "id": "premium",
+    "nombre": "Premium",
+    "precio": 15000,
+    "estudiantes": 5000,
+    "destacado": false,
+    "descripcion": "Para redes de centros y alto volumen.",
+    "incluye": [
+      "Todos los módulos",
+      "Varias sedes en una cuenta",
+      "Acompañamiento dedicado"
+    ],
+    "instituciones": 4
+  }
+]

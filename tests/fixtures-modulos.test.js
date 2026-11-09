@@ -101,6 +101,42 @@ describe('datos de los módulos (spec 013 · T-05)', () => {
     });
   }
 
+  describe('planes.json', () => {
+    const rows = () => load('planes.json');
+
+    it('tiene los tres planes con sus campos', () => {
+      expect(rows().map((r) => r.nombre)).toEqual(['Básico', 'Profesional', 'Premium']);
+      for (const r of rows()) {
+        expect(Object.keys(r).sort()).toEqual(['descripcion', 'destacado', 'estudiantes', 'id', 'incluye', 'instituciones', 'nombre', 'precio']);
+        expect(r.incluye.length).toBeGreaterThanOrEqual(3);
+        expect(r.precio).toBeGreaterThan(0);
+      }
+    });
+
+    it('un solo plan está destacado y las instituciones por plan suman las 24 de instituciones.json', () => {
+      expect(rows().filter((r) => r.destacado)).toHaveLength(1);
+      expect(rows().reduce((s, r) => s + r.instituciones, 0)).toBe(load('instituciones.json').length);
+      for (const r of rows()) {
+        expect(r.instituciones).toBe(load('instituciones.json').filter((i) => i.plan === r.nombre).length);
+      }
+    });
+  });
+
+  describe('mensajes.json', () => {
+    it('tiene 8 mensajes con id único, fecha ISO, estado de lectura y texto', () => {
+      const rows = load('mensajes.json');
+      expect(rows).toHaveLength(8);
+      expect(new Set(rows.map((r) => r.id)).size).toBe(8);
+      for (const r of rows) {
+        expect(Object.keys(r).sort()).toEqual(['asunto', 'cuerpo', 'de', 'fecha', 'id', 'leido']);
+        expect(r.fecha).toMatch(ISO);
+        expect(typeof r.leido).toBe('boolean');
+        expect(r.cuerpo.length).toBeGreaterThan(20);
+      }
+      expect(rows.some((r) => !r.leido)).toBe(true);
+    });
+  });
+
   it('contabilidad: cada asiento tiene debe o haber, no los dos', () => {
     for (const r of load('asientos.json')) {
       expect(r.debe > 0 !== r.haber > 0, r.id).toBe(true);
@@ -119,7 +155,7 @@ describe('datos de los módulos (spec 013 · T-05)', () => {
   });
 
   it('ningún dato trae enlaces ni correos reales', () => {
-    for (const file of Object.keys(ESPEC)) {
+    for (const file of [...Object.keys(ESPEC), 'planes.json', 'mensajes.json']) {
       expect(readFileSync(resolve(DATA, file), 'utf8'), file).not.toMatch(/https?:\/\/|@/);
     }
   });

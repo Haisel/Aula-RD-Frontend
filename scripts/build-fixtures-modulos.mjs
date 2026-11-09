@@ -231,4 +231,60 @@ write('autorizaciones.json', [
   { id: 'AU-06', actividad: 'Salida a la playa de fin de año', fecha: '2026-12-14', vence: '2026-12-05', estado: 'Pendiente' },
 ]);
 
-process.stdout.write('✔ 9 archivos de datos de módulos en public/data/\n');
+const PLANES = [
+  {
+    id: 'basico',
+    nombre: 'Básico',
+    precio: 2500,
+    estudiantes: 300,
+    destacado: false,
+    descripcion: 'Para centros que inician su gestión digital.',
+    incluye: ['Módulo académico', 'Asistencia', 'Soporte por correo'],
+  },
+  {
+    id: 'profesional',
+    nombre: 'Profesional',
+    precio: 6900,
+    estudiantes: 1000,
+    destacado: true,
+    descripcion: 'Académico y administrativo en un solo lugar.',
+    incluye: ['Todo lo del plan Básico', 'Cobros y estados de cuenta', 'Comunicados a tutores', 'Soporte prioritario'],
+  },
+  {
+    id: 'premium',
+    nombre: 'Premium',
+    precio: 15000,
+    estudiantes: 5000,
+    destacado: false,
+    descripcion: 'Para redes de centros y alto volumen.',
+    incluye: ['Todos los módulos', 'Varias sedes en una cuenta', 'Acompañamiento dedicado'],
+  },
+];
+write(
+  'planes.json',
+  PLANES.map((p) => ({ ...p, instituciones: instituciones.filter((i) => i.plan === p.nombre).length })),
+);
+
+const tutores = [...new Set(estudiantes.map((e) => e.tutor))];
+write(
+  'mensajes.json',
+  [
+    ['Consulta sobre la evaluación del martes', 'Quisiera saber qué temas incluye la evaluación del martes y si puede usar calculadora.'],
+    ['Justificación de ausencia', 'Le escribo para avisar que mi hijo estuvo ausente el viernes por una cita médica. Adjunto el certificado.'],
+    ['Solicitud de reunión', '¿Podríamos reunirnos esta semana para hablar del desempeño en Matemática? Tengo disponibilidad por la tarde.'],
+    ['Cambio de transporte', 'A partir del lunes mi hija no usará el transporte escolar. Por favor, actualicen la lista de la ruta.'],
+    ['Gracias por el apoyo', 'Quería agradecerle el acompañamiento durante el primer corte. Se nota la mejoría de la clase.'],
+    ['Tarea pendiente', 'No pudimos abrir el archivo de la tarea de ciencias. ¿Podría enviarlo de nuevo en otro formato?'],
+    ['Permiso para salir temprano', 'El jueves necesito retirar a mi hijo a las 11:00 a. m. por una gestión familiar. Gracias de antemano.'],
+    ['Duda sobre las calificaciones', 'En el boletín aparece un promedio que no coincide con lo que mi hijo recuerda. ¿Podría revisarlo?'],
+  ].map(([asunto, cuerpo], i) => ({
+    id: `MS-${String(5001 + i)}`,
+    de: tutores[(i * 7) % tutores.length],
+    asunto,
+    fecha: iso(11, 8 - i),
+    leido: i >= 3,
+    cuerpo,
+  })),
+);
+
+process.stdout.write('✔ 11 archivos de datos de módulos en public/data/\n');

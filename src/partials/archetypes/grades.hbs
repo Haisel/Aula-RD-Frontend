@@ -1,0 +1,29 @@
+{{!-- Arquetipo "Calificaciones" (spec 013): cuadrícula de notas por estudiante y evaluación. Contexto: module.rows = [{ nombre, grado }].
+      La plantilla no calcula promedios ni guarda: eso lo hace el backend. --}}
+<section class="card au-grades" aria-labelledby="mod-notas">
+  <div class="card-body">
+    <div class="row g-3 mb-3 align-items-end">
+      <div class="col-md-4"><label class="form-label" for="gr-seccion">Sección</label>
+        <select class="form-select" id="gr-seccion"><option>4.º Primaria · B</option><option>5.º Primaria · A</option></select></div>
+      <div class="col-md-4"><label class="form-label" for="gr-corte">Corte</label>
+        <select class="form-select" id="gr-corte"><option>Primer corte</option><option>Segundo corte</option></select></div>
+    </div>
+    <h2 class="visually-hidden" id="mod-notas">Notas del corte</h2>
+    <p class="small text-body-secondary">Escriba notas de 0 a 100. La plantilla no calcula promedios ni guarda las notas: conecte su API.</p>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <caption class="visually-hidden">Notas de {{module.rows.length}} estudiantes</caption>
+        <thead><tr><th scope="col">Estudiante</th><th scope="col">Quiz</th><th scope="col">Tarea</th><th scope="col">Examen</th></tr></thead>
+        <tbody>
+          {{#each module.rows}}
+          <tr><td class="au-cell-entity">{{nombre}}<span class="au-cell-meta">{{grado}}</span></td>
+            <td><input class="form-control form-control-sm au-grade-input text-end" type="number" min="0" max="100" inputmode="numeric" name="g{{inc @index}}-quiz" aria-label="{{nombre}}, Quiz" placeholder="0–100"></td>
+            <td><input class="form-control form-control-sm au-grade-input text-end" type="number" min="0" max="100" inputmode="numeric" name="g{{inc @index}}-tarea" aria-label="{{nombre}}, Tarea" placeholder="0–100"></td>
+            <td><input class="form-control form-control-sm au-grade-input text-end" type="number" min="0" max="100" inputmode="numeric" name="g{{inc @index}}-examen" aria-label="{{nombre}}, Examen" placeholder="0–100"></td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-end mt-3"><button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: las notas no se guardan.">Guardar calificaciones</button></div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+{{!-- Arquetipo "Asistencia" (spec 013): una fila por estudiante con tres opciones. Valida con el esquema "asistencia" (campos e1…eN).
+      Contexto: module.rows = [{ nombre, grado }]. --}}
+<form class="card au-attendance" data-au-validate="asistencia" data-au-submit="event" data-au-success="Asistencia validada (demostración): nada se guarda." action="#" method="post" novalidate>
+  <div class="card-body">
+    <div class="row g-3 mb-3">
+      <div class="col-md-4"><label class="form-label" for="as-seccion">Sección</label>
+        <select class="form-select" id="as-seccion"><option>4.º Primaria · B</option><option>5.º Primaria · A</option><option>1.º Secundaria · A</option></select></div>
+      <div class="col-md-4"><label class="form-label" for="as-fecha">Fecha</label><input class="form-control" id="as-fecha" type="text" data-au-datepicker placeholder="DD/MM/AAAA" value="09/11/2026" autocomplete="off"></div>
+    </div>
+    <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <caption class="visually-hidden">Asistencia de {{module.rows.length}} estudiantes</caption>
+        <thead><tr><th scope="col">Estudiante</th><th scope="col" class="text-center">Presente</th><th scope="col" class="text-center">Tardanza</th><th scope="col" class="text-center">Ausente</th></tr></thead>
+        <tbody>
+          {{#each module.rows}}
+          <tr><td class="au-cell-entity">{{nombre}}<span class="au-cell-meta">{{grado}}</span></td>
+            <td class="text-center"><input class="form-check-input" type="radio" name="e{{inc @index}}" value="presente" aria-label="{{nombre}} presente" checked></td>
+            <td class="text-center"><input class="form-check-input" type="radio" name="e{{inc @index}}" value="tardanza" aria-label="{{nombre}} tardanza"></td>
+            <td class="text-center"><input class="form-check-input" type="radio" name="e{{inc @index}}" value="ausente" aria-label="{{nombre}} ausente"></td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3">
+      <span class="small text-body-secondary">{{module.rows.length}} estudiantes de la sección (ejemplo)</span>
+      <button class="btn btn-primary" type="submit">Guardar asistencia</button>
+    </div>
+  </div>
+</form>

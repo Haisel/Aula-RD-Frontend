@@ -10,7 +10,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cell } from './cells.js';
+import { cell, formatMoney, formatIsoDate } from './cells.js';
 
 /** Carpeta de los datos de demostración (`public/data/`). */
 const DATA_DIR = fileURLToPath(new URL('../../public/data/', import.meta.url));
@@ -39,7 +39,7 @@ const NAV = {
   'super-admin': [
     { label: 'Resumen', icon: 'grid-1x2', href: 'dashboard-superadmin.html' },
     { label: 'Instituciones', icon: 'building', href: 'superadmin-instituciones.html' },
-    { label: 'Planes', icon: 'layers', href: '#planes' },
+    { label: 'Planes', icon: 'layers', href: 'superadmin-planes.html' },
     { label: 'Suscripciones', icon: 'credit-card', href: 'superadmin-suscripciones.html', badge: 7 },
     { label: 'Cobros', icon: 'cash-coin', href: 'superadmin-cobros.html' },
     { label: 'Soporte', icon: 'life-preserver', href: 'superadmin-soporte.html', badge: 12 },
@@ -48,7 +48,7 @@ const NAV = {
     { label: 'Usuarios internos', icon: 'people', href: 'superadmin-usuarios.html', section: 'Sistema' },
     { label: 'Componentes', icon: 'palette', href: 'componentes.html' },
     { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html' },
-    { label: 'Configuración', icon: 'gear', href: '#configuracion' },
+    { label: 'Configuración', icon: 'gear', href: 'superadmin-configuracion.html' },
   ],
   'institution-admin': [
     { label: 'Inicio', icon: 'house-door', href: 'dashboard-institucion.html' },
@@ -66,17 +66,17 @@ const NAV = {
     },
     { label: 'Comunicados', icon: 'megaphone', href: 'institucion-comunicados.html' },
     { label: 'Reportes', icon: 'bar-chart-line', href: 'institucion-reportes.html' },
-    { label: 'Configuración', icon: 'gear', href: '#configuracion' },
+    { label: 'Configuración', icon: 'gear', href: 'institucion-configuracion.html' },
     { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html', section: 'Ejemplos' },
   ],
   teacher: [
     { label: 'Inicio', icon: 'house-door', href: 'dashboard-docente.html' },
     { label: 'Mis secciones', icon: 'collection', href: 'docente-secciones.html' },
-    { label: 'Asistencia', icon: 'calendar-check', href: '#asistencia' },
-    { label: 'Calificaciones', icon: 'journal-text', href: '#calificaciones', badge: 2 },
-    { label: 'Planificación', icon: 'calendar3', href: '#planificacion' },
+    { label: 'Asistencia', icon: 'calendar-check', href: 'docente-asistencia.html' },
+    { label: 'Calificaciones', icon: 'journal-text', href: 'docente-calificaciones.html', badge: 2 },
+    { label: 'Planificación', icon: 'calendar3', href: 'docente-planificacion.html' },
     { label: 'Comunicados', icon: 'megaphone', href: 'docente-comunicados.html', section: 'Comunicación' },
-    { label: 'Mensajes', icon: 'chat-left-text', href: '#mensajes' },
+    { label: 'Mensajes', icon: 'chat-left-text', href: 'docente-mensajes.html' },
     { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html', section: 'Ejemplos' },
   ],
   'student-guardian': [
@@ -84,7 +84,7 @@ const NAV = {
     { label: 'Calificaciones', icon: 'journal-text', href: 'familia-calificaciones.html' },
     { label: 'Asistencia', icon: 'calendar-check', href: 'familia-asistencia.html' },
     { label: 'Estado de cuenta', icon: 'receipt', href: 'familia-estado-de-cuenta.html', badge: 1 },
-    { label: 'Horario', icon: 'clock', href: '#horario' },
+    { label: 'Horario', icon: 'clock', href: 'familia-horario.html' },
     { label: 'Comunicados', icon: 'megaphone', href: 'familia-comunicados.html', section: 'Comunicación' },
     { label: 'Autorizaciones', icon: 'pen', href: 'familia-autorizaciones.html' },
     { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html', section: 'Ejemplos' },
@@ -304,11 +304,14 @@ const PAGES = {
 /**
  * @typedef {object} ModuleConfig
  * @property {string} portal Portal al que pertenece (clave de `NAV`).
- * @property {'table'} archetype Arquetipo de la página.
+ * @property {'table' | 'plans' | 'settings' | 'attendance' | 'grades' | 'inbox' | 'calendar'} archetype Arquetipo de la página.
  * @property {string} title Título.
  * @property {string} subtitle Descripción corta.
- * @property {string} source Archivo de datos en `public/data/`.
- * @property {import('./cells.js').Column[]} columns Columnas de la tabla (la primera da nombre a la fila).
+ * @property {string} [source] Archivo de datos en `public/data/` (el calendario y la configuración no lo usan).
+ * @property {import('./cells.js').Column[]} [columns] Columnas de la tabla (la primera da nombre a la fila). Solo en el arquetipo de tabla.
+ * @property {number} [limit] Máximo de filas que se toman del archivo (cuadrículas de registro).
+ * @property {string} [view] Vista inicial del calendario (`dayGridMonth`, `listMonth`…).
+ * @property {{ sections: { id: string, title: string, description: string, fields: Record<string, any>[] }[] }} [settings] Secciones y campos del arquetipo de configuración.
  * @property {string} [primary] Texto del botón principal de alta.
  * @property {boolean} [readOnly] Solo lectura: las filas solo ofrecen "Ver" (familia, reportes).
  */
@@ -642,6 +645,140 @@ Object.assign(MODULES, {
   },
 });
 
+// Tanda 3 (spec 013, Fase 1): módulos con arquetipo propio.
+Object.assign(MODULES, {
+  'superadmin-planes.html': {
+    portal: 'super-admin',
+    archetype: 'plans',
+    title: 'Planes',
+    subtitle: 'Planes de suscripción, su precio mensual y cuántas instituciones usan cada uno.',
+    source: 'planes.json',
+    primary: 'Nuevo plan',
+  },
+  'superadmin-configuracion.html': {
+    portal: 'super-admin',
+    archetype: 'settings',
+    title: 'Configuración',
+    subtitle: 'Ajustes generales de la plataforma, la facturación y la seguridad.',
+    settings: {
+      sections: [
+        {
+          id: 'general',
+          title: 'General',
+          description: 'Datos que ven todas las instituciones.',
+          fields: [
+            { id: 'nombre', label: 'Nombre de la plataforma', type: 'text', value: 'Aula RD' },
+            { id: 'soporte', label: 'Correo de soporte', type: 'email', value: 'soporte@aulard.example' },
+            { id: 'zona', label: 'Zona horaria', type: 'select', value: 'América/Santo Domingo (UTC−4)', options: ['América/Santo Domingo (UTC−4)', 'UTC'] },
+            { id: 'idioma', label: 'Idioma', type: 'select', value: 'Español (República Dominicana)', options: ['Español (República Dominicana)'] },
+          ],
+        },
+        {
+          id: 'facturacion',
+          title: 'Facturación',
+          description: 'Reglas de cobro de las suscripciones.',
+          fields: [
+            { id: 'moneda', label: 'Moneda', type: 'text', value: 'RD$ (peso dominicano)', readonly: true },
+            { id: 'itbis', label: 'ITBIS (%)', type: 'number', value: '18' },
+            { id: 'gracia', label: 'Días de gracia tras el vencimiento', type: 'number', value: '5', help: 'Pasado ese plazo, la cuenta pasa a "Suspendida".' },
+            { id: 'recordatorios', label: 'Enviar recordatorios de pago', type: 'switch', checked: true },
+          ],
+        },
+        {
+          id: 'seguridad',
+          title: 'Seguridad',
+          description: 'Controles de acceso de las personas que administran la plataforma.',
+          fields: [
+            { id: 'dos-pasos', label: 'Exigir verificación en dos pasos', type: 'switch', checked: true, help: 'Aplica a los usuarios internos.' },
+            { id: 'expira', label: 'La sesión expira tras', type: 'select', value: '30 minutos', options: ['15 minutos', '30 minutos', '1 hora', '8 horas'] },
+            { id: 'bloqueo', label: 'Bloquear tras intentos fallidos', type: 'number', value: '5' },
+          ],
+        },
+      ],
+    },
+  },
+  'institucion-configuracion.html': {
+    portal: 'institution-admin',
+    archetype: 'settings',
+    title: 'Configuración',
+    subtitle: 'Datos de la institución, el año escolar y los avisos que se envían.',
+    settings: {
+      sections: [
+        {
+          id: 'institucion',
+          title: 'Institución',
+          description: 'Datos que aparecen en facturas, boletines y comunicados.',
+          fields: [
+            { id: 'nombre', label: 'Nombre de la institución', type: 'text', value: 'Colegio San Rafael' },
+            { id: 'rnc', label: 'RNC', type: 'text', value: '1-30-00000-1' },
+            { id: 'telefono', label: 'Teléfono', type: 'tel', value: '(809) 555-0100' },
+            { id: 'correo', label: 'Correo de contacto', type: 'email', value: 'contacto@sanrafael.edu.do' },
+          ],
+        },
+        {
+          id: 'anio',
+          title: 'Año escolar',
+          description: 'Período vigente y cuota por defecto.',
+          fields: [
+            { id: 'periodo', label: 'Período', type: 'select', value: '2026-2027', options: ['2025-2026', '2026-2027'] },
+            { id: 'inicio', label: 'Inicio de clases', type: 'text', value: '18/08/2026' },
+            { id: 'cuota', label: 'Cuota mensual por defecto (RD$)', type: 'text', value: '7,500.00' },
+            { id: 'cortes', label: 'Cortes de notas por año', type: 'number', value: '4' },
+          ],
+        },
+        {
+          id: 'avisos',
+          title: 'Notificaciones',
+          description: 'Qué avisos reciben las familias y el personal.',
+          fields: [
+            { id: 'aviso-notas', label: 'Avisar a las familias cuando se publiquen calificaciones', type: 'switch', checked: true },
+            { id: 'aviso-pago', label: 'Recordar los pagos pendientes', type: 'switch', checked: true },
+            { id: 'aviso-ausencia', label: 'Avisar de las ausencias del día', type: 'switch', checked: false },
+          ],
+        },
+      ],
+    },
+  },
+  'docente-asistencia.html': {
+    portal: 'teacher',
+    archetype: 'attendance',
+    title: 'Asistencia',
+    subtitle: 'Marque la asistencia de hoy: presente, tardanza o ausente.',
+    source: 'estudiantes.json',
+    limit: 12,
+  },
+  'docente-calificaciones.html': {
+    portal: 'teacher',
+    archetype: 'grades',
+    title: 'Calificaciones',
+    subtitle: 'Registre las notas del corte por estudiante y evaluación.',
+    source: 'estudiantes.json',
+    limit: 12,
+  },
+  'docente-mensajes.html': {
+    portal: 'teacher',
+    archetype: 'inbox',
+    title: 'Mensajes',
+    subtitle: 'Mensajes de las familias de sus secciones.',
+    source: 'mensajes.json',
+  },
+  'docente-planificacion.html': {
+    portal: 'teacher',
+    archetype: 'calendar',
+    title: 'Planificación',
+    subtitle: 'Evaluaciones, entregas y reuniones del mes.',
+    view: 'dayGridMonth',
+    primary: 'Nuevo evento',
+  },
+  'familia-horario.html': {
+    portal: 'student-guardian',
+    archetype: 'calendar',
+    title: 'Horario',
+    subtitle: 'Próximas actividades y evaluaciones del estudiante.',
+    view: 'listMonth',
+  },
+});
+
 /** Dashboard de cada portal: de él toman el usuario y la institución de ejemplo. */
 const DASHBOARD_OF = {
   'super-admin': 'dashboard-superadmin.html',
@@ -781,15 +918,18 @@ function loadProfiles() {
 /**
  * Resuelve un módulo para las plantillas: lee sus datos y calcula lo que la tabla necesita.
  * @param {ModuleConfig | undefined} cfg Configuración del módulo.
- * @returns {(ModuleConfig & { rows: Record<string, unknown>[], labelKey: string, actionsIndex: number }) | undefined} Módulo listo.
+ * @returns {(ModuleConfig & { rows: Record<string, unknown>[], labelKey: string, actionsIndex: number, unread: number }) | undefined} Módulo listo.
  */
 function resolveModule(cfg) {
   if (!cfg) return undefined;
+  const all = cfg.source ? loadData(cfg.source) : [];
+  const rows = cfg.limit ? all.slice(0, cfg.limit) : all;
   return {
     ...cfg,
-    rows: loadData(cfg.source),
-    labelKey: cfg.columns[0].key,
-    actionsIndex: cfg.columns.length,
+    rows,
+    labelKey: cfg.columns?.[0]?.key ?? '',
+    actionsIndex: cfg.columns?.length ?? 0,
+    unread: rows.filter((r) => r.leido === false).length,
   };
 }
 
@@ -858,6 +998,30 @@ export const helpers = {
    * @returns {string} HTML ya escapado.
    */
   cell: (column, row) => cell(column, row),
+  /**
+   * Monto en pesos dominicanos: `{{money precio}}` → `RD$ 2,500.00`.
+   * @param {number} amount Monto.
+   * @returns {string} Texto formateado.
+   */
+  money: (amount) => formatMoney(amount),
+  /**
+   * Fecha ISO a `DD/MM/AAAA`: `{{date fecha}}`.
+   * @param {string} iso Fecha `AAAA-MM-DD`.
+   * @returns {string} Fecha formateada.
+   */
+  date: (iso) => formatIsoDate(iso),
+  /**
+   * Entero con separador de miles: `{{num estudiantes}}` → `1,000`.
+   * @param {number} n Número.
+   * @returns {string} Texto formateado.
+   */
+  num: (n) => Number(n).toLocaleString('en-US'),
+  /**
+   * Índice base 1 para nombres de campo: `e{{inc @index}}`.
+   * @param {number} n Índice base 0.
+   * @returns {number} Índice base 1.
+   */
+  inc: (n) => n + 1,
   /**
    * Serializa un valor a JSON (para `<script type="application/json">`).
    * @param {unknown} v Valor.

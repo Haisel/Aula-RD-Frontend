@@ -1,0 +1,33 @@
+{{!-- Arquetipo "Bandeja" (spec 013): lista de mensajes y lectura, con pestañas accesibles (data-au-tabs), sin JavaScript propio.
+      Contexto: module.rows = [{ id, de, asunto, fecha, leido, cuerpo }], module.unread. --}}
+<section class="card au-inbox" aria-labelledby="mod-bandeja">
+  <div class="row g-0" data-au-tabs>
+    <div class="col-lg-4 au-inbox-list">
+      <div class="d-flex align-items-center justify-content-between gap-2 p-3 border-bottom">
+        <h2 class="au-card-title mb-0" id="mod-bandeja">Bandeja de entrada</h2>
+        <span class="au-status au-status-info">{{module.unread}} sin leer</span>
+      </div>
+      <ul class="nav flex-column nav-pills p-2">
+        {{#each module.rows}}
+        <li class="nav-item"><button class="nav-link au-inbox-item{{#if @first}} active{{/if}}{{#unless leido}} is-unread{{/unless}}" type="button" data-bs-toggle="tab" data-bs-target="#msg-{{id}}">
+          <span class="au-inbox-from">{{de}}{{#unless leido}}<span class="visually-hidden"> (No leído)</span>{{/unless}}</span>
+          <span class="au-inbox-subject">{{asunto}}</span>
+          <span class="au-inbox-date">{{date fecha}}</span>
+        </button></li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-lg-8 au-inbox-read">
+      <div class="tab-content p-4">
+        {{#each module.rows}}
+        <div class="tab-pane fade{{#if @first}} show active{{/if}}" id="msg-{{id}}">
+          <h3 class="h5 mb-1">{{asunto}}</h3>
+          <p class="small text-body-secondary">De {{de}} · {{date fecha}}</p>
+          <p>{{cuerpo}}</p>
+          <button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre la respuesta."><i class="bi bi-reply" aria-hidden="true"></i>Responder</button>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>
