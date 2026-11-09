@@ -10,7 +10,7 @@ Dejar la plantilla **completa y profesional, al nivel de AdminLTE, AdminKit y Co
 - **Qué ofrecen esas plantillas** (la referencia de estructura): paneles (dashboards) en varias variantes, widgets, elementos de interfaz (botones, alertas, modales, tarjetas, tipografía, íconos, insignias, acordeón, pestañas, paginación, listas, carrusel, línea de tiempo, tooltips), formularios (controles, validación, avanzados, editores), tablas (básicas, DataTables), gráficos, calendario, aplicaciones (bandeja de correo, chat, tablero), páginas (perfil, facturas, precios, preguntas frecuentes, contacto), autenticación (iniciar sesión, registro, olvidé mi contraseña, bloqueo) y páginas de error.
 - **Auditoría del 08/11/2026** (medida sobre el repositorio):
   - 14 páginas fuente.
-  - **30 ítems de menú** de los 4 portales apuntan a `#algo` (páginas que no existen) y hay 6 `href="#"` vacíos en 5 páginas.
+  - **30 ítems de menú** de los 4 portales apuntan a `#algo` (páginas que no existen) y hay **15 `href="#"` vacíos** (7 en 5 páginas y 8 en los parciales de la barra superior y del pie, que se repiten en todas las páginas que los usan).
   - De los 24 componentes declarativos, **`data-au-tabs` no tiene ninguna demostración**; `data-au-confirm`, `data-au-sortable`, `data-au-calendar` y `data-au-datatable` aparecen en un solo archivo.
   - Faltan los flujos de cuenta, perfil, configuración, notificaciones, ayuda, términos y privacidad, y las páginas de error reales (403, 404 y 500 existen solo como tarjetas dentro de una página de ejemplo).
 - Relación con la spec 012: la **013 absorbe las fases 2 a 4 de la 012** y las amplía. La 012 sigue vigente y su Fase 1 ya está publicada.

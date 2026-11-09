@@ -3,7 +3,7 @@
 > Estado: Aprobado (08/11/2026) · Spec: [013-plantilla-profesional.md](013-plantilla-profesional.md)
 
 ## Punto de partida
-Spec aprobada. Meta: una plantilla al nivel de AdminLTE, AdminKit y CoreUI, con una auditoría que fija el punto de partida: 14 páginas, 30 ítems de menú que apuntan a `#algo`, 6 `href="#"` vacíos y `data-au-tabs` sin ninguna demostración. La spec 012 (galería) queda absorbida: su Fase 1 ya está publicada.
+Spec aprobada. Meta: una plantilla al nivel de AdminLTE, AdminKit y CoreUI, con una auditoría que fija el punto de partida: 14 páginas, 30 ítems de menú que apuntan a `#algo`, 15 `href="#"` vacíos (7 en páginas y 8 en parciales) y `data-au-tabs` sin ninguna demostración. La spec 012 (galería) queda absorbida: su Fase 1 ya está publicada.
 
 ## Decisiones de diseño
 1. **Una página por módulo, con un parcial de arquetipo.** Los 30 ítems de menú (9 superadmin, 9 institución, 6 docente, 6 familia) necesitan **30 archivos distintos**, porque cada página pertenece al menú de un solo portal. Se nombran `<portal>-<modulo>.html` (por ejemplo `institucion-estudiantes.html`). Cada archivo es corto: encabezado, aviso de demostración y un parcial de `src/partials/archetypes/`. Los datos específicos de cada módulo (título, columnas, fuente JSON) viven en `PAGES[...]` de `src/data/pages.js`.

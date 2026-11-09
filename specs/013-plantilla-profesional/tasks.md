@@ -5,6 +5,8 @@
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde y, si es una página, con su verificación en navegador. Pruebas primero cuando haya lógica o contrato.
 
 ## Fase 1 — menú, errores, arquetipos y los 30 módulos
+**Estado 08/11/2026: en curso.** T-01 hecha: `tests/links.test.js` (3 pruebas) fija la deuda exacta: **30 ítems de menú** muertos y **15 `href="#"` vacíos** (7 en 5 páginas y 8 en los parciales `topbar` y `footer`). Un enlace muerto nuevo hace fallar la prueba y cada arreglo obliga a quitar su entrada de la lista.
+
 | Id | Tarea | Cubre | Hecho cuando |
 |---|---|---|---|
 | T-01 | Prueba de trinquete `tests/links.test.js` con la lista `PENDIENTES` (hoy 30 ítems de menú y los `href="#"` vacíos) | RF-01, CA-01 | Prueba en verde y lista exacta |
