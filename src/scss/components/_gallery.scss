@@ -146,6 +146,42 @@
   color: var(--au-accent-text);
 }
 
+// Páginas de error y de mantenimiento (spec 013): una columna centrada, con el logo y una salida.
+.au-error-page {
+  display: grid;
+  min-height: 100vh;
+  align-content: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  background: var(--au-bg);
+  text-align: center;
+
+  h1 {
+    @include au-type('h1');
+
+    margin: 0;
+  }
+
+  p {
+    max-width: 32rem;
+    margin: 0;
+    color: var(--au-text-muted);
+  }
+
+  .au-error-code {
+    color: var(--au-accent-text);
+  }
+
+  .au-error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
 // Línea de tiempo vertical.
 .au-timeline {
   margin: 0;

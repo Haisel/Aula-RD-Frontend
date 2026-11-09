@@ -6,6 +6,7 @@ Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de a
 
 **Nuevo**
 - Galería de funcionalidades, Fase 1 (spec 012): `galeria.html` (índice) y las páginas de ejemplo de botones, alertas, modales, tarjetas y estados, con menú "Galería", aviso de demostración y bloques "Cómo se usa" (`{{{{code}}}}`). `tests/gallery-pages.test.js` (35 pruebas). Sin cambios en `app.js`.
+- Páginas de error y de mantenimiento (spec 013): `403.html`, `404.html`, `500.html` y `mantenimiento.html`, con el diseño de la plantilla, logo según el tema y siempre una salida. `tests/error-pages.test.js` (24 pruebas).
 - Menú lateral con grupos plegables (spec 013): un ítem con `children` se dibuja como botón con colapso de Bootstrap (sin JS propio), accesible con teclado, abierto si contiene la página activa, y compatible con el menú contraído a íconos y con el móvil. La galería agrupa sus páginas de interfaz. `tests/sidebar-groups.test.js` (10 pruebas) y `tests/links.test.js` (prueba de trinquete contra enlaces muertos: 30 ítems de menú y 15 `href="#"` vacíos de deuda inicial).
 - Los cuatro dashboards (superadmin, institución, docente y familia) enlazan la galería desde su menú lateral ("Galería", en la sección "Ejemplos"), y la galería enlaza de vuelta a cada dashboard desde su menú y su índice. Probado con clics reales: dashboard docente → Galería → Botones → Portal de familia. `tests/gallery-pages.test.js` pasa a 40 pruebas.
 - `tests/contrast.test.js`: contraste WCAG AA calculado desde `tokens.json` (26 pares en ambos temas + 1 solo en claro); comprueba que turquesa y champagne no se usan como color de texto.
@@ -17,6 +18,7 @@ Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de a
 - Pruebas de contrato de la fachada (CSRF, carga fallida de librerías, diálogos) y de formularios y máscaras: `tests/facade-contract.test.js` y `tests/forms-masks.test.js`.
 
 **Corregido**
+- Foco por teclado de los botones, `.btn-check`, paginación y acordeón: Bootstrap lo reducía a un halo al 25 % (1.4:1 en claro y 1.7:1 en oscuro, por debajo de WCAG 1.4.11). Ahora usan el anillo sólido de la marca (5.07:1 en claro y 9.09:1 en oscuro, medido con la tecla Tab real). `tests/focus-ring.test.js`.
 - Los dashboards no ocupaban todo el ancho: el contenido tenía un tope de 1440 px y quedaba pegado a la izquierda, dejando una banda vacía a la derecha en pantallas anchas (200 px a 1920, más de 800 a 2560). El token `content-max` pasa a `none`; medido a 1440, 1920 y 2560 px en los 4 dashboards y 2 páginas de la galería: sin banda vacía y sin desbordamiento. Para limitarlo de nuevo, ponga un valor en px en `src/tokens/tokens.json` y ejecute `npm run tokens`.
 - Barra del editor Quill: el selector de títulos no tenía nombre accesible y los botones tenían etiquetas en inglés. Ahora los 11 controles tienen nombre en español (`labelToolbar()` en `src/js/adapters/editor.js`; `tests/editor-a11y.test.js`).
 - `showErrors` (formularios) duplicaba el id del mensaje de error en `aria-describedby` en cada reintento de envío.

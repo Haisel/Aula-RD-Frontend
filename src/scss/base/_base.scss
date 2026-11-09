@@ -27,6 +27,17 @@ h6,
   @include au-focus-ring;
 }
 
+// Bootstrap cambia el contorno de foco de estos componentes por un halo al 25 % (1.4:1 en claro y
+// 1.7:1 en oscuro, por debajo de WCAG 1.4.11). Se restablece el anillo sólido de la marca.
+.btn:focus-visible,
+.btn-check:focus-visible + .btn,
+.page-link:focus-visible,
+.accordion-button:focus-visible {
+  @include au-focus-ring;
+
+  box-shadow: none;
+}
+
 ::selection {
   background: var(--au-accent-subtle);
   color: var(--au-text);

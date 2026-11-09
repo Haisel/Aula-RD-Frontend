@@ -185,6 +185,22 @@ const PAGES = {
     active: 'ejemplo-estados.html',
     user: GALLERY_USER,
   },
+  '403.html': {
+    title: 'Acceso denegado',
+    description: 'No tiene permiso para ver esta página. Pida acceso a la persona administradora.',
+  },
+  '404.html': {
+    title: 'Página no encontrada',
+    description: 'La dirección no existe o la página fue movida. Vuelva al inicio de Aula RD.',
+  },
+  '500.html': {
+    title: 'Algo salió mal',
+    description: 'Ocurrió un problema de nuestro lado. Intente de nuevo en unos minutos.',
+  },
+  'mantenimiento.html': {
+    title: 'Estamos en mantenimiento',
+    description: 'Aula RD está en mantenimiento y volverá pronto. Sus datos están seguros.',
+  },
 };
 
 /**
