@@ -1,0 +1,602 @@
+[
+  {
+    "id": "est-001",
+    "nombre": "Fátima Sáez",
+    "grado": "6.º Secundaria",
+    "seccion": "A",
+    "tutor": "Encarnación Sanz",
+    "estado": "Inactivo",
+    "matricula": "2026-0001",
+    "ingreso": "2023-01-24"
+  },
+  {
+    "id": "est-002",
+    "nombre": "Luis García",
+    "grado": "6.º Primaria",
+    "seccion": "B",
+    "tutor": "Esteban Muñoz",
+    "estado": "Activo",
+    "matricula": "2026-0002",
+    "ingreso": "2025-11-23"
+  },
+  {
+    "id": "est-003",
+    "nombre": "Gregorio Domínguez",
+    "grado": "3.º Primaria",
+    "seccion": "B",
+    "tutor": "Dolores Ramírez",
+    "estado": "Activo",
+    "matricula": "2026-0003",
+    "ingreso": "2022-09-11"
+  },
+  {
+    "id": "est-004",
+    "nombre": "Mario Vega",
+    "grado": "5.º Primaria",
+    "seccion": "B",
+    "tutor": "Sara Torres",
+    "estado": "Activo",
+    "matricula": "2026-0004",
+    "ingreso": "2025-12-07"
+  },
+  {
+    "id": "est-005",
+    "nombre": "Irene Benítez",
+    "grado": "6.º Secundaria",
+    "seccion": "B",
+    "tutor": "Mercedes Gil",
+    "estado": "Activo",
+    "matricula": "2026-0005",
+    "ingreso": "2022-07-07"
+  },
+  {
+    "id": "est-006",
+    "nombre": "Jesús Ortega",
+    "grado": "6.º Secundaria",
+    "seccion": "A",
+    "tutor": "Gabriel Flores",
+    "estado": "Activo",
+    "matricula": "2026-0006",
+    "ingreso": "2022-12-03"
+  },
+  {
+    "id": "est-007",
+    "nombre": "Lidia Navarro",
+    "grado": "2.º Primaria",
+    "seccion": "B",
+    "tutor": "Nuria Ferrer",
+    "estado": "Activo",
+    "matricula": "2026-0007",
+    "ingreso": "2023-01-09"
+  },
+  {
+    "id": "est-008",
+    "nombre": "Héctor Santiago",
+    "grado": "2.º Primaria",
+    "seccion": "A",
+    "tutor": "Belén Pérez",
+    "estado": "Activo",
+    "matricula": "2026-0008",
+    "ingreso": "2023-09-26"
+  },
+  {
+    "id": "est-009",
+    "nombre": "Andrés Ortega",
+    "grado": "1.º Primaria",
+    "seccion": "A",
+    "tutor": "Noelia León",
+    "estado": "Activo",
+    "matricula": "2026-0009",
+    "ingreso": "2024-07-08"
+  },
+  {
+    "id": "est-010",
+    "nombre": "Concepción Diaz",
+    "grado": "3.º Primaria",
+    "seccion": "B",
+    "tutor": "Rubén Vargas",
+    "estado": "Activo",
+    "matricula": "2026-0010",
+    "ingreso": "2026-09-03"
+  },
+  {
+    "id": "est-011",
+    "nombre": "Jordi Hernández",
+    "grado": "1.º Secundaria",
+    "seccion": "A",
+    "tutor": "Tomas Benítez",
+    "estado": "Activo",
+    "matricula": "2026-0011",
+    "ingreso": "2022-02-22"
+  },
+  {
+    "id": "est-012",
+    "nombre": "Miriam Guerrero",
+    "grado": "2.º Primaria",
+    "seccion": "A",
+    "tutor": "Alba León",
+    "estado": "Inactivo",
+    "matricula": "2026-0012",
+    "ingreso": "2023-06-02"
+  },
+  {
+    "id": "est-013",
+    "nombre": "Alejandra Ramírez",
+    "grado": "5.º Primaria",
+    "seccion": "C",
+    "tutor": "Emilio Campos",
+    "estado": "Activo",
+    "matricula": "2026-0013",
+    "ingreso": "2023-01-11"
+  },
+  {
+    "id": "est-014",
+    "nombre": "Fernando Ortiz",
+    "grado": "2.º Secundaria",
+    "seccion": "B",
+    "tutor": "Concepción Santana",
+    "estado": "Activo",
+    "matricula": "2026-0014",
+    "ingreso": "2024-07-16"
+  },
+  {
+    "id": "est-015",
+    "nombre": "Sandra Gutiérrez",
+    "grado": "3.º Secundaria",
+    "seccion": "C",
+    "tutor": "Elena Márquez",
+    "estado": "Activo",
+    "matricula": "2026-0015",
+    "ingreso": "2024-01-12"
+  },
+  {
+    "id": "est-016",
+    "nombre": "Carmelo Ramos",
+    "grado": "2.º Primaria",
+    "seccion": "A",
+    "tutor": "Josefina López",
+    "estado": "Activo",
+    "matricula": "2026-0016",
+    "ingreso": "2024-06-06"
+  },
+  {
+    "id": "est-017",
+    "nombre": "Francisca Muñoz",
+    "grado": "3.º Secundaria",
+    "seccion": "C",
+    "tutor": "Josefa Pérez",
+    "estado": "Activo",
+    "matricula": "2026-0017",
+    "ingreso": "2022-10-28"
+  },
+  {
+    "id": "est-018",
+    "nombre": "Claudia Arias",
+    "grado": "3.º Secundaria",
+    "seccion": "C",
+    "tutor": "Julio Cruz",
+    "estado": "Retirado",
+    "matricula": "2026-0018",
+    "ingreso": "2025-11-17"
+  },
+  {
+    "id": "est-019",
+    "nombre": "Mercedes Suarez",
+    "grado": "4.º Secundaria",
+    "seccion": "C",
+    "tutor": "Miriam Hernández",
+    "estado": "Activo",
+    "matricula": "2026-0019",
+    "ingreso": "2022-12-17"
+  },
+  {
+    "id": "est-020",
+    "nombre": "Daniela Cano",
+    "grado": "4.º Primaria",
+    "seccion": "C",
+    "tutor": "Carmelo Guerrero",
+    "estado": "Activo",
+    "matricula": "2026-0020",
+    "ingreso": "2026-07-23"
+  },
+  {
+    "id": "est-021",
+    "nombre": "David Giménez",
+    "grado": "3.º Secundaria",
+    "seccion": "C",
+    "tutor": "Marina Pérez",
+    "estado": "Activo",
+    "matricula": "2026-0021",
+    "ingreso": "2023-08-24"
+  },
+  {
+    "id": "est-022",
+    "nombre": "Lorena Vega",
+    "grado": "1.º Secundaria",
+    "seccion": "B",
+    "tutor": "Esther Gutiérrez",
+    "estado": "Activo",
+    "matricula": "2026-0022",
+    "ingreso": "2023-02-24"
+  },
+  {
+    "id": "est-023",
+    "nombre": "John Delgado",
+    "grado": "4.º Secundaria",
+    "seccion": "A",
+    "tutor": "Arturo Caballero",
+    "estado": "Activo",
+    "matricula": "2026-0023",
+    "ingreso": "2023-09-22"
+  },
+  {
+    "id": "est-024",
+    "nombre": "Iván Ibáñez",
+    "grado": "3.º Primaria",
+    "seccion": "C",
+    "tutor": "Adrián Ramírez",
+    "estado": "Activo",
+    "matricula": "2026-0024",
+    "ingreso": "2026-03-06"
+  },
+  {
+    "id": "est-025",
+    "nombre": "Beatriz Gil",
+    "grado": "6.º Primaria",
+    "seccion": "B",
+    "tutor": "Tomas Gallardo",
+    "estado": "Activo",
+    "matricula": "2026-0025",
+    "ingreso": "2025-05-05"
+  },
+  {
+    "id": "est-026",
+    "nombre": "John Flores",
+    "grado": "3.º Secundaria",
+    "seccion": "C",
+    "tutor": "Agustín Martin",
+    "estado": "Activo",
+    "matricula": "2026-0026",
+    "ingreso": "2026-08-04"
+  },
+  {
+    "id": "est-027",
+    "nombre": "Julián Arias",
+    "grado": "6.º Secundaria",
+    "seccion": "A",
+    "tutor": "Asunción Gutiérrez",
+    "estado": "Activo",
+    "matricula": "2026-0027",
+    "ingreso": "2022-06-18"
+  },
+  {
+    "id": "est-028",
+    "nombre": "Alejandro Gallego",
+    "grado": "1.º Secundaria",
+    "seccion": "C",
+    "tutor": "Josefina Ramos",
+    "estado": "Activo",
+    "matricula": "2026-0028",
+    "ingreso": "2023-06-15"
+  },
+  {
+    "id": "est-029",
+    "nombre": "Vicente Campos",
+    "grado": "3.º Primaria",
+    "seccion": "C",
+    "tutor": "Lorena Cortes",
+    "estado": "Activo",
+    "matricula": "2026-0029",
+    "ingreso": "2025-02-10"
+  },
+  {
+    "id": "est-030",
+    "nombre": "Aurora Castillo",
+    "grado": "2.º Secundaria",
+    "seccion": "A",
+    "tutor": "John Blanco",
+    "estado": "Activo",
+    "matricula": "2026-0030",
+    "ingreso": "2023-02-16"
+  },
+  {
+    "id": "est-031",
+    "nombre": "Nerea Morales",
+    "grado": "2.º Secundaria",
+    "seccion": "C",
+    "tutor": "Encarnación Sanz",
+    "estado": "Activo",
+    "matricula": "2026-0031",
+    "ingreso": "2025-12-07"
+  },
+  {
+    "id": "est-032",
+    "nombre": "Julio López",
+    "grado": "6.º Primaria",
+    "seccion": "B",
+    "tutor": "Esteban Muñoz",
+    "estado": "Activo",
+    "matricula": "2026-0032",
+    "ingreso": "2026-03-25"
+  },
+  {
+    "id": "est-033",
+    "nombre": "Angela Vargas",
+    "grado": "1.º Secundaria",
+    "seccion": "A",
+    "tutor": "Dolores Ramírez",
+    "estado": "Activo",
+    "matricula": "2026-0033",
+    "ingreso": "2026-04-21"
+  },
+  {
+    "id": "est-034",
+    "nombre": "Remedios Ramírez",
+    "grado": "2.º Secundaria",
+    "seccion": "C",
+    "tutor": "Sara Torres",
+    "estado": "Activo",
+    "matricula": "2026-0034",
+    "ingreso": "2025-05-27"
+  },
+  {
+    "id": "est-035",
+    "nombre": "Christian Rubio",
+    "grado": "3.º Secundaria",
+    "seccion": "A",
+    "tutor": "Mercedes Gil",
+    "estado": "Activo",
+    "matricula": "2026-0035",
+    "ingreso": "2024-12-27"
+  },
+  {
+    "id": "est-036",
+    "nombre": "Benito Ortiz",
+    "grado": "6.º Primaria",
+    "seccion": "A",
+    "tutor": "Gabriel Flores",
+    "estado": "Activo",
+    "matricula": "2026-0036",
+    "ingreso": "2024-11-26"
+  },
+  {
+    "id": "est-037",
+    "nombre": "Verónica Mora",
+    "grado": "5.º Secundaria",
+    "seccion": "C",
+    "tutor": "Nuria Ferrer",
+    "estado": "Retirado",
+    "matricula": "2026-0037",
+    "ingreso": "2026-01-24"
+  },
+  {
+    "id": "est-038",
+    "nombre": "Irene Fuentes",
+    "grado": "6.º Primaria",
+    "seccion": "B",
+    "tutor": "Belén Pérez",
+    "estado": "Activo",
+    "matricula": "2026-0038",
+    "ingreso": "2026-01-03"
+  },
+  {
+    "id": "est-039",
+    "nombre": "Nerea Parra",
+    "grado": "5.º Secundaria",
+    "seccion": "C",
+    "tutor": "Noelia León",
+    "estado": "Retirado",
+    "matricula": "2026-0039",
+    "ingreso": "2022-11-03"
+  },
+  {
+    "id": "est-040",
+    "nombre": "Lucas Gallego",
+    "grado": "2.º Primaria",
+    "seccion": "A",
+    "tutor": "Rubén Vargas",
+    "estado": "Activo",
+    "matricula": "2026-0040",
+    "ingreso": "2025-12-14"
+  },
+  {
+    "id": "est-041",
+    "nombre": "Cristina Vega",
+    "grado": "5.º Secundaria",
+    "seccion": "A",
+    "tutor": "Tomas Benítez",
+    "estado": "Activo",
+    "matricula": "2026-0041",
+    "ingreso": "2025-11-26"
+  },
+  {
+    "id": "est-042",
+    "nombre": "Encarnación Vega",
+    "grado": "6.º Secundaria",
+    "seccion": "C",
+    "tutor": "Alba León",
+    "estado": "Activo",
+    "matricula": "2026-0042",
+    "ingreso": "2022-06-02"
+  },
+  {
+    "id": "est-043",
+    "nombre": "Mercedes Guerrero",
+    "grado": "4.º Secundaria",
+    "seccion": "A",
+    "tutor": "Emilio Campos",
+    "estado": "Activo",
+    "matricula": "2026-0043",
+    "ingreso": "2026-03-25"
+  },
+  {
+    "id": "est-044",
+    "nombre": "Ángel Gil",
+    "grado": "3.º Secundaria",
+    "seccion": "B",
+    "tutor": "Concepción Santana",
+    "estado": "Activo",
+    "matricula": "2026-0044",
+    "ingreso": "2024-06-03"
+  },
+  {
+    "id": "est-045",
+    "nombre": "Alberto Gil",
+    "grado": "2.º Primaria",
+    "seccion": "C",
+    "tutor": "Elena Márquez",
+    "estado": "Activo",
+    "matricula": "2026-0045",
+    "ingreso": "2025-02-06"
+  },
+  {
+    "id": "est-046",
+    "nombre": "Arturo Vicente",
+    "grado": "5.º Secundaria",
+    "seccion": "C",
+    "tutor": "Josefina López",
+    "estado": "Activo",
+    "matricula": "2026-0046",
+    "ingreso": "2023-08-17"
+  },
+  {
+    "id": "est-047",
+    "nombre": "Margarita Pastor",
+    "grado": "2.º Primaria",
+    "seccion": "B",
+    "tutor": "Josefa Pérez",
+    "estado": "Activo",
+    "matricula": "2026-0047",
+    "ingreso": "2022-11-06"
+  },
+  {
+    "id": "est-048",
+    "nombre": "Albert Romero",
+    "grado": "1.º Secundaria",
+    "seccion": "A",
+    "tutor": "Julio Cruz",
+    "estado": "Activo",
+    "matricula": "2026-0048",
+    "ingreso": "2023-05-02"
+  },
+  {
+    "id": "est-049",
+    "nombre": "Anna Fuentes",
+    "grado": "2.º Primaria",
+    "seccion": "A",
+    "tutor": "Miriam Hernández",
+    "estado": "Activo",
+    "matricula": "2026-0049",
+    "ingreso": "2023-02-08"
+  },
+  {
+    "id": "est-050",
+    "nombre": "Lourdes Aguilar",
+    "grado": "1.º Primaria",
+    "seccion": "B",
+    "tutor": "Carmelo Guerrero",
+    "estado": "Activo",
+    "matricula": "2026-0050",
+    "ingreso": "2022-10-09"
+  },
+  {
+    "id": "est-051",
+    "nombre": "Cesar Delgado",
+    "grado": "4.º Secundaria",
+    "seccion": "C",
+    "tutor": "Marina Pérez",
+    "estado": "Inactivo",
+    "matricula": "2026-0051",
+    "ingreso": "2022-01-21"
+  },
+  {
+    "id": "est-052",
+    "nombre": "Sebastián Parra",
+    "grado": "6.º Secundaria",
+    "seccion": "C",
+    "tutor": "Esther Gutiérrez",
+    "estado": "Activo",
+    "matricula": "2026-0052",
+    "ingreso": "2022-02-27"
+  },
+  {
+    "id": "est-053",
+    "nombre": "Irene Ramos",
+    "grado": "2.º Secundaria",
+    "seccion": "B",
+    "tutor": "Arturo Caballero",
+    "estado": "Activo",
+    "matricula": "2026-0053",
+    "ingreso": "2026-02-21"
+  },
+  {
+    "id": "est-054",
+    "nombre": "Ángel Garrido",
+    "grado": "2.º Primaria",
+    "seccion": "B",
+    "tutor": "Adrián Ramírez",
+    "estado": "Activo",
+    "matricula": "2026-0054",
+    "ingreso": "2026-10-17"
+  },
+  {
+    "id": "est-055",
+    "nombre": "Antonio Ramos",
+    "grado": "2.º Secundaria",
+    "seccion": "A",
+    "tutor": "Tomas Gallardo",
+    "estado": "Activo",
+    "matricula": "2026-0055",
+    "ingreso": "2025-09-05"
+  },
+  {
+    "id": "est-056",
+    "nombre": "Alfonso Pascual",
+    "grado": "5.º Primaria",
+    "seccion": "C",
+    "tutor": "Agustín Martin",
+    "estado": "Activo",
+    "matricula": "2026-0056",
+    "ingreso": "2022-02-08"
+  },
+  {
+    "id": "est-057",
+    "nombre": "Isabel Gil",
+    "grado": "5.º Secundaria",
+    "seccion": "C",
+    "tutor": "Asunción Gutiérrez",
+    "estado": "Activo",
+    "matricula": "2026-0057",
+    "ingreso": "2022-07-20"
+  },
+  {
+    "id": "est-058",
+    "nombre": "Julia Cano",
+    "grado": "6.º Secundaria",
+    "seccion": "B",
+    "tutor": "Josefina Ramos",
+    "estado": "Activo",
+    "matricula": "2026-0058",
+    "ingreso": "2025-11-17"
+  },
+  {
+    "id": "est-059",
+    "nombre": "Miguel Soto",
+    "grado": "3.º Primaria",
+    "seccion": "C",
+    "tutor": "Lorena Cortes",
+    "estado": "Activo",
+    "matricula": "2026-0059",
+    "ingreso": "2024-09-27"
+  },
+  {
+    "id": "est-060",
+    "nombre": "Daniela Guerrero",
+    "grado": "2.º Secundaria",
+    "seccion": "C",
+    "tutor": "John Blanco",
+    "estado": "Activo",
+    "matricula": "2026-0060",
+    "ingreso": "2026-02-01"
+  }
+]

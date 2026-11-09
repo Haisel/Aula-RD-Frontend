@@ -1,0 +1,98 @@
+[
+  {
+    "id": "sol-01",
+    "titulo": "Matrícula de Fátima Sáez",
+    "responsable": "Luisa Pastor",
+    "columna": "nuevas",
+    "prioridad": "Baja",
+    "fecha": "2026-10-18"
+  },
+  {
+    "id": "sol-02",
+    "titulo": "Matrícula de Luis García",
+    "responsable": "Ismael Campos",
+    "columna": "revision",
+    "prioridad": "Baja",
+    "fecha": "2026-11-19"
+  },
+  {
+    "id": "sol-03",
+    "titulo": "Matrícula de Gregorio Domínguez",
+    "responsable": "Adolfo Pascual",
+    "columna": "aprobadas",
+    "prioridad": "Media",
+    "fecha": "2026-10-17"
+  },
+  {
+    "id": "sol-04",
+    "titulo": "Matrícula de Mario Vega",
+    "responsable": "Ismael Duran",
+    "columna": "nuevas",
+    "prioridad": "Baja",
+    "fecha": "2026-08-08"
+  },
+  {
+    "id": "sol-05",
+    "titulo": "Matrícula de Irene Benítez",
+    "responsable": "Inmaculada Delgado",
+    "columna": "revision",
+    "prioridad": "Alta",
+    "fecha": "2026-08-26"
+  },
+  {
+    "id": "sol-06",
+    "titulo": "Matrícula de Jesús Ortega",
+    "responsable": "Francisca Castro",
+    "columna": "aprobadas",
+    "prioridad": "Media",
+    "fecha": "2026-10-28"
+  },
+  {
+    "id": "sol-07",
+    "titulo": "Matrícula de Lidia Navarro",
+    "responsable": "Miriam Diaz",
+    "columna": "nuevas",
+    "prioridad": "Baja",
+    "fecha": "2026-11-17"
+  },
+  {
+    "id": "sol-08",
+    "titulo": "Matrícula de Héctor Santiago",
+    "responsable": "Jesús Herrero",
+    "columna": "revision",
+    "prioridad": "Alta",
+    "fecha": "2026-09-23"
+  },
+  {
+    "id": "sol-09",
+    "titulo": "Matrícula de Andrés Ortega",
+    "responsable": "Guillermo Ortiz",
+    "columna": "aprobadas",
+    "prioridad": "Media",
+    "fecha": "2026-08-05"
+  },
+  {
+    "id": "sol-10",
+    "titulo": "Matrícula de Concepción Diaz",
+    "responsable": "Remedios Mora",
+    "columna": "nuevas",
+    "prioridad": "Baja",
+    "fecha": "2026-09-05"
+  },
+  {
+    "id": "sol-11",
+    "titulo": "Matrícula de Jordi Hernández",
+    "responsable": "Lorena Calvo",
+    "columna": "revision",
+    "prioridad": "Media",
+    "fecha": "2026-10-14"
+  },
+  {
+    "id": "sol-12",
+    "titulo": "Matrícula de Miriam Guerrero",
+    "responsable": "Adrián Santana",
+    "columna": "aprobadas",
+    "prioridad": "Baja",
+    "fecha": "2026-09-19"
+  }
+]

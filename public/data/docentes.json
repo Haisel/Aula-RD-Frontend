@@ -1,0 +1,86 @@
+[
+  {
+    "id": "doc-01",
+    "nombre": "Luisa Pastor",
+    "area": "Matemática",
+    "secciones": 3,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-02",
+    "nombre": "Ismael Campos",
+    "area": "Lengua Española",
+    "secciones": 2,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-03",
+    "nombre": "Adolfo Pascual",
+    "area": "Ciencias Naturales",
+    "secciones": 2,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-04",
+    "nombre": "Ismael Duran",
+    "area": "Ciencias Sociales",
+    "secciones": 4,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-05",
+    "nombre": "Inmaculada Delgado",
+    "area": "Inglés",
+    "secciones": 2,
+    "estado": "Licencia"
+  },
+  {
+    "id": "doc-06",
+    "nombre": "Francisca Castro",
+    "area": "Educación Física",
+    "secciones": 3,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-07",
+    "nombre": "Miriam Diaz",
+    "area": "Informática",
+    "secciones": 2,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-08",
+    "nombre": "Jesús Herrero",
+    "area": "Arte",
+    "secciones": 4,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-09",
+    "nombre": "Guillermo Ortiz",
+    "area": "Matemática",
+    "secciones": 5,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-10",
+    "nombre": "Remedios Mora",
+    "area": "Lengua Española",
+    "secciones": 2,
+    "estado": "Licencia"
+  },
+  {
+    "id": "doc-11",
+    "nombre": "Lorena Calvo",
+    "area": "Ciencias Naturales",
+    "secciones": 5,
+    "estado": "Activo"
+  },
+  {
+    "id": "doc-12",
+    "nombre": "Adrián Santana",
+    "area": "Ciencias Sociales",
+    "secciones": 2,
+    "estado": "Activo"
+  }
+]
