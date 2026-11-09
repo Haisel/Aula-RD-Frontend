@@ -1,0 +1,53 @@
+# Tareas — 013-plantilla-profesional
+
+> Estado: Aprobado (08/11/2026) · Plan: [plan.md](plan.md) · Spec: [013-plantilla-profesional.md](013-plantilla-profesional.md)
+
+Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde y, si es una página, con su verificación en navegador. Pruebas primero cuando haya lógica o contrato.
+
+## Fase 1 — menú, errores, arquetipos y los 30 módulos
+| Id | Tarea | Cubre | Hecho cuando |
+|---|---|---|---|
+| T-01 | Prueba de trinquete `tests/links.test.js` con la lista `PENDIENTES` (hoy 30 ítems de menú y los `href="#"` vacíos) | RF-01, CA-01 | Prueba en verde y lista exacta |
+| T-02 | Grupos plegables en `sidebar.hbs` y en `NAV` (`children`), accesibles y abiertos si contienen la página activa | RF-02 | Menú con grupos verificado en navegador y con teclado |
+| T-03 P | Páginas de error 403, 404, 500 y mantenimiento (`src/*.html`) con salida | RF-03, CA-07 | Verificadas; `404.html` en la raíz |
+| T-04 | Migas de pan: parcial y uso en las páginas interiores | RF-05 | Parcial creado y usado |
+| T-05 | Fixtures por módulo en `scripts/build-fixtures.mjs` y `public/data/` | RF-11 | Datos generados, reproducibles y con prueba |
+| T-06 P | Arquetipo "Lista con CRUD" y las páginas de Instituciones, Usuarios internos, Estudiantes y Docentes | RF-04 | Verificadas |
+| T-07 P | Arquetipo "Tabla con filtros" y Suscripciones, Cobros (superadmin e institución) y Estado de cuenta | RF-04 | Verificadas |
+| T-08 P | Arquetipos "Tarjetas y precios" y "Reporte": Planes, Publicidad, Contabilidad y Reportes | RF-04 | Verificadas |
+| T-09 P | Arquetipos "Bandeja", "Cuadrícula de registro" y "Asistente por pasos": Soporte, Mensajes, Asistencia, Calificaciones y Matrícula | RF-04 | Verificadas |
+| T-10 P | Arquetipos "Calendario", "Comunicados", "Secciones", "Firma" y "Configuración": Planificación, Horario, Comunicados, Mis secciones, Autorizaciones y Configuración | RF-04 | Verificadas |
+| T-11 | Vaciar `PENDIENTES` y reemplazar los `href="#"` vacíos por destinos reales | RF-01, CA-01 | Lista vacía y prueba en verde |
+| T-12 | Verificación de la fase: consola, 390 px, oscuro, 1440/1920/2560, teclado, `app.js` sin cambios | CA-04, CA-05, CA-06, CA-10 | Resultados en la spec |
+| T-13 | `CHANGELOG.md`, spec y commit de la Fase 1 | — | Commit hecho |
+
+## Fase 2 — datos y lógica (spec 012, fase 2)
+Se retoma con T-13 y T-15 a T-19 de [la spec 012](../012-galeria-de-funcionalidades/tasks.md), ya con la lógica y los datos hechos (T-12 y T-14 de esa lista).
+
+## Fase 3 — autenticación, cuenta y páginas públicas
+| Id | Tarea | Cubre | Hecho cuando |
+|---|---|---|---|
+| T-14 | Registro, olvidé mi contraseña, restablecer, verificación en dos pasos y bloqueo de pantalla | RF-06, CA-08 | Verificadas con errores por campo |
+| T-15 | Perfil por rol, cuenta y seguridad, preferencias, notificaciones | RF-06 | Verificadas |
+| T-16 | Ayuda y preguntas frecuentes, contacto, términos y privacidad (texto de relleno rotulado) | RF-08, RN-03 | Verificadas |
+
+## Fase 4 — interfaz y formularios
+| Id | Tarea | Cubre | Hecho cuando |
+|---|---|---|---|
+| T-17 | Tipografía, colores, íconos (buscador), insignias y progreso, acordeón y colapsables, pestañas y navegación (con `data-au-tabs`), paginación y migas, listas, carrusel, línea de tiempo, tooltips y popovers, cuadrícula | RF-07, RF-08 | Verificadas |
+| T-18 | Formularios: controles básicos, validación, avanzados, asistente por pasos, editor, archivos y firma | RF-08 | Verificadas |
+
+## Fase 5 — aplicaciones, calendario y gráficos
+| Id | Tarea | Cubre | Hecho cuando |
+|---|---|---|---|
+| T-19 | Bandeja (lista, lectura, redacción), chat, kanban, proyectos, contactos, galería de imágenes y búsqueda | RF-08 | Verificadas |
+| T-20 | Calendario y agenda; gráficos (línea y barras, dona y área); widgets | RF-08 | Verificadas |
+| T-21 | Paneles financiero y académico | RF-08 | Verificados |
+
+## Fase 6 — cierre
+| Id | Tarea | Cubre | Hecho cuando |
+|---|---|---|---|
+| T-22 | `tests/coverage.test.js`: cada `data-au-*` y cada función de `AU` con demostración | RF-07, CA-02 | Prueba en verde y lista de pendientes vacía |
+| T-23 | Guía de integración, página de inicio rápido y referencia de componentes | RF-09, CA-12 | Documentos publicados |
+| T-24 | Medición con Lighthouse en todas las páginas (mediana de 3 ejecuciones) | RNF-01, RNF-02, CA-03 | Resultados registrados y umbrales cumplidos |
+| T-25 | Versión 0.4.0, `CHANGELOG.md` y cierre de la spec (estado "Implementada") | CA-01 a CA-12 | Spec cerrada |

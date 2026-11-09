@@ -1,6 +1,6 @@
 # 013-plantilla-profesional
 
-> Estado: Borrador · Versión 0.2 · Fecha: 08/11/2026
+> Estado: Aprobada (08/11/2026, por Haisel Ramirez) · Versión 1.0 · Fecha: 08/11/2026
 
 ## Objetivo
 Dejar la plantilla **completa y profesional, al nivel de AdminLTE, AdminKit y CoreUI**: un menú por categorías donde cada ítem abre su página de demostración, cada componente y cada función de `AU` con ejemplo, calidad verificada con medidas y una guía para integrarla. Es la etapa previa a adecuar páginas para el sistema de gestión.
@@ -133,7 +133,7 @@ JSON de demostración en `public/data/` (arreglos de objetos): los de la spec 01
 | CA-12 | La guía de integración | Una persona nueva copia una página | La página funciona en su proyecto sin tocar nada más | Revisión |
 
 ## Información faltante
-Decisiones del propietario (con mi propuesta si no responde):
+**Aprobadas el 08/11/2026 las propuestas de los puntos 1 a 5 y 7** (arquetipos, sin mapas por ahora, páginas públicas con texto de relleno rotulado, umbrales de Lighthouse, variantes financiera y académica de panel, y entrega por fases). **Sigue abierto el punto 6** (peso de `app.js`). Texto original de cada decisión:
 1. **Menú sin destino:** ¿cada módulo abre una página de arquetipo con datos propios, o una sola página genérica "Módulo en construcción"? *Propuesta: arquetipos.*
 2. **Mapas:** ¿se incluyen? Exigen una librería nueva y un ADR. *Propuesta: no, por ahora.*
 3. **Páginas públicas:** términos, privacidad y contacto con texto de relleno rotulado. *Propuesta: sí.*
@@ -164,4 +164,4 @@ Decisiones del propietario (con mi propuesta si no responde):
 | RF-10, RF-11 | Entrada de Vite de demostraciones, `public/data/` | CA-10 |
 
 ## Aprobación
-- [ ] Revisada por el propietario — fecha:
+- [x] Revisada por el propietario — fecha: 08/11/2026 (Haisel Ramirez)
