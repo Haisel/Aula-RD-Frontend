@@ -44,6 +44,7 @@ const NAV = {
     { label: 'Comunicados', icon: 'megaphone', href: '#comunicados' },
     { label: 'Reportes', icon: 'bar-chart-line', href: '#reportes' },
     { label: 'Configuración', icon: 'gear', href: '#configuracion' },
+    { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html', section: 'Ejemplos' },
   ],
   teacher: [
     { label: 'Inicio', icon: 'house-door', href: 'dashboard-docente.html' },
@@ -53,6 +54,7 @@ const NAV = {
     { label: 'Planificación', icon: 'calendar3', href: '#planificacion' },
     { label: 'Comunicados', icon: 'megaphone', href: '#comunicados', section: 'Comunicación' },
     { label: 'Mensajes', icon: 'chat-left-text', href: '#mensajes' },
+    { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html', section: 'Ejemplos' },
   ],
   'student-guardian': [
     { label: 'Inicio', icon: 'house-door', href: 'dashboard-tutor.html' },
@@ -62,6 +64,7 @@ const NAV = {
     { label: 'Horario', icon: 'clock', href: '#horario' },
     { label: 'Comunicados', icon: 'megaphone', href: '#comunicados', section: 'Comunicación' },
     { label: 'Autorizaciones', icon: 'pen', href: '#autorizaciones' },
+    { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html', section: 'Ejemplos' },
   ],
   // Galería de funcionalidades (spec 012): se amplía en cada fase con las páginas que se publican.
   galeria: [
@@ -73,6 +76,9 @@ const NAV = {
     { label: 'Estados', icon: 'inbox', href: 'ejemplo-estados.html' },
     { label: 'Catálogo de componentes', icon: 'palette', href: 'componentes.html', section: 'Otras páginas' },
     { label: 'Panel de la plataforma', icon: 'speedometer2', href: 'dashboard-superadmin.html' },
+    { label: 'Panel de la institución', icon: 'building', href: 'dashboard-institucion.html' },
+    { label: 'Panel docente', icon: 'person-badge', href: 'dashboard-docente.html' },
+    { label: 'Portal de familia', icon: 'people', href: 'dashboard-tutor.html' },
   ],
 };
 

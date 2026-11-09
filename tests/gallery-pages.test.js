@@ -88,9 +88,29 @@ describe('menú "Galería" (spec 012 · RF-02, RF-14)', () => {
     });
   }
 
-  it('el menú de la spec 009 enlaza la galería (RF-14)', () => {
-    const { nav } = /** @type {{ nav: { href: string }[] }} */ (pageContext('dashboard-superadmin.html'));
-    expect(nav.map((i) => i.href)).toContain(HUB);
+  const DASHBOARDS = [
+    'dashboard-superadmin.html',
+    'dashboard-institucion.html',
+    'dashboard-docente.html',
+    'dashboard-tutor.html',
+  ];
+
+  for (const dash of DASHBOARDS) {
+    it(`el menú de ${dash} enlaza la galería (RF-14)`, () => {
+      const { nav } = /** @type {{ nav: { href: string }[] }} */ (pageContext(dash));
+      expect(nav.map((i) => i.href)).toContain(HUB);
+    });
+  }
+
+  it('desde la galería se llega a cada uno de los dashboards', () => {
+    const { nav } = /** @type {{ nav: { href: string }[] }} */ (pageContext(HUB));
+    const hrefs = nav.map((i) => i.href);
+    for (const dash of DASHBOARDS) expect(hrefs, dash).toContain(dash);
+  });
+
+  it('el índice de la galería enlaza cada dashboard', () => {
+    const hub = read(HUB);
+    for (const dash of DASHBOARDS) expect(hub, dash).toContain(`href="${dash}"`);
   });
 
   it('el menú de la galería lista todas las páginas publicadas y enlaza las de la spec 009', () => {
