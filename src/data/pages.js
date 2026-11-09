@@ -57,7 +57,13 @@ const NAV = {
     { label: 'Matrícula', icon: 'clipboard-check', href: '#matricula' },
     { label: 'Calificaciones', icon: 'journal-text', href: '#calificaciones' },
     { label: 'Asistencia', icon: 'calendar3', href: '#asistencia' },
-    { label: 'Cobros', icon: 'cash-coin', href: 'institucion-cobros.html', badge: 37, section: 'Administración' },
+    {
+      label: 'Cobros',
+      icon: 'cash-coin',
+      href: 'institucion-cobros.html',
+      badge: 37,
+      section: 'Administración',
+    },
     { label: 'Comunicados', icon: 'megaphone', href: '#comunicados' },
     { label: 'Reportes', icon: 'bar-chart-line', href: '#reportes' },
     { label: 'Configuración', icon: 'gear', href: '#configuracion' },
@@ -363,7 +369,9 @@ const DASHBOARD_OF = {
 };
 
 for (const [file, cfg] of Object.entries(MODULES)) {
-  const dash = /** @type {Record<string, any>} */ (PAGES)[DASHBOARD_OF[/** @type {keyof typeof DASHBOARD_OF} */ (cfg.portal)]];
+  const dash = /** @type {Record<string, any>} */ (PAGES)[
+    DASHBOARD_OF[/** @type {keyof typeof DASHBOARD_OF} */ (cfg.portal)]
+  ];
   /** @type {Record<string, any>} */ (PAGES)[file] = {
     title: cfg.title,
     description: cfg.subtitle,
@@ -382,7 +390,12 @@ for (const [file, cfg] of Object.entries(MODULES)) {
  */
 function resolveModule(cfg) {
   if (!cfg) return undefined;
-  return { ...cfg, rows: loadData(cfg.source), labelKey: cfg.columns[0].key, actionsIndex: cfg.columns.length };
+  return {
+    ...cfg,
+    rows: loadData(cfg.source),
+    labelKey: cfg.columns[0].key,
+    actionsIndex: cfg.columns.length,
+  };
 }
 
 /**
@@ -413,7 +426,10 @@ export function pageContext(pagePath, env = {}) {
   const module = resolveModule(/** @type {any} */ (page).module);
   // Migas de pan de una página de módulo: Inicio (dashboard de su portal) › módulo actual.
   const crumbs = module
-    ? [{ label: 'Inicio', href: DASHBOARD_OF[/** @type {keyof typeof DASHBOARD_OF} */ (module.portal)] }, { label: module.title }]
+    ? [
+        { label: 'Inicio', href: DASHBOARD_OF[/** @type {keyof typeof DASHBOARD_OF} */ (module.portal)] },
+        { label: module.title },
+      ]
     : undefined;
   const nav = portal ? buildNav(NAV[portal], /** @type {any} */ (page).active) : [];
   return {

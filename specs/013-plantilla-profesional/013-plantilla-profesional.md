@@ -1,6 +1,6 @@
 # 013-plantilla-profesional
 
-> Estado: Aprobada (08/11/2026, por Haisel Ramirez) · Versión 1.0 · Fecha: 08/11/2026
+> Estado: Aprobada (08/11/2026, por Haisel Ramirez) · Versión 1.1 (ampliada el 08/11/2026 por pedido del propietario: variantes de diseño) · Fecha: 08/11/2026
 
 ## Objetivo
 Dejar la plantilla **completa y profesional, al nivel de AdminLTE, AdminKit y CoreUI**: un menú por categorías donde cada ítem abre su página de demostración, cada componente y cada función de `AU` con ejemplo, calidad verificada con medidas y una guía para integrarla. Es la etapa previa a adecuar páginas para el sistema de gestión.
@@ -61,6 +61,17 @@ Seis ejes.
 
 **F. Documentación e integración.** Guía de integración (copiar una página, arquetipos, tokens y tema), inicio rápido en blanco, referencia de componentes y funciones, README al día y versión 0.4.0.
 
+**G. Variantes de diseño (ampliación del 08/11/2026).** Como en AdminLTE, AdminKit y CoreUI, cada tipo de página tiene **varias estructuras y diseños**, no uno solo. Pedido del propietario: "varias páginas de login de diferente estructura y diseño, varias de perfiles, varios formularios, etc.". Lista propuesta:
+
+| Tipo | Variantes |
+|---|---|
+| Inicio de sesión (7) | Dividido con panel de marca (existe) · centrado en tarjeta · con ilustración y acceso con proveedor externo · mínimo sin tarjeta · portada a pantalla completa con tarjeta translúcida · por pestañas según el portal · sin contraseña con código de un solo uso |
+| Recuperación | Olvidé mi contraseña (centrado) |
+| Perfiles (6) | Con portada y pestañas · con tarjeta lateral y detalle · compacto con línea de tiempo · ficha tipo credencial · perfil de institución · perfil editable (formulario) |
+| Formularios (9) | Controles básicos · diseños (horizontal, en línea y con etiqueta flotante) · validación · agrupado por secciones · avanzado (listas, fechas, máscaras) · asistente por pasos · editor de texto · carga de archivos · firma |
+
+Las variantes comparten componentes y tokens (no repiten estilos), usan datos de demostración y cumplen los mismos requisitos de accesibilidad y calidad que el resto.
+
 ## Exclusiones
 - Lógica de negocio real, backend y persistencia: los datos son de demostración y se pierden al recargar.
 - **Mapas** (por ejemplo mapas vectoriales o de Google): exigen librerías fuera del ecosistema aprobado; se hacen solo con un ADR y aprobación aparte.
@@ -89,6 +100,7 @@ Seis ejes.
 | RF-09 | Debe existir una guía de integración y una página de inicio rápido en blanco con el diseño de aplicación. |
 | RF-10 | El código de demostración debe cargarse diferido y no debe aumentar `dist/js/app.js` (hoy 333 485 bytes, huella `929e56f92a44b641`). |
 | RF-11 | Los datos de demostración deben venir de `public/data/` (nombres genéricos, spec 012 RF-12) y cada página debe indicar que son de demostración. |
+| RF-12 | Deben existir las variantes de diseño del eje G (7 de inicio de sesión, 6 de perfil y 9 de formularios), cada una con una estructura distinta y no una copia con otro color, todas enlazadas desde el menú de la plantilla. |
 
 ## Requisitos no funcionales
 | Id | Requisito | Medida |
@@ -131,6 +143,7 @@ JSON de demostración en `public/data/` (arreglos de objetos): los de la spec 01
 | CA-10 | `npm run build` | Se mide `app.js` | Idéntico al de referencia | Medida |
 | CA-11 | Repositorio | Se ejecuta `npm run check` | Verde, con las pruebas nuevas | `npm run check` |
 | CA-12 | La guía de integración | Una persona nueva copia una página | La página funciona en su proyecto sin tocar nada más | Revisión |
+| CA-13 | Las variantes de inicio de sesión, perfil y formularios | Se comparan entre sí | Cada una tiene una estructura distinta (no solo otro color) y todas pasan CA-01, CA-04, CA-05 y CA-06 | `tests/auth-pages.test.js` y equivalentes + manual |
 
 ## Información faltante
 **Aprobadas el 08/11/2026 las propuestas de los puntos 1 a 5 y 7** (arquetipos, sin mapas por ahora, páginas públicas con texto de relleno rotulado, umbrales de Lighthouse, variantes financiera y académica de panel, y entrega por fases). **Sigue abierto el punto 6** (peso de `app.js`). Texto original de cada decisión:

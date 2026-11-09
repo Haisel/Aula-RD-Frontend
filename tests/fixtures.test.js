@@ -61,7 +61,15 @@ describe('datos de demostración de la galería (spec 012)', () => {
     const instituciones = load('instituciones.json').map((i) => i.nombre);
     expect(rows.map((r) => r.institucion).sort()).toEqual([...instituciones].sort());
     for (const r of rows) {
-      expect(Object.keys(r).sort()).toEqual(['estado', 'id', 'inicio', 'institucion', 'monto', 'plan', 'vence']);
+      expect(Object.keys(r).sort()).toEqual([
+        'estado',
+        'id',
+        'inicio',
+        'institucion',
+        'monto',
+        'plan',
+        'vence',
+      ]);
       expect(r.inicio).toMatch(ISO);
       expect(r.vence).toMatch(ISO);
       expect(r.vence > r.inicio, `${r.id}: vence después de iniciar`).toBe(true);

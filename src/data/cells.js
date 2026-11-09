@@ -52,7 +52,17 @@ export function formatIsoDate(iso) {
 
 /** Tono de la píldora según el estado. */
 const TONES = {
-  success: ['Activo', 'Pagado', 'Aprobado', 'Aprobada', 'Resuelto', 'Completado', 'Al día', 'Vigente', 'Publicado'],
+  success: [
+    'Activo',
+    'Pagado',
+    'Aprobado',
+    'Aprobada',
+    'Resuelto',
+    'Completado',
+    'Al día',
+    'Vigente',
+    'Publicado',
+  ],
   warning: ['Pendiente', 'Por vencer', 'En revisión', 'Borrador', 'Parcial'],
   danger: ['Vencido', 'Retirado', 'Suspendida', 'Suspendido', 'Rechazado', 'Cancelado', 'Urgente'],
   info: ['Licencia', 'Abierto', 'Abierta', 'En proceso', 'Nuevo', 'Programado'],
@@ -66,7 +76,8 @@ const TONES = {
  */
 export function statusTone(status) {
   for (const [tone, list] of Object.entries(TONES)) {
-    if (list.includes(status)) return /** @type {'success' | 'warning' | 'danger' | 'info' | 'brand'} */ (tone);
+    if (list.includes(status))
+      return /** @type {'success' | 'warning' | 'danger' | 'info' | 'brand'} */ (tone);
   }
   return 'neutral';
 }

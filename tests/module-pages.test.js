@@ -38,7 +38,10 @@ function register(dir) {
     const p = resolve(dir, e.name);
     if (e.isDirectory()) register(p);
     else if (/\.(hbs|html)$/.test(e.name)) {
-      const id = relative(PARTIALS, p).split(sep).join('/').replace(/\.(hbs|html)$/, '');
+      const id = relative(PARTIALS, p)
+        .split(sep)
+        .join('/')
+        .replace(/\.(hbs|html)$/, '');
       hb.registerPartial(id, readFileSync(p, 'utf8'));
     }
   }
@@ -50,7 +53,8 @@ register(PARTIALS);
  * @param {string} file Página.
  * @returns {string} HTML.
  */
-const render = (file) => hb.compile(readFileSync(resolve(SRC, file), 'utf8'))(pageContext(file, { dev: false }));
+const render = (file) =>
+  hb.compile(readFileSync(resolve(SRC, file), 'utf8'))(pageContext(file, { dev: false }));
 
 /**
  * Contexto de módulo de una página.
@@ -77,7 +81,9 @@ describe('páginas de módulo con arquetipo de tabla (spec 013)', () => {
         const html = render(file);
         expect(html).toMatch(/<nav aria-label="Migas de pan"/);
         expect(html).toMatch(new RegExp(`aria-current="page">${moduleOf(file).title}</li>`));
-        expect(html).toMatch(/<li class="breadcrumb-item"><a href="dashboard-[a-z]+\.html">Inicio<\/a><\/li>/);
+        expect(html).toMatch(
+          /<li class="breadcrumb-item"><a href="dashboard-[a-z]+\.html">Inicio<\/a><\/li>/,
+        );
       });
 
       it('la tabla trae una fila por registro y una columna por campo más las acciones', () => {

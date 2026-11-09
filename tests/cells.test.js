@@ -53,7 +53,10 @@ describe('cell(): una celda por tipo', () => {
   });
 
   it('entidad: nombre y línea secundaria, ambos escapados', () => {
-    const html = cell({ kind: 'entity', key: 'nombre', meta: 'grado' }, { nombre: 'Ana <b>', grado: '4.º Primaria' });
+    const html = cell(
+      { kind: 'entity', key: 'nombre', meta: 'grado' },
+      { nombre: 'Ana <b>', grado: '4.º Primaria' },
+    );
     expect(html).toContain('Ana &lt;b&gt;');
     expect(html).toContain('<span class="au-cell-meta">4.º Primaria</span>');
     expect(html).not.toContain('<b>');
@@ -80,9 +83,13 @@ describe('cell(): una celda por tipo', () => {
   });
 
   it('plan: píldora de plan (básico, profesional, premium)', () => {
-    expect(cell({ kind: 'plan', key: 'plan' }, { plan: 'Profesional' })).toBe('<span class="au-plan au-plan-pro">Profesional</span>');
+    expect(cell({ kind: 'plan', key: 'plan' }, { plan: 'Profesional' })).toBe(
+      '<span class="au-plan au-plan-pro">Profesional</span>',
+    );
     expect(cell({ kind: 'plan', key: 'plan' }, { plan: 'Premium' })).toContain('au-plan-premium');
-    expect(cell({ kind: 'plan', key: 'plan' }, { plan: 'Básico' })).toBe('<span class="au-plan">Básico</span>');
+    expect(cell({ kind: 'plan', key: 'plan' }, { plan: 'Básico' })).toBe(
+      '<span class="au-plan">Básico</span>',
+    );
   });
 
   it('número: separador de miles', () => {
