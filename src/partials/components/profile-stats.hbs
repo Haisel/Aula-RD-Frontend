@@ -1,0 +1,9 @@
+{{!-- {{> components/profile-stats}} Tres indicadores del perfil (spec 013, V-02). Contexto: profile.stats = [{ label, value }]. --}}
+<div class="au-grid-kpi">
+  {{#each profile.stats}}
+  <div class="au-stat">
+    <div class="au-stat-label">{{label}}</div>
+    <div class="au-stat-value">{{value}}</div>
+  </div>
+  {{/each}}
+</div>

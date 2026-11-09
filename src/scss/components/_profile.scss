@@ -1,0 +1,233 @@
+// ----------------------------------------------------------------------------
+// Perfiles (spec 013, V-02): portada, tarjeta lateral, compacto, credencial, institución y edición.
+// Comparten avatar, datos, contacto y línea de tiempo; cada variante solo añade su estructura.
+// ----------------------------------------------------------------------------
+.au-avatar-lg {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  font-size: 1.25rem;
+}
+
+.au-avatar-xl {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  font-size: 2rem;
+}
+
+// Datos en pares (término y valor), una fila por dato.
+.au-profile-details {
+  margin: 0 0 1rem;
+  display: grid;
+  gap: 0.75rem;
+
+  > div {
+    display: grid;
+    gap: 0.125rem;
+  }
+  dt {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--au-text-muted);
+  }
+  dd {
+    margin: 0;
+  }
+}
+
+.au-profile-contact {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  text-align: start;
+  overflow-wrap: anywhere;
+
+  .bi {
+    margin-inline-end: 0.5rem;
+    color: var(--au-accent-text);
+  }
+}
+
+.au-profile-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: var(--au-surface-2);
+    font-size: 0.875rem;
+  }
+}
+
+// Con portada: franja de color y avatar que la solapa.
+.au-profile-cover {
+  overflow: hidden;
+}
+
+.au-profile-banner {
+  height: 140px;
+  background: linear-gradient(135deg, #{au-scale('navy', '900')}, #{au-scale('turquoise', '800')});
+}
+
+.au-profile-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 0 1.5rem 1.25rem;
+  margin-top: -3rem;
+
+  .au-avatar {
+    border: 4px solid var(--au-surface);
+  }
+}
+
+.au-profile-who {
+  min-width: 0;
+
+  h2 {
+    @include au-type('h3');
+    margin: 0;
+  }
+  p {
+    margin: 0.125rem 0 0;
+    color: var(--au-text-muted);
+  }
+}
+
+// Institución: barras de nivel con <progress> nativo (sin estilos en línea).
+.au-profile-levels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.au-meter {
+  width: 100%;
+  height: 0.5rem;
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--au-surface-2);
+
+  &::-webkit-progress-bar {
+    background: var(--au-surface-2);
+  }
+  &::-webkit-progress-value {
+    background: var(--au-accent-text);
+    border-radius: 999px;
+  }
+  &::-moz-progress-bar {
+    background: var(--au-accent-text);
+    border-radius: 999px;
+  }
+}
+
+// Credencial: tarjeta de identificación con proporción de carné.
+.au-id-stage {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 2rem;
+}
+
+.au-profile-id {
+  width: 100%;
+  max-width: 360px;
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  color: #fff;
+  background: linear-gradient(160deg, #{au-scale('navy', '900')}, #{au-scale('navy', '700')});
+  box-shadow: var(--au-shadow-md);
+
+  h2 {
+    @include au-type('h3');
+    margin: 0;
+    color: inherit;
+  }
+  p {
+    margin: 0.125rem 0 0;
+    color: #{au-scale('navy', '200')};
+  }
+}
+
+.au-id-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #{au-scale('navy', '200')};
+}
+
+.au-id-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.au-id-data {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+
+  dt {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #{au-scale('navy', '200')};
+  }
+  dd {
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+.au-id-foot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(255 255 255 / 18%);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+  }
+}
+
+.au-id-qr {
+  flex: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  line-height: 0;
+}
+
+// Al imprimir una credencial solo queda la tarjeta.
+@media print {
+  .au-sidebar,
+  .au-topbar,
+  .au-page-header,
+  .au-breadcrumb,
+  .au-demo-note {
+    display: none;
+  }
+}

@@ -1,0 +1,6 @@
+{{!-- {{> components/profile-activity}} Línea de tiempo de la actividad. Contexto: profile.activity = [{ when, title, text }]. --}}
+<ol class="au-timeline">
+  {{#each profile.activity}}
+  <li><strong>{{title}}</strong><br><span class="small text-body-secondary">{{when}} · {{text}}</span></li>
+  {{/each}}
+</ol>

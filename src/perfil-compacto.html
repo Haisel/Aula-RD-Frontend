@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="perfil-credencial.html"><i class="bi bi-person-badge" aria-hidden="true"></i>Ver credencial</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <article class="card au-profile-compact" aria-labelledby="p-nombre">
+    <div class="card-body">
+      <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+        <span class="au-avatar au-avatar-lg" aria-hidden="true">{{profile.initials}}</span>
+        <div class="flex-grow-1">
+          <h2 class="h4 mb-1" id="p-nombre">{{profile.name}}</h2>
+          <p class="text-body-secondary mb-0">{{profile.grade}} · Sección {{profile.section}} · {{profile.institution}}</p>
+        </div>
+        <span class="au-status au-status-success">Activo</span>
+      </div>
+      {{> components/profile-stats}}
+      <div class="row g-4 mt-1">
+        <div class="col-md-5">
+          <h3 class="h6">Datos</h3>
+          {{> components/profile-details}}
+        </div>
+        <div class="col-md-7">
+          <h3 class="h6">Línea de tiempo</h3>
+          {{> components/profile-activity}}
+        </div>
+      </div>
+    </div>
+  </article>
+{{/layouts/app}}
+</body>
+</html>

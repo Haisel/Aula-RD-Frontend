@@ -1,0 +1,6 @@
+{{!-- {{> components/profile-details}} Lista de datos del perfil. Contexto: profile.details = [{ label, value }]. --}}
+<dl class="au-profile-details">
+  {{#each profile.details}}
+  <div><dt>{{label}}</dt><dd>{{value}}</dd></div>
+  {{/each}}
+</dl>

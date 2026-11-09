@@ -27,5 +27,6 @@ Los contratos están documentados en `docs/COMPONENTES.md` (sección «Contratos
 | `suscripciones.json` | `{ id, institucion, plan, inicio, vence, monto, estado }` (24, una por institución) |
 | `facturas.json` | `{ id, institucion, concepto, monto, fecha, estado }` (30) |
 | `cuenta.json` | `{ id, concepto, vence, monto, estado }` (8) |
+| `perfiles.json` | `{ docente, tutor, estudiante, institucion }`, cada uno con `{ name, initials, role, institution, email, phone, location, since, bio, stats[3], details[], activity[] }` y campos propios (`skills`, `children`, `code`, `levels`, `total`…). Escrito a mano, no lo genera `build-fixtures.mjs`. **Excepción:** sus fechas ya vienen como `DD/MM/AAAA` (texto de presentación), no en ISO. |
 
 Las fechas van en ISO (`AAAA-MM-DD`); la interfaz las muestra como `DD/MM/AAAA`.

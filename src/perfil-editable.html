@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="perfil-portada.html"><i class="bi bi-eye" aria-hidden="true"></i>Ver perfil</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Pruebe dejar un campo vacío o escribir un teléfono que no sea dominicano."}}
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <aside class="card" aria-labelledby="e-quien"><div class="card-body text-center">
+        <span class="au-avatar au-avatar-xl mb-3" aria-hidden="true">{{profile.initials}}</span>
+        <h2 class="h5 mb-1" id="e-quien">{{profile.name}}</h2>
+        <p class="text-body-secondary">{{profile.role}}</p>
+        <button class="btn btn-outline-primary btn-sm" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se elige una foto nueva.">Cambiar foto</button>
+      </div></aside>
+    </div>
+    <div class="col-lg-8">
+      <form class="card au-profile-edit" data-au-validate="perfil" data-au-submit="event" data-au-success="Perfil guardado (demostración): nada se envía." action="#" method="post" novalidate>
+        <div class="card-body d-grid gap-3">
+          <div class="au-card-header mb-0"><h2 class="au-card-title">Datos personales</h2></div>
+          <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="pf-nombre">Nombre completo</label>
+              <input class="form-control" id="pf-nombre" name="nombre" type="text" autocomplete="name" value="{{profile.name}}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="pf-email">Correo</label>
+              <input class="form-control" id="pf-email" name="email" type="email" autocomplete="email" value="{{profile.email}}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="pf-telefono">Teléfono</label>
+              <input class="form-control" id="pf-telefono" name="telefono" type="tel" autocomplete="tel" data-au-mask="telefono" value="{{profile.phone}}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="pf-cargo">Cargo</label>
+              <input class="form-control" id="pf-cargo" name="cargo" type="text" value="{{profile.role}}" readonly aria-describedby="pf-cargo-ayuda">
+              <div class="form-text" id="pf-cargo-ayuda">Lo define la dirección de la institución.</div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="pf-bio">Presentación</label>
+              <textarea class="form-control" id="pf-bio" name="bio" rows="4" aria-describedby="pf-bio-ayuda">{{profile.bio}}</textarea>
+              <div class="form-text" id="pf-bio-ayuda">Opcional. Máximo 280 caracteres.</div>
+            </div>
+          </div>
+          <fieldset>
+            <legend class="h6">Avisos por correo</legend>
+            <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="pf-aviso-notas" name="avisoNotas" checked><label class="form-check-label" for="pf-aviso-notas">Cuando se publiquen calificaciones</label></div>
+            <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="pf-aviso-mensajes" name="avisoMensajes"><label class="form-check-label" for="pf-aviso-mensajes">Cuando reciba un mensaje</label></div>
+          </fieldset>
+          <div class="d-flex flex-wrap gap-2 justify-content-end">
+            <a class="btn btn-outline-primary" href="perfil-portada.html">Cancelar</a>
+            <button class="btn btn-primary" type="submit">Guardar cambios</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

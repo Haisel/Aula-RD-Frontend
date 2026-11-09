@@ -1,0 +1,128 @@
+{
+  "docente": {
+    "name": "Marisol Peña Cabrera",
+    "initials": "MP",
+    "role": "Docente de Matemática",
+    "institution": "Colegio San Rafael",
+    "email": "marisol.pena@colegio.edu.do",
+    "phone": "(809) 555-0142",
+    "location": "Santo Domingo Este",
+    "since": "15/08/2018",
+    "bio": "Enseña Matemática en secundaria y coordina el club de ajedrez. Prefiere evaluar con proyectos cortos y retroalimentación frecuente.",
+    "stats": [
+      { "label": "Secciones", "value": "4" },
+      { "label": "Estudiantes", "value": "112" },
+      { "label": "Asistencia promedio", "value": "96 %" }
+    ],
+    "details": [
+      { "label": "Áreas", "value": "Matemática, Estadística" },
+      { "label": "Grados", "value": "1.º a 3.º de Secundaria" },
+      { "label": "Horario", "value": "Lunes a viernes, 7:30 a. m. a 2:30 p. m." },
+      { "label": "Último acceso", "value": "09/11/2026, 7:12 a. m." }
+    ],
+    "skills": ["Álgebra", "Geometría", "Estadística", "Evaluación formativa"],
+    "activity": [
+      { "when": "08/11/2026", "title": "Registró calificaciones", "text": "Primer corte de 2.º B (28 estudiantes)." },
+      { "when": "06/11/2026", "title": "Envió un comunicado", "text": "Recordatorio de la prueba de álgebra del 12/11/2026." },
+      { "when": "03/11/2026", "title": "Pasó asistencia", "text": "3.º A: 27 presentes, 1 tardanza." },
+      { "when": "30/10/2026", "title": "Actualizó su planificación", "text": "Unidad 4: funciones lineales." }
+    ]
+  },
+  "tutor": {
+    "name": "Rafael Santana Polanco",
+    "initials": "RS",
+    "role": "Tutor",
+    "institution": "Colegio San Rafael",
+    "email": "rafael.santana@correo.do",
+    "phone": "(829) 555-0178",
+    "location": "Santiago de los Caballeros",
+    "since": "12/08/2024",
+    "bio": "Tutor de dos estudiantes. Recibe los avisos por correo y paga por transferencia.",
+    "stats": [
+      { "label": "Estudiantes a cargo", "value": "2" },
+      { "label": "Saldo pendiente", "value": "RD$ 4,500.00" },
+      { "label": "Comunicados sin leer", "value": "3" }
+    ],
+    "details": [
+      { "label": "Parentesco", "value": "Padre" },
+      { "label": "Contacto de emergencia", "value": "(849) 555-0111" },
+      { "label": "Método de pago", "value": "Transferencia" },
+      { "label": "Último acceso", "value": "08/11/2026, 8:40 p. m." }
+    ],
+    "children": [
+      { "name": "Estudiante de demostración 1", "grade": "4.º Primaria · Sección B", "initials": "E1", "status": "Activo" },
+      { "name": "Estudiante de demostración 2", "grade": "1.º Secundaria · Sección A", "initials": "E2", "status": "Activo" }
+    ],
+    "activity": [
+      { "when": "05/11/2026", "title": "Pagó la mensualidad de noviembre", "text": "RD$ 7,500.00 por transferencia." },
+      { "when": "02/11/2026", "title": "Firmó una autorización", "text": "Excursión al Museo de Historia Natural." },
+      { "when": "28/10/2026", "title": "Leyó un comunicado", "text": "Calendario del primer corte de notas." }
+    ]
+  },
+  "estudiante": {
+    "name": "Estudiante de demostración 1",
+    "initials": "E1",
+    "role": "Estudiante",
+    "institution": "Colegio San Rafael",
+    "email": "estudiante1@colegio.edu.do",
+    "phone": "(809) 555-0190",
+    "location": "Santo Domingo Norte",
+    "since": "18/08/2023",
+    "bio": "Cursa 4.º de Primaria. Le gustan la lectura y las ciencias.",
+    "code": "2023-0147",
+    "grade": "4.º Primaria",
+    "section": "B",
+    "guardian": "Rafael Santana Polanco",
+    "expires": "31/07/2027",
+    "stats": [
+      { "label": "Promedio", "value": "91.4" },
+      { "label": "Asistencia", "value": "97 %" },
+      { "label": "Tareas entregadas", "value": "38 de 40" }
+    ],
+    "details": [
+      { "label": "Matrícula", "value": "2023-0147" },
+      { "label": "Grado y sección", "value": "4.º Primaria · B" },
+      { "label": "Tutor", "value": "Rafael Santana Polanco" },
+      { "label": "Estado", "value": "Activo" }
+    ],
+    "activity": [
+      { "when": "30/10/2026", "title": "Primer corte de notas", "text": "Promedio general de 91.4." },
+      { "when": "18/10/2026", "title": "Feria de ciencias", "text": "Mención por su proyecto de energía solar." },
+      { "when": "22/09/2026", "title": "Cambio de sección", "text": "Pasó de la sección A a la B." },
+      { "when": "18/08/2026", "title": "Inicio del año escolar", "text": "Matrícula confirmada para 4.º Primaria." }
+    ]
+  },
+  "institucion": {
+    "name": "Colegio San Rafael",
+    "initials": "SR",
+    "role": "Institución · Plan Profesional",
+    "institution": "Colegio San Rafael",
+    "email": "contacto@sanrafael.edu.do",
+    "phone": "(809) 555-0100",
+    "location": "Av. Principal 123, Santo Domingo",
+    "since": "01/03/2022",
+    "rnc": "1-30-00000-1",
+    "bio": "Centro educativo privado con niveles Inicial, Primaria y Secundaria. Datos de demostración.",
+    "stats": [
+      { "label": "Estudiantes", "value": "1,248" },
+      { "label": "Docentes", "value": "64" },
+      { "label": "Secciones", "value": "42" }
+    ],
+    "details": [
+      { "label": "RNC", "value": "1-30-00000-1" },
+      { "label": "Niveles", "value": "Inicial, Primaria y Secundaria" },
+      { "label": "Plan", "value": "Profesional" },
+      { "label": "Próxima renovación", "value": "01/03/2027" }
+    ],
+    "total": 1248,
+    "levels": [
+      { "name": "Inicial", "students": 180 },
+      { "name": "Primaria", "students": 620 },
+      { "name": "Secundaria", "students": 448 }
+    ],
+    "activity": [
+      { "when": "05/11/2026", "title": "Pago de suscripción", "text": "Plan Profesional, noviembre de 2026." },
+      { "when": "20/10/2026", "title": "Nuevo usuario administrador", "text": "Se agregó una persona con rol de secretaría." }
+    ]
+  }
+}

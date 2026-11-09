@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="perfil-editable.html"><i class="bi bi-pencil-square" aria-hidden="true"></i>Editar perfil</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <aside class="card au-profile-side" aria-labelledby="p-nombre">
+        <div class="card-body text-center">
+          <span class="au-avatar au-avatar-lg mb-3" aria-hidden="true">{{profile.initials}}</span>
+          <h2 class="h5 mb-1" id="p-nombre">{{profile.name}}</h2>
+          <p class="text-body-secondary mb-2">{{profile.role}} · {{profile.institution}}</p>
+          <span class="au-status au-status-success">Activo desde {{profile.since}}</span>
+          <hr>
+          {{> components/profile-contact}}
+          <div class="d-grid gap-2 mt-3">
+            <button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre un mensaje para esta persona."><i class="bi bi-chat-left-text" aria-hidden="true"></i>Enviar mensaje</button>
+            <a class="btn btn-outline-primary" href="perfil-editable.html">Editar datos</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="col-lg-8">
+      <div class="mb-4">{{> components/profile-stats}}</div>
+      <section class="card mb-4" aria-labelledby="p-hijos">
+        <div class="card-body">
+          <div class="au-card-header"><h2 class="au-card-title" id="p-hijos">Estudiantes a cargo</h2></div>
+          <ul class="list-group list-group-flush">
+            {{#each profile.children}}
+            <li class="list-group-item d-flex align-items-center gap-3 px-0">
+              <span class="au-avatar" aria-hidden="true">{{initials}}</span>
+              <div class="flex-grow-1"><strong>{{name}}</strong><br><span class="small text-body-secondary">{{grade}}</span></div>
+              <span class="au-status au-status-success">{{status}}</span>
+              <a class="btn btn-outline-primary btn-sm" href="perfil-compacto.html" aria-label="Ver perfil de {{name}}">Ver perfil</a>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </section>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <section class="card h-100" aria-labelledby="p-datos"><div class="card-body">
+            <div class="au-card-header"><h2 class="au-card-title" id="p-datos">Datos</h2></div>
+            {{> components/profile-details}}
+          </div></section>
+        </div>
+        <div class="col-md-6">
+          <section class="card h-100" aria-labelledby="p-actividad"><div class="card-body">
+            <div class="au-card-header"><h2 class="au-card-title" id="p-actividad">Actividad reciente</h2></div>
+            {{> components/profile-activity}}
+          </div></section>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

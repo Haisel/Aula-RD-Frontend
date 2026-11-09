@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <button class="btn btn-primary" type="button" data-au-action="print"><i class="bi bi-printer" aria-hidden="true"></i>Imprimir credencial</button>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="La matrícula y el código QR son de ejemplo."}}
+
+  <div class="au-id-stage">
+    <article class="au-profile-id" aria-labelledby="c-nombre">
+      <header class="au-id-top">
+        <img src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD" height="28">
+        <span>Credencial estudiantil</span>
+      </header>
+      <div class="au-id-body">
+        <span class="au-avatar au-avatar-xl" aria-hidden="true">{{profile.initials}}</span>
+        <div>
+          <h2 id="c-nombre">{{profile.name}}</h2>
+          <p>{{profile.role}} · {{profile.institution}}</p>
+        </div>
+      </div>
+      <dl class="au-id-data">
+        <div><dt>Matrícula</dt><dd>{{profile.code}}</dd></div>
+        <div><dt>Grado y sección</dt><dd>{{profile.grade}} · {{profile.section}}</dd></div>
+        <div><dt>Tutor</dt><dd>{{profile.guardian}}</dd></div>
+        <div><dt>Vigente hasta</dt><dd>{{profile.expires}}</dd></div>
+      </dl>
+      <footer class="au-id-foot">
+        <div class="au-id-qr" data-au-qrcode="{{profile.code}}" data-au-size="96" role="img" aria-label="Código QR de la matrícula {{profile.code}}"></div>
+        <p>Si encuentra esta credencial, devuélvala a la secretaría de {{profile.institution}}.</p>
+      </footer>
+    </article>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

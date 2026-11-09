@@ -154,6 +154,7 @@ export const tooltipComponent = {
  * | `confirm`          | `AU.confirm({ text: mensaje })` y muestra un toast con la respuesta |
  * | `confirm-delete`   | `AU.confirmDelete(mensaje)` |
  * | `loading`          | `AU.loading(mensaje)` y lo cierra a los `data-au-duration` ms (por defecto 1500) |
+ * | `print`            | Abre el diálogo de impresión del navegador (`window.print()`) |
  *
  * Mensaje: `data-au-message`.
  * @type {import('../types.js').ComponentDefinition}
@@ -167,6 +168,7 @@ export const actionComponent = {
       const action = el.dataset.auAction;
       if (action === 'success' || action === 'error' || action === 'warning' || action === 'info')
         d.alert(msg, action);
+      else if (action === 'print') window.print();
       else if (action === 'toast') d.toast(msg, el.dataset.auType ?? 'success');
       else if (action === 'confirm')
         d.toast((await d.confirm({ text: msg })) ? 'Confirmado' : 'Cancelado', 'info');

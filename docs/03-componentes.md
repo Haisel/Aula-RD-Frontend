@@ -58,7 +58,7 @@ Catálogo vivo: `componentes.html`. Todo se usa con **clases** (estilo) y **atri
 | `data-au-datepicker` | input | Flatpickr | `="range"`, `="datetime"`, `data-au-min`, `data-au-max` |
 | `data-au-password-toggle="#id"` | button | Mostrar/ocultar | — |
 | `data-au-confirm="texto"` | a / button | Confirma antes de seguir | `data-au-confirm-title`, `-text`, `-variant="danger"` |
-| `data-au-action` | button | Diálogo declarativo o acción propia | `success\|error\|warning\|info\|toast\|confirm\|confirm-delete\|loading`, `data-au-message`, `data-au-type`, `data-au-duration`. Cualquier otro nombre ejecuta la función registrada con `AU.customSet(nombre, (el, evento) => …)` |
+| `data-au-action` | button | Diálogo declarativo o acción propia | `success\|error\|warning\|info\|toast\|confirm\|confirm-delete\|loading\|print`, `data-au-message`, `data-au-type`, `data-au-duration`. Cualquier otro nombre ejecuta la función registrada con `AU.customSet(nombre, (el, evento) => …)` |
 | `data-au-tabs` | contenedor de un `.nav` | Pestañas accesibles: completa `role`, `aria-controls`, `aria-labelledby`, `tabindex`; emite `au:tabs:change` | botones con `data-bs-target="#panel"` |
 | `data-au-alerts` | contenedor | Destino por defecto de `AU.inlineAlert()` | — |
 | `data-au-chart="url\|json"` | canvas | Chart.js | Ver contrato §4 |

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="perfil-editable.html"><i class="bi bi-pencil-square" aria-hidden="true"></i>Editar perfil</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <section class="card au-profile-cover mb-4" aria-labelledby="p-nombre">
+    <div class="au-profile-banner" aria-hidden="true"></div>
+    <div class="au-profile-head">
+      <span class="au-avatar au-avatar-xl" aria-hidden="true">{{profile.initials}}</span>
+      <div class="au-profile-who">
+        <h2 id="p-nombre">{{profile.name}}</h2>
+        <p>{{profile.role}} · {{profile.institution}}</p>
+      </div>
+    </div>
+    <div class="card-body pt-0" data-au-tabs>
+      <ul class="nav nav-tabs mb-4">
+        <li class="nav-item"><button class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#p-resumen">Resumen</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#p-actividad">Actividad</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#p-seguridad">Seguridad</button></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="p-resumen">
+          {{> components/profile-stats}}
+          <div class="row g-4 mt-1">
+            <div class="col-lg-7">
+              <h3 class="h6">Presentación</h3>
+              <p class="text-body-secondary">{{profile.bio}}</p>
+              <h3 class="h6">Destrezas</h3>
+              <ul class="au-profile-chips">
+                {{#each profile.skills}}<li>{{this}}</li>{{/each}}
+              </ul>
+            </div>
+            <div class="col-lg-5">
+              <h3 class="h6">Contacto</h3>
+              {{> components/profile-contact}}
+              <h3 class="h6">Datos</h3>
+              {{> components/profile-details}}
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="p-actividad">
+          {{> components/profile-activity}}
+        </div>
+        <div class="tab-pane fade" id="p-seguridad">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex flex-wrap align-items-center justify-content-between gap-2 px-0">
+              <div><strong>Contraseña</strong><br><span class="small text-body-secondary">Se cambió hace 45 días.</span></div>
+              <a class="btn btn-outline-primary btn-sm" href="recuperar-contrasena.html">Cambiar contraseña</a>
+            </li>
+            <li class="list-group-item d-flex flex-wrap align-items-center justify-content-between gap-2 px-0">
+              <div><strong>Verificación en dos pasos</strong><br><span class="small text-body-secondary">Pide un código además de la contraseña.</span></div>
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input" type="checkbox" role="switch" id="p-dos-pasos" checked>
+                <label class="form-check-label" for="p-dos-pasos">Activada</label>
+              </div>
+            </li>
+            <li class="list-group-item d-flex flex-wrap align-items-center justify-content-between gap-2 px-0">
+              <div><strong>Sesiones abiertas</strong><br><span class="small text-body-secondary">2 dispositivos: este y un teléfono.</span></div>
+              <button class="btn btn-outline-danger btn-sm" type="button" data-au-action="confirm" data-au-message="¿Cerrar la sesión en los demás dispositivos? (demostración)">Cerrar las demás</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{{/layouts/app}}
+</body>
+</html>

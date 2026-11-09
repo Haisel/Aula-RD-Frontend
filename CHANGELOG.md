@@ -5,6 +5,7 @@
 Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de accesibilidad del foco.
 
 **Nuevo**
+- Variantes de perfil (spec 013, V-02): `perfil-portada` (con pestañas), `perfil-lateral`, `perfil-compacto` (línea de tiempo), `perfil-credencial` (imprimible, con QR), `perfil-institucion` y `perfil-editable` (esquema `perfil`), con datos de `public/data/perfiles.json`, los parciales `components/profile-*`, estilos en `_profile.scss` y el grupo "Perfiles" en el menú de la galería. Nueva acción declarativa `data-au-action="print"`. `tests/profile-pages.test.js`, `profile-schema.test.js` y `action-print.test.js`.
 - Variantes de inicio de sesión (spec 013, V-01): `login-centrado`, `login-ilustracion` (con acceso por proveedor externo de demostración), `login-minimo`, `login-portada`, `login-portales` (pestañas `data-au-tabs`), `login-codigo` (código de un solo uso de 6 dígitos) y `recuperar-contrasena`, con el parcial `auth/login-form` y los esquemas `recuperar` y `codigo-acceso`. `tests/auth-pages.test.js` (67) y `tests/auth-schemas.test.js` (13).
 - Corrección: los botones de mostrar contraseña de `login.html` y `suscribir.html` no tenían nombre accesible; ahora llevan `aria-label`. El enlace "¿La olvidó?" apunta a `recuperar-contrasena.html`.
 - Galería de funcionalidades, Fase 1 (spec 012): `galeria.html` (índice) y las páginas de ejemplo de botones, alertas, modales, tarjetas y estados, con menú "Galería", aviso de demostración y bloques "Cómo se usa" (`{{{{code}}}}`). `tests/gallery-pages.test.js` (35 pruebas). Sin cambios en `app.js`.

@@ -104,6 +104,18 @@ const NAV = {
         { label: 'Estados', icon: 'inbox', href: 'ejemplo-estados.html' },
       ],
     },
+    {
+      label: 'Perfiles',
+      icon: 'person-vcard',
+      children: [
+        { label: 'Con portada', icon: 'image', href: 'perfil-portada.html' },
+        { label: 'Tarjeta lateral', icon: 'layout-sidebar', href: 'perfil-lateral.html' },
+        { label: 'Compacto', icon: 'list-ul', href: 'perfil-compacto.html' },
+        { label: 'Credencial', icon: 'person-badge', href: 'perfil-credencial.html' },
+        { label: 'Institución', icon: 'building', href: 'perfil-institucion.html' },
+        { label: 'Editable', icon: 'pencil-square', href: 'perfil-editable.html' },
+      ],
+    },
     { label: 'Catálogo de componentes', icon: 'palette', href: 'componentes.html', section: 'Otras páginas' },
     { label: 'Panel de la plataforma', icon: 'speedometer2', href: 'dashboard-superadmin.html' },
     { label: 'Panel de la institución', icon: 'building', href: 'dashboard-institucion.html' },
@@ -419,6 +431,63 @@ for (const [file, cfg] of Object.entries(MODULES)) {
 }
 
 /**
+ * Variantes de perfil (spec 013, V-02): página → título, descripción y perfil de `perfiles.json`
+ * que muestra. Todas viven en el portal de la galería.
+ */
+const PROFILE_PAGES = {
+  'perfil-portada.html': {
+    profile: 'docente',
+    title: 'Perfil con portada',
+    description: 'Perfil de una persona con portada y pestañas de resumen, actividad y seguridad.',
+  },
+  'perfil-lateral.html': {
+    profile: 'tutor',
+    title: 'Perfil con tarjeta lateral',
+    description: 'Perfil con tarjeta de contacto a un lado y el detalle, los estudiantes y la actividad al otro.',
+  },
+  'perfil-compacto.html': {
+    profile: 'estudiante',
+    title: 'Perfil compacto',
+    description: 'Perfil en una sola columna con indicadores, datos y línea de tiempo de actividad.',
+  },
+  'perfil-credencial.html': {
+    profile: 'estudiante',
+    title: 'Perfil tipo credencial',
+    description: 'Ficha de identificación imprimible con matrícula, vigencia y código QR.',
+  },
+  'perfil-institucion.html': {
+    profile: 'institucion',
+    title: 'Perfil de institución',
+    description: 'Ficha de una institución con plan, indicadores, niveles y actividad reciente.',
+  },
+  'perfil-editable.html': {
+    profile: 'docente',
+    title: 'Perfil editable',
+    description: 'Formulario para editar los datos del perfil, con validación por campo.',
+  },
+};
+
+for (const [file, cfg] of Object.entries(PROFILE_PAGES)) {
+  /** @type {Record<string, any>} */ (PAGES)[file] = {
+    title: cfg.title,
+    description: cfg.description,
+    portal: 'galeria',
+    active: file,
+    user: GALLERY_USER,
+    profileKey: cfg.profile,
+    crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Perfiles' }, { label: cfg.title }],
+  };
+}
+
+/**
+ * Perfiles de demostración de `public/data/perfiles.json` (solo al generar las páginas).
+ * @returns {Record<string, Record<string, any>>} Perfiles por clave.
+ */
+function loadProfiles() {
+  return /** @type {any} */ (JSON.parse(readFileSync(resolve(DATA_DIR, 'perfiles.json'), 'utf8')));
+}
+
+/**
  * Resuelve un módulo para las plantillas: lee sus datos y calcula lo que la tabla necesita.
  * @param {ModuleConfig | undefined} cfg Configuración del módulo.
  * @returns {(ModuleConfig & { rows: Record<string, unknown>[], labelKey: string, actionsIndex: number }) | undefined} Módulo listo.
@@ -465,11 +534,14 @@ export function pageContext(pagePath, env = {}) {
         { label: 'Inicio', href: DASHBOARD_OF[/** @type {keyof typeof DASHBOARD_OF} */ (module.portal)] },
         { label: module.title },
       ]
-    : undefined;
+    : /** @type {any} */ (page).crumbs;
+  const profileKey = /** @type {any} */ (page).profileKey;
+  const profile = profileKey ? loadProfiles()[profileKey] : undefined;
   const nav = portal ? buildNav(NAV[portal], /** @type {any} */ (page).active) : [];
   return {
     ...page,
     module,
+    profile,
     crumbs,
     nav,
     isSuperAdmin: portal === 'super-admin',

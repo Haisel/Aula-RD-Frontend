@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="institucion-estudiantes.html"><i class="bi bi-people" aria-hidden="true"></i>Ver estudiantes</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <section class="card au-profile-org mb-4" aria-labelledby="o-nombre">
+    <div class="card-body d-flex flex-wrap align-items-center gap-3">
+      <span class="au-avatar au-avatar-xl" aria-hidden="true">{{profile.initials}}</span>
+      <div class="flex-grow-1">
+        <h2 class="h4 mb-1" id="o-nombre">{{profile.name}}</h2>
+        <p class="text-body-secondary mb-2">{{profile.role}}</p>
+        <span class="au-status au-status-success">Suscripción al día</span>
+      </div>
+      <button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre el cambio de plan."><i class="bi bi-arrow-up-circle" aria-hidden="true"></i>Cambiar de plan</button>
+    </div>
+  </section>
+
+  <div class="mb-4">{{> components/profile-stats}}</div>
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <section class="card h-100" aria-labelledby="o-datos"><div class="card-body">
+        <div class="au-card-header"><h2 class="au-card-title" id="o-datos">Datos de la institución</h2></div>
+        {{> components/profile-details}}
+        {{> components/profile-contact}}
+      </div></section>
+    </div>
+    <div class="col-lg-4">
+      <section class="card h-100" aria-labelledby="o-niveles"><div class="card-body">
+        <div class="au-card-header"><h2 class="au-card-title" id="o-niveles">Estudiantes por nivel</h2></div>
+        <ul class="au-profile-levels">
+          {{#each profile.levels}}
+          <li>
+            <div class="d-flex justify-content-between"><span>{{name}}</span><strong>{{students}}</strong></div>
+            <progress class="au-meter" max="{{@root.profile.total}}" value="{{students}}" aria-label="{{name}}: {{students}} estudiantes"></progress>
+          </li>
+          {{/each}}
+        </ul>
+      </div></section>
+    </div>
+    <div class="col-lg-4">
+      <section class="card h-100" aria-labelledby="o-actividad"><div class="card-body">
+        <div class="au-card-header"><h2 class="au-card-title" id="o-actividad">Actividad reciente</h2></div>
+        {{> components/profile-activity}}
+      </div></section>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

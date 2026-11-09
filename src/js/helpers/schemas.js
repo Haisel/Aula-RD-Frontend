@@ -79,6 +79,14 @@ export const codigoAccesoSchema = z.object({
     .regex(/^\d{6}$/, { message: 'Escriba los 6 dígitos del código.' }),
 });
 
+/** Perfil editable: nombre, correo y teléfono obligatorios; presentación opcional (perfil-editable.html). */
+export const perfilSchema = z.object({
+  nombre: fields.nombre('el nombre'),
+  email: fields.email,
+  telefono: fields.telefono,
+  bio: z.string().trim().max(280, { message: 'Use 280 caracteres o menos.' }),
+});
+
 /** Registro / suscripción de una institución (suscribir.html). */
 export const registroInstitucionSchema = z.object({
   institucion: fields.nombre('el nombre de la institución'),
@@ -141,6 +149,7 @@ export const schemas = new Map(
     ['login', loginSchema],
     ['recuperar', recuperarSchema],
     ['codigo-acceso', codigoAccesoSchema],
+    ['perfil', perfilSchema],
     ['registro-institucion', registroInstitucionSchema],
     ['estudiante', estudianteSchema],
     ['pago', pagoSchema],
