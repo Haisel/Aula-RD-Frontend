@@ -15,7 +15,9 @@ describe('tokens.json ↔ _tokens.scss (spec 005 · CA-01)', () => {
     const before = readFileSync(out, 'utf8');
     execFileSync(process.execPath, [resolve(root, 'scripts/build-tokens.mjs')], { stdio: 'pipe' });
     const after = readFileSync(out, 'utf8');
-    if (before !== after) writeFileSync(out, before);
-    expect(after === before, 'Ejecute `npm run tokens` y confirme el cambio').toBe(true);
+    // Siempre se restaura el archivo original (en Windows, git lo deja con CRLF y el generador escribe LF).
+    writeFileSync(out, before);
+    const lf = (/** @type {string} */ s) => s.replaceAll('\r\n', '\n');
+    expect(lf(after) === lf(before), 'Ejecute `npm run tokens` y confirme el cambio').toBe(true);
   });
 });
