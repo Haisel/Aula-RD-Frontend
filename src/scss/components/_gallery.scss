@@ -23,6 +23,12 @@
   }
 }
 
+// En las páginas de la galería (las que llevan el aviso de demostración), los títulos de sección
+// usan el escalón h2 (24/32) y no el h3 (20/28) del catálogo: más jerarquía frente al texto base.
+.au-content:has(> .au-demo-note) .au-specimen > h2 {
+  @include au-type('h2');
+}
+
 // Bloque "Cómo se usa": fragmento de código en texto, plegable.
 .au-howto {
   // `.au-specimen` es una rejilla: sin esto, una línea larga de código ensancha la columna entera.

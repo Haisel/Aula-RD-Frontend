@@ -5,3 +5,5 @@ docs/api/
 .DS_Store
 *.log
 .env
+# Caché de la herramienta de diseño (la configuración .impeccable/config.json sí se versiona)
+.impeccable/hook.cache.json

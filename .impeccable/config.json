@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "monotonous-spacing",
+        "value": "*",
+        "files": [
+          "src/ejemplo-botones.html"
+        ],
+        "createdAt": "2026-11-09T01:40:45.838Z",
+        "reason": "Claude (sin confirmación del usuario): catálogo de botones; el mismo gap-2 entre botones de un grupo es lo correcto en un muestrario"
+      }
+    ]
+  }
+}
