@@ -12,6 +12,7 @@ Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de a
 - `specs/005-identidad-visual-b/plan.md` y `tasks.md`.
 
 **Corregido**
+- `showErrors` (formularios) duplicaba el id del mensaje de error en `aria-describedby` en cada reintento de envío.
 - Foco del menú lateral: el anillo en tema claro tenía 2.59:1 sobre el navy del menú (mínimo 3:1) y los enlaces de navegación y el botón de cerrar tenían un halo navy invisible. Ahora el contraste mínimo medido es 7.1:1 (claro) y 9.7:1 (oscuro).
 - El botón de cerrar del menú usa una cruz blanca por fondo en vez de `filter`.
 

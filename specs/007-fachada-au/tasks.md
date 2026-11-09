@@ -8,12 +8,16 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina c
 - [x] RF-01, RF-02, RF-05, RF-07, RNF-01 y CA-01, CA-02, CA-06 comprobados en navegador y con `npm run check`
 - [x] CA-03, CA-04, CA-05, CA-07 cubiertos por pruebas existentes
 
+## Hecho el 08/11/2026: pruebas de contrato (`tests/facade-contract.test.js`, 24 pruebas)
+- [x] T-01 CSRF: `AU.api` envía `X-CSRF-TOKEN` y `X-XSRF-TOKEN` si hay `<meta name="csrf-token">`, y no los envía si no hay (RF-06)
+- [x] T-02 Carga fallida: `lazy()` rechaza con `AppError` y código `LIB_LOAD_FAILED`, reintenta tras un fallo y memoriza la carga correcta (RF-08)
+- [x] T-03 Diálogos: las 19 funciones de RF-03 existen en `AU` y son funciones
+
+Nota: son pruebas de caracterización de código ya escrito, así que no hubo fase en rojo. La prueba de `AU` necesita definir `__AU_VERSION__` (lo define Vite, no Vitest) con `vi.hoisted`.
+
 ## Pendiente
 | Id | Tarea | Cubre | Hecho cuando |
 |---|---|---|---|
-| T-01 P | Prueba (primero en rojo): `AU.api` envía el token CSRF de `<meta name="csrf-token">` en métodos que modifican | RF-06 | Prueba en `tests/http.test.js` que pasa |
-| T-02 P | Prueba (primero en rojo): una librería diferida cuya carga falla rechaza con `AppError` y código estable | RF-08 | Prueba nueva que pasa |
-| T-03 P | Prueba de que cada función de diálogo de RF-03 existe en `AU` | RF-03 | Prueba nueva que pasa |
 | T-04 | Corregir la exclusión desactualizada en la spec (sesión y autenticación ya existen: spec 010 y 011) | Alcance | Spec coherente con el código |
 | T-05 | Trazabilidad, `CHANGELOG.md` y `specs/README.md` | — | Cada RF tiene prueba o verificación registrada |
 | T-06 | Pedir aprobación al propietario | — | Spec `Aprobada (fecha, por)` |

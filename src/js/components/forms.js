@@ -98,12 +98,12 @@ export function showErrors(form, errors, general) {
     const fb = feedbackFor(fields[fields.length - 1]);
     fb.textContent = text;
     fb.style.display = 'block';
-    fields.forEach((f) =>
-      f.setAttribute(
-        'aria-describedby',
-        [f.getAttribute('aria-describedby'), fb.id].filter((x, i, a) => x && a.indexOf(x) === i).join(' '),
-      ),
-    );
+    fields.forEach((f) => {
+      // `aria-describedby` es una lista de ids: se compara id por id para no duplicar el del error.
+      const ids = (f.getAttribute('aria-describedby') ?? '').split(/\s+/).filter(Boolean);
+      if (!ids.includes(fb.id)) ids.push(fb.id);
+      f.setAttribute('aria-describedby', ids.join(' '));
+    });
     first ??= fields[0];
   }
   const box = /** @type {HTMLElement | null} */ (form.querySelector('[data-au-form-error]'));
