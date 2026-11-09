@@ -5,7 +5,7 @@
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde y, si es una página, con su verificación en navegador. Pruebas primero cuando haya lógica o contrato.
 
 ## Fase 1 — menú, errores, arquetipos y los 30 módulos
-**Estado 08/11/2026: en curso.** T-01 hecha: `tests/links.test.js` (3 pruebas) fija la deuda exacta: **30 ítems de menú** muertos y **15 `href="#"` vacíos** (7 en 5 páginas y 8 en los parciales `topbar` y `footer`). Un enlace muerto nuevo hace fallar la prueba y cada arreglo obliga a quitar su entrada de la lista.
+**Estado 08/11/2026: en curso.** T-02 hecha: el menú tiene grupos plegables (`children` en `NAV`, botón con colapso de Bootstrap, sin JS propio). `tests/sidebar-groups.test.js` (10 pruebas, 7 vistas en rojo antes). Verificado en navegador: abre y cierra con clic, Enter y Espacio, `aria-expanded` correcto, llega abierto si contiene la página activa, anillo de foco `#52CABB`, menú contraído a íconos (76 px) y menú móvil a 390 px (botón de 47 px). La galería ya agrupa "Interfaz". T-01 hecha: `tests/links.test.js` (3 pruebas) fija la deuda exacta: **30 ítems de menú** muertos y **15 `href="#"` vacíos** (7 en 5 páginas y 8 en los parciales `topbar` y `footer`). Un enlace muerto nuevo hace fallar la prueba y cada arreglo obliga a quitar su entrada de la lista.
 
 | Id | Tarea | Cubre | Hecho cuando |
 |---|---|---|---|

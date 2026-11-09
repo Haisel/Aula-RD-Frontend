@@ -68,6 +68,20 @@ const PENDIENTES_VACIOS = {
 };
 
 /**
+ * @typedef {object} NavNode
+ * @property {string} label Texto del ítem.
+ * @property {string} [href] Destino (los grupos no tienen).
+ * @property {NavNode[]} [children] Hijos de un grupo plegable.
+ */
+
+/**
+ * Aplana el menú: los grupos se sustituyen por sus hijos (spec 013, T-02).
+ * @param {NavNode[]} items Ítems del menú.
+ * @returns {NavNode[]} Solo enlaces.
+ */
+const flat = (items) => items.flatMap((i) => (i.children ? flat(i.children) : [i]));
+
+/**
  * Lista los archivos `.html` y `.hbs` de `src/` (páginas y parciales).
  * @param {string} dir Directorio.
  * @returns {string[]} Rutas absolutas.
@@ -85,9 +99,9 @@ describe('enlaces sin destino (spec 013 · RF-01)', () => {
   it('los ítems de menú muertos son exactamente los pendientes (el trinquete solo encoge)', () => {
     const muertos = [];
     for (const page of MENUS) {
-      const { nav } = /** @type {{ nav: { label: string, href: string }[] }} */ (pageContext(page));
-      for (const item of nav) {
-        const ok = /\.html$/.test(item.href) && existsSync(resolve(SRC, item.href));
+      const { nav } = /** @type {{ nav: NavNode[] }} */ (pageContext(page));
+      for (const item of flat(nav)) {
+        const ok = /\.html$/.test(item.href ?? '') && existsSync(resolve(SRC, item.href ?? ''));
         if (!ok) muertos.push(`${page} | ${item.label} | ${item.href}`);
       }
     }
@@ -109,7 +123,8 @@ describe('enlaces sin destino (spec 013 · RF-01)', () => {
     for (const file of FILES) {
       const text = readFileSync(file, 'utf8');
       for (const m of text.matchAll(/href\s*=\s*"([a-z0-9-]+\.html)(?:#[^"]*)?"/gi)) {
-        if (!existsSync(resolve(SRC, m[1]))) rotos.push(`${relative(SRC, file).split(sep).join('/')} → ${m[1]}`);
+        if (!existsSync(resolve(SRC, m[1])))
+          rotos.push(`${relative(SRC, file).split(sep).join('/')} → ${m[1]}`);
       }
     }
     expect(rotos).toEqual([]);

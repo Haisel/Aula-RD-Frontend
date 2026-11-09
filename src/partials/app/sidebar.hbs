@@ -18,9 +18,25 @@
     {{/if}}
     {{#each nav}}
     {{#if section}}<div class="au-sidebar-section" role="presentation">{{section}}</div>{{/if}}
+    {{#if children}}
+    {{!-- Grupo plegable (spec 013): botón con colapso de Bootstrap, abierto si contiene la página activa. --}}
+    <button class="nav-link au-nav-toggle{{#unless open}} collapsed{{/unless}}" type="button" data-bs-toggle="collapse" data-bs-target="#nav-g-{{@index}}" aria-expanded="{{#if open}}true{{else}}false{{/if}}" aria-controls="nav-g-{{@index}}" title="{{label}}">
+      <i class="bi bi-{{icon}}" aria-hidden="true"></i><span class="au-nav-text">{{label}}</span><i class="bi bi-chevron-down au-nav-chevron" aria-hidden="true"></i>
+    </button>
+    <div class="collapse{{#if open}} show{{/if}}" id="nav-g-{{@index}}">
+      <div class="au-nav-sub">
+        {{#each children}}
+        <a class="nav-link{{#if active}} active{{/if}}" href="{{href}}"{{#if active}} aria-current="page"{{/if}} title="{{label}}">
+          <i class="bi bi-{{icon}}{{#if active}}-fill{{/if}}" aria-hidden="true"></i><span class="au-nav-text">{{label}}</span>
+        </a>
+        {{/each}}
+      </div>
+    </div>
+    {{else}}
     <a class="nav-link{{#if active}} active{{/if}}" href="{{href}}"{{#if active}} aria-current="page"{{/if}} title="{{label}}">
       <i class="bi bi-{{icon}}{{#if active}}-fill{{/if}}" aria-hidden="true"></i><span class="au-nav-text">{{label}}</span>{{#if badge}}<span class="badge rounded-pill" aria-label="{{badge}} pendientes">{{badge}}</span>{{/if}}
     </a>
+    {{/if}}
     {{/each}}
   </nav>
 </aside>

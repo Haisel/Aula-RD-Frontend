@@ -76,10 +76,34 @@ describe('páginas de la galería (spec 012)', () => {
   });
 });
 
+/**
+ * @typedef {object} NavNode
+ * @property {string} [href] Destino (los grupos no tienen).
+ * @property {boolean} [active] Página actual.
+ * @property {NavNode[]} [children] Hijos de un grupo plegable.
+ */
+
+/**
+ * Aplana el menú: los grupos se sustituyen por sus hijos (spec 013, T-02).
+ * @param {NavNode[]} items Ítems del menú.
+ * @returns {NavNode[]} Solo enlaces.
+ */
+const flat = (items) => items.flatMap((i) => (i.children ? flat(i.children) : [i]));
+
+/**
+ * Menú aplanado de una página.
+ * @param {string} page Página.
+ * @returns {{ href: string, active: boolean }[]} Enlaces del menú.
+ */
+const linksOf = (page) =>
+  /** @type {{ href: string, active: boolean }[]} */ (
+    flat(/** @type {{ nav: NavNode[] }} */ (pageContext(page)).nav)
+  );
+
 describe('menú "Galería" (spec 012 · RF-02, RF-14)', () => {
   for (const file of ALL) {
     it(`${file} tiene menú con su página activa y enlaces válidos`, () => {
-      const { nav } = /** @type {{ nav: { href: string, active: boolean }[] }} */ (pageContext(file));
+      const nav = linksOf(file);
       expect(nav.length).toBeGreaterThan(0);
       expect(nav.filter((i) => i.active).map((i) => i.href)).toEqual([file]);
       for (const item of nav.filter((i) => /\.html$/.test(i.href))) {
@@ -114,8 +138,9 @@ describe('menú "Galería" (spec 012 · RF-02, RF-14)', () => {
   });
 
   it('el menú de la galería lista todas las páginas publicadas y enlaza las de la spec 009', () => {
-    const { nav } = /** @type {{ nav: { href: string }[] }} */ (pageContext(HUB));
-    const files = nav.map((i) => i.href).filter((h) => /\.html$/.test(h));
+    const files = linksOf(HUB)
+      .map((i) => i.href)
+      .filter((h) => /\.html$/.test(h));
     expect(files).toEqual(expect.arrayContaining(ALL));
     expect(files).toContain('componentes.html');
   });

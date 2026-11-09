@@ -6,6 +6,7 @@ Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de a
 
 **Nuevo**
 - Galería de funcionalidades, Fase 1 (spec 012): `galeria.html` (índice) y las páginas de ejemplo de botones, alertas, modales, tarjetas y estados, con menú "Galería", aviso de demostración y bloques "Cómo se usa" (`{{{{code}}}}`). `tests/gallery-pages.test.js` (35 pruebas). Sin cambios en `app.js`.
+- Menú lateral con grupos plegables (spec 013): un ítem con `children` se dibuja como botón con colapso de Bootstrap (sin JS propio), accesible con teclado, abierto si contiene la página activa, y compatible con el menú contraído a íconos y con el móvil. La galería agrupa sus páginas de interfaz. `tests/sidebar-groups.test.js` (10 pruebas) y `tests/links.test.js` (prueba de trinquete contra enlaces muertos: 30 ítems de menú y 15 `href="#"` vacíos de deuda inicial).
 - Los cuatro dashboards (superadmin, institución, docente y familia) enlazan la galería desde su menú lateral ("Galería", en la sección "Ejemplos"), y la galería enlaza de vuelta a cada dashboard desde su menú y su índice. Probado con clics reales: dashboard docente → Galería → Botones → Portal de familia. `tests/gallery-pages.test.js` pasa a 40 pruebas.
 - `tests/contrast.test.js`: contraste WCAG AA calculado desde `tokens.json` (26 pares en ambos temas + 1 solo en claro); comprueba que turquesa y champagne no se usan como color de texto.
 - `tests/tokens-sync.test.js`: `_tokens.scss` debe coincidir con lo que genera `tokens.json`.

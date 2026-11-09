@@ -12,9 +12,10 @@
  * @typedef {object} NavItem
  * @property {string} label Texto del enlace.
  * @property {string} icon Clase de Bootstrap Icons sin `bi-`.
- * @property {string} href Destino.
+ * @property {string} [href] Destino (un grupo con `children` no tiene).
  * @property {string|number} [badge] Contador opcional.
  * @property {string} [section] Si existe, se pinta un encabezado de sección antes del ítem.
+ * @property {NavItem[]} [children] Si existe, el ítem es un grupo plegable con estos hijos.
  */
 
 /** @type {Record<string, NavItem[]>} */
@@ -69,11 +70,18 @@ const NAV = {
   // Galería de funcionalidades (spec 012): se amplía en cada fase con las páginas que se publican.
   galeria: [
     { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html' },
-    { label: 'Botones', icon: 'hand-index', href: 'ejemplo-botones.html', section: 'Interfaz' },
-    { label: 'Alertas', icon: 'bell', href: 'ejemplo-alertas.html' },
-    { label: 'Modales', icon: 'window-stack', href: 'ejemplo-modales.html' },
-    { label: 'Tarjetas', icon: 'card-text', href: 'ejemplo-tarjetas.html' },
-    { label: 'Estados', icon: 'inbox', href: 'ejemplo-estados.html' },
+    {
+      label: 'Interfaz',
+      icon: 'palette2',
+      section: 'Plantilla',
+      children: [
+        { label: 'Botones', icon: 'hand-index', href: 'ejemplo-botones.html' },
+        { label: 'Alertas', icon: 'bell', href: 'ejemplo-alertas.html' },
+        { label: 'Modales', icon: 'window-stack', href: 'ejemplo-modales.html' },
+        { label: 'Tarjetas', icon: 'card-text', href: 'ejemplo-tarjetas.html' },
+        { label: 'Estados', icon: 'inbox', href: 'ejemplo-estados.html' },
+      ],
+    },
     { label: 'Catálogo de componentes', icon: 'palette', href: 'componentes.html', section: 'Otras páginas' },
     { label: 'Panel de la plataforma', icon: 'speedometer2', href: 'dashboard-superadmin.html' },
     { label: 'Panel de la institución', icon: 'building', href: 'dashboard-institucion.html' },
@@ -180,6 +188,21 @@ const PAGES = {
 };
 
 /**
+ * Marca la página activa en el menú. Un grupo (`children`) no está activo él mismo: queda
+ * `open` (abierto) si alguno de sus hijos es la página actual.
+ * @param {NavItem[]} items Ítems del menú.
+ * @param {string | undefined} activeHref Página actual.
+ * @returns {(NavItem & { active: boolean, open?: boolean })[]} Ítems con su estado.
+ */
+function buildNav(items, activeHref) {
+  return items.map((item) => {
+    if (!item.children) return { ...item, active: item.href === activeHref };
+    const children = item.children.map((c) => ({ ...c, active: c.href === activeHref }));
+    return { ...item, children, active: false, open: children.some((c) => c.active) };
+  });
+}
+
+/**
  * Contexto de una página.
  * @param {string} pagePath Ruta de la página (p. ej. `/index.html` en dev o `index.html` en build).
  * @param {{ dev?: boolean, single?: boolean }} [env] Entorno.
@@ -189,9 +212,7 @@ export function pageContext(pagePath, env = {}) {
   const key = pagePath.replace(/^\//, '');
   const page = PAGES[/** @type {keyof typeof PAGES} */ (key)] ?? { title: 'Aula RD' };
   const portal = /** @type {any} */ (page).portal;
-  const nav = portal
-    ? NAV[portal].map((item) => ({ ...item, active: item.href === /** @type {any} */ (page).active }))
-    : [];
+  const nav = portal ? buildNav(NAV[portal], /** @type {any} */ (page).active) : [];
   return {
     ...page,
     nav,
