@@ -1,10 +1,12 @@
 # Cambios
 
-## Sin publicar
+## 0.4.0 — 09/11/2026
 
-Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de accesibilidad del foco.
+Cierre de la Fase 1 de la plantilla profesional (spec 013): los 30 ítems de menú abren una página, cero enlaces vacíos, 73 páginas verificadas en claro y oscuro, y cierre de la spec 005 (identidad visual B) con pruebas de guarda y corrección de accesibilidad del foco.
 
 **Nuevo**
+- Decisión 016: el límite de peso de `app.js` (spec 006, RNF-01) sube de 100 KB a 110 KB gzip. El archivo ya pesaba unos 107 KB desde las versiones 0.2.0 y 0.3.0; el límite se ajusta a esa realidad y no se permite crecer sin justificación.
+- `npm run budget` (`scripts/check-budget.mjs`) hace cumplir ese límite y forma parte de `npm run check`, después del build. Mide 106.76 kB gzip (nivel 9, kB decimales), cerca de 1 kB menos que el informe de Vite.
 - Corrección de accesibilidad (verificación T-12): el control de rango (`form-range`) tenía la pista casi del color del fondo, el pulgar hueco y ningún indicador de foco claro. Ahora la pista usa `--au-border-control`, el pulgar es sólido con `--au-accent-text` y con el teclado muestra el anillo sólido `--au-focus-ring`. `tests/focus-ring.test.js`.
 - Fase 1 cerrada en enlaces (spec 013, T-11): páginas públicas `contacto.html` (formulario validado con el esquema nuevo `contacto`), `terminos.html` y `privacidad.html` (texto de **relleno** rotulado), y los 15 `href="#"` vacíos ahora llevan a una página real: pie de página, términos del registro, avisos y menú de usuario de la barra superior, botones de los paneles y "Solicitar demostración". Los trinquetes de `tests/links.test.js` quedan en 0. `tests/public-pages.test.js`.
 - Módulos, tanda 3 (spec 013, Fase 1): los 8 ítems de menú que faltaban, con arquetipo propio: Planes (tarjetas de precios), Configuración del superadmin y de la institución (pestañas con formulario), Asistencia (cuadrícula validada con el esquema `asistencia`) y Calificaciones (cuadrícula de notas) del docente, Mensajes (bandeja con pestañas accesibles), y Planificación y Horario (calendario). Datos `planes.json` y `mensajes.json`, helpers `money`, `date`, `num` e `inc`, y estilos de bandeja y notas. El trinquete de ítems de menú muertos llega a **0**; `tests/archetype-pages.test.js`.

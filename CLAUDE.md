@@ -8,12 +8,13 @@
 - Etiquetar afirmaciones: [Seguro], [Probable], [Suposición].
 - El frontend nunca es barrera de seguridad; nada de datos ficticios presentados como reales.
 
-## Estado al 08/11/2026 (versión 0.3.0)
+## Estado al 09/11/2026 (versión 0.4.0)
+- Fase 1 de la plantilla profesional (spec 013) cerrada: 30 módulos, 73 páginas. Límite de `app.js` en 110 kB gzip (decisión 016), verificado por `npm run budget` dentro de `npm run check`. Sigue la Fase 2 (datos y lógica).
 - Plantilla visual neutra (Bootstrap 5 + Vite + Handlebars), línea gráfica B, fachada única `window.AU`.
 - Kernel de la Fase 4 (`E:\AulaRD`, antes `window.AR`) fusionado en `AU`: spec 010, decisión 013 (aprobadas).
 - Institución activa por cabecera `X-Institution-Id`: decisión 014 (aprobada).
 - Autenticación JWT opción A (token en memoria + renovación en cookie `httpOnly`): spec 011 (**pendiente de aprobación**), decisión 015.
-- `npm run check` en verde: 124 pruebas.
+- `npm run check` en verde.
 
 ## Pendiente
 - Aprobar `specs/011-autenticacion-jwt`.

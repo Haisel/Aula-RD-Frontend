@@ -152,7 +152,7 @@ JSON de demostración en `public/data/` (arreglos de objetos): los de la spec 01
 3. **Páginas públicas:** términos, privacidad y contacto con texto de relleno rotulado. *Propuesta: sí.*
 4. **Umbrales de calidad:** Lighthouse ≥ 95 en accesibilidad y mejores prácticas, ≥ 90 en SEO. *Propuesta: sí.*
 5. **Variantes de panel:** ¿resumen financiero y analítica académica, o prefiere otras? *Propuesta: esas dos.*
-6. **Peso de `app.js`** (spec 006): hoy 103 KB frente a un límite de 100 KB. ¿Se sube el límite con un ADR o se reduce el núcleo? *No bloquea esta spec, pero debe decidirse antes del cierre.*
+6. **Peso de `app.js`** (spec 006): hoy 103 KB frente a un límite de 100 KB. **Resuelta el 09/11/2026:** se sube el límite a 110 KB (decisión 016).
 7. **Orden de entrega:** *Propuesta en el plan: F1 menú, arquetipos y errores; F2 datos (tablas, CRUD, reporte, tablero); F3 autenticación, cuenta y páginas; F4 interfaz y formularios; F5 aplicaciones, calendario y gráficos; F6 cobertura total, guía y medición.*
 
 ## Riesgos

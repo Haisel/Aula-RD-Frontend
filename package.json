@@ -1,6 +1,6 @@
 {
   "name": "aulard-frontend",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Aula RD — frontend (Bootstrap 5.3 + Vite + Handlebars + JS con JSDoc). Landing de suscripción y dashboards.",
   "scripts": {
     "dev": "npm run tokens && vite",
@@ -16,7 +16,8 @@
     "test:watch": "vitest",
     "docs": "jsdoc -c jsdoc.json",
     "mock": "node scripts/mock-api.mjs",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build && npm run budget",
+    "budget": "node scripts/check-budget.mjs",
     "build:html": "node scripts/build-html.mjs",
     "build:single": "npm run tokens && AU_SINGLE=1 vite build && AU_SINGLE=1 node scripts/build-html.mjs"
   },

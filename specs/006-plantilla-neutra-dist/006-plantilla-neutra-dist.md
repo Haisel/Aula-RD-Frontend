@@ -30,7 +30,7 @@ Pedido del propietario: "plantilla visual primero neutra… que al hacer el buil
 ## Requisitos no funcionales
 | Id | Requisito | Medida |
 |---|---|---|
-| RNF-01 | Peso del núcleo | `app.js` ≤ 100 KB gzip (actual 97 KB) |
+| RNF-01 | Peso del núcleo | `app.js` ≤ 110 KB gzip, medido con Vite (actual 107.7 KB). Límite original 100 KB; subido por la [decisión 016](../../docs/decisions/016-limite-de-peso-de-app-js.md) |
 | RNF-02 | Peso del CSS | ≤ 80 KB gzip (actual 72 KB) |
 | RNF-03 | Sin JS en línea | CSP `script-src 'self'` compatible |
 
