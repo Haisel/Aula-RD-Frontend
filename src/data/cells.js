@@ -68,7 +68,16 @@ const TONES = {
     'Presente',
     'Conciliado',
   ],
-  warning: ['Pendiente', 'Por vencer', 'En revisión', 'Borrador', 'Parcial', 'Tardanza', 'Pausada', 'Por conciliar'],
+  warning: [
+    'Pendiente',
+    'Por vencer',
+    'En revisión',
+    'Borrador',
+    'Parcial',
+    'Tardanza',
+    'Pausada',
+    'Por conciliar',
+  ],
   danger: [
     'Vencido',
     'Retirado',

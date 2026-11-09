@@ -107,7 +107,16 @@ describe('datos de los módulos (spec 013 · T-05)', () => {
     it('tiene los tres planes con sus campos', () => {
       expect(rows().map((r) => r.nombre)).toEqual(['Básico', 'Profesional', 'Premium']);
       for (const r of rows()) {
-        expect(Object.keys(r).sort()).toEqual(['descripcion', 'destacado', 'estudiantes', 'id', 'incluye', 'instituciones', 'nombre', 'precio']);
+        expect(Object.keys(r).sort()).toEqual([
+          'descripcion',
+          'destacado',
+          'estudiantes',
+          'id',
+          'incluye',
+          'instituciones',
+          'nombre',
+          'precio',
+        ]);
         expect(r.incluye.length).toBeGreaterThanOrEqual(3);
         expect(r.precio).toBeGreaterThan(0);
       }

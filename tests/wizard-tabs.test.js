@@ -10,7 +10,8 @@ import { showErrors } from '../src/js/components/forms.js';
 beforeAll(() => {
   // jsdom no trae CSS.escape (lo usa showErrors).
   if (!globalThis.CSS) /** @type {any} */ (globalThis).CSS = {};
-  if (!globalThis.CSS.escape) globalThis.CSS.escape = (/** @type {string} */ s) => s.replace(/["\\]/g, '\\$&');
+  if (!globalThis.CSS.escape)
+    globalThis.CSS.escape = (/** @type {string} */ s) => s.replace(/["\\]/g, '\\$&');
 });
 
 afterEach(() => {
@@ -34,7 +35,11 @@ function mount() {
       </div>
     </div></form>`;
   const root = /** @type {HTMLElement} */ (document.getElementById('root'));
-  return { form: /** @type {HTMLFormElement} */ (document.getElementById('f')), root, cleanup: tabsComponent.init(root) };
+  return {
+    form: /** @type {HTMLFormElement} */ (document.getElementById('f')),
+    root,
+    cleanup: tabsComponent.init(root),
+  };
 }
 
 /**
@@ -43,7 +48,9 @@ function mount() {
  * @returns {Promise<void>} Se resuelve en `shown.bs.tab`.
  */
 const shown = (id) =>
-  new Promise((ok) => document.getElementById(id)?.addEventListener('shown.bs.tab', () => ok(), { once: true }));
+  new Promise((ok) =>
+    document.getElementById(id)?.addEventListener('shown.bs.tab', () => ok(), { once: true }),
+  );
 
 describe('data-au-tab-go', () => {
   it('"Siguiente" activa el paso y su pestaña', async () => {
@@ -96,7 +103,9 @@ describe('showErrors con campos sustituidos por un widget (el foco no puede caer
   it('campo oculto de un widget con data-au-input: enfoca el widget (firma) y lo hace enfocable por programa', () => {
     document.body.innerHTML = `<form id="f"><canvas id="lienzo" data-au-input="#firma" aria-labelledby="l"></canvas>
       <input type="hidden" name="firma" id="firma"></form>`;
-    showErrors(/** @type {HTMLFormElement} */ (document.getElementById('f')), { firma: 'Firme en el recuadro.' });
+    showErrors(/** @type {HTMLFormElement} */ (document.getElementById('f')), {
+      firma: 'Firme en el recuadro.',
+    });
     expect(document.activeElement?.id).toBe('lienzo');
     expect(document.getElementById('lienzo')?.getAttribute('tabindex')).toBe('-1');
   });
@@ -104,7 +113,9 @@ describe('showErrors con campos sustituidos por un widget (el foco no puede caer
   it('campo oculto del editor: enfoca el área editable', () => {
     document.body.innerHTML = `<form id="f"><div data-au-input="#html"><div class="ql-editor" id="ed" tabindex="0"></div></div>
       <input type="hidden" name="mensaje" id="html"></form>`;
-    showErrors(/** @type {HTMLFormElement} */ (document.getElementById('f')), { mensaje: 'Escriba el mensaje.' });
+    showErrors(/** @type {HTMLFormElement} */ (document.getElementById('f')), {
+      mensaje: 'Escriba el mensaje.',
+    });
     expect(document.activeElement?.id).toBe('ed');
   });
 

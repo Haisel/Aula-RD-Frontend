@@ -30,7 +30,10 @@ function register(dir) {
     const p = resolve(dir, e.name);
     if (e.isDirectory()) register(p);
     else if (/\.(hbs|html)$/.test(e.name)) {
-      const id = relative(PARTIALS, p).split(sep).join('/').replace(/\.(hbs|html)$/, '');
+      const id = relative(PARTIALS, p)
+        .split(sep)
+        .join('/')
+        .replace(/\.(hbs|html)$/, '');
       hb.registerPartial(id, readFileSync(p, 'utf8'));
     }
   }
@@ -147,7 +150,11 @@ describe('esquema "contacto"', () => {
    * @returns {ReturnType<typeof validate>} Resultado.
    */
   const check = (data) => validate(/** @type {any} */ (schemas.get('contacto')), data);
-  const ok = { nombre: 'Ana Pérez', email: 'ana@colegio.edu.do', mensaje: 'Quisiera solicitar una demostración del sistema.' };
+  const ok = {
+    nombre: 'Ana Pérez',
+    email: 'ana@colegio.edu.do',
+    mensaje: 'Quisiera solicitar una demostración del sistema.',
+  };
 
   it('acepta datos completos', () => {
     expect(check(ok).success).toBe(true);

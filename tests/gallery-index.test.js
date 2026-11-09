@@ -37,14 +37,19 @@ function register(dir) {
     const p = resolve(dir, e.name);
     if (e.isDirectory()) register(p);
     else if (/\.(hbs|html)$/.test(e.name)) {
-      const id = relative(PARTIALS, p).split(sep).join('/').replace(/\.(hbs|html)$/, '');
+      const id = relative(PARTIALS, p)
+        .split(sep)
+        .join('/')
+        .replace(/\.(hbs|html)$/, '');
       hb.registerPartial(id, readFileSync(p, 'utf8'));
     }
   }
 }
 register(PARTIALS);
 
-const html = hb.compile(readFileSync(resolve(SRC, 'galeria.html'), 'utf8'))(pageContext('galeria.html', { dev: false }));
+const html = hb.compile(readFileSync(resolve(SRC, 'galeria.html'), 'utf8'))(
+  pageContext('galeria.html', { dev: false }),
+);
 /** @type {any[]} */
 const nav = /** @type {any} */ (pageContext('galeria.html')).nav;
 const grupo = (/** @type {string} */ label) => nav.find((i) => i.label === label);
@@ -99,7 +104,9 @@ describe('índice de la galería (galeria.html)', () => {
   it('tiene una sección con tarjetas para Autenticación, Perfiles y Formularios', () => {
     expect(tarjetasDe('Autenticación')).toEqual(AUTENTICACION);
     expect(tarjetasDe('Perfiles')).toEqual(grupo('Perfiles').children.map((/** @type {any} */ c) => c.href));
-    expect(tarjetasDe('Formularios')).toEqual(grupo('Formularios').children.map((/** @type {any} */ c) => c.href));
+    expect(tarjetasDe('Formularios')).toEqual(
+      grupo('Formularios').children.map((/** @type {any} */ c) => c.href),
+    );
   });
 
   it('cada sección tiene su título como h2 enlazado con aria-labelledby', () => {

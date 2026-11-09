@@ -184,7 +184,8 @@ const PAGES = {
   },
   'privacidad.html': {
     title: 'Política de privacidad',
-    description: 'Cómo se tratan los datos personales en Aula RD. Texto de relleno: sustitúyalo por el texto legal.',
+    description:
+      'Cómo se tratan los datos personales en Aula RD. Texto de relleno: sustitúyalo por el texto legal.',
     layout: 'landing',
   },
   'login-centrado.html': {
@@ -684,8 +685,20 @@ Object.assign(MODULES, {
           fields: [
             { id: 'nombre', label: 'Nombre de la plataforma', type: 'text', value: 'Aula RD' },
             { id: 'soporte', label: 'Correo de soporte', type: 'email', value: 'soporte@aulard.example' },
-            { id: 'zona', label: 'Zona horaria', type: 'select', value: 'América/Santo Domingo (UTC−4)', options: ['América/Santo Domingo (UTC−4)', 'UTC'] },
-            { id: 'idioma', label: 'Idioma', type: 'select', value: 'Español (República Dominicana)', options: ['Español (República Dominicana)'] },
+            {
+              id: 'zona',
+              label: 'Zona horaria',
+              type: 'select',
+              value: 'América/Santo Domingo (UTC−4)',
+              options: ['América/Santo Domingo (UTC−4)', 'UTC'],
+            },
+            {
+              id: 'idioma',
+              label: 'Idioma',
+              type: 'select',
+              value: 'Español (República Dominicana)',
+              options: ['Español (República Dominicana)'],
+            },
           ],
         },
         {
@@ -695,7 +708,13 @@ Object.assign(MODULES, {
           fields: [
             { id: 'moneda', label: 'Moneda', type: 'text', value: 'RD$ (peso dominicano)', readonly: true },
             { id: 'itbis', label: 'ITBIS (%)', type: 'number', value: '18' },
-            { id: 'gracia', label: 'Días de gracia tras el vencimiento', type: 'number', value: '5', help: 'Pasado ese plazo, la cuenta pasa a "Suspendida".' },
+            {
+              id: 'gracia',
+              label: 'Días de gracia tras el vencimiento',
+              type: 'number',
+              value: '5',
+              help: 'Pasado ese plazo, la cuenta pasa a "Suspendida".',
+            },
             { id: 'recordatorios', label: 'Enviar recordatorios de pago', type: 'switch', checked: true },
           ],
         },
@@ -704,8 +723,20 @@ Object.assign(MODULES, {
           title: 'Seguridad',
           description: 'Controles de acceso de las personas que administran la plataforma.',
           fields: [
-            { id: 'dos-pasos', label: 'Exigir verificación en dos pasos', type: 'switch', checked: true, help: 'Aplica a los usuarios internos.' },
-            { id: 'expira', label: 'La sesión expira tras', type: 'select', value: '30 minutos', options: ['15 minutos', '30 minutos', '1 hora', '8 horas'] },
+            {
+              id: 'dos-pasos',
+              label: 'Exigir verificación en dos pasos',
+              type: 'switch',
+              checked: true,
+              help: 'Aplica a los usuarios internos.',
+            },
+            {
+              id: 'expira',
+              label: 'La sesión expira tras',
+              type: 'select',
+              value: '30 minutos',
+              options: ['15 minutos', '30 minutos', '1 hora', '8 horas'],
+            },
             { id: 'bloqueo', label: 'Bloquear tras intentos fallidos', type: 'number', value: '5' },
           ],
         },
@@ -735,7 +766,13 @@ Object.assign(MODULES, {
           title: 'Año escolar',
           description: 'Período vigente y cuota por defecto.',
           fields: [
-            { id: 'periodo', label: 'Período', type: 'select', value: '2026-2027', options: ['2025-2026', '2026-2027'] },
+            {
+              id: 'periodo',
+              label: 'Período',
+              type: 'select',
+              value: '2026-2027',
+              options: ['2025-2026', '2026-2027'],
+            },
             { id: 'inicio', label: 'Inicio de clases', type: 'text', value: '18/08/2026' },
             { id: 'cuota', label: 'Cuota mensual por defecto (RD$)', type: 'text', value: '7,500.00' },
             { id: 'cortes', label: 'Cortes de notas por año', type: 'number', value: '4' },
@@ -746,9 +783,19 @@ Object.assign(MODULES, {
           title: 'Notificaciones',
           description: 'Qué avisos reciben las familias y el personal.',
           fields: [
-            { id: 'aviso-notas', label: 'Avisar a las familias cuando se publiquen calificaciones', type: 'switch', checked: true },
+            {
+              id: 'aviso-notas',
+              label: 'Avisar a las familias cuando se publiquen calificaciones',
+              type: 'switch',
+              checked: true,
+            },
             { id: 'aviso-pago', label: 'Recordar los pagos pendientes', type: 'switch', checked: true },
-            { id: 'aviso-ausencia', label: 'Avisar de las ausencias del día', type: 'switch', checked: false },
+            {
+              id: 'aviso-ausencia',
+              label: 'Avisar de las ausencias del día',
+              type: 'switch',
+              checked: false,
+            },
           ],
         },
       ],

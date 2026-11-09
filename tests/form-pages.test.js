@@ -39,7 +39,10 @@ function register(dir) {
     const p = resolve(dir, e.name);
     if (e.isDirectory()) register(p);
     else if (/\.(hbs|html)$/.test(e.name)) {
-      const id = relative(PARTIALS, p).split(sep).join('/').replace(/\.(hbs|html)$/, '');
+      const id = relative(PARTIALS, p)
+        .split(sep)
+        .join('/')
+        .replace(/\.(hbs|html)$/, '');
       hb.registerPartial(id, readFileSync(p, 'utf8'));
     }
   }
@@ -137,7 +140,9 @@ describe('páginas de formularios (spec 013 · V-03)', () => {
 
   it('cada página tiene una estructura distinta: ninguna marca aparece en dos páginas', () => {
     for (const a of PAGES) {
-      const otras = PAGES.filter((b) => b.file !== a.file && render(b.file).includes(a.marca)).map((b) => b.file);
+      const otras = PAGES.filter((b) => b.file !== a.file && render(b.file).includes(a.marca)).map(
+        (b) => b.file,
+      );
       expect(otras, `${a.marca} también está en ${otras.join(', ')}`).toEqual([]);
     }
   });
@@ -147,7 +152,16 @@ describe('páginas de formularios (spec 013 · V-03)', () => {
     for (const t of ['text', 'email', 'password', 'number', 'date', 'tel', 'range', 'checkbox', 'radio']) {
       expect(html, `type="${t}"`).toContain(`type="${t}"`);
     }
-    for (const x of ['<select', '<textarea', 'role="switch"', 'form-control-lg', 'form-control-sm', 'input-group', ' disabled', ' readonly']) {
+    for (const x of [
+      '<select',
+      '<textarea',
+      'role="switch"',
+      'form-control-lg',
+      'form-control-sm',
+      'input-group',
+      ' disabled',
+      ' readonly',
+    ]) {
       expect(html, x).toContain(x);
     }
   });
@@ -200,7 +214,9 @@ describe('páginas de formularios (spec 013 · V-03)', () => {
     it('cada destino de un botón existe como paso', () => {
       const html = render('formulario-asistente.html');
       for (const m of html.matchAll(/data-au-tab-go="#([a-z0-9-]+)"/g)) {
-        expect(html, m[1]).toMatch(new RegExp(`class="tab-pane[^"]*"[^>]*id="${m[1]}"|id="${m[1]}"[^>]*class="tab-pane`));
+        expect(html, m[1]).toMatch(
+          new RegExp(`class="tab-pane[^"]*"[^>]*id="${m[1]}"|id="${m[1]}"[^>]*class="tab-pane`),
+        );
       }
     });
 

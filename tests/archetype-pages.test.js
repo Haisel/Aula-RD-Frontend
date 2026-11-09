@@ -39,7 +39,10 @@ function register(dir) {
     const p = resolve(dir, e.name);
     if (e.isDirectory()) register(p);
     else if (/\.(hbs|html)$/.test(e.name)) {
-      const id = relative(PARTIALS, p).split(sep).join('/').replace(/\.(hbs|html)$/, '');
+      const id = relative(PARTIALS, p)
+        .split(sep)
+        .join('/')
+        .replace(/\.(hbs|html)$/, '');
       hb.registerPartial(id, readFileSync(p, 'utf8'));
     }
   }
@@ -91,7 +94,9 @@ describe('módulos con arquetipo propio (spec 013)', () => {
         expect((html.match(/<h1[\s>]/g) ?? []).length).toBe(1);
         expect(html).toContain(`>${moduleOf(file).title}</h1>`);
         expect(html).toMatch(/<nav aria-label="Migas de pan"/);
-        expect(html).toMatch(/<li class="breadcrumb-item"><a href="dashboard-[a-z]+\.html">Inicio<\/a><\/li>/);
+        expect(html).toMatch(
+          /<li class="breadcrumb-item"><a href="dashboard-[a-z]+\.html">Inicio<\/a><\/li>/,
+        );
         expect(html).toContain('au-demo-note');
       });
 
@@ -131,7 +136,9 @@ describe('módulos con arquetipo propio (spec 013)', () => {
   it('cada arquetipo se reconoce por su marca; las dos páginas de configuración comparten la suya', () => {
     for (const a of PAGES) {
       expect(render(a.file), a.file).toContain(a.marca);
-      const otros = PAGES.filter((b) => b.marca !== a.marca && render(b.file).includes(a.marca)).map((b) => b.file);
+      const otros = PAGES.filter((b) => b.marca !== a.marca && render(b.file).includes(a.marca)).map(
+        (b) => b.file,
+      );
       expect(otros, `${a.marca} también está en ${otros.join(', ')}`).toEqual([]);
     }
   });
@@ -191,7 +198,11 @@ describe('módulos con arquetipo propio (spec 013)', () => {
       filas.forEach((/** @type {any} */ f, /** @type {number} */ i) => {
         const n = i + 1;
         for (const estado of ['presente', 'tardanza', 'ausente']) {
-          expect(html).toMatch(new RegExp(`name="e${n}" value="${estado}"[^>]*aria-label="${f.nombre.replaceAll('&', '&amp;')} ${estado}"`));
+          expect(html).toMatch(
+            new RegExp(
+              `name="e${n}" value="${estado}"[^>]*aria-label="${f.nombre.replaceAll('&', '&amp;')} ${estado}"`,
+            ),
+          );
         }
         expect((html.match(new RegExp(`name="e${n}"[^>]*checked`, 'g')) ?? []).length).toBe(1);
       });
