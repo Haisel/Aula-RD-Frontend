@@ -1,0 +1,92 @@
+[
+  {
+    "id": "AT-01",
+    "fecha": "2026-10-12",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-02",
+    "fecha": "2026-10-13",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-03",
+    "fecha": "2026-10-14",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-04",
+    "fecha": "2026-10-15",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-05",
+    "fecha": "2026-10-16",
+    "estado": "Ausente",
+    "nota": "Justificada con certificado médico"
+  },
+  {
+    "id": "AT-06",
+    "fecha": "2026-10-17",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-07",
+    "fecha": "2026-10-18",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-08",
+    "fecha": "2026-10-19",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-09",
+    "fecha": "2026-10-20",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-10",
+    "fecha": "2026-10-21",
+    "estado": "Tardanza",
+    "nota": "Llegó a las 8:25"
+  },
+  {
+    "id": "AT-11",
+    "fecha": "2026-11-01",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-12",
+    "fecha": "2026-11-02",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-13",
+    "fecha": "2026-11-03",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-14",
+    "fecha": "2026-11-04",
+    "estado": "Presente",
+    "nota": ""
+  },
+  {
+    "id": "AT-15",
+    "fecha": "2026-11-05",
+    "estado": "Presente",
+    "nota": ""
+  }
+]

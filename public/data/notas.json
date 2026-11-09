@@ -1,0 +1,58 @@
+[
+  {
+    "asignatura": "Matemática",
+    "p1": 80,
+    "p2": 94,
+    "p3": 96,
+    "promedio": 90,
+    "estado": "Aprobado"
+  },
+  {
+    "asignatura": "Lengua Española",
+    "p1": 99,
+    "p2": 80,
+    "p3": 81,
+    "promedio": 87,
+    "estado": "Aprobado"
+  },
+  {
+    "asignatura": "Ciencias de la Naturaleza",
+    "p1": 90,
+    "p2": 80,
+    "p3": 81,
+    "promedio": 84,
+    "estado": "Aprobado"
+  },
+  {
+    "asignatura": "Ciencias Sociales",
+    "p1": 84,
+    "p2": 88,
+    "p3": 88,
+    "promedio": 87,
+    "estado": "Aprobado"
+  },
+  {
+    "asignatura": "Inglés",
+    "p1": 97,
+    "p2": 91,
+    "p3": 97,
+    "promedio": 95,
+    "estado": "Aprobado"
+  },
+  {
+    "asignatura": "Educación Física",
+    "p1": 93,
+    "p2": 85,
+    "p3": 86,
+    "promedio": 88,
+    "estado": "Aprobado"
+  },
+  {
+    "asignatura": "Educación Artística",
+    "p1": 82,
+    "p2": 88,
+    "p3": 92,
+    "promedio": 87,
+    "estado": "Aprobado"
+  }
+]

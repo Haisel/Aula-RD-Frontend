@@ -1,0 +1,82 @@
+[
+  {
+    "id": "CM-4001",
+    "asunto": "Calendario del primer corte de notas",
+    "destinatarios": "Todos los grados",
+    "autor": "Guillermo Ortiz",
+    "fecha": "2026-10-11",
+    "estado": "Programado"
+  },
+  {
+    "id": "CM-4002",
+    "asunto": "Reunión de padres y tutores",
+    "destinatarios": "4.º Primaria · B",
+    "autor": "Guillermo Ortiz",
+    "fecha": "2026-11-26",
+    "estado": "Enviado"
+  },
+  {
+    "id": "CM-4003",
+    "asunto": "Recordatorio de pago de noviembre",
+    "destinatarios": "Todos los grados",
+    "autor": "Adolfo Pascual",
+    "fecha": "2026-12-23",
+    "estado": "Enviado"
+  },
+  {
+    "id": "CM-4004",
+    "asunto": "Excursión al Museo de Historia Natural",
+    "destinatarios": "5.º Primaria · A",
+    "autor": "Miriam Diaz",
+    "fecha": "2026-10-26",
+    "estado": "Enviado"
+  },
+  {
+    "id": "CM-4005",
+    "asunto": "Cambio de horario por actividad deportiva",
+    "destinatarios": "Secundaria",
+    "autor": "Miriam Diaz",
+    "fecha": "2026-11-20",
+    "estado": "Enviado"
+  },
+  {
+    "id": "CM-4006",
+    "asunto": "Feria de ciencias: inscripción abierta",
+    "destinatarios": "Todos los grados",
+    "autor": "Ismael Campos",
+    "fecha": "2026-12-18",
+    "estado": "Enviado"
+  },
+  {
+    "id": "CM-4007",
+    "asunto": "Vacunación escolar",
+    "destinatarios": "Inicial",
+    "autor": "Adolfo Pascual",
+    "fecha": "2026-10-17",
+    "estado": "Borrador"
+  },
+  {
+    "id": "CM-4008",
+    "asunto": "Entrega de boletines",
+    "destinatarios": "Todos los grados",
+    "autor": "Ismael Campos",
+    "fecha": "2026-11-21",
+    "estado": "Enviado"
+  },
+  {
+    "id": "CM-4009",
+    "asunto": "Suspensión de clases por lluvias",
+    "destinatarios": "Todos los grados",
+    "autor": "Ismael Campos",
+    "fecha": "2026-12-25",
+    "estado": "Enviado"
+  },
+  {
+    "id": "CM-4010",
+    "asunto": "Convocatoria al club de ajedrez",
+    "destinatarios": "Primaria",
+    "autor": "Lorena Calvo",
+    "fecha": "2026-10-14",
+    "estado": "Enviado"
+  }
+]

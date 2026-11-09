@@ -16,8 +16,10 @@
         <tr>{{#each ../module.columns}}<td>{{{cell this ..}}}</td>{{/each}}
           <td class="text-end text-nowrap">
             <button class="btn btn-outline-primary au-btn-icon btn-sm" type="button" aria-label="Ver detalle: {{lookup this ../module.labelKey}}" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre el detalle."><i class="bi bi-eye" aria-hidden="true"></i></button>
+            {{#unless ../module.readOnly}}
             <button class="btn btn-outline-primary au-btn-icon btn-sm" type="button" aria-label="Editar: {{lookup this ../module.labelKey}}" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre el formulario de edición."><i class="bi bi-pencil" aria-hidden="true"></i></button>
             <button class="btn btn-outline-primary au-btn-icon btn-sm" type="button" aria-label="Eliminar: {{lookup this ../module.labelKey}}" data-au-action="confirm-delete" data-au-message="Se eliminará este registro (demostración)."><i class="bi bi-trash3" aria-hidden="true"></i></button>
+            {{/unless}}
           </td>
         </tr>
         {{/each}}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "CP-01",
+    "nombre": "Inicio de año escolar",
+    "canal": "Correo",
+    "inicio": "2026-09-07",
+    "alcance": 8600,
+    "estado": "Activa"
+  },
+  {
+    "id": "CP-02",
+    "nombre": "Descuento por pago anual",
+    "canal": "Banner",
+    "inicio": "2026-10-17",
+    "alcance": 4100,
+    "estado": "Activa"
+  },
+  {
+    "id": "CP-03",
+    "nombre": "Webinar de calificaciones",
+    "canal": "Redes",
+    "inicio": "2026-11-10",
+    "alcance": 4000,
+    "estado": "Programado"
+  },
+  {
+    "id": "CP-04",
+    "nombre": "Referidos: invite a otra institución",
+    "canal": "Correo",
+    "inicio": "2026-12-17",
+    "alcance": 9000,
+    "estado": "Pausada"
+  },
+  {
+    "id": "CP-05",
+    "nombre": "Plan Premium de prueba",
+    "canal": "Banner",
+    "inicio": "2026-09-18",
+    "alcance": 1700,
+    "estado": "Finalizada"
+  },
+  {
+    "id": "CP-06",
+    "nombre": "Guía de matrícula en línea",
+    "canal": "Redes",
+    "inicio": "2026-10-16",
+    "alcance": 6800,
+    "estado": "Activa"
+  },
+  {
+    "id": "CP-07",
+    "nombre": "Encuesta de satisfacción",
+    "canal": "Correo",
+    "inicio": "2026-11-09",
+    "alcance": 8000,
+    "estado": "Finalizada"
+  },
+  {
+    "id": "CP-08",
+    "nombre": "Nuevo módulo de cobros",
+    "canal": "Banner",
+    "inicio": "2026-12-12",
+    "alcance": 7400,
+    "estado": "Programado"
+  }
+]

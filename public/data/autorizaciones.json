@@ -1,0 +1,44 @@
+[
+  {
+    "id": "AU-01",
+    "actividad": "Excursión al Museo de Historia Natural",
+    "fecha": "2026-11-20",
+    "vence": "2026-11-15",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "AU-02",
+    "actividad": "Uso de imagen en la revista escolar",
+    "fecha": "2026-12-01",
+    "vence": "2026-11-25",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "AU-03",
+    "actividad": "Torneo deportivo interescolar",
+    "fecha": "2026-10-18",
+    "vence": "2026-10-10",
+    "estado": "Firmada"
+  },
+  {
+    "id": "AU-04",
+    "actividad": "Feria de ciencias",
+    "fecha": "2026-10-05",
+    "vence": "2026-09-30",
+    "estado": "Firmada"
+  },
+  {
+    "id": "AU-05",
+    "actividad": "Visita a la biblioteca nacional",
+    "fecha": "2026-09-22",
+    "vence": "2026-09-15",
+    "estado": "Firmada"
+  },
+  {
+    "id": "AU-06",
+    "actividad": "Salida a la playa de fin de año",
+    "fecha": "2026-12-14",
+    "vence": "2026-12-05",
+    "estado": "Pendiente"
+  }
+]

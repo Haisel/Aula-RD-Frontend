@@ -1,0 +1,114 @@
+[
+  {
+    "id": "TK-1001",
+    "institucion": "Centro educativo de demostración 22",
+    "asunto": "Agregar un usuario administrador",
+    "prioridad": "Media",
+    "estado": "Resuelto",
+    "fecha": "2026-11-03"
+  },
+  {
+    "id": "TK-1002",
+    "institucion": "Centro educativo de demostración 14",
+    "asunto": "Factura con monto incorrecto",
+    "prioridad": "Baja",
+    "estado": "En proceso",
+    "fecha": "2026-11-01"
+  },
+  {
+    "id": "TK-1003",
+    "institucion": "Centro educativo de demostración 15",
+    "asunto": "La importación de estudiantes falla",
+    "prioridad": "Baja",
+    "estado": "Resuelto",
+    "fecha": "2026-11-05"
+  },
+  {
+    "id": "TK-1004",
+    "institucion": "Centro educativo de demostración 7",
+    "asunto": "Cambio de plan de suscripción",
+    "prioridad": "Alta",
+    "estado": "Abierto",
+    "fecha": "2026-11-03"
+  },
+  {
+    "id": "TK-1005",
+    "institucion": "Centro educativo de demostración 11",
+    "asunto": "Cambio de plan de suscripción",
+    "prioridad": "Baja",
+    "estado": "Resuelto",
+    "fecha": "2026-11-05"
+  },
+  {
+    "id": "TK-1006",
+    "institucion": "Centro educativo de demostración 16",
+    "asunto": "Error al exportar calificaciones",
+    "prioridad": "Alta",
+    "estado": "Resuelto",
+    "fecha": "2026-11-05"
+  },
+  {
+    "id": "TK-1007",
+    "institucion": "Centro educativo de demostración 9",
+    "asunto": "Factura con monto incorrecto",
+    "prioridad": "Alta",
+    "estado": "En proceso",
+    "fecha": "2026-11-06"
+  },
+  {
+    "id": "TK-1008",
+    "institucion": "Centro educativo de demostración 20",
+    "asunto": "Error al exportar calificaciones",
+    "prioridad": "Media",
+    "estado": "Abierto",
+    "fecha": "2026-11-02"
+  },
+  {
+    "id": "TK-1009",
+    "institucion": "Centro educativo de demostración 22",
+    "asunto": "La importación de estudiantes falla",
+    "prioridad": "Baja",
+    "estado": "Abierto",
+    "fecha": "2026-11-01"
+  },
+  {
+    "id": "TK-1010",
+    "institucion": "Centro educativo de demostración 16",
+    "asunto": "La importación de estudiantes falla",
+    "prioridad": "Baja",
+    "estado": "Abierto",
+    "fecha": "2026-11-07"
+  },
+  {
+    "id": "TK-1011",
+    "institucion": "Centro educativo de demostración 10",
+    "asunto": "Factura con monto incorrecto",
+    "prioridad": "Baja",
+    "estado": "Abierto",
+    "fecha": "2026-11-07"
+  },
+  {
+    "id": "TK-1012",
+    "institucion": "Centro educativo de demostración 21",
+    "asunto": "Cambio de plan de suscripción",
+    "prioridad": "Media",
+    "estado": "En proceso",
+    "fecha": "2026-11-01"
+  },
+  {
+    "id": "TK-1013",
+    "institucion": "Centro educativo de demostración 18",
+    "asunto": "Error al exportar calificaciones",
+    "prioridad": "Media",
+    "estado": "Resuelto",
+    "fecha": "2026-11-05"
+  },
+  {
+    "id": "TK-1014",
+    "institucion": "Centro educativo de demostración 6",
+    "asunto": "Agregar un usuario administrador",
+    "prioridad": "Baja",
+    "estado": "Abierto",
+    "fecha": "2026-11-01"
+  }
+]

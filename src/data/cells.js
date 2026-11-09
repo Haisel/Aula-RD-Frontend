@@ -10,7 +10,7 @@
  * @typedef {object} Column
  * @property {string} key Campo de la fila que se muestra.
  * @property {string} [label] Encabezado de la columna.
- * @property {'text' | 'entity' | 'status' | 'money' | 'date' | 'number' | 'plan'} [kind] Tipo de celda (por defecto, texto).
+ * @property {'text' | 'entity' | 'status' | 'money' | 'date' | 'number' | 'percent' | 'plan'} [kind] Tipo de celda (por defecto, texto).
  * @property {string} [meta] Solo en `entity`: campo de la línea secundaria.
  */
 
@@ -62,9 +62,24 @@ const TONES = {
     'Al día',
     'Vigente',
     'Publicado',
+    'Activa',
+    'Firmada',
+    'Enviado',
+    'Presente',
+    'Conciliado',
   ],
-  warning: ['Pendiente', 'Por vencer', 'En revisión', 'Borrador', 'Parcial'],
-  danger: ['Vencido', 'Retirado', 'Suspendida', 'Suspendido', 'Rechazado', 'Cancelado', 'Urgente'],
+  warning: ['Pendiente', 'Por vencer', 'En revisión', 'Borrador', 'Parcial', 'Tardanza', 'Pausada', 'Por conciliar'],
+  danger: [
+    'Vencido',
+    'Retirado',
+    'Suspendida',
+    'Suspendido',
+    'Rechazado',
+    'Rechazada',
+    'Cancelado',
+    'Urgente',
+    'Ausente',
+  ],
   info: ['Licencia', 'Abierto', 'Abierta', 'En proceso', 'Nuevo', 'Programado'],
   brand: ['Período de prueba', 'Prueba'],
 };
@@ -104,6 +119,8 @@ export function cell(column, row) {
       return formatIsoDate(/** @type {string} */ (value));
     case 'number':
       return typeof value === 'number' ? value.toLocaleString('en-US') : esc(value);
+    case 'percent':
+      return typeof value === 'number' ? `${value.toLocaleString('en-US')} %` : esc(value);
     case 'plan': {
       const text = String(value);
       const extra = text === 'Profesional' ? ' au-plan-pro' : text === 'Premium' ? ' au-plan-premium' : '';

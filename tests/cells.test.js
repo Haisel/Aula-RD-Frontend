@@ -36,8 +36,27 @@ describe('tono de los estados', () => {
     ['Licencia', 'info'],
     ['Inactivo', 'neutral'],
     ['Período de prueba', 'brand'],
+    // Estados de los módulos de la Fase 1 (soporte, publicidad, contabilidad, matrícula, etc.)
+    ['Activa', 'success'],
+    ['Firmada', 'success'],
+    ['Enviado', 'success'],
+    ['Presente', 'success'],
+    ['Conciliado', 'success'],
+    ['Tardanza', 'warning'],
+    ['Pausada', 'warning'],
+    ['Por conciliar', 'warning'],
+    ['Rechazada', 'danger'],
+    ['Ausente', 'danger'],
+    ['Finalizada', 'neutral'],
   ])('%s → %s', (estado, tono) => {
     expect(statusTone(estado)).toBe(tono);
+  });
+
+  it('cell(): porcentaje con símbolo y sin decimales sobrantes', () => {
+    expect(cell({ kind: 'percent', key: 'a' }, { a: 91 })).toBe('91 %');
+    expect(cell({ kind: 'percent', key: 'a' }, { a: 0 })).toBe('0 %');
+    expect(cell({ kind: 'percent', key: 'a' }, { a: '<b>' })).toBe('&lt;b&gt;');
+    expect(cell({ kind: 'percent', key: 'a' }, {})).toBe('—');
   });
 
   it('un estado desconocido es neutro', () => {

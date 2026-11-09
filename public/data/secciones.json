@@ -1,0 +1,74 @@
+[
+  {
+    "id": "SC-01",
+    "seccion": "4.º Primaria · B",
+    "area": "Matemática",
+    "estudiantes": 24,
+    "aula": "Aula 7",
+    "horario": "Mar y jue, 9:30",
+    "estado": "Activo"
+  },
+  {
+    "id": "SC-02",
+    "seccion": "5.º Primaria · A",
+    "area": "Matemática",
+    "estudiantes": 34,
+    "aula": "Aula 7",
+    "horario": "Vie, 2:00",
+    "estado": "Activo"
+  },
+  {
+    "id": "SC-03",
+    "seccion": "1.º Secundaria · A",
+    "area": "Matemática",
+    "estudiantes": 23,
+    "aula": "Aula 10",
+    "horario": "Lun y mié, 8:00",
+    "estado": "Activo"
+  },
+  {
+    "id": "SC-04",
+    "seccion": "1.º Secundaria · B",
+    "area": "Matemática",
+    "estudiantes": 25,
+    "aula": "Aula 12",
+    "horario": "Lun y mié, 8:00",
+    "estado": "Activo"
+  },
+  {
+    "id": "SC-05",
+    "seccion": "2.º Secundaria · B",
+    "area": "Estadística",
+    "estudiantes": 31,
+    "aula": "Aula 11",
+    "horario": "Mar y jue, 9:30",
+    "estado": "Activo"
+  },
+  {
+    "id": "SC-06",
+    "seccion": "3.º Secundaria · A",
+    "area": "Matemática",
+    "estudiantes": 26,
+    "aula": "Aula 3",
+    "horario": "Mar y jue, 9:30",
+    "estado": "Activo"
+  },
+  {
+    "id": "SC-07",
+    "seccion": "3.º Secundaria · C",
+    "area": "Estadística",
+    "estudiantes": 31,
+    "aula": "Aula 6",
+    "horario": "Vie, 2:00",
+    "estado": "Activo"
+  },
+  {
+    "id": "SC-08",
+    "seccion": "Club de ajedrez",
+    "area": "Extracurricular",
+    "estudiantes": 25,
+    "aula": "Aula 5",
+    "horario": "Vie, 2:00",
+    "estado": "Activo"
+  }
+]

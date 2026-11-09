@@ -25,27 +25,13 @@ const MENUS = [
 /** Ítems de menú que aún apuntan a una página que no existe (portal | etiqueta | destino). */
 const PENDIENTES_MENU = [
   'dashboard-superadmin.html | Planes | #planes',
-  'dashboard-superadmin.html | Soporte | #soporte',
-  'dashboard-superadmin.html | Publicidad | #publicidad',
-  'dashboard-superadmin.html | Contabilidad | #contabilidad',
   'dashboard-superadmin.html | Configuración | #configuracion',
-  'dashboard-institucion.html | Matrícula | #matricula',
-  'dashboard-institucion.html | Calificaciones | #calificaciones',
-  'dashboard-institucion.html | Asistencia | #asistencia',
-  'dashboard-institucion.html | Comunicados | #comunicados',
-  'dashboard-institucion.html | Reportes | #reportes',
   'dashboard-institucion.html | Configuración | #configuracion',
-  'dashboard-docente.html | Mis secciones | #secciones',
   'dashboard-docente.html | Asistencia | #asistencia',
   'dashboard-docente.html | Calificaciones | #calificaciones',
   'dashboard-docente.html | Planificación | #planificacion',
-  'dashboard-docente.html | Comunicados | #comunicados',
   'dashboard-docente.html | Mensajes | #mensajes',
-  'dashboard-tutor.html | Calificaciones | #calificaciones',
-  'dashboard-tutor.html | Asistencia | #asistencia',
   'dashboard-tutor.html | Horario | #horario',
-  'dashboard-tutor.html | Comunicados | #comunicados',
-  'dashboard-tutor.html | Autorizaciones | #autorizaciones',
 ];
 
 /** Archivos con `href="#"` vacío y cuántos tienen (páginas y parciales). */

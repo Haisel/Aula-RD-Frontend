@@ -1,0 +1,114 @@
+[
+  {
+    "id": "MT-3001",
+    "estudiante": "Fátima Sáez",
+    "grado": "6.º Secundaria",
+    "tutor": "Encarnación Sanz",
+    "fecha": "2026-08-02",
+    "estado": "Aprobada"
+  },
+  {
+    "id": "MT-3002",
+    "estudiante": "Luis García",
+    "grado": "6.º Primaria",
+    "tutor": "Esteban Muñoz",
+    "fecha": "2026-09-17",
+    "estado": "Rechazada"
+  },
+  {
+    "id": "MT-3003",
+    "estudiante": "Gregorio Domínguez",
+    "grado": "3.º Primaria",
+    "tutor": "Dolores Ramírez",
+    "fecha": "2026-10-17",
+    "estado": "En revisión"
+  },
+  {
+    "id": "MT-3004",
+    "estudiante": "Mario Vega",
+    "grado": "5.º Primaria",
+    "tutor": "Sara Torres",
+    "fecha": "2026-08-14",
+    "estado": "Aprobada"
+  },
+  {
+    "id": "MT-3005",
+    "estudiante": "Irene Benítez",
+    "grado": "6.º Secundaria",
+    "tutor": "Mercedes Gil",
+    "fecha": "2026-09-28",
+    "estado": "Rechazada"
+  },
+  {
+    "id": "MT-3006",
+    "estudiante": "Jesús Ortega",
+    "grado": "6.º Secundaria",
+    "tutor": "Gabriel Flores",
+    "fecha": "2026-10-10",
+    "estado": "En revisión"
+  },
+  {
+    "id": "MT-3007",
+    "estudiante": "Lidia Navarro",
+    "grado": "2.º Primaria",
+    "tutor": "Nuria Ferrer",
+    "fecha": "2026-08-12",
+    "estado": "En revisión"
+  },
+  {
+    "id": "MT-3008",
+    "estudiante": "Héctor Santiago",
+    "grado": "2.º Primaria",
+    "tutor": "Belén Pérez",
+    "fecha": "2026-09-22",
+    "estado": "Rechazada"
+  },
+  {
+    "id": "MT-3009",
+    "estudiante": "Andrés Ortega",
+    "grado": "1.º Primaria",
+    "tutor": "Noelia León",
+    "fecha": "2026-10-16",
+    "estado": "Rechazada"
+  },
+  {
+    "id": "MT-3010",
+    "estudiante": "Concepción Diaz",
+    "grado": "3.º Primaria",
+    "tutor": "Rubén Vargas",
+    "fecha": "2026-08-16",
+    "estado": "En revisión"
+  },
+  {
+    "id": "MT-3011",
+    "estudiante": "Jordi Hernández",
+    "grado": "1.º Secundaria",
+    "tutor": "Tomas Benítez",
+    "fecha": "2026-09-27",
+    "estado": "Aprobada"
+  },
+  {
+    "id": "MT-3012",
+    "estudiante": "Miriam Guerrero",
+    "grado": "2.º Primaria",
+    "tutor": "Alba León",
+    "fecha": "2026-10-11",
+    "estado": "En revisión"
+  },
+  {
+    "id": "MT-3013",
+    "estudiante": "Alejandra Ramírez",
+    "grado": "5.º Primaria",
+    "tutor": "Emilio Campos",
+    "fecha": "2026-08-25",
+    "estado": "Aprobada"
+  },
+  {
+    "id": "MT-3014",
+    "estudiante": "Fernando Ortiz",
+    "grado": "2.º Secundaria",
+    "tutor": "Concepción Santana",
+    "fecha": "2026-09-11",
+    "estado": "Rechazada"
+  }
+]

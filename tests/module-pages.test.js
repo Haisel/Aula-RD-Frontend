@@ -23,6 +23,21 @@ const MODULE_PAGES = [
   'institucion-docentes.html',
   'institucion-cobros.html',
   'familia-estado-de-cuenta.html',
+  // Tanda 2 (spec 013, Fase 1): más módulos con el mismo arquetipo y datos propios.
+  'superadmin-soporte.html',
+  'superadmin-publicidad.html',
+  'superadmin-contabilidad.html',
+  'institucion-matricula.html',
+  'institucion-calificaciones.html',
+  'institucion-asistencia.html',
+  'institucion-comunicados.html',
+  'institucion-reportes.html',
+  'docente-secciones.html',
+  'docente-comunicados.html',
+  'familia-calificaciones.html',
+  'familia-asistencia.html',
+  'familia-comunicados.html',
+  'familia-autorizaciones.html',
 ];
 
 const hb = Handlebars.create();
@@ -102,8 +117,19 @@ describe('páginas de módulo con arquetipo de tabla (spec 013)', () => {
         const m = moduleOf(file);
         const first = String(m.rows[0][m.labelKey]).replaceAll('&', '&amp;');
         expect(html).toContain(`aria-label="Ver detalle: ${first}`);
-        expect(html).toContain(`aria-label="Editar: ${first}`);
-        expect(html).toContain(`aria-label="Eliminar: ${first}`);
+        if (/** @type {any} */ (m).readOnly) {
+          // Páginas de solo lectura (familia, reportes): no ofrecen editar ni eliminar.
+          expect(html).not.toContain('aria-label="Editar:');
+          expect(html).not.toContain('aria-label="Eliminar:');
+        } else {
+          expect(html).toContain(`aria-label="Editar: ${first}`);
+          expect(html).toContain(`aria-label="Eliminar: ${first}`);
+        }
+      });
+
+      it('si el módulo es de solo lectura no tiene botón principal de alta', () => {
+        const m = /** @type {any} */ (moduleOf(file));
+        if (m.readOnly) expect(m.primary).toBeUndefined();
       });
 
       it('el menú de su portal marca esta página como activa', () => {
@@ -119,6 +145,24 @@ describe('páginas de módulo con arquetipo de tabla (spec 013)', () => {
       });
     });
   }
+
+  it('las páginas de la familia, los reportes y las secciones del docente son de solo lectura', () => {
+    const soloLectura = [
+      'familia-estado-de-cuenta.html',
+      'familia-calificaciones.html',
+      'familia-asistencia.html',
+      'familia-comunicados.html',
+      'familia-autorizaciones.html',
+      'institucion-calificaciones.html',
+      'institucion-asistencia.html',
+      'institucion-reportes.html',
+      'docente-secciones.html',
+    ];
+    for (const f of soloLectura) expect(/** @type {any} */ (moduleOf(f)).readOnly, f).toBe(true);
+    for (const f of MODULE_PAGES.filter((p) => !soloLectura.includes(p))) {
+      expect(/** @type {any} */ (moduleOf(f)).readOnly, f).toBeFalsy();
+    }
+  });
 
   it('los datos no se insertan sin escapar: un nombre con HTML no llega como etiqueta', () => {
     const html = hb.compile('{{{cell column row}}}')({
