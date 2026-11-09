@@ -12,7 +12,9 @@
 <script src="js/theme-boot.js"></script>
 {{#if dev}}
 <script type="module" src="/js/app.js"></script>
+{{#if demo}}<script type="module" src="/js/demo/galeria.js"></script>{{/if}}
 {{else}}
 <link rel="stylesheet" href="css/app.css">
 <script {{#if single}}defer{{else}}type="module"{{/if}} src="js/app.js"></script>
+{{#if demo}}{{#unless single}}<script type="module" src="js/demo.js"></script>{{/unless}}{{/if}}
 {{/if}}

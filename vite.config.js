@@ -72,14 +72,18 @@ export default defineConfig(({ command }) => ({
     // En build:single el JS único pesa ~2 MB a propósito; no tiene sentido advertirlo.
     chunkSizeWarningLimit: SINGLE ? 2500 : 600,
     rolldownOptions: {
-      input: resolve(src, 'js/app.js'),
+      // Segunda entrada (spec 012, T-13): el código de demostración de la galería va aparte y solo
+      // lo cargan las páginas que lo piden. build:single (IIFE) no admite varias entradas: no se emite.
+      input: SINGLE
+        ? resolve(src, 'js/app.js')
+        : { app: resolve(src, 'js/app.js'), demo: resolve(src, 'js/demo/galeria.js') },
       // build:single incrusta los import() diferidos en el IIFE: `import.meta` no se usa y el aviso es ruido.
       ...(SINGLE ? { checks: { emptyImportMeta: false } } : {}),
       output: {
         format: SINGLE ? 'iife' : 'es',
         // build:single → sin chunks (Rolldown: `codeSplitting: false`; `inlineDynamicImports` está obsoleto)
         ...(SINGLE ? { codeSplitting: false } : {}),
-        entryFileNames: 'js/app.js',
+        entryFileNames: (chunk) => (chunk.name === 'demo' ? 'js/demo.js' : 'js/app.js'),
         chunkFileNames: 'js/chunks/[name]-[hash].js',
         assetFileNames: (asset) => {
           const name = asset.names?.[0] ?? '';
