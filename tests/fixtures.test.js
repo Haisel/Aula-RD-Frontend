@@ -32,7 +32,16 @@ describe('datos de demostración de la galería (spec 012)', () => {
     expect(rows).toHaveLength(60);
     expect(new Set(rows.map((r) => r.id)).size).toBe(60);
     for (const r of rows) {
-      expect(Object.keys(r).sort()).toEqual(['estado', 'grado', 'id', 'ingreso', 'matricula', 'nombre', 'seccion', 'tutor']);
+      expect(Object.keys(r).sort()).toEqual([
+        'estado',
+        'grado',
+        'id',
+        'ingreso',
+        'matricula',
+        'nombre',
+        'seccion',
+        'tutor',
+      ]);
       expect(ESTADOS).toContain(r.estado);
       expect(['A', 'B', 'C']).toContain(r.seccion);
       expect(r.matricula).toMatch(/^2026-\d{4}$/);
@@ -75,7 +84,11 @@ describe('datos de demostración de la galería (spec 012)', () => {
       expect(docentes.has(r.responsable), r.responsable).toBe(true);
       expect(r.fecha).toMatch(ISO);
     }
-    for (const c of COLUMNAS) expect(rows.some((r) => r.columna === c), c).toBe(true);
+    for (const c of COLUMNAS)
+      expect(
+        rows.some((r) => r.columna === c),
+        c,
+      ).toBe(true);
   });
 
   it('sin datos personales: ni correos, ni teléfonos, ni cédulas, ni fotos (CA-14)', () => {

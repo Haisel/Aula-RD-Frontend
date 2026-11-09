@@ -15,6 +15,7 @@ Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de a
 - Pruebas de contrato de la fachada (CSRF, carga fallida de librerías, diálogos) y de formularios y máscaras: `tests/facade-contract.test.js` y `tests/forms-masks.test.js`.
 
 **Corregido**
+- Los dashboards no ocupaban todo el ancho: el contenido tenía un tope de 1440 px y quedaba pegado a la izquierda, dejando una banda vacía a la derecha en pantallas anchas (200 px a 1920, más de 800 a 2560). El token `content-max` pasa a `none`; medido a 1440, 1920 y 2560 px en los 4 dashboards y 2 páginas de la galería: sin banda vacía y sin desbordamiento. Para limitarlo de nuevo, ponga un valor en px en `src/tokens/tokens.json` y ejecute `npm run tokens`.
 - Barra del editor Quill: el selector de títulos no tenía nombre accesible y los botones tenían etiquetas en inglés. Ahora los 11 controles tienen nombre en español (`labelToolbar()` en `src/js/adapters/editor.js`; `tests/editor-a11y.test.js`).
 - `showErrors` (formularios) duplicaba el id del mensaje de error en `aria-describedby` en cada reintento de envío.
 - Foco del menú lateral: el anillo en tema claro tenía 2.59:1 sobre el navy del menú (mínimo 3:1) y los enlaces de navegación y el botón de cerrar tenían un halo navy invisible. Ahora el contraste mínimo medido es 7.1:1 (claro) y 9.7:1 (oscuro).

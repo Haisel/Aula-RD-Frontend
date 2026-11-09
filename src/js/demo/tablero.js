@@ -49,7 +49,8 @@ export function mover(cards, id, columna, indice) {
   const rest = cards.filter((_, i) => i !== from).map((t) => ({ ...t }));
   const group = rest.map((t, i) => (t.columna === columna ? i : -1)).filter((i) => i >= 0);
   let at = rest.length;
-  if (group.length) at = indice !== undefined && indice < group.length ? group[indice] : group[group.length - 1] + 1;
+  if (group.length)
+    at = indice !== undefined && indice < group.length ? group[indice] : group[group.length - 1] + 1;
   rest.splice(at, 0, /** @type {T} */ (moved));
   return rest;
 }

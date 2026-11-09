@@ -82,4 +82,4 @@ Verificación automática: `tests/contrast.test.js` calcula la razón de contras
 
 Espaciado (grid de 4 px): `space-4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96`. Bootstrap conserva `p-1…p-5` (4, 8, 16, 24, 48) y se añaden `p-6` (64) y `p-7` (96).
 Radios: `radius-sm` 6 · `radius-md` 10 (controles) · `radius-lg` 16 (tarjetas) · `radius-xl` 24 (landing) · `radius-pill`.
-Medidas: `sidebar-width` 264 · `sidebar-collapsed` 76 · `topbar-height` 64 · `container-max` 1200 · `content-max` 1440.
+Medidas: `sidebar-width` 264 · `sidebar-collapsed` 76 · `topbar-height` 64 · `container-max` 1200 · `content-max` `none` (el contenido de los dashboards ocupa todo el ancho junto al menú lateral; ponga un valor en px, p. ej. 1440, para limitarlo en pantallas muy anchas).
