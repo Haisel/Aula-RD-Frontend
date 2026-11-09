@@ -130,7 +130,8 @@ const PAGES = {
   },
   'galeria.html': {
     title: 'Galería de funcionalidades',
-    description: 'Páginas de ejemplo por contexto: cada funcionalidad de los componentes, funcionando y con su uso.',
+    description:
+      'Páginas de ejemplo por contexto: cada funcionalidad de los componentes, funcionando y con su uso.',
     portal: 'galeria',
     active: 'galeria.html',
     user: GALLERY_USER,
@@ -217,7 +218,10 @@ export const helpers = {
    * @returns {string} HTML con el texto escapado y sin la sangría común.
    */
   code(options) {
-    const lines = options.fn().replace(/^\n+|\s+$/g, '').split('\n');
+    const lines = options
+      .fn()
+      .replace(/^\n+|\s+$/g, '')
+      .split('\n');
     const indent = Math.min(...lines.filter((l) => l.trim()).map((l) => /^ */.exec(l)?.[0].length ?? 0));
     const text = lines.map((l) => l.slice(indent)).join('\n');
     const safe = text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');

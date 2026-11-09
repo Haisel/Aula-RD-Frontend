@@ -47,7 +47,9 @@ describe('páginas de la galería (spec 012)', () => {
       });
 
       it('no carga nada de otro origen (CA-15)', () => {
-        const external = [...read(file).matchAll(/(?:src|href)\s*=\s*"(https?:)?\/\/[^"]+"/gi)].map((m) => m[0]);
+        const external = [...read(file).matchAll(/(?:src|href)\s*=\s*"(https?:)?\/\/[^"]+"/gi)].map(
+          (m) => m[0],
+        );
         expect(external).toEqual([]);
       });
 
@@ -56,7 +58,9 @@ describe('páginas de la galería (spec 012)', () => {
       });
 
       it('sus enlaces a otras páginas apuntan a archivos que existen', () => {
-        const hrefs = [...read(file).matchAll(/href\s*=\s*"([a-z0-9-]+\.html)(?:#[^"]*)?"/gi)].map((m) => m[1]);
+        const hrefs = [...read(file).matchAll(/href\s*=\s*"([a-z0-9-]+\.html)(?:#[^"]*)?"/gi)].map(
+          (m) => m[1],
+        );
         for (const href of hrefs) expect(existsSync(resolve(SRC, href)), `${file} → ${href}`).toBe(true);
       });
     });
