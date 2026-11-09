@@ -107,7 +107,10 @@ const NAV = {
     {
       label: 'Datos',
       icon: 'database',
-      children: [{ label: 'CRUD', icon: 'pencil-square', href: 'ejemplo-crud.html' }],
+      children: [
+        { label: 'CRUD', icon: 'pencil-square', href: 'ejemplo-crud.html' },
+        { label: 'Reporte', icon: 'bar-chart-line', href: 'ejemplo-reporte.html' },
+      ],
     },
     {
       label: 'Autenticación',
@@ -312,6 +315,15 @@ const PAGES = {
     user: GALLERY_USER,
     demo: true,
     crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Datos' }, { label: 'CRUD' }],
+  },
+  'ejemplo-reporte.html': {
+    title: 'Reporte de estudiantes',
+    description: 'Filtros que actualizan indicadores, gráficos y tabla; exportación a Excel e impresión.',
+    portal: 'galeria',
+    active: 'ejemplo-reporte.html',
+    user: GALLERY_USER,
+    demo: true,
+    crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Datos' }, { label: 'Reporte' }],
   },
   '403.html': {
     title: 'Acceso denegado',

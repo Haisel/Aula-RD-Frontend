@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Reporte de estudiantes" subtitle="Filtros que actualizan al instante los indicadores, los gráficos y la tabla; se exporta a Excel y se imprime."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="El reporte tiene 60 estudiantes inventados; exportar e imprimir usan solo esos datos."}}
+
+  <div data-demo="reporte">
+    <form class="card mb-4 au-no-print" aria-label="Filtros del reporte" novalidate>
+      <div class="card-body">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-6 col-lg-4">
+            <label class="form-label" for="rep-grado">Grado</label>
+            <select class="form-select" id="rep-grado" data-rep="filtro-grado"><option value="">Todos los grados</option></select>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <label class="form-label" for="rep-estado">Estado del estudiante</label>
+            <select class="form-select" id="rep-estado" data-rep="filtro-estado"><option value="">Todos</option><option>Activo</option><option>Inactivo</option><option>Retirado</option></select>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <label class="form-label" for="rep-pagos">Pagos</label>
+            <select class="form-select" id="rep-pagos" data-rep="filtro-pagos"><option value="">Todos</option><option>Pagado</option><option>Pendiente</option><option>Vencido</option></select>
+          </div>
+          <div class="col-md-6 col-lg-2 d-grid">
+            <button class="btn btn-outline-primary" type="button" data-rep="limpiar"><i class="bi bi-x-circle" aria-hidden="true"></i>Limpiar filtros</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <p class="visually-hidden" role="status" data-rep="anuncio"></p>
+
+    <div class="alert alert-danger" role="alert" data-rep="error" hidden>
+      <i class="bi bi-x-octagon" aria-hidden="true"></i>
+      <div><p class="au-alert-title">No se pudo cargar el reporte</p>Revise su conexión y recargue la página.</div>
+    </div>
+
+    <div class="au-empty" data-rep="vacio" hidden>
+      <span class="au-stat-icon is-lg"><i class="bi bi-funnel" aria-hidden="true"></i></span>
+      <h3>Ningún estudiante coincide</h3>
+      <p>Cambie o limpie los filtros para ver resultados.</p>
+    </div>
+
+    <div data-rep="resultados">
+      <div class="d-flex flex-wrap gap-2 justify-content-end mb-3 au-no-print">
+        <button class="btn btn-outline-primary" type="button" data-rep="exportar" disabled><i class="bi bi-file-earmark-excel" aria-hidden="true"></i>Exportar a Excel</button>
+        <button class="btn btn-outline-primary" type="button" data-au-action="print" data-rep="imprimir"><i class="bi bi-printer" aria-hidden="true"></i>Imprimir</button>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-xl-3"><div class="au-stat">
+          <div class="au-stat-label">Estudiantes<span class="au-stat-icon"><i class="bi bi-people" aria-hidden="true"></i></span></div>
+          <div class="au-stat-value" data-rep-stat="total">—</div>
+          <div class="au-stat-delta"><span data-rep-stat="total-nota"></span></div>
+        </div></div>
+        <div class="col-sm-6 col-xl-3"><div class="au-stat">
+          <div class="au-stat-label">Asistencia media<span class="au-stat-icon is-success"><i class="bi bi-calendar-check" aria-hidden="true"></i></span></div>
+          <div class="au-stat-value" data-rep-stat="asistencia">—</div>
+        </div></div>
+        <div class="col-sm-6 col-xl-3"><div class="au-stat">
+          <div class="au-stat-label">Promedio general<span class="au-stat-icon is-info"><i class="bi bi-mortarboard" aria-hidden="true"></i></span></div>
+          <div class="au-stat-value" data-rep-stat="promedio">—</div>
+        </div></div>
+        <div class="col-sm-6 col-xl-3"><div class="au-stat">
+          <div class="au-stat-label">Por cobrar<span class="au-stat-icon is-warning"><i class="bi bi-cash-coin" aria-hidden="true"></i></span></div>
+          <div class="au-stat-value" data-rep-stat="pendiente">—</div>
+        </div></div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8"><div class="card"><div class="card-body">
+          <h2 class="h5 mb-3">Promedio por grado</h2>
+          <div class="au-chart"><canvas data-rep="grafico-grado" role="img" aria-label="Gráfico de barras: promedio por grado"></canvas></div>
+        </div></div></div>
+        <div class="col-lg-4"><div class="card"><div class="card-body">
+          <h2 class="h5 mb-3">Estado de los pagos</h2>
+          <div class="au-chart is-sm"><canvas data-rep="grafico-pagos" role="img" aria-label="Gráfico de dona: estado de los pagos"></canvas></div>
+        </div></div></div>
+      </div>
+
+      <div data-rep="region"></div>
+    </div>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="c-uso">
+    <h2 id="c-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Filtros:</strong> cada cambio recalcula los indicadores, redibuja los gráficos y reconstruye la tabla; el total se anuncia a los lectores de pantalla.</li>
+      <li><strong>Exportar a Excel:</strong> descarga exactamente las filas que se ven (<code>AU.exportRows</code>); la librería se carga solo al pulsar el botón.</li>
+      <li><strong>Imprimir:</strong> <code>data-au-action="print"</code> abre el diálogo del navegador; las reglas <code>@media print</code> ocultan menú, filtros y botones.</li>
+      <li><strong>Sin resultados:</strong> si los filtros no coinciden con nadie, aparece un estado vacío y se desactiva la exportación.</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<!-- Botón de impresión declarativo; lo que lleve la clase au-no-print no sale en papel -->
+<button class="btn btn-outline-primary au-no-print" type="button" data-au-action="print">Imprimir</button>
+
+// Gráfico con la marca y exportación a Excel (solo con la fachada AU)
+const chart = await AU.openChart(canvas, {
+  type: 'bar', labels: ['1.º Primaria', '2.º Primaria'],
+  series: [{ label: 'Promedio', data: [82, 79] }], min: 0, max: 100,
+});
+chart.destroy(); // antes de volver a dibujar con otros datos
+await AU.exportRows({ rows, columns: [{ key: 'nombre', label: 'Estudiante' }],
+                       fileName: 'reporte', format: 'xlsx' });
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

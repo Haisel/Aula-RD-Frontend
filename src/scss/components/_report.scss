@@ -1,0 +1,27 @@
+// Reporte de demostración (spec 012, T-17): reglas de impresión.
+// Al imprimir solo quedan los indicadores, los gráficos y la tabla; el menú, la barra superior y
+// los controles (filtros, botones, paginación) se ocultan con la clase `au-no-print`.
+@media print {
+  .au-app .au-sidebar,
+  .au-app .au-topbar,
+  .au-app .au-page-header,
+  .au-app .au-breadcrumb,
+  .au-app .au-demo-note,
+  .au-app .au-no-print,
+  .au-app .dt-search,
+  .au-app .dt-length,
+  .au-app .dt-paging {
+    display: none;
+  }
+
+  .au-app .au-content {
+    padding: 0;
+  }
+
+  // Los gráficos y las tarjetas no se parten entre páginas.
+  .au-app .au-stat,
+  .au-app .au-chart,
+  .au-app .card {
+    break-inside: avoid;
+  }
+}

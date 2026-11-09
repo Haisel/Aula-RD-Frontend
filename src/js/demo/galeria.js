@@ -10,6 +10,7 @@
  * @module demo/galeria
  */
 import { crud } from './crud.js';
+import { reporte } from './reporte-page.js';
 
 /**
  * Activa una demostración sobre su contenedor.
@@ -20,7 +21,7 @@ import { crud } from './crud.js';
  */
 
 /** @type {Record<string, Demo>} */
-export const demos = { crud };
+export const demos = { crud, reporte };
 
 /**
  * Busca los contenedores `[data-demo]` de la página y activa su demostración.

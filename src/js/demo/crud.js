@@ -123,7 +123,9 @@ export async function crud(root, au) {
     const rows = store?.list() ?? [];
     if (state === 'cargando') {
       region.setAttribute('aria-busy', 'true');
-      region.innerHTML = `<div class="card" aria-label="Cargando lista"><div class="card-body d-grid gap-3">${[1, 2, 3, 4]
+      region.innerHTML = `<div class="card" aria-label="Cargando lista"><div class="card-body d-grid gap-3">${[
+        1, 2, 3, 4,
+      ]
         .map(
           () =>
             '<div class="d-flex gap-3 align-items-center"><span class="au-skeleton au-skeleton-circle"></span><div class="flex-grow-1 d-grid gap-2"><span class="au-skeleton w-50"></span><span class="au-skeleton w-75"></span></div></div>',
