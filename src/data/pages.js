@@ -105,6 +105,11 @@ const NAV = {
       ],
     },
     {
+      label: 'Datos',
+      icon: 'database',
+      children: [{ label: 'CRUD', icon: 'pencil-square', href: 'ejemplo-crud.html' }],
+    },
+    {
       label: 'Autenticación',
       icon: 'box-arrow-in-right',
       children: [
@@ -298,6 +303,15 @@ const PAGES = {
     portal: 'galeria',
     active: 'ejemplo-estados.html',
     user: GALLERY_USER,
+  },
+  'ejemplo-crud.html': {
+    title: 'CRUD de estudiantes',
+    description: 'Crear, editar y borrar registros con validación, confirmación, aviso y deshacer.',
+    portal: 'galeria',
+    active: 'ejemplo-crud.html',
+    user: GALLERY_USER,
+    demo: true,
+    crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Datos' }, { label: 'CRUD' }],
   },
   '403.html': {
     title: 'Acceso denegado',

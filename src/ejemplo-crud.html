@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="CRUD de estudiantes" subtitle="Crear, editar y borrar registros con validación, confirmación, aviso de resultado y deshacer."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Los cambios no se guardan: viven en memoria y se pierden al recargar la página."}}
+
+  <div data-demo="crud">
+    <div class="d-flex flex-wrap align-items-end gap-3 mb-3">
+      <button class="btn btn-primary" type="button" data-crud="nuevo"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar estudiante</button>
+      <button class="btn btn-outline-primary" type="button" data-crud="deshacer" disabled><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>Deshacer</button>
+      <div class="ms-md-auto">
+        <label class="form-label mb-1" for="crud-estado">Estado simulado de la lista</label>
+        <select class="form-select" id="crud-estado" data-crud="estado">
+          <option value="normal">Con datos</option>
+          <option value="vacio">Vacío</option>
+          <option value="cargando">Cargando</option>
+          <option value="error">Error al cargar</option>
+        </select>
+      </div>
+    </div>
+
+    <div data-crud="region" aria-live="polite"></div>
+    <p class="visually-hidden" role="status" data-crud="anuncio"></p>
+
+    <div class="modal fade" id="m-crud" tabindex="-1" aria-labelledby="m-crud-title" aria-hidden="true" data-crud="modal">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <form data-au-validate="crud-estudiante" data-au-submit="event" data-au-success="Cambios guardados (demostración)." novalidate>
+          <div class="modal-header"><h2 class="modal-title h4" id="m-crud-title" data-crud="titulo">Agregar estudiante</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+          <div class="modal-body">
+            <div class="row g-3">
+              <div class="col-12"><label class="form-label is-required" for="crud-nombre">Nombre del estudiante</label><input class="form-control" id="crud-nombre" name="nombre" autocomplete="off" placeholder="Ej.: Estudiante de demostración"></div>
+              <div class="col-md-8"><label class="form-label is-required" for="crud-grado">Grado</label>
+                <select class="form-select" id="crud-grado" name="grado"><option value="">Seleccione el grado</option><option>1.º Primaria</option><option>2.º Primaria</option><option>3.º Primaria</option><option>4.º Primaria</option><option>5.º Primaria</option><option>6.º Primaria</option><option>1.º Secundaria</option><option>2.º Secundaria</option><option>3.º Secundaria</option><option>4.º Secundaria</option><option>5.º Secundaria</option><option>6.º Secundaria</option></select></div>
+              <div class="col-md-4"><label class="form-label is-required" for="crud-seccion">Sección</label>
+                <select class="form-select" id="crud-seccion" name="seccion"><option value="">Elija</option><option>A</option><option>B</option><option>C</option></select></div>
+              <div class="col-12"><label class="form-label is-required" for="crud-tutor">Tutor</label><input class="form-control" id="crud-tutor" name="tutor" autocomplete="off"></div>
+              <div class="col-12"><label class="form-label is-required" for="crud-estatus">Estado</label>
+                <select class="form-select" id="crud-estatus" name="estado"><option value="">Seleccione el estado</option><option>Activo</option><option>Inactivo</option></select></div>
+            </div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button><button type="submit" class="btn btn-primary">Guardar estudiante</button></div>
+        </form>
+      </div></div>
+    </div>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="c-uso">
+    <h2 id="c-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Crear y editar:</strong> el mismo formulario en un modal, validado con <code>data-au-validate</code>. Envíelo vacío para ver los errores por campo en español y el foco en el primero.</li>
+      <li><strong>Borrar:</strong> siempre precedido de una confirmación que nombra el registro (<code>AU.confirmDeleteByName</code>).</li>
+      <li><strong>Deshacer:</strong> revierte el último cambio (hasta 20).</li>
+      <li><strong>Estados:</strong> con datos, vacío, cargando y error con reintento, elegibles en el selector.</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<!-- Formulario validado: al ser válido emite "au:form:submit" y no envía nada -->
+<form data-au-validate="crud-estudiante" data-au-submit="event"
+      data-au-success="Cambios guardados." novalidate>
+  <label class="form-label is-required" for="nombre">Nombre</label>
+  <input class="form-control" id="nombre" name="nombre">
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+// Esquema propio y manejo del evento (solo con la fachada AU)
+AU.registerSchema('crud-estudiante', (z, f) => z.object({ nombre: f.nombre('el nombre') }));
+form.addEventListener('au:form:submit', (e) => guardar(e.detail.data));
+if (await AU.confirmDeleteByName(fila.nombre)) { quitar(fila.id); }
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

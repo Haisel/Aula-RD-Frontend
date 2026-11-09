@@ -1,5 +1,10 @@
 # Cambios
 
+## Sin publicar
+
+**Nuevo**
+- Galería, Fase 2 (spec 012): segunda entrada de Vite para el código de demostración (`dist/js/demo.js`, que solo cargan las páginas con `demo` en su contexto; `app.js` queda idéntico) y `ejemplo-crud.html`: crear, editar y borrar estudiantes en memoria con validación, confirmación, aviso, deshacer y los estados vacío, cargando y error. Nueva sección "Datos" en el menú y el índice de la galería. `tests/crud-page.test.js`.
+
 ## 0.4.0 — 09/11/2026
 
 Cierre de la Fase 1 de la plantilla profesional (spec 013): los 30 ítems de menú abren una página, cero enlaces vacíos, 73 páginas verificadas en claro y oscuro, y cierre de la spec 005 (identidad visual B) con pruebas de guarda y corrección de accesibilidad del foco.
