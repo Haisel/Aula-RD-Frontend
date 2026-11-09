@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<main id="contenido" class="au-auth-recover" tabindex="-1">
+  <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+    <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+    <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+  </a>
+  <div class="au-auth-card">
+    <form class="au-login-form" data-au-validate="recuperar" data-au-submit="event" data-au-success="Si el correo está registrado, recibirá las instrucciones en unos minutos (demostración)." action="#" method="post" novalidate>
+      <div>
+        <h1>¿Olvidó su contraseña?</h1>
+        <p class="text-body-secondary mb-0">Escriba el correo de su cuenta y le enviaremos las instrucciones para crear una nueva.</p>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div>
+        <label class="form-label" for="email">Correo</label>
+        <input class="form-control form-control-lg" id="email" name="email" type="email" autocomplete="username" placeholder="nombre@colegio.edu.do">
+      </div>
+      <button class="btn btn-primary btn-lg w-100" type="submit">Enviar instrucciones</button>
+      <p class="text-center small mb-0"><a href="login.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver a iniciar sesión</a></p>
+    </form>
+  </div>
+</main>
+</body>
+</html>

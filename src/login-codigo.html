@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<main id="contenido" class="au-auth-otp" tabindex="-1">
+  <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+    <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+    <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+  </a>
+  <div class="au-auth-card">
+    <form class="au-login-form" data-au-validate="codigo-acceso" data-au-submit="event" data-au-success="Código válido (demostración). Con su API verifique el código en el servidor." action="#" method="post" novalidate>
+      <div>
+        <h1>Entre con un código</h1>
+        <p class="text-body-secondary mb-0">Le enviamos un código de 6 dígitos a su correo. No necesita contraseña.</p>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div>
+        <label class="form-label" for="email">Correo</label>
+        <div class="input-group input-group-lg">
+          <input class="form-control" id="email" name="email" type="email" autocomplete="username" placeholder="nombre@colegio.edu.do">
+          <button class="btn btn-outline-primary" type="button" data-au-action="toast" data-au-type="success" data-au-message="Demostración: aquí se envía el código al correo.">Enviar código</button>
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="codigo">Código de 6 dígitos</label>
+        <input class="form-control form-control-lg au-otp-input" id="codigo" name="codigo" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000" aria-describedby="codigo-ayuda">
+        <div class="form-text" id="codigo-ayuda">El código vence en 10 minutos.</div>
+      </div>
+      <button class="btn btn-primary btn-lg w-100" type="submit">Verificar y entrar</button>
+      <p class="text-center text-body-secondary small mb-0">¿Prefiere su contraseña? <a href="login.html">Iniciar sesión con contraseña</a></p>
+    </form>
+  </div>
+</main>
+</body>
+</html>

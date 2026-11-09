@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<div class="au-auth-min">
+  <header class="au-auth-min-bar">
+    <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+      <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+      <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+    </a>
+    <a class="btn btn-ghost" href="suscribir.html">Suscribir mi institución</a>
+  </header>
+  <main id="contenido" class="au-auth-min-main" tabindex="-1">
+    {{> auth/login-form heading="Entre a su cuenta" lead="Sin distracciones: correo, contraseña y listo."}}
+  </main>
+</div>
+</body>
+</html>

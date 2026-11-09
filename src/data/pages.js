@@ -131,6 +131,41 @@ const PAGES = {
     layout: 'auth',
   },
   'login.html': { title: 'Iniciar sesión', description: 'Acceda a su cuenta de Aula RD.', layout: 'auth' },
+  'login-centrado.html': {
+    title: 'Inicio de sesión centrado',
+    description: 'Variante de inicio de sesión: tarjeta centrada sobre fondo neutro.',
+    layout: 'auth',
+  },
+  'login-ilustracion.html': {
+    title: 'Inicio de sesión con ilustración',
+    description: 'Variante de inicio de sesión: formulario, acceso con proveedor externo y panel ilustrado.',
+    layout: 'auth',
+  },
+  'login-minimo.html': {
+    title: 'Inicio de sesión mínimo',
+    description: 'Variante de inicio de sesión sin tarjeta: barra superior y formulario.',
+    layout: 'auth',
+  },
+  'login-portada.html': {
+    title: 'Inicio de sesión con portada',
+    description: 'Variante de inicio de sesión: fondo a pantalla completa y tarjeta translúcida.',
+    layout: 'auth',
+  },
+  'login-portales.html': {
+    title: 'Inicio de sesión por portal',
+    description: 'Variante de inicio de sesión con pestañas para dirección, docentes y familias.',
+    layout: 'auth',
+  },
+  'login-codigo.html': {
+    title: 'Inicio de sesión con código',
+    description: 'Variante de inicio de sesión sin contraseña: código de un solo uso de 6 dígitos.',
+    layout: 'auth',
+  },
+  'recuperar-contrasena.html': {
+    title: 'Recuperar contraseña',
+    description: 'Solicite las instrucciones para crear una contraseña nueva.',
+    layout: 'auth',
+  },
   'dashboard-superadmin.html': {
     title: 'Resumen de la plataforma',
     portal: 'super-admin',

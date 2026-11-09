@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<div class="au-auth-art-layout">
+  <main id="contenido" class="au-auth-main" tabindex="-1">
+    <div class="au-auth-stack">
+      <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+        <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+        <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+      </a>
+      {{> auth/login-form heading="Bienvenido de nuevo" lead="Entre con su cuenta o con su proveedor." social="true"}}
+    </div>
+  </main>
+  <aside class="au-auth-art" aria-hidden="true">
+    <h2>Todo su colegio, en un solo lugar.</h2>
+    <div class="au-art-card"><i class="bi bi-mortarboard" aria-hidden="true"></i><span>Matrícula y calificaciones</span></div>
+    <div class="au-art-card"><i class="bi bi-calendar-check" aria-hidden="true"></i><span>Asistencia al día</span></div>
+    <div class="au-art-card"><i class="bi bi-cash-coin" aria-hidden="true"></i><span>Cobros conectados</span></div>
+  </aside>
+</div>
+</body>
+</html>

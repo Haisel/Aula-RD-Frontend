@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<main id="contenido" class="au-auth-portals" tabindex="-1">
+  <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+    <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+    <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+  </a>
+  <div class="au-auth-card">
+    <h1 class="au-auth-title">Elija cómo entrar</h1>
+    <div data-au-tabs>
+      <ul class="nav nav-pills au-portal-tabs">
+        <li class="nav-item"><button class="nav-link active" type="button" data-bs-toggle="pill" data-bs-target="#portal-admin"><i class="bi bi-building" aria-hidden="true"></i>Dirección</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#portal-docente"><i class="bi bi-person-badge" aria-hidden="true"></i>Docentes</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#portal-familia"><i class="bi bi-people" aria-hidden="true"></i>Familias</button></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="portal-admin"><p class="text-body-secondary">Matrícula, cobros, comunicados y reportes de toda la institución.</p></div>
+        <div class="tab-pane fade" id="portal-docente"><p class="text-body-secondary">Sus secciones, la asistencia de hoy y las calificaciones por registrar.</p></div>
+        <div class="tab-pane fade" id="portal-familia"><p class="text-body-secondary">Calificaciones, asistencia y estado de cuenta de sus estudiantes.</p></div>
+      </div>
+    </div>
+    {{> auth/login-form}}
+  </div>
+</main>
+</body>
+</html>

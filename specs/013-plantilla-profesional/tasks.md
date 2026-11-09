@@ -38,7 +38,7 @@ Pedido del propietario. Se hace en el orden de la tabla; cada fila termina con `
 
 | Id | Tarea | Cubre | Hecho cuando |
 |---|---|---|---|
-| V-01 | Seis variantes nuevas de inicio de sesión (centrado, con ilustración y proveedor externo, mínimo, portada, por pestañas de portal, con código) y "Olvidé mi contraseña" | RF-06, RF-12, CA-13 | Verificadas |
+| V-01 | Seis variantes nuevas de inicio de sesión (centrado, con ilustración y proveedor externo, mínimo, portada, por pestañas de portal, con código) y "Olvidé mi contraseña" | RF-06, RF-12, CA-13 | **Hecha 08/11/2026** (80 pruebas nuevas, `npm run check` en verde; verificadas en navegador a 1440 y 390 px sin desbordamiento, validación con mensajes en español y consola limpia; pendiente: revisión en tema claro y en Firefox/Safari) |
 | V-02 | Seis variantes de perfil (portada y pestañas, tarjeta lateral, compacto con línea de tiempo, credencial, institución, editable) | RF-06, RF-12 | Verificadas |
 | V-03 | Nueve formularios (controles básicos, diseños, validación, secciones, avanzado, asistente, editor, archivos, firma) | RF-08, RF-12 | Verificados |
 | V-04 | Grupos "Autenticación", "Perfiles" y "Formularios" en el menú de la plantilla y en el índice de la galería | RF-02 | Menú y prueba de enlaces en verde |

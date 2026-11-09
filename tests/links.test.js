@@ -53,7 +53,6 @@ const PENDIENTES_VACIOS = {
   'dashboard-institucion.html': 2,
   'dashboard-superadmin.html': 1,
   'index.html': 1,
-  'login.html': 1,
   'suscribir.html': 2,
   'partials/app/topbar.hbs': 5,
   'partials/landing/footer.hbs': 3,

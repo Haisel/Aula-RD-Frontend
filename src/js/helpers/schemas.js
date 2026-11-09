@@ -65,6 +65,20 @@ export const loginSchema = z.object({
   password: z.string().min(1, { message: 'Escriba su contraseña.' }),
 });
 
+/** Olvidé mi contraseña: solo el correo (recuperar-contrasena.html). */
+export const recuperarSchema = z.object({
+  email: fields.email,
+});
+
+/** Inicio de sesión sin contraseña: correo y código de un solo uso de 6 dígitos (login-codigo.html). */
+export const codigoAccesoSchema = z.object({
+  email: fields.email,
+  codigo: z
+    .string()
+    .trim()
+    .regex(/^\d{6}$/, { message: 'Escriba los 6 dígitos del código.' }),
+});
+
 /** Registro / suscripción de una institución (suscribir.html). */
 export const registroInstitucionSchema = z.object({
   institucion: fields.nombre('el nombre de la institución'),
@@ -125,6 +139,8 @@ export const autorizacionSchema = z.object({
 export const schemas = new Map(
   /** @type {Array<[string, z.ZodType]>} */ ([
     ['login', loginSchema],
+    ['recuperar', recuperarSchema],
+    ['codigo-acceso', codigoAccesoSchema],
     ['registro-institucion', registroInstitucionSchema],
     ['estudiante', estudianteSchema],
     ['pago', pagoSchema],
