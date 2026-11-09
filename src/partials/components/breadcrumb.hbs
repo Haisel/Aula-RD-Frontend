@@ -1,0 +1,10 @@
+{{!-- Migas de pan (spec 013, RF-05). Contexto: crumbs = [{ label, href? }]; la última es la página actual y no lleva enlace. --}}
+{{#if crumbs}}
+<nav aria-label="Migas de pan" class="au-breadcrumb">
+  <ol class="breadcrumb mb-0">
+    {{#each crumbs}}
+    {{#if href}}<li class="breadcrumb-item"><a href="{{href}}">{{label}}</a></li>{{else}}<li class="breadcrumb-item active" aria-current="page">{{label}}</li>{{/if}}
+    {{/each}}
+  </ol>
+</nav>
+{{/if}}

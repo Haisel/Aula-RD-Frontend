@@ -1,0 +1,194 @@
+[
+  {
+    "id": "ins-001",
+    "nombre": "Centro educativo de demostración 1",
+    "municipio": "La Romana",
+    "plan": "Básico",
+    "estudiantes": 843,
+    "estado": "Período de prueba"
+  },
+  {
+    "id": "ins-002",
+    "nombre": "Centro educativo de demostración 2",
+    "municipio": "Santo Domingo Este",
+    "plan": "Básico",
+    "estudiantes": 2376,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-003",
+    "nombre": "Centro educativo de demostración 3",
+    "municipio": "La Romana",
+    "plan": "Básico",
+    "estudiantes": 1359,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-004",
+    "nombre": "Centro educativo de demostración 4",
+    "municipio": "Puerto Plata",
+    "plan": "Premium",
+    "estudiantes": 1201,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-005",
+    "nombre": "Centro educativo de demostración 5",
+    "municipio": "Higüey",
+    "plan": "Premium",
+    "estudiantes": 763,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-006",
+    "nombre": "Centro educativo de demostración 6",
+    "municipio": "San Cristóbal",
+    "plan": "Premium",
+    "estudiantes": 495,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-007",
+    "nombre": "Centro educativo de demostración 7",
+    "municipio": "La Vega",
+    "plan": "Profesional",
+    "estudiantes": 2162,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-008",
+    "nombre": "Centro educativo de demostración 8",
+    "municipio": "Puerto Plata",
+    "plan": "Profesional",
+    "estudiantes": 1701,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-009",
+    "nombre": "Centro educativo de demostración 9",
+    "municipio": "Santiago de los Caballeros",
+    "plan": "Básico",
+    "estudiantes": 292,
+    "estado": "Período de prueba"
+  },
+  {
+    "id": "ins-010",
+    "nombre": "Centro educativo de demostración 10",
+    "municipio": "Santiago de los Caballeros",
+    "plan": "Profesional",
+    "estudiantes": 1832,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-011",
+    "nombre": "Centro educativo de demostración 11",
+    "municipio": "Puerto Plata",
+    "plan": "Básico",
+    "estudiantes": 594,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-012",
+    "nombre": "Centro educativo de demostración 12",
+    "municipio": "San Cristóbal",
+    "plan": "Básico",
+    "estudiantes": 200,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-013",
+    "nombre": "Centro educativo de demostración 13",
+    "municipio": "La Romana",
+    "plan": "Básico",
+    "estudiantes": 1239,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-014",
+    "nombre": "Centro educativo de demostración 14",
+    "municipio": "La Vega",
+    "plan": "Profesional",
+    "estudiantes": 1297,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-015",
+    "nombre": "Centro educativo de demostración 15",
+    "municipio": "San Pedro de Macorís",
+    "plan": "Básico",
+    "estudiantes": 1344,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-016",
+    "nombre": "Centro educativo de demostración 16",
+    "municipio": "La Vega",
+    "plan": "Profesional",
+    "estudiantes": 1680,
+    "estado": "Período de prueba"
+  },
+  {
+    "id": "ins-017",
+    "nombre": "Centro educativo de demostración 17",
+    "municipio": "Santo Domingo Este",
+    "plan": "Profesional",
+    "estudiantes": 2142,
+    "estado": "Período de prueba"
+  },
+  {
+    "id": "ins-018",
+    "nombre": "Centro educativo de demostración 18",
+    "municipio": "San Pedro de Macorís",
+    "plan": "Profesional",
+    "estudiantes": 324,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-019",
+    "nombre": "Centro educativo de demostración 19",
+    "municipio": "Santo Domingo Este",
+    "plan": "Básico",
+    "estudiantes": 2083,
+    "estado": "Suspendida"
+  },
+  {
+    "id": "ins-020",
+    "nombre": "Centro educativo de demostración 20",
+    "municipio": "San Pedro de Macorís",
+    "plan": "Premium",
+    "estudiantes": 1030,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-021",
+    "nombre": "Centro educativo de demostración 21",
+    "municipio": "Santo Domingo Este",
+    "plan": "Básico",
+    "estudiantes": 538,
+    "estado": "Suspendida"
+  },
+  {
+    "id": "ins-022",
+    "nombre": "Centro educativo de demostración 22",
+    "municipio": "Puerto Plata",
+    "plan": "Básico",
+    "estudiantes": 853,
+    "estado": "Activo"
+  },
+  {
+    "id": "ins-023",
+    "nombre": "Centro educativo de demostración 23",
+    "municipio": "La Romana",
+    "plan": "Profesional",
+    "estudiantes": 1011,
+    "estado": "Período de prueba"
+  },
+  {
+    "id": "ins-024",
+    "nombre": "Centro educativo de demostración 24",
+    "municipio": "Santiago de los Caballeros",
+    "plan": "Básico",
+    "estudiantes": 1226,
+    "estado": "Activo"
+  }
+]

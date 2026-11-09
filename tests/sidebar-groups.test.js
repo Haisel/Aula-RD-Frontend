@@ -67,7 +67,9 @@ describe('menú lateral dibujado (spec 013 · T-02)', () => {
     const out = html('galeria.html');
     expect(out).toMatch(/<button[^>]*data-bs-toggle="collapse"[^>]*>/);
     expect(out).not.toMatch(/<a[^>]*data-bs-toggle="collapse"/);
-    expect(out).toMatch(/<button[^>]*type="button"[^>]*data-bs-toggle="collapse"|<button[^>]*data-bs-toggle="collapse"[^>]*type="button"/);
+    expect(out).toMatch(
+      /<button[^>]*type="button"[^>]*data-bs-toggle="collapse"|<button[^>]*data-bs-toggle="collapse"[^>]*type="button"/,
+    );
   });
 
   it('cerrado: aria-expanded="false" y el panel sin la clase show', () => {

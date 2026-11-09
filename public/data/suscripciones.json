@@ -1,0 +1,218 @@
+[
+  {
+    "id": "sus-001",
+    "institucion": "Centro educativo de demostración 1",
+    "plan": "Básico",
+    "inicio": "2026-04-11",
+    "vence": "2027-04-03",
+    "monto": 2500,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-002",
+    "institucion": "Centro educativo de demostración 2",
+    "plan": "Básico",
+    "inicio": "2026-07-03",
+    "vence": "2027-07-25",
+    "monto": 2500,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-003",
+    "institucion": "Centro educativo de demostración 3",
+    "plan": "Básico",
+    "inicio": "2026-01-12",
+    "vence": "2027-01-09",
+    "monto": 2500,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-004",
+    "institucion": "Centro educativo de demostración 4",
+    "plan": "Premium",
+    "inicio": "2026-08-03",
+    "vence": "2027-08-12",
+    "monto": 15000,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-005",
+    "institucion": "Centro educativo de demostración 5",
+    "plan": "Premium",
+    "inicio": "2026-01-28",
+    "vence": "2027-01-11",
+    "monto": 15000,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-006",
+    "institucion": "Centro educativo de demostración 6",
+    "plan": "Premium",
+    "inicio": "2026-04-16",
+    "vence": "2027-04-07",
+    "monto": 15000,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-007",
+    "institucion": "Centro educativo de demostración 7",
+    "plan": "Profesional",
+    "inicio": "2026-02-06",
+    "vence": "2027-02-25",
+    "monto": 6900,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-008",
+    "institucion": "Centro educativo de demostración 8",
+    "plan": "Profesional",
+    "inicio": "2026-04-19",
+    "vence": "2027-04-21",
+    "monto": 6900,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-009",
+    "institucion": "Centro educativo de demostración 9",
+    "plan": "Básico",
+    "inicio": "2026-02-04",
+    "vence": "2027-02-20",
+    "monto": 2500,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-010",
+    "institucion": "Centro educativo de demostración 10",
+    "plan": "Profesional",
+    "inicio": "2026-09-03",
+    "vence": "2027-09-01",
+    "monto": 6900,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-011",
+    "institucion": "Centro educativo de demostración 11",
+    "plan": "Básico",
+    "inicio": "2026-09-03",
+    "vence": "2027-09-10",
+    "monto": 2500,
+    "estado": "Vencido"
+  },
+  {
+    "id": "sus-012",
+    "institucion": "Centro educativo de demostración 12",
+    "plan": "Básico",
+    "inicio": "2026-05-04",
+    "vence": "2027-05-11",
+    "monto": 2500,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-013",
+    "institucion": "Centro educativo de demostración 13",
+    "plan": "Básico",
+    "inicio": "2026-03-13",
+    "vence": "2027-03-05",
+    "monto": 2500,
+    "estado": "Por vencer"
+  },
+  {
+    "id": "sus-014",
+    "institucion": "Centro educativo de demostración 14",
+    "plan": "Profesional",
+    "inicio": "2026-06-07",
+    "vence": "2027-06-13",
+    "monto": 6900,
+    "estado": "Por vencer"
+  },
+  {
+    "id": "sus-015",
+    "institucion": "Centro educativo de demostración 15",
+    "plan": "Básico",
+    "inicio": "2026-02-13",
+    "vence": "2027-02-06",
+    "monto": 2500,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-016",
+    "institucion": "Centro educativo de demostración 16",
+    "plan": "Profesional",
+    "inicio": "2026-09-27",
+    "vence": "2027-09-01",
+    "monto": 6900,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-017",
+    "institucion": "Centro educativo de demostración 17",
+    "plan": "Profesional",
+    "inicio": "2026-05-03",
+    "vence": "2027-05-27",
+    "monto": 6900,
+    "estado": "Por vencer"
+  },
+  {
+    "id": "sus-018",
+    "institucion": "Centro educativo de demostración 18",
+    "plan": "Profesional",
+    "inicio": "2026-06-25",
+    "vence": "2027-06-10",
+    "monto": 6900,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-019",
+    "institucion": "Centro educativo de demostración 19",
+    "plan": "Básico",
+    "inicio": "2026-05-14",
+    "vence": "2027-05-13",
+    "monto": 2500,
+    "estado": "Por vencer"
+  },
+  {
+    "id": "sus-020",
+    "institucion": "Centro educativo de demostración 20",
+    "plan": "Premium",
+    "inicio": "2026-03-02",
+    "vence": "2027-03-24",
+    "monto": 15000,
+    "estado": "Por vencer"
+  },
+  {
+    "id": "sus-021",
+    "institucion": "Centro educativo de demostración 21",
+    "plan": "Básico",
+    "inicio": "2026-07-01",
+    "vence": "2027-07-21",
+    "monto": 2500,
+    "estado": "Por vencer"
+  },
+  {
+    "id": "sus-022",
+    "institucion": "Centro educativo de demostración 22",
+    "plan": "Básico",
+    "inicio": "2026-09-09",
+    "vence": "2027-09-11",
+    "monto": 2500,
+    "estado": "Vigente"
+  },
+  {
+    "id": "sus-023",
+    "institucion": "Centro educativo de demostración 23",
+    "plan": "Profesional",
+    "inicio": "2026-05-13",
+    "vence": "2027-05-12",
+    "monto": 6900,
+    "estado": "Por vencer"
+  },
+  {
+    "id": "sus-024",
+    "institucion": "Centro educativo de demostración 24",
+    "plan": "Básico",
+    "inicio": "2026-01-27",
+    "vence": "2027-01-06",
+    "monto": 2500,
+    "estado": "Vigente"
+  }
+]

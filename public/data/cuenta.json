@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cta-01",
+    "concepto": "Cuota de Septiembre",
+    "vence": "2026-09-13",
+    "monto": 12500,
+    "estado": "Pagado"
+  },
+  {
+    "id": "cta-02",
+    "concepto": "Cuota de Octubre",
+    "vence": "2026-10-13",
+    "monto": 12500,
+    "estado": "Pagado"
+  },
+  {
+    "id": "cta-03",
+    "concepto": "Cuota de Noviembre",
+    "vence": "2026-11-13",
+    "monto": 12500,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "cta-04",
+    "concepto": "Cuota de Diciembre",
+    "vence": "2026-12-13",
+    "monto": 12500,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "cta-05",
+    "concepto": "Cuota de Enero",
+    "vence": "2027-01-13",
+    "monto": 12500,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "cta-06",
+    "concepto": "Cuota de Febrero",
+    "vence": "2027-02-13",
+    "monto": 12500,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "cta-07",
+    "concepto": "Cuota de Marzo",
+    "vence": "2027-03-13",
+    "monto": 12500,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "cta-08",
+    "concepto": "Cuota de Abril",
+    "vence": "2027-04-13",
+    "monto": 12500,
+    "estado": "Pendiente"
+  }
+]

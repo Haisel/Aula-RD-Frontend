@@ -1,0 +1,242 @@
+[
+  {
+    "id": "fac-0001",
+    "institucion": "Centro educativo de demostración 9",
+    "concepto": "Suscripción anual",
+    "monto": 6900,
+    "fecha": "2026-09-12",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0002",
+    "institucion": "Centro educativo de demostración 4",
+    "concepto": "Suscripción mensual",
+    "monto": 15000,
+    "fecha": "2026-09-22",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0003",
+    "institucion": "Centro educativo de demostración 20",
+    "concepto": "Suscripción mensual",
+    "monto": 15000,
+    "fecha": "2026-11-09",
+    "estado": "Vencido"
+  },
+  {
+    "id": "fac-0004",
+    "institucion": "Centro educativo de demostración 16",
+    "concepto": "Suscripción anual",
+    "monto": 2500,
+    "fecha": "2026-10-06",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0005",
+    "institucion": "Centro educativo de demostración 22",
+    "concepto": "Suscripción mensual",
+    "monto": 2500,
+    "fecha": "2026-09-27",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0006",
+    "institucion": "Centro educativo de demostración 24",
+    "concepto": "Suscripción anual",
+    "monto": 6900,
+    "fecha": "2026-09-04",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0007",
+    "institucion": "Centro educativo de demostración 16",
+    "concepto": "Suscripción anual",
+    "monto": 2500,
+    "fecha": "2026-08-06",
+    "estado": "Vencido"
+  },
+  {
+    "id": "fac-0008",
+    "institucion": "Centro educativo de demostración 20",
+    "concepto": "Suscripción anual",
+    "monto": 2500,
+    "fecha": "2026-08-24",
+    "estado": "Vencido"
+  },
+  {
+    "id": "fac-0009",
+    "institucion": "Centro educativo de demostración 15",
+    "concepto": "Suscripción anual",
+    "monto": 15000,
+    "fecha": "2026-11-09",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0010",
+    "institucion": "Centro educativo de demostración 10",
+    "concepto": "Suscripción anual",
+    "monto": 15000,
+    "fecha": "2026-11-07",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0011",
+    "institucion": "Centro educativo de demostración 10",
+    "concepto": "Módulo adicional",
+    "monto": 2500,
+    "fecha": "2026-09-08",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0012",
+    "institucion": "Centro educativo de demostración 1",
+    "concepto": "Suscripción mensual",
+    "monto": 6900,
+    "fecha": "2026-09-08",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0013",
+    "institucion": "Centro educativo de demostración 20",
+    "concepto": "Módulo adicional",
+    "monto": 2500,
+    "fecha": "2026-11-03",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0014",
+    "institucion": "Centro educativo de demostración 19",
+    "concepto": "Módulo adicional",
+    "monto": 6900,
+    "fecha": "2026-08-03",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0015",
+    "institucion": "Centro educativo de demostración 11",
+    "concepto": "Módulo adicional",
+    "monto": 2500,
+    "fecha": "2026-08-12",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0016",
+    "institucion": "Centro educativo de demostración 23",
+    "concepto": "Suscripción mensual",
+    "monto": 15000,
+    "fecha": "2026-10-28",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0017",
+    "institucion": "Centro educativo de demostración 14",
+    "concepto": "Módulo adicional",
+    "monto": 6900,
+    "fecha": "2026-11-27",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0018",
+    "institucion": "Centro educativo de demostración 10",
+    "concepto": "Suscripción mensual",
+    "monto": 6900,
+    "fecha": "2026-09-06",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0019",
+    "institucion": "Centro educativo de demostración 2",
+    "concepto": "Suscripción mensual",
+    "monto": 15000,
+    "fecha": "2026-11-21",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0020",
+    "institucion": "Centro educativo de demostración 16",
+    "concepto": "Suscripción anual",
+    "monto": 15000,
+    "fecha": "2026-10-01",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0021",
+    "institucion": "Centro educativo de demostración 4",
+    "concepto": "Suscripción anual",
+    "monto": 2500,
+    "fecha": "2026-10-28",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0022",
+    "institucion": "Centro educativo de demostración 24",
+    "concepto": "Suscripción anual",
+    "monto": 2500,
+    "fecha": "2026-10-03",
+    "estado": "Vencido"
+  },
+  {
+    "id": "fac-0023",
+    "institucion": "Centro educativo de demostración 10",
+    "concepto": "Suscripción anual",
+    "monto": 2500,
+    "fecha": "2026-09-22",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0024",
+    "institucion": "Centro educativo de demostración 19",
+    "concepto": "Suscripción mensual",
+    "monto": 15000,
+    "fecha": "2026-08-05",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0025",
+    "institucion": "Centro educativo de demostración 2",
+    "concepto": "Módulo adicional",
+    "monto": 2500,
+    "fecha": "2026-10-13",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "fac-0026",
+    "institucion": "Centro educativo de demostración 20",
+    "concepto": "Módulo adicional",
+    "monto": 2500,
+    "fecha": "2026-09-26",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0027",
+    "institucion": "Centro educativo de demostración 15",
+    "concepto": "Módulo adicional",
+    "monto": 15000,
+    "fecha": "2026-10-06",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0028",
+    "institucion": "Centro educativo de demostración 11",
+    "concepto": "Suscripción anual",
+    "monto": 2500,
+    "fecha": "2026-10-05",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0029",
+    "institucion": "Centro educativo de demostración 2",
+    "concepto": "Suscripción mensual",
+    "monto": 6900,
+    "fecha": "2026-11-10",
+    "estado": "Pagado"
+  },
+  {
+    "id": "fac-0030",
+    "institucion": "Centro educativo de demostración 9",
+    "concepto": "Suscripción mensual",
+    "monto": 6900,
+    "fecha": "2026-08-05",
+    "estado": "Pagado"
+  }
+]

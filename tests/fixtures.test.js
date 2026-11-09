@@ -16,14 +16,84 @@ const DATA = resolve(import.meta.dirname, '../public/data');
  */
 const load = (file) => JSON.parse(readFileSync(resolve(DATA, file), 'utf8'));
 
-const FILES = ['estudiantes.json', 'docentes.json', 'reporte.json', 'tablero.json'];
+const FILES = [
+  'estudiantes.json',
+  'docentes.json',
+  'reporte.json',
+  'tablero.json',
+  'instituciones.json',
+  'usuarios-internos.json',
+  'suscripciones.json',
+  'facturas.json',
+  'cuenta.json',
+];
 const ESTADOS = ['Activo', 'Inactivo', 'Retirado'];
 const PAGOS = ['Pagado', 'Pendiente', 'Vencido'];
 const COLUMNAS = ['nuevas', 'revision', 'aprobadas'];
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 
 describe('datos de demostración de la galería (spec 012)', () => {
-  it('existen los cuatro archivos', () => {
+  it('instituciones: 24 con campos válidos e ids únicos (spec 013)', () => {
+    const rows = load('instituciones.json');
+    expect(rows).toHaveLength(24);
+    expect(new Set(rows.map((r) => r.id)).size).toBe(24);
+    for (const r of rows) {
+      expect(Object.keys(r).sort()).toEqual(['estado', 'estudiantes', 'id', 'municipio', 'nombre', 'plan']);
+      expect(['Básico', 'Profesional', 'Premium']).toContain(r.plan);
+      expect(['Activo', 'Período de prueba', 'Suspendida']).toContain(r.estado);
+      expect(r.estudiantes).toBeGreaterThan(0);
+      expect(r.nombre).toMatch(/demostración/);
+    }
+  });
+
+  it('usuarios internos: 10 con rol y último acceso válidos (spec 013)', () => {
+    const rows = load('usuarios-internos.json');
+    expect(rows).toHaveLength(10);
+    for (const r of rows) {
+      expect(Object.keys(r).sort()).toEqual(['estado', 'id', 'nombre', 'rol', 'ultimoAcceso']);
+      expect(['Administrador', 'Soporte', 'Contabilidad', 'Ventas', 'Auditoría']).toContain(r.rol);
+      expect(r.ultimoAcceso).toMatch(ISO);
+    }
+  });
+
+  it('suscripciones: una por institución, con vigencia coherente (spec 013)', () => {
+    const rows = load('suscripciones.json');
+    const instituciones = load('instituciones.json').map((i) => i.nombre);
+    expect(rows.map((r) => r.institucion).sort()).toEqual([...instituciones].sort());
+    for (const r of rows) {
+      expect(Object.keys(r).sort()).toEqual(['estado', 'id', 'inicio', 'institucion', 'monto', 'plan', 'vence']);
+      expect(r.inicio).toMatch(ISO);
+      expect(r.vence).toMatch(ISO);
+      expect(r.vence > r.inicio, `${r.id}: vence después de iniciar`).toBe(true);
+      expect(['Vigente', 'Por vencer', 'Vencido']).toContain(r.estado);
+    }
+  });
+
+  it('facturas: 30 de instituciones existentes, con estado y monto válidos (spec 013)', () => {
+    const rows = load('facturas.json');
+    const instituciones = new Set(load('instituciones.json').map((i) => i.nombre));
+    expect(rows).toHaveLength(30);
+    expect(new Set(rows.map((r) => r.id)).size).toBe(30);
+    for (const r of rows) {
+      expect(Object.keys(r).sort()).toEqual(['concepto', 'estado', 'fecha', 'id', 'institucion', 'monto']);
+      expect(instituciones.has(r.institucion), r.institucion).toBe(true);
+      expect(PAGOS).toContain(r.estado);
+      expect(r.monto).toBeGreaterThan(0);
+      expect(r.fecha).toMatch(ISO);
+    }
+  });
+
+  it('estado de cuenta de la familia: 8 conceptos con vencimiento y estado (spec 013)', () => {
+    const rows = load('cuenta.json');
+    expect(rows).toHaveLength(8);
+    for (const r of rows) {
+      expect(Object.keys(r).sort()).toEqual(['concepto', 'estado', 'id', 'monto', 'vence']);
+      expect(PAGOS).toContain(r.estado);
+      expect(r.vence).toMatch(ISO);
+    }
+  });
+
+  it('existen los archivos de datos', () => {
     for (const f of FILES) expect(existsSync(resolve(DATA, f)), f).toBe(true);
   });
 

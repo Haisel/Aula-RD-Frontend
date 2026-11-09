@@ -7,6 +7,22 @@
  * sirven para mostrar la plantilla. En su backend, sustitúyalos por datos reales.
  * @module data/pages
  */
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { cell } from './cells.js';
+
+/** Carpeta de los datos de demostración (`public/data/`). */
+const DATA_DIR = fileURLToPath(new URL('../../public/data/', import.meta.url));
+
+/**
+ * Lee un JSON de demostración de `public/data/`. Solo se usa al generar las páginas, nunca en el navegador.
+ * @param {string} file Nombre del archivo.
+ * @returns {Record<string, unknown>[]} Filas.
+ */
+function loadData(file) {
+  return JSON.parse(readFileSync(resolve(DATA_DIR, file), 'utf8'));
+}
 
 /**
  * @typedef {object} NavItem
@@ -22,26 +38,26 @@
 const NAV = {
   'super-admin': [
     { label: 'Resumen', icon: 'grid-1x2', href: 'dashboard-superadmin.html' },
-    { label: 'Instituciones', icon: 'building', href: '#instituciones' },
+    { label: 'Instituciones', icon: 'building', href: 'superadmin-instituciones.html' },
     { label: 'Planes', icon: 'layers', href: '#planes' },
-    { label: 'Suscripciones', icon: 'credit-card', href: '#suscripciones', badge: 7 },
-    { label: 'Cobros', icon: 'cash-coin', href: '#cobros' },
+    { label: 'Suscripciones', icon: 'credit-card', href: 'superadmin-suscripciones.html', badge: 7 },
+    { label: 'Cobros', icon: 'cash-coin', href: 'superadmin-cobros.html' },
     { label: 'Soporte', icon: 'life-preserver', href: '#soporte', badge: 12 },
     { label: 'Publicidad', icon: 'badge-ad', href: '#publicidad', section: 'Negocio' },
     { label: 'Contabilidad', icon: 'journal-bookmark', href: '#contabilidad' },
-    { label: 'Usuarios internos', icon: 'people', href: '#usuarios', section: 'Sistema' },
+    { label: 'Usuarios internos', icon: 'people', href: 'superadmin-usuarios.html', section: 'Sistema' },
     { label: 'Componentes', icon: 'palette', href: 'componentes.html' },
     { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html' },
     { label: 'Configuración', icon: 'gear', href: '#configuracion' },
   ],
   'institution-admin': [
     { label: 'Inicio', icon: 'house-door', href: 'dashboard-institucion.html' },
-    { label: 'Estudiantes', icon: 'people', href: '#estudiantes' },
-    { label: 'Docentes', icon: 'person-badge', href: '#docentes' },
+    { label: 'Estudiantes', icon: 'people', href: 'institucion-estudiantes.html' },
+    { label: 'Docentes', icon: 'person-badge', href: 'institucion-docentes.html' },
     { label: 'Matrícula', icon: 'clipboard-check', href: '#matricula' },
     { label: 'Calificaciones', icon: 'journal-text', href: '#calificaciones' },
     { label: 'Asistencia', icon: 'calendar3', href: '#asistencia' },
-    { label: 'Cobros', icon: 'cash-coin', href: '#cobros', badge: 37, section: 'Administración' },
+    { label: 'Cobros', icon: 'cash-coin', href: 'institucion-cobros.html', badge: 37, section: 'Administración' },
     { label: 'Comunicados', icon: 'megaphone', href: '#comunicados' },
     { label: 'Reportes', icon: 'bar-chart-line', href: '#reportes' },
     { label: 'Configuración', icon: 'gear', href: '#configuracion' },
@@ -61,7 +77,7 @@ const NAV = {
     { label: 'Inicio', icon: 'house-door', href: 'dashboard-tutor.html' },
     { label: 'Calificaciones', icon: 'journal-text', href: '#calificaciones' },
     { label: 'Asistencia', icon: 'calendar-check', href: '#asistencia' },
-    { label: 'Estado de cuenta', icon: 'receipt', href: '#cuenta', badge: 1 },
+    { label: 'Estado de cuenta', icon: 'receipt', href: 'familia-estado-de-cuenta.html', badge: 1 },
     { label: 'Horario', icon: 'clock', href: '#horario' },
     { label: 'Comunicados', icon: 'megaphone', href: '#comunicados', section: 'Comunicación' },
     { label: 'Autorizaciones', icon: 'pen', href: '#autorizaciones' },
@@ -204,6 +220,172 @@ const PAGES = {
 };
 
 /**
+ * @typedef {object} ModuleConfig
+ * @property {string} portal Portal al que pertenece (clave de `NAV`).
+ * @property {'table'} archetype Arquetipo de la página.
+ * @property {string} title Título.
+ * @property {string} subtitle Descripción corta.
+ * @property {string} source Archivo de datos en `public/data/`.
+ * @property {import('./cells.js').Column[]} columns Columnas de la tabla (la primera da nombre a la fila).
+ * @property {string} [primary] Texto del botón principal de alta.
+ */
+
+/**
+ * Módulos de gestión (spec 013): cada ítem de menú abre una página con su arquetipo y sus datos.
+ * @type {Record<string, ModuleConfig>}
+ */
+const MODULES = {
+  'superadmin-instituciones.html': {
+    portal: 'super-admin',
+    archetype: 'table',
+    title: 'Instituciones',
+    subtitle: 'Colegios y centros educativos suscritos a la plataforma.',
+    source: 'instituciones.json',
+    primary: 'Nueva institución',
+    columns: [
+      { key: 'nombre', label: 'Institución', kind: 'entity', meta: 'municipio' },
+      { key: 'plan', label: 'Plan', kind: 'plan' },
+      { key: 'estudiantes', label: 'Estudiantes', kind: 'number' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+  'superadmin-usuarios.html': {
+    portal: 'super-admin',
+    archetype: 'table',
+    title: 'Usuarios internos',
+    subtitle: 'Personas del equipo con acceso al panel de la plataforma.',
+    source: 'usuarios-internos.json',
+    primary: 'Nuevo usuario',
+    columns: [
+      { key: 'nombre', label: 'Persona', kind: 'entity', meta: 'rol' },
+      { key: 'rol', label: 'Rol' },
+      { key: 'ultimoAcceso', label: 'Último acceso', kind: 'date' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+  'superadmin-suscripciones.html': {
+    portal: 'super-admin',
+    archetype: 'table',
+    title: 'Suscripciones',
+    subtitle: 'Planes contratados por cada institución y su vigencia.',
+    source: 'suscripciones.json',
+    primary: 'Nueva suscripción',
+    columns: [
+      { key: 'institucion', label: 'Institución' },
+      { key: 'plan', label: 'Plan', kind: 'plan' },
+      { key: 'inicio', label: 'Inicio', kind: 'date' },
+      { key: 'vence', label: 'Vence', kind: 'date' },
+      { key: 'monto', label: 'Cuota mensual', kind: 'money' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+  'superadmin-cobros.html': {
+    portal: 'super-admin',
+    archetype: 'table',
+    title: 'Cobros',
+    subtitle: 'Facturas emitidas a las instituciones por la suscripción a la plataforma.',
+    source: 'facturas.json',
+    primary: 'Registrar pago',
+    columns: [
+      { key: 'id', label: 'Factura' },
+      { key: 'institucion', label: 'Institución' },
+      { key: 'concepto', label: 'Concepto' },
+      { key: 'monto', label: 'Monto', kind: 'money' },
+      { key: 'fecha', label: 'Fecha', kind: 'date' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+  'institucion-estudiantes.html': {
+    portal: 'institution-admin',
+    archetype: 'table',
+    title: 'Estudiantes',
+    subtitle: 'Matrícula de la institución por grado y sección.',
+    source: 'estudiantes.json',
+    primary: 'Agregar estudiante',
+    columns: [
+      { key: 'nombre', label: 'Estudiante', kind: 'entity', meta: 'matricula' },
+      { key: 'grado', label: 'Grado' },
+      { key: 'seccion', label: 'Sección' },
+      { key: 'tutor', label: 'Tutor' },
+      { key: 'ingreso', label: 'Ingreso', kind: 'date' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+  'institucion-docentes.html': {
+    portal: 'institution-admin',
+    archetype: 'table',
+    title: 'Docentes',
+    subtitle: 'Personal docente, su área y las secciones que atiende.',
+    source: 'docentes.json',
+    primary: 'Agregar docente',
+    columns: [
+      { key: 'nombre', label: 'Docente', kind: 'entity', meta: 'area' },
+      { key: 'area', label: 'Área' },
+      { key: 'secciones', label: 'Secciones', kind: 'number' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+  'institucion-cobros.html': {
+    portal: 'institution-admin',
+    archetype: 'table',
+    title: 'Cobros',
+    subtitle: 'Cuotas de los estudiantes y su estado de pago.',
+    source: 'cobros.json',
+    primary: 'Registrar pago',
+    columns: [
+      { key: 'estudiante', label: 'Estudiante', kind: 'entity', meta: 'grado' },
+      { key: 'tutor', label: 'Tutor' },
+      { key: 'monto', label: 'Monto', kind: 'money' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+  'familia-estado-de-cuenta.html': {
+    portal: 'student-guardian',
+    archetype: 'table',
+    title: 'Estado de cuenta',
+    subtitle: 'Cuotas del año escolar, sus vencimientos y su estado.',
+    source: 'cuenta.json',
+    columns: [
+      { key: 'concepto', label: 'Concepto' },
+      { key: 'vence', label: 'Vence', kind: 'date' },
+      { key: 'monto', label: 'Monto', kind: 'money' },
+      { key: 'estado', label: 'Estado', kind: 'status' },
+    ],
+  },
+};
+
+/** Dashboard de cada portal: de él toman el usuario y la institución de ejemplo. */
+const DASHBOARD_OF = {
+  'super-admin': 'dashboard-superadmin.html',
+  'institution-admin': 'dashboard-institucion.html',
+  teacher: 'dashboard-docente.html',
+  'student-guardian': 'dashboard-tutor.html',
+};
+
+for (const [file, cfg] of Object.entries(MODULES)) {
+  const dash = /** @type {Record<string, any>} */ (PAGES)[DASHBOARD_OF[/** @type {keyof typeof DASHBOARD_OF} */ (cfg.portal)]];
+  /** @type {Record<string, any>} */ (PAGES)[file] = {
+    title: cfg.title,
+    description: cfg.subtitle,
+    portal: cfg.portal,
+    active: file,
+    user: dash.user,
+    org: dash.org,
+    module: cfg,
+  };
+}
+
+/**
+ * Resuelve un módulo para las plantillas: lee sus datos y calcula lo que la tabla necesita.
+ * @param {ModuleConfig | undefined} cfg Configuración del módulo.
+ * @returns {(ModuleConfig & { rows: Record<string, unknown>[], labelKey: string, actionsIndex: number }) | undefined} Módulo listo.
+ */
+function resolveModule(cfg) {
+  if (!cfg) return undefined;
+  return { ...cfg, rows: loadData(cfg.source), labelKey: cfg.columns[0].key, actionsIndex: cfg.columns.length };
+}
+
+/**
  * Marca la página activa en el menú. Un grupo (`children`) no está activo él mismo: queda
  * `open` (abierto) si alguno de sus hijos es la página actual.
  * @param {NavItem[]} items Ítems del menú.
@@ -228,9 +410,16 @@ export function pageContext(pagePath, env = {}) {
   const key = pagePath.replace(/^\//, '');
   const page = PAGES[/** @type {keyof typeof PAGES} */ (key)] ?? { title: 'Aula RD' };
   const portal = /** @type {any} */ (page).portal;
+  const module = resolveModule(/** @type {any} */ (page).module);
+  // Migas de pan de una página de módulo: Inicio (dashboard de su portal) › módulo actual.
+  const crumbs = module
+    ? [{ label: 'Inicio', href: DASHBOARD_OF[/** @type {keyof typeof DASHBOARD_OF} */ (module.portal)] }, { label: module.title }]
+    : undefined;
   const nav = portal ? buildNav(NAV[portal], /** @type {any} */ (page).active) : [];
   return {
     ...page,
+    module,
+    crumbs,
     nav,
     isSuperAdmin: portal === 'super-admin',
     year: new Date().getFullYear(),
@@ -248,6 +437,13 @@ export const helpers = {
    * @returns {boolean} `true` si son iguales.
    */
   eq: (a, b) => a === b,
+  /**
+   * Celda de una tabla de arquetipo: `{{{cell this ..}}}` dentro de `{{#each columns}}` (spec 013).
+   * @param {import('./cells.js').Column} column Columna.
+   * @param {Record<string, unknown>} row Fila.
+   * @returns {string} HTML ya escapado.
+   */
+  cell: (column, row) => cell(column, row),
   /**
    * Serializa un valor a JSON (para `<script type="application/json">`).
    * @param {unknown} v Valor.

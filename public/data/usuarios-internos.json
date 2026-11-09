@@ -1,0 +1,72 @@
+[
+  {
+    "id": "usr-01",
+    "nombre": "Eugenio Ortega",
+    "rol": "Ventas",
+    "ultimoAcceso": "2026-11-05",
+    "estado": "Activo"
+  },
+  {
+    "id": "usr-02",
+    "nombre": "Asunción Benítez",
+    "rol": "Soporte",
+    "ultimoAcceso": "2026-11-01",
+    "estado": "Activo"
+  },
+  {
+    "id": "usr-03",
+    "nombre": "Víctor Parra",
+    "rol": "Auditoría",
+    "ultimoAcceso": "2026-11-03",
+    "estado": "Inactivo"
+  },
+  {
+    "id": "usr-04",
+    "nombre": "Iván Sanz",
+    "rol": "Contabilidad",
+    "ultimoAcceso": "2026-11-05",
+    "estado": "Activo"
+  },
+  {
+    "id": "usr-05",
+    "nombre": "Susana Vargas",
+    "rol": "Soporte",
+    "ultimoAcceso": "2026-11-07",
+    "estado": "Activo"
+  },
+  {
+    "id": "usr-06",
+    "nombre": "Ana Calvo",
+    "rol": "Administrador",
+    "ultimoAcceso": "2026-11-02",
+    "estado": "Activo"
+  },
+  {
+    "id": "usr-07",
+    "nombre": "Enrique Hernández",
+    "rol": "Administrador",
+    "ultimoAcceso": "2026-11-05",
+    "estado": "Activo"
+  },
+  {
+    "id": "usr-08",
+    "nombre": "Mohamed Márquez",
+    "rol": "Soporte",
+    "ultimoAcceso": "2026-11-05",
+    "estado": "Inactivo"
+  },
+  {
+    "id": "usr-09",
+    "nombre": "Joaquin Sanz",
+    "rol": "Contabilidad",
+    "ultimoAcceso": "2026-11-03",
+    "estado": "Activo"
+  },
+  {
+    "id": "usr-10",
+    "nombre": "Alfonso Navarro",
+    "rol": "Auditoría",
+    "ultimoAcceso": "2026-11-05",
+    "estado": "Inactivo"
+  }
+]

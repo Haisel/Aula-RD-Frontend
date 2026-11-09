@@ -130,6 +130,68 @@ const tablero = estudiantes.slice(0, 12).map((e, i) => ({
   fecha: `2026-${two(int(8, 11))}-${two(int(1, 28))}`,
 }));
 
+// ── Spec 013: datos de los módulos de gestión. Se generan DESPUÉS de los anteriores para que
+// la secuencia pseudoaleatoria de los archivos ya publicados no cambie.
+const MUNICIPIOS = [
+  'Santo Domingo Este',
+  'Santiago de los Caballeros',
+  'La Vega',
+  'San Cristóbal',
+  'Puerto Plata',
+  'La Romana',
+  'San Pedro de Macorís',
+  'Higüey',
+];
+const PRECIO = { Básico: 2500, Profesional: 6900, Premium: 15000 };
+
+const instituciones = Array.from({ length: 24 }, (_, i) => ({
+  id: `ins-${String(i + 1).padStart(3, '0')}`,
+  nombre: `Centro educativo de demostración ${i + 1}`,
+  municipio: pick(MUNICIPIOS),
+  plan: weighted([['Básico', 40], ['Profesional', 40], ['Premium', 20]]),
+  estudiantes: int(80, 2400),
+  estado: weighted([['Activo', 75], ['Período de prueba', 15], ['Suspendida', 10]]),
+}));
+
+const usuariosInternos = Array.from({ length: 10 }, (_, i) => ({
+  id: `usr-${two(i + 1)}`,
+  nombre: names[(102 + i) % names.length],
+  rol: pick(['Administrador', 'Soporte', 'Contabilidad', 'Ventas', 'Auditoría']),
+  ultimoAcceso: `2026-11-${two(int(1, 8))}`,
+  estado: weighted([['Activo', 85], ['Inactivo', 15]]),
+}));
+
+const suscripciones = instituciones.map((ins, i) => {
+  const inicioMes = int(1, 9);
+  return {
+    id: `sus-${String(i + 1).padStart(3, '0')}`,
+    institucion: ins.nombre,
+    plan: ins.plan,
+    inicio: `2026-${two(inicioMes)}-${two(int(1, 28))}`,
+    vence: `2027-${two(inicioMes)}-${two(int(1, 28))}`,
+    monto: PRECIO[/** @type {keyof typeof PRECIO} */ (ins.plan)],
+    estado: weighted([['Vigente', 70], ['Por vencer', 20], ['Vencido', 10]]),
+  };
+});
+
+const facturas = Array.from({ length: 30 }, (_, i) => ({
+  id: `fac-${String(i + 1).padStart(4, '0')}`,
+  institucion: pick(instituciones).nombre,
+  concepto: pick(['Suscripción mensual', 'Suscripción anual', 'Módulo adicional']),
+  monto: pick([2500, 6900, 15000]),
+  fecha: `2026-${two(int(8, 11))}-${two(int(1, 28))}`,
+  estado: weighted([['Pagado', 65], ['Pendiente', 25], ['Vencido', 10]]),
+}));
+
+const MESES = ['Septiembre', 'Octubre', 'Noviembre', 'Diciembre', 'Enero', 'Febrero', 'Marzo', 'Abril'];
+const cuenta = MESES.map((mes, i) => ({
+  id: `cta-${two(i + 1)}`,
+  concepto: `Cuota de ${mes}`,
+  vence: `${i < 4 ? 2026 : 2027}-${two([9, 10, 11, 12, 1, 2, 3, 4][i])}-13`,
+  monto: 12500,
+  estado: i < 2 ? 'Pagado' : i === 2 ? 'Pendiente' : 'Pendiente',
+}));
+
 /**
  * Escribe un JSON con sangría de 2 espacios y salto de línea final.
  * @param {string} file Nombre del archivo.
@@ -141,6 +203,11 @@ write('estudiantes.json', estudiantes);
 write('docentes.json', docentes);
 write('reporte.json', reporte);
 write('tablero.json', tablero);
+write('instituciones.json', instituciones);
+write('usuarios-internos.json', usuariosInternos);
+write('suscripciones.json', suscripciones);
+write('facturas.json', facturas);
+write('cuenta.json', cuenta);
 console.warn(
   `✔ ${estudiantes.length} estudiantes, ${docentes.length} docentes, ${reporte.length} filas de reporte y ${tablero.length} tarjetas → public/data/`,
 );

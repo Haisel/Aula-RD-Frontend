@@ -22,5 +22,10 @@ Los contratos están documentados en `docs/COMPONENTES.md` (sección «Contratos
 | `docentes.json` | `{ id, nombre, area, secciones, estado }` (12) |
 | `reporte.json` | `{ periodo, estudianteId, nombre, grado, estado, asistencia, promedio, pagos, monto }` (60) |
 | `tablero.json` | `{ id, titulo, responsable, columna, prioridad, fecha }` (12) |
+| `instituciones.json` | `{ id, nombre, municipio, plan, estudiantes, estado }` (24) |
+| `usuarios-internos.json` | `{ id, nombre, rol, ultimoAcceso, estado }` (10) |
+| `suscripciones.json` | `{ id, institucion, plan, inicio, vence, monto, estado }` (24, una por institución) |
+| `facturas.json` | `{ id, institucion, concepto, monto, fecha, estado }` (30) |
+| `cuenta.json` | `{ id, concepto, vence, monto, estado }` (8) |
 
 Las fechas van en ISO (`AAAA-MM-DD`); la interfaz las muestra como `DD/MM/AAAA`.

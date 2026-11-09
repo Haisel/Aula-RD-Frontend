@@ -1,0 +1,27 @@
+{{!-- Arquetipo "Tabla" (spec 013): listado con búsqueda, orden y paginación (DataTables) y acciones por fila.
+      Contexto: module = { title, columns, rows, labelKey, actionsIndex }. Las acciones son demostraciones: no cambian datos. --}}
+<section class="au-table-card is-main" aria-labelledby="mod-listado">
+  <div class="au-table-toolbar">
+    <h2 id="mod-listado">Listado</h2>
+    <button class="btn btn-ghost btn-sm" type="button" data-au-export="#tabla-modulo" data-au-filename="{{module.title}}"><i class="bi bi-file-earmark-excel" aria-hidden="true"></i>Excel</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-au-export="#tabla-modulo" data-au-format="csv" data-au-filename="{{module.title}}"><i class="bi bi-filetype-csv" aria-hidden="true"></i>CSV</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle w-100" id="tabla-modulo" data-au-datatable data-au-page-length="10" data-au-no-sort="{{module.actionsIndex}}">
+      <thead>
+        <tr>{{#each module.columns}}<th scope="col">{{label}}</th>{{/each}}<th scope="col"><span class="visually-hidden">Acciones</span></th></tr>
+      </thead>
+      <tbody>
+        {{#each module.rows}}
+        <tr>{{#each ../module.columns}}<td>{{{cell this ..}}}</td>{{/each}}
+          <td class="text-end text-nowrap">
+            <button class="btn btn-outline-primary au-btn-icon btn-sm" type="button" aria-label="Ver detalle: {{lookup this ../module.labelKey}}" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre el detalle."><i class="bi bi-eye" aria-hidden="true"></i></button>
+            <button class="btn btn-outline-primary au-btn-icon btn-sm" type="button" aria-label="Editar: {{lookup this ../module.labelKey}}" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se abre el formulario de edición."><i class="bi bi-pencil" aria-hidden="true"></i></button>
+            <button class="btn btn-outline-primary au-btn-icon btn-sm" type="button" aria-label="Eliminar: {{lookup this ../module.labelKey}}" data-au-action="confirm-delete" data-au-message="Se eliminará este registro (demostración)."><i class="bi bi-trash3" aria-hidden="true"></i></button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
