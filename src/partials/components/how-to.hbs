@@ -1,0 +1,5 @@
+{{!-- {{#> components/how-to title="Cómo se usa"}} {{{{code}}}}…fragmento…{{{{/code}}}} {{/components/how-to}} Bloque plegable con el fragmento en texto (spec 012, RF-11). --}}
+<details class="au-howto">
+  <summary>{{#if title}}{{title}}{{else}}Cómo se usa{{/if}}</summary>
+  {{> @partial-block}}
+</details>

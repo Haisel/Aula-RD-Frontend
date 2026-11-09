@@ -1,0 +1,171 @@
+// ----------------------------------------------------------------------------
+// Galería de funcionalidades (spec 012): aviso de demostración, bloque "Cómo se usa",
+// tarjetas del índice, esqueleto de carga y códigos de error. Solo variables `--au-*`.
+// ----------------------------------------------------------------------------
+
+// Aviso visible de que la página es una demostración (datos ficticios, nada se guarda).
+.au-demo-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--au-border);
+  border-left: 4px solid var(--au-info);
+  border-radius: var(--bs-border-radius);
+  background: var(--au-info-subtle);
+  color: var(--au-text);
+  font-size: 0.875rem;
+
+  .bi {
+    flex: none;
+    margin-top: 0.125rem;
+    color: var(--au-info-text);
+  }
+}
+
+// Bloque "Cómo se usa": fragmento de código en texto, plegable.
+.au-howto {
+  // `.au-specimen` es una rejilla: sin esto, una línea larga de código ensancha la columna entera.
+  min-width: 0;
+  margin-top: 1rem;
+  border: 1px solid var(--au-border);
+  border-radius: var(--bs-border-radius);
+  background: var(--au-surface);
+
+  > summary {
+    padding: 0.625rem 1rem;
+    font-weight: 600;
+    color: var(--au-text);
+    cursor: pointer;
+  }
+
+  > :not(summary) {
+    margin: 0 1rem 1rem;
+  }
+}
+
+.au-code {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  overflow: auto;
+  border: 1px solid var(--au-border);
+  border-radius: var(--bs-border-radius);
+  background: var(--au-surface-2);
+  color: var(--au-text);
+  font-family: var(--bs-font-monospace);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+// Tarjetas del índice de la galería.
+.au-gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+.au-gallery-card {
+  @include au-surface('radius-lg');
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  color: var(--au-text);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--au-accent-text);
+    color: var(--au-text);
+  }
+
+  .au-gallery-title {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--au-text-muted);
+  }
+
+  small {
+    margin-top: auto;
+    font-size: 0.75rem;
+    color: var(--au-text-muted);
+  }
+}
+
+// Esqueleto de carga.
+.au-skeleton {
+  display: block;
+  min-height: 1rem;
+  border-radius: var(--bs-border-radius);
+  background: linear-gradient(90deg, var(--au-surface-2) 25%, var(--au-border) 37%, var(--au-surface-2) 63%);
+  background-size: 400% 100%;
+  animation: au-skeleton 1.4s ease infinite;
+}
+
+.au-skeleton-circle {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+@keyframes au-skeleton {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+// Código grande de las páginas de error (403, 404, 500).
+.au-error-code {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--au-accent-text);
+}
+
+// Línea de tiempo vertical.
+.au-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    position: relative;
+    padding: 0 0 1.25rem 1.5rem;
+    border-left: 2px solid var(--au-border);
+  }
+
+  > li::before {
+    content: '';
+    position: absolute;
+    top: 0.25rem;
+    left: -0.4375rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 2px solid var(--au-surface);
+    border-radius: 50%;
+    background: var(--au-accent-text);
+  }
+
+  > li:last-child {
+    padding-bottom: 0;
+  }
+}

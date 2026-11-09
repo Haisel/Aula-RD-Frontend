@@ -141,5 +141,24 @@ Resuelta por el propietario el 08/11/2026:
 | RF-08 | `src/ejemplo-perfiles.html` | CA-08 |
 | RF-11, RF-12, RF-13 | Parcial "Cómo se usa", `public/data/*.json`, `src/js/demo/*` | CA-12, CA-14 |
 
+## Verificación — Fase 1 (08/11/2026)
+Build compilado servido con `vite preview`, Chrome en Windows. Páginas: índice, botones, alertas, modales, tarjetas y estados.
+
+| Criterio | Resultado | Detalle |
+|---|---|---|
+| CA-01 | Cumple | Las 6 páginas cargan sin errores ni avisos de consola (errores de JavaScript, promesas rechazadas, `console.error` y `console.warn` registrados desde el arranque) y todos sus recursos existen |
+| CA-02 | Cumple | El índice muestra 7 tarjetas (5 de la galería y 2 de otras páginas); el menú "Galería" marca la página activa con `aria-current` |
+| CA-10 | Cumple en lo medido | Ningún control sin nombre accesible (el buscador tiene una etiqueta oculta); botones, desplegable, alternables, 7 modales y el panel lateral responden; los modales llevan el foco adentro y lo devuelven al botón; Escape cierra el normal y no el obligatorio |
+| CA-11 | Cumple tras una corrección | A 390 px, sin desbordamiento en claro y en oscuro, **con los bloques "Cómo se usa" abiertos**. Antes de la corrección había desbordamiento (683 px de contenido en 390) por una línea larga de código dentro de una rejilla; se arregló con `min-width: 0` en `.au-howto` |
+| CA-12 | Cumple | `dist/js/app.js` idéntico a la referencia: 333 485 bytes, 106 236 con `gzip -9`, huella `929e56f92a44b641` |
+| CA-15 | Cumple | Ninguna solicitud sale del propio origen en ninguna de las 6 páginas |
+| RF-10 / RF-07 | Cumple | Toasts de los 4 tipos y diálogos de confirmación (`confirm-delete` con sus botones), alerta cerrable, barras de progreso con su ancho (78 % y 92 %; 78 % y 45 %), formulario en modal con 6 errores al enviarlo vacío y 0 con datos válidos, colapsable, esqueleto animado, `data-au-can` oculta el botón sin permiso |
+| RF-11 | Cumple | Los bloques "Cómo se usa" salen como texto, no se ejecutan (0 botones o campos dentro) y muestran las plantillas literales |
+| Contraste | Cumple | Aviso de demostración 12.8:1 (claro) y 12.5:1 (oscuro); bloque de código 12.7:1 y 12.1:1 |
+
+**Pendiente de esta fase:** el marco `AU.openIframe` que menciona el alcance de la página de modales necesita código de demostración (se hará en la Fase 2 con la entrada de Vite para demostraciones). La barra superior de las páginas de la galería es la compartida de la spec 009 y muestra "Buscar estudiante, tutor o factura…" y "Período 2026-2027", que no corresponden al contexto de la galería.
+
+**Límites de esta verificación:** una sola sesión de Chrome en Windows; el foco por teclado se comprobó en modales, panel y desplegable, no tabulando cada página completa; la prueba de 390 px usó marcos del mismo origen y no un emulador de móvil; no se probó Firefox ni Safari.
+
 ## Aprobación
 - [x] Revisada por el propietario — fecha: 08/11/2026 (Haisel Ramirez)

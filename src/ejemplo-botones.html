@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Botones" subtitle="Variantes, tamaños, íconos, grupos, desplegables y estados. Todo con clases de Bootstrap y la marca."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <section class="au-specimen" aria-labelledby="b-variantes">
+    <h2 id="b-variantes">Variantes</h2>
+    <p>Un solo botón primario por vista. Verbos en infinitivo y texto en sentence case.</p>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+      <button class="btn btn-primary" type="button">Guardar cambios</button>
+      <button class="btn btn-outline-primary" type="button">Cancelar</button>
+      <button class="btn btn-accent" type="button">Suscribir mi institución</button>
+      <button class="btn btn-ghost" type="button">Ver historial</button>
+      <button class="btn btn-link" type="button">Ver detalle</button>
+      <button class="btn btn-danger" type="button">Eliminar</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-primary" type="button">Guardar cambios</button>
+<button class="btn btn-outline-primary" type="button">Cancelar</button>
+<button class="btn btn-accent" type="button">Suscribir mi institución</button>
+<button class="btn btn-ghost" type="button">Ver historial</button>
+<button class="btn btn-link" type="button">Ver detalle</button>
+<button class="btn btn-danger" type="button">Eliminar</button>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="b-tamanos">
+    <h2 id="b-tamanos">Tamaños</h2>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+      <button class="btn btn-primary btn-lg" type="button">Grande</button>
+      <button class="btn btn-primary" type="button">Normal</button>
+      <button class="btn btn-primary btn-sm" type="button">Pequeño</button>
+    </div>
+    <div class="d-grid gap-2 mt-3 col-md-6">
+      <button class="btn btn-primary" type="button">Botón de ancho completo</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-primary btn-lg" type="button">Grande</button>
+<button class="btn btn-primary btn-sm" type="button">Pequeño</button>
+<div class="d-grid"><button class="btn btn-primary" type="button">Ancho completo</button></div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="b-iconos">
+    <h2 id="b-iconos">Con ícono</h2>
+    <p>Los íconos son decorativos (<code>aria-hidden</code>); un botón solo de ícono necesita <code>aria-label</code>.</p>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+      <button class="btn btn-primary" type="button"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar estudiante</button>
+      <button class="btn btn-outline-primary" type="button"><i class="bi bi-download" aria-hidden="true"></i>Exportar</button>
+      <button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Editar" data-bs-toggle="tooltip" data-bs-title="Editar"><i class="bi bi-pencil" aria-hidden="true"></i></button>
+      <button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Más opciones" data-bs-toggle="tooltip" data-bs-title="Más opciones"><i class="bi bi-three-dots" aria-hidden="true"></i></button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-primary" type="button"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar estudiante</button>
+<button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Editar"
+        data-bs-toggle="tooltip" data-bs-title="Editar"><i class="bi bi-pencil" aria-hidden="true"></i></button>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="b-estados">
+    <h2 id="b-estados">Estados</h2>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+      <button class="btn btn-primary is-loading" type="button" aria-busy="true" disabled>Guardando</button>
+      <button class="btn btn-primary" type="button" disabled>Deshabilitado</button>
+      <button class="btn btn-outline-primary" type="button" disabled>Deshabilitado</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="button" aria-pressed="false">Alternable</button>
+      <button class="btn btn-outline-primary active" type="button" data-bs-toggle="button" aria-pressed="true">Activo</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-primary is-loading" type="button" aria-busy="true" disabled>Guardando</button>
+<button class="btn btn-outline-primary" type="button" data-bs-toggle="button" aria-pressed="false">Alternable</button>
+// En JavaScript, al enviar un formulario:
+AU.btnLoading(boton, true);   // muestra el estado de carga
+AU.btnLoading(boton, false);  // lo restaura
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="b-grupos">
+    <h2 id="b-grupos">Grupos y desplegables</h2>
+    <div class="d-flex flex-wrap gap-4 align-items-center">
+      <div class="btn-group" role="group" aria-label="Vista">
+        <input type="radio" class="btn-check" name="vista" id="vista-lista" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="vista-lista"><i class="bi bi-list-ul" aria-hidden="true"></i>Lista</label>
+        <input type="radio" class="btn-check" name="vista" id="vista-cuadricula" autocomplete="off">
+        <label class="btn btn-outline-primary" for="vista-cuadricula"><i class="bi bi-grid" aria-hidden="true"></i>Cuadrícula</label>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Acciones</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#b-grupos">Editar</a></li>
+          <li><a class="dropdown-item" href="#b-grupos">Duplicar</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#b-grupos">Eliminar</a></li>
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" type="button">Guardar</button>
+        <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Más opciones de guardado</span></button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#b-grupos">Guardar y agregar otro</a></li>
+          <li><a class="dropdown-item" href="#b-grupos">Guardar como borrador</a></li>
+        </ul>
+      </div>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="btn-group" role="group" aria-label="Vista">
+  <input type="radio" class="btn-check" name="vista" id="vista-lista" checked>
+  <label class="btn btn-outline-primary" for="vista-lista">Lista</label>
+  <input type="radio" class="btn-check" name="vista" id="vista-cuadricula">
+  <label class="btn btn-outline-primary" for="vista-cuadricula">Cuadrícula</label>
+</div>
+<div class="dropdown">
+  <button class="btn btn-outline-primary dropdown-toggle" type="button"
+          data-bs-toggle="dropdown" aria-expanded="false">Acciones</button>
+  <ul class="dropdown-menu">…</ul>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="b-masivas">
+    <h2 id="b-masivas">Acciones masivas</h2>
+    <p>Barra que ofrece acciones sobre varios elementos. Aquí es solo la presentación; la selección real está en la página de tablas.</p>
+    <div class="d-flex flex-wrap align-items-center gap-2 p-3 au-bg-surface-2 rounded">
+      <span class="fw-semibold me-2">3 seleccionados</span>
+      <button class="btn btn-outline-primary btn-sm" type="button"><i class="bi bi-envelope" aria-hidden="true"></i>Enviar aviso</button>
+      <button class="btn btn-outline-primary btn-sm" type="button"><i class="bi bi-download" aria-hidden="true"></i>Exportar</button>
+      <button class="btn btn-danger btn-sm" type="button"><i class="bi bi-trash3" aria-hidden="true"></i>Eliminar</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="d-flex flex-wrap align-items-center gap-2">
+  <span class="fw-semibold">3 seleccionados</span>
+  <button class="btn btn-outline-primary btn-sm" type="button">Enviar aviso</button>
+  <button class="btn btn-danger btn-sm" type="button">Eliminar</button>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

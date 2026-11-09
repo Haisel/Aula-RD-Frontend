@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Tarjetas" subtitle="Tarjetas personalizadas: indicadores, personas, planes, progreso, listas y más."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <section class="au-specimen" aria-labelledby="t-indicadores">
+    <h2 id="t-indicadores">Indicadores</h2>
+    <div class="au-grid-kpi">
+      {{> components/stat-card label="Estudiantes activos" value="1,248" icon="people" delta="3.2%" note="vs. octubre" trend="up"}}
+      {{> components/stat-card label="Cobros del mes" value="RD$ 412,600" icon="cash-coin" tone="success" delta="6.8%" note="vs. octubre" trend="up"}}
+      {{> components/stat-card label="Pagos pendientes" value="37" icon="hourglass-split" tone="warning" delta="vencen en 5 días" trend="warning"}}
+      {{> components/stat-card label="Tickets abiertos" value="12" icon="life-preserver" tone="danger" delta="4 urgentes" trend="down"}}
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+{{> components/stat-card label="Estudiantes activos" value="1,248" icon="people"
+                         delta="3.2%" note="vs. octubre" trend="up"}}
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="t-personas">
+    <h2 id="t-personas">Personas</h2>
+    <div class="au-grid-auto">
+      <article class="card"><div class="card-body d-flex gap-3 align-items-start">
+        <span class="au-avatar" aria-hidden="true">E1</span>
+        <div class="flex-grow-1"><h3 class="h6 mb-0">Estudiante de demostración 1</h3><p class="small text-body-secondary mb-2">4.º Primaria · Sección B</p>
+          <span class="au-status au-status-success">Activo</span></div>
+        <button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Ver perfil de Estudiante de demostración 1"><i class="bi bi-person" aria-hidden="true"></i></button>
+      </div></article>
+      <article class="card"><div class="card-body d-flex gap-3 align-items-start">
+        <span class="au-avatar" aria-hidden="true">D1</span>
+        <div class="flex-grow-1"><h3 class="h6 mb-0">Docente de demostración 1</h3><p class="small text-body-secondary mb-2">Matemática · 3 secciones</p>
+          <span class="au-status au-status-info">En clase</span></div>
+        <button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Ver perfil de Docente de demostración 1"><i class="bi bi-person" aria-hidden="true"></i></button>
+      </div></article>
+      <article class="card"><div class="card-body d-flex gap-3 align-items-start">
+        <span class="au-avatar" aria-hidden="true">T1</span>
+        <div class="flex-grow-1"><h3 class="h6 mb-0">Tutor de demostración 1</h3><p class="small text-body-secondary mb-2">2 estudiantes a su cargo</p>
+          <span class="au-status au-status-warning">Pago pendiente</span></div>
+        <button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Ver perfil de Tutor de demostración 1"><i class="bi bi-person" aria-hidden="true"></i></button>
+      </div></article>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<article class="card"><div class="card-body d-flex gap-3">
+  <span class="au-avatar" aria-hidden="true">E1</span>
+  <div class="flex-grow-1">
+    <h3 class="h6 mb-0">Estudiante de demostración 1</h3>
+    <p class="small text-body-secondary mb-2">4.º Primaria · Sección B</p>
+    <span class="au-status au-status-success">Activo</span>
+  </div>
+</div></article>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="t-planes">
+    <h2 id="t-planes">Planes con precio</h2>
+    <div class="au-grid-auto">
+      <article class="card"><div class="card-body"><span class="au-plan">Básico</span><p class="au-type-kpi au-tabular mt-3 mb-1">RD$ 2,500<small class="fs-6 text-body-secondary"> / mes</small></p><ul class="small text-body-secondary ps-3 mb-3"><li>Hasta 300 estudiantes</li><li>Asistencia y calificaciones</li></ul><button class="btn btn-outline-primary w-100" type="button">Elegir Básico</button></div></article>
+      <article class="card"><div class="card-body"><span class="au-plan au-plan-pro">Profesional</span><p class="au-type-kpi au-tabular mt-3 mb-1">RD$ 6,900<small class="fs-6 text-body-secondary"> / mes</small></p><ul class="small text-body-secondary ps-3 mb-3"><li>Hasta 1,500 estudiantes</li><li>Cobros y comunicados</li></ul><button class="btn btn-primary w-100" type="button">Elegir Profesional</button></div></article>
+      <article class="card"><div class="card-body"><span class="au-plan au-plan-premium"><i class="bi bi-star-fill" aria-hidden="true"></i>Premium</span><p class="au-type-kpi mt-3 mb-1">A la medida</p><ul class="small text-body-secondary ps-3 mb-3"><li>Varias sedes</li><li>Acompañamiento dedicado</li></ul><button class="btn btn-accent w-100" type="button">Contactar</button></div></article>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<span class="au-plan au-plan-pro">Profesional</span>
+<p class="au-type-kpi au-tabular">RD$ 6,900<small> / mes</small></p>
+<button class="btn btn-primary w-100" type="button">Elegir Profesional</button>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="t-progreso">
+    <h2 id="t-progreso">Progreso, lista y línea de tiempo</h2>
+    <div class="au-grid-auto">
+      <article class="card"><div class="card-body">
+        <h3 class="au-card-title">Avance del período</h3>
+        <p class="au-card-subtitle">Calificaciones cargadas por sección</p>
+        <div class="d-flex justify-content-between small mb-1"><span id="t-p1">4.º Primaria B</span><span class="au-tabular">78 %</span></div>
+        <div class="progress mb-3" role="progressbar" aria-labelledby="t-p1" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar au-w-78"></div></div>
+        <div class="d-flex justify-content-between small mb-1"><span id="t-p2">5.º Primaria A</span><span class="au-tabular">45 %</span></div>
+        <div class="progress" role="progressbar" aria-labelledby="t-p2" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar bg-warning au-w-45"></div></div>
+      </div></article>
+      <article class="card"><div class="card-body">
+        <h3 class="au-card-title">Actividad reciente</h3>
+        <ul class="au-feed">
+          <li><span class="au-stat-icon is-success"><i class="bi bi-check2-circle" aria-hidden="true"></i></span><div><strong>Institución de demostración 1</strong> renovó su plan</div></li>
+          <li><span class="au-stat-icon is-info"><i class="bi bi-chat-left-text" aria-hidden="true"></i></span><div>Nuevo ticket de <strong>Institución de demostración 2</strong></div></li>
+        </ul>
+      </div></article>
+      <article class="card"><div class="card-body">
+        <h3 class="au-card-title">Línea de tiempo</h3>
+        <ol class="au-timeline">
+          <li><strong>Matrícula abierta</strong><br><span class="small text-body-secondary">01/08/2026</span></li>
+          <li><strong>Inicio de clases</strong><br><span class="small text-body-secondary">18/08/2026</span></li>
+          <li><strong>Primer corte de notas</strong><br><span class="small text-body-secondary">30/10/2026</span></li>
+        </ol>
+      </div></article>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="progress" role="progressbar" aria-label="4.º Primaria B"
+     aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar au-w-78"></div>
+</div>
+<ol class="au-timeline">
+  <li><strong>Matrícula abierta</strong><br><span class="small">01/08/2026</span></li>
+</ol>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="t-colapsable">
+    <h2 id="t-colapsable">Colapsable y esqueleto de carga</h2>
+    <div class="au-grid-auto">
+      <article class="card"><div class="card-body">
+        <h3 class="h6 mb-2"><button class="btn btn-link p-0 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#t-detalle" aria-expanded="false" aria-controls="t-detalle">Ver detalle del cobro <i class="bi bi-chevron-down" aria-hidden="true"></i></button></h3>
+        <div class="collapse" id="t-detalle"><p class="small text-body-secondary mb-0">Cuota de noviembre: RD$ 12,500.00. Vence el 13/11/2026. Se aplica un recargo del 2 % después de esa fecha.</p></div>
+      </div></article>
+      <article class="card" aria-busy="true" aria-label="Cargando tarjeta"><div class="card-body d-grid gap-2">
+        <span class="au-skeleton w-50"></span><span class="au-skeleton"></span><span class="au-skeleton w-75"></span>
+      </div></article>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-link" type="button" data-bs-toggle="collapse"
+        data-bs-target="#detalle" aria-expanded="false" aria-controls="detalle">Ver detalle</button>
+<div class="collapse" id="detalle">…</div>
+
+<article class="card" aria-busy="true" aria-label="Cargando tarjeta">
+  <div class="card-body"><span class="au-skeleton w-50"></span></div>
+</article>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

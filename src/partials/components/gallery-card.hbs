@@ -1,0 +1,6 @@
+{{!-- {{> components/gallery-card href="…" icon="…" title="…" text="…" uses="…"}} Tarjeta del índice de la galería (spec 012, RF-01). --}}
+<a class="au-gallery-card" href="{{href}}">
+  <h3 class="au-gallery-title"><span class="au-stat-icon{{#if tone}} is-{{tone}}{{/if}}"><i class="bi bi-{{icon}}" aria-hidden="true"></i></span>{{title}}</h3>
+  <p>{{text}}</p>
+  <small>{{uses}}</small>
+</a>

@@ -5,6 +5,7 @@
 Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de accesibilidad del foco.
 
 **Nuevo**
+- Galería de funcionalidades, Fase 1 (spec 012): `galeria.html` (índice) y las páginas de ejemplo de botones, alertas, modales, tarjetas y estados, con menú "Galería", aviso de demostración y bloques "Cómo se usa" (`{{{{code}}}}`). `tests/gallery-pages.test.js` (35 pruebas). Sin cambios en `app.js`.
 - `tests/contrast.test.js`: contraste WCAG AA calculado desde `tokens.json` (26 pares en ambos temas + 1 solo en claro); comprueba que turquesa y champagne no se usan como color de texto.
 - `tests/tokens-sync.test.js`: `_tokens.scss` debe coincidir con lo que genera `tokens.json`.
 - `tests/no-important.test.js`: `!important` solo en las excepciones documentadas.

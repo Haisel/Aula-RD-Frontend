@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Modales y paneles" subtitle="Modales de varios tamaños, formulario dentro de un modal, panel lateral y confirmaciones."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="El foco queda atrapado dentro del modal y vuelve al botón que lo abrió al cerrarlo."}}
+
+  <section class="au-specimen" aria-labelledby="m-tamanos">
+    <h2 id="m-tamanos">Tamaños</h2>
+    <div class="d-flex flex-wrap gap-2">
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-sm">Pequeño</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-md">Normal</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-lg">Grande</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-xl">Extra grande</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-scroll">Con desplazamiento</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-full">Pantalla completa</button>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-static">Obligatorio</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-outline-primary" type="button"
+        data-bs-toggle="modal" data-bs-target="#m-md">Normal</button>
+
+<div class="modal fade" id="m-md" tabindex="-1" aria-labelledby="m-md-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">   <!-- modal-sm | modal-lg | modal-xl -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h4" id="m-md-title">Título</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">…</div>
+      <div class="modal-footer">…</div>
+    </div>
+  </div>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="m-formulario">
+    <h2 id="m-formulario">Formulario dentro de un modal</h2>
+    <p>Valida con <code>data-au-validate</code>: envíelo vacío para ver los errores por campo.</p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#m-form"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar estudiante</button>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<form data-au-validate="estudiante" data-au-submit="event"
+      data-au-success="Estudiante válido (demostración)." novalidate>
+  <label class="form-label is-required" for="m-nombre">Nombre del estudiante</label>
+  <input class="form-control" id="m-nombre" name="nombre">
+  …
+  <button class="btn btn-primary" type="submit">Guardar estudiante</button>
+</form>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="m-panel">
+    <h2 id="m-panel">Panel lateral y confirmaciones</h2>
+    <div class="d-flex flex-wrap gap-2">
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#panel-filtros" aria-controls="panel-filtros"><i class="bi bi-funnel" aria-hidden="true"></i>Filtros</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="confirm" data-au-message="Se enviará el boletín a 1,248 tutores.">Confirmar envío</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="confirm-delete" data-au-message="Se eliminará al Estudiante de demostración 1.">Confirmar eliminación</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-outline-primary" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#panel-filtros"
+        aria-controls="panel-filtros">Filtros</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="panel-filtros"
+     aria-labelledby="panel-filtros-title">…</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <div class="modal fade" id="m-sm" tabindex="-1" aria-labelledby="m-sm-title" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h5" id="m-sm-title">Modal pequeño</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body text-body-secondary">Ideal para mensajes cortos.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button></div>
+    </div></div>
+  </div>
+
+  <div class="modal fade" id="m-md" tabindex="-1" aria-labelledby="m-md-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="m-md-title">Modal normal</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body text-body-secondary">Tamaño por defecto, centrado en la pantalla.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button></div>
+    </div></div>
+  </div>
+
+  <div class="modal fade" id="m-lg" tabindex="-1" aria-labelledby="m-lg-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="m-lg-title">Modal grande</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body text-body-secondary">Para contenido con más campos o una vista previa.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button></div>
+    </div></div>
+  </div>
+
+  <div class="modal fade" id="m-xl" tabindex="-1" aria-labelledby="m-xl-title" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="m-xl-title">Modal extra grande</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body text-body-secondary">Para tablas o editores que necesitan ancho.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button></div>
+    </div></div>
+  </div>
+
+  <div class="modal fade" id="m-scroll" tabindex="-1" aria-labelledby="m-scroll-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="m-scroll-title">Términos del servicio</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body">
+        <p>Con el modal desplazable, el encabezado y el pie quedan fijos y solo el contenido se mueve.</p>
+        <p>Texto de relleno para mostrar el desplazamiento. Cada institución accede solamente a su propia información y es responsable de los datos que registre.</p>
+        <p>Los cobros se generan según el plan contratado y se pueden consultar desde el módulo de facturación.</p>
+        <p>El soporte atiende de lunes a viernes. Las solicitudes se responden por orden de llegada y según su prioridad.</p>
+        <p>Los respaldos se realizan a diario y se conservan por el tiempo que indique el plan.</p>
+        <p>Al continuar, usted confirma que leyó y entiende estas condiciones.</p>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button></div>
+    </div></div>
+  </div>
+
+  <div class="modal fade" id="m-full" tabindex="-1" aria-labelledby="m-full-title" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="m-full-title">Pantalla completa</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body text-body-secondary">Útil para editores y vistas previas grandes, sobre todo en móvil.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button></div>
+    </div></div>
+  </div>
+
+  <div class="modal fade" id="m-static" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="m-static-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="m-static-title">Acción obligatoria</h2></div>
+      <div class="modal-body text-body-secondary">No se cierra con clic fuera ni con Escape: la persona debe elegir una opción.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Ahora no</button><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continuar</button></div>
+    </div></div>
+  </div>
+
+  <div class="modal fade" id="m-form" tabindex="-1" aria-labelledby="m-form-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"><div class="modal-content">
+      <form data-au-validate="estudiante" data-au-submit="event" data-au-success="Estudiante válido (demostración)." novalidate>
+        <div class="modal-header"><h2 class="modal-title h4" id="m-form-title">Agregar estudiante</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label is-required" for="m-nombre">Nombre del estudiante</label><input class="form-control" id="m-nombre" name="nombre" placeholder="Ej.: Estudiante de demostración 1"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="m-grado">Grado</label>
+              <select class="form-select" id="m-grado" name="grado"><option value="">Seleccione el grado</option><option>1.º Primaria</option><option>2.º Primaria</option><option>3.º Primaria</option><option>4.º Primaria</option><option>5.º Primaria</option><option>6.º Primaria</option></select></div>
+            <div class="col-md-6"><label class="form-label is-required" for="m-tutor">Tutor</label><input class="form-control" id="m-tutor" name="tutor"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="m-cedula">Cédula del tutor</label><input class="form-control" id="m-cedula" name="cedulaTutor" data-au-mask="cedula" placeholder="000-0000000-0"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="m-tel">Teléfono del tutor</label><input class="form-control" id="m-tel" name="telefonoTutor" type="tel" data-au-mask="telefono" placeholder="(809) 000-0000"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="m-cuota">Cuota mensual</label><div class="input-group"><span class="input-group-text">RD$</span><input class="form-control text-end au-tabular" id="m-cuota" name="cuota" data-au-mask="moneda" placeholder="0.00"></div></div>
+          </div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button><button type="submit" class="btn btn-primary">Guardar estudiante</button></div>
+      </form>
+    </div></div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="panel-filtros" aria-labelledby="panel-filtros-title">
+    <div class="offcanvas-header"><h2 class="offcanvas-title h4" id="panel-filtros-title">Filtros</h2><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar panel"></button></div>
+    <div class="offcanvas-body">
+      <div class="mb-3"><label class="form-label" for="pf-grado">Grado</label><select class="form-select" id="pf-grado"><option>Todos</option><option>1.º Primaria</option><option>2.º Primaria</option></select></div>
+      <div class="mb-3"><label class="form-label" for="pf-estado">Estado</label><select class="form-select" id="pf-estado"><option>Todos</option><option>Activo</option><option>Inactivo</option></select></div>
+      <div class="d-flex gap-2"><button class="btn btn-outline-primary" type="button" data-bs-dismiss="offcanvas">Limpiar</button><button class="btn btn-primary" type="button" data-bs-dismiss="offcanvas">Aplicar filtros</button></div>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

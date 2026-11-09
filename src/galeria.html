@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Galería de funcionalidades" subtitle="Páginas de ejemplo por contexto: cada funcionalidad de los componentes, funcionando y con su fragmento de uso."}}
+    <a class="btn btn-outline-primary" href="componentes.html"><i class="bi bi-palette" aria-hidden="true"></i>Catálogo de componentes</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="La galería se publica por fases: aquí aparecen solo las páginas ya disponibles."}}
+
+  <section class="mb-5" aria-labelledby="g-interfaz">
+    <h2 class="h4 mb-3" id="g-interfaz">Interfaz</h2>
+    <div class="au-gallery-grid">
+      {{> components/gallery-card href="ejemplo-botones.html" icon="hand-index" title="Botones" text="Variantes, tamaños, íconos, grupos, desplegables y estados de carga y deshabilitado." uses="Bootstrap · au-btn-icon · is-loading"}}
+      {{> components/gallery-card href="ejemplo-alertas.html" icon="bell" tone="warning" title="Alertas y avisos" text="Alertas en línea, avisos emergentes, diálogos de confirmación y barras de progreso." uses="alert · data-au-action · AU.toast · AU.confirm"}}
+      {{> components/gallery-card href="ejemplo-modales.html" icon="window-stack" tone="info" title="Modales y paneles" text="Modales de varios tamaños, formulario dentro de un modal y panel lateral." uses="modal · offcanvas · data-au-validate"}}
+      {{> components/gallery-card href="ejemplo-tarjetas.html" icon="card-text" tone="success" title="Tarjetas" text="Indicadores, personas, planes, progreso, listas, línea de tiempo y tarjetas colapsables." uses="au-stat · au-plan · au-feed · au-timeline"}}
+      {{> components/gallery-card href="ejemplo-estados.html" icon="inbox" tone="danger" title="Estados de la interfaz" text="Vacío, cargando, error con reintento, sin permiso, sin conexión y páginas 403, 404 y 500." uses="au-empty · au-skeleton · data-au-can"}}
+    </div>
+  </section>
+
+  <section class="mb-5" aria-labelledby="g-otras">
+    <h2 class="h4 mb-3" id="g-otras">Otras páginas de la plantilla</h2>
+    <div class="au-gallery-grid">
+      {{> components/gallery-card href="componentes.html" icon="palette" title="Catálogo de componentes" text="Colores, tipografía, formularios, gráficos, tablas, códigos QR, firma y editor." uses="12 secciones"}}
+      {{> components/gallery-card href="dashboard-superadmin.html" icon="speedometer2" title="Panel de la plataforma" text="Un panel completo con indicadores, gráficos, tabla y actividad reciente." uses="Portal de superadmin"}}
+    </div>
+  </section>
+
+  <section aria-labelledby="g-proximas">
+    <h2 class="h4 mb-3" id="g-proximas">Próximas fases</h2>
+    <p class="text-body-secondary mb-2">Todavía no publicadas; se agregan aquí cuando estén listas:</p>
+    <ul class="text-body-secondary mb-0">
+      <li>Datos: tablas con DataTable, CRUD, reporte y tablero (kanban).</li>
+      <li>Formularios avanzados, edición, perfiles por rol y carga de archivos.</li>
+      <li>Calendario y agenda, navegación, impresión y códigos QR y de barras.</li>
+    </ul>
+  </section>
+{{/layouts/app}}
+</body>
+</html>

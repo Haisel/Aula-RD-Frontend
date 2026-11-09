@@ -30,6 +30,7 @@ const NAV = {
     { label: 'Contabilidad', icon: 'journal-bookmark', href: '#contabilidad' },
     { label: 'Usuarios internos', icon: 'people', href: '#usuarios', section: 'Sistema' },
     { label: 'Componentes', icon: 'palette', href: 'componentes.html' },
+    { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html' },
     { label: 'Configuración', icon: 'gear', href: '#configuracion' },
   ],
   'institution-admin': [
@@ -62,7 +63,21 @@ const NAV = {
     { label: 'Comunicados', icon: 'megaphone', href: '#comunicados', section: 'Comunicación' },
     { label: 'Autorizaciones', icon: 'pen', href: '#autorizaciones' },
   ],
+  // Galería de funcionalidades (spec 012): se amplía en cada fase con las páginas que se publican.
+  galeria: [
+    { label: 'Galería', icon: 'grid-3x3-gap', href: 'galeria.html' },
+    { label: 'Botones', icon: 'hand-index', href: 'ejemplo-botones.html', section: 'Interfaz' },
+    { label: 'Alertas', icon: 'bell', href: 'ejemplo-alertas.html' },
+    { label: 'Modales', icon: 'window-stack', href: 'ejemplo-modales.html' },
+    { label: 'Tarjetas', icon: 'card-text', href: 'ejemplo-tarjetas.html' },
+    { label: 'Estados', icon: 'inbox', href: 'ejemplo-estados.html' },
+    { label: 'Catálogo de componentes', icon: 'palette', href: 'componentes.html', section: 'Otras páginas' },
+    { label: 'Panel de la plataforma', icon: 'speedometer2', href: 'dashboard-superadmin.html' },
+  ],
 };
+
+/** Usuario genérico de las páginas de la galería (no representa a ninguna persona real). */
+const GALLERY_USER = { name: 'Persona de demostración', role: 'Galería de componentes', initials: 'PD' };
 
 const ORG = { name: 'Colegio San Rafael', plan: 'Profesional', initials: 'SR' };
 
@@ -113,6 +128,48 @@ const PAGES = {
     active: 'componentes.html',
     user: { name: 'Haisel Ramírez', role: 'Superadmin', initials: 'HR' },
   },
+  'galeria.html': {
+    title: 'Galería de funcionalidades',
+    description: 'Páginas de ejemplo por contexto: cada funcionalidad de los componentes, funcionando y con su uso.',
+    portal: 'galeria',
+    active: 'galeria.html',
+    user: GALLERY_USER,
+  },
+  'ejemplo-botones.html': {
+    title: 'Botones',
+    description: 'Variantes, tamaños, íconos, grupos, desplegables y estados de los botones.',
+    portal: 'galeria',
+    active: 'ejemplo-botones.html',
+    user: GALLERY_USER,
+  },
+  'ejemplo-alertas.html': {
+    title: 'Alertas y avisos',
+    description: 'Alertas en línea, avisos emergentes, diálogos y banners.',
+    portal: 'galeria',
+    active: 'ejemplo-alertas.html',
+    user: GALLERY_USER,
+  },
+  'ejemplo-modales.html': {
+    title: 'Modales y paneles',
+    description: 'Modales de Bootstrap, paneles laterales, confirmaciones y ventanas emergentes.',
+    portal: 'galeria',
+    active: 'ejemplo-modales.html',
+    user: GALLERY_USER,
+  },
+  'ejemplo-tarjetas.html': {
+    title: 'Tarjetas',
+    description: 'Tarjetas personalizadas: indicadores, personas, planes, progreso, listas y más.',
+    portal: 'galeria',
+    active: 'ejemplo-tarjetas.html',
+    user: GALLERY_USER,
+  },
+  'ejemplo-estados.html': {
+    title: 'Estados de la interfaz',
+    description: 'Vacío, cargando, error, sin permiso, sin conexión y páginas de error.',
+    portal: 'galeria',
+    active: 'ejemplo-estados.html',
+    user: GALLERY_USER,
+  },
 };
 
 /**
@@ -153,4 +210,17 @@ export const helpers = {
    * @returns {string} JSON.
    */
   json: (v) => JSON.stringify(v),
+  /**
+   * Bloque en bruto `{{{{code}}}}…{{{{/code}}}}`: muestra su contenido como TEXTO (escapado y sin
+   * ejecutarse) dentro de `<pre><code>`. Se usa en los bloques "Cómo se usa" de la galería.
+   * @param {{ fn: () => string }} options Bloque de Handlebars (contenido sin procesar).
+   * @returns {string} HTML con el texto escapado y sin la sangría común.
+   */
+  code(options) {
+    const lines = options.fn().replace(/^\n+|\s+$/g, '').split('\n');
+    const indent = Math.min(...lines.filter((l) => l.trim()).map((l) => /^ */.exec(l)?.[0].length ?? 0));
+    const text = lines.map((l) => l.slice(indent)).join('\n');
+    const safe = text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    return `<pre class="au-code" tabindex="0"><code>${safe}</code></pre>`;
+  },
 };

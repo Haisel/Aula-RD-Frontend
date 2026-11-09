@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Alertas y avisos" subtitle="Alertas en línea, avisos emergentes, diálogos de confirmación y barras de progreso."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <section class="au-specimen" aria-labelledby="a-linea">
+    <h2 id="a-linea">Alertas en línea</h2>
+    <div class="au-grid-auto">
+      <div class="alert alert-success mb-0"><i class="bi bi-check-circle" aria-hidden="true"></i><div><p class="au-alert-title">Pago registrado</p>Se aplicó RD$ 12,500.00 a la cuota de noviembre.</div></div>
+      <div class="alert alert-warning mb-0"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i><div><p class="au-alert-title">Suscripción por vencer</p>Renueve antes del 13/11/2026.</div></div>
+      <div class="alert alert-danger mb-0"><i class="bi bi-x-octagon" aria-hidden="true"></i><div><p class="au-alert-title">No se pudo importar</p>La fila 14 no tiene cédula.</div></div>
+      <div class="alert alert-info mb-0"><i class="bi bi-info-circle" aria-hidden="true"></i><div>El período 2026–2027 inicia el 18/08/2026.</div></div>
+    </div>
+    <div class="alert alert-info alert-dismissible fade show mt-3 mb-0" role="alert">
+      <i class="bi bi-lightbulb" aria-hidden="true"></i>
+      <div>Esta alerta se puede cerrar. <a class="alert-link" href="#a-linea">Ver cómo se configura</a>.</div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar alerta"></button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="alert alert-success" role="status">
+  <i class="bi bi-check-circle" aria-hidden="true"></i>
+  <div><p class="au-alert-title">Pago registrado</p>Se aplicó RD$ 12,500.00 a la cuota de noviembre.</div>
+</div>
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  …
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar alerta"></button>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="a-toast">
+    <h2 id="a-toast">Avisos emergentes (toast)</h2>
+    <p>Desaparecen solos y no interrumpen. Úselos para confirmar una acción terminada.</p>
+    <div class="d-flex flex-wrap gap-2">
+      <button class="btn btn-outline-primary" type="button" data-au-action="toast" data-au-type="success" data-au-message="Estudiante guardado.">Éxito</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="toast" data-au-type="error" data-au-message="No se pudo guardar.">Error</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="toast" data-au-type="warning" data-au-message="Quedan 2 días de prueba.">Advertencia</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Nueva versión disponible.">Información</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-outline-primary" type="button"
+        data-au-action="toast" data-au-type="success"
+        data-au-message="Estudiante guardado.">Éxito</button>
+
+// En JavaScript
+AU.toast('Estudiante guardado.', 'success');
+AU.toastError('No se pudo guardar.');
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="a-dialogos">
+    <h2 id="a-dialogos">Diálogos y confirmaciones</h2>
+    <p>Interrumpen hasta que la persona responde. Úselos para decisiones que no se pueden deshacer.</p>
+    <div class="d-flex flex-wrap gap-2">
+      <button class="btn btn-outline-primary" type="button" data-au-action="success" data-au-message="El estudiante se guardó correctamente.">Éxito</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="error" data-au-message="No se pudo conectar con el servidor. Intente de nuevo.">Error</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="warning" data-au-message="Hay 4 secciones sin calificaciones.">Advertencia</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="info" data-au-message="El período inicia el 18/08/2026.">Información</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="confirm" data-au-message="Se enviará el boletín a 1,248 tutores.">Confirmar</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="confirm-delete" data-au-message="Se eliminará al Estudiante de demostración 1.">Confirmar eliminación</button>
+      <button class="btn btn-outline-primary" type="button" data-au-action="loading" data-au-message="Importando estudiantes…">Cargando</button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="btn btn-outline-primary" type="button"
+        data-au-action="confirm-delete"
+        data-au-message="Se eliminará al Estudiante de demostración 1.">Confirmar eliminación</button>
+
+// En JavaScript (devuelve una promesa con la respuesta)
+if (await AU.confirmDelete('Se eliminará al Estudiante de demostración 1.')) {
+  // borrar
+}
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="a-banner">
+    <h2 id="a-banner">Banners y progreso</h2>
+    <div class="alert alert-warning mb-3" role="status"><i class="bi bi-wifi-off" aria-hidden="true"></i><div><p class="au-alert-title">Sin conexión</p>Los cambios se enviarán cuando vuelva la conexión.</div></div>
+    <div class="d-grid gap-3">
+      <div>
+        <div class="d-flex justify-content-between small mb-1"><span id="p-import">Importando estudiantes</span><span class="au-tabular">78 %</span></div>
+        <div class="progress" role="progressbar" aria-labelledby="p-import" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar au-w-78"></div></div>
+      </div>
+      <div>
+        <div class="d-flex justify-content-between small mb-1"><span id="p-cupo">Cupo de estudiantes del plan</span><span class="au-tabular">92 %</span></div>
+        <div class="progress" role="progressbar" aria-labelledby="p-cupo" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar bg-warning au-w-92"></div></div>
+      </div>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="progress" role="progressbar" aria-label="Importando estudiantes"
+     aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar au-w-78"></div>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

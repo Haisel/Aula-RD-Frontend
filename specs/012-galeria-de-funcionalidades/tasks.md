@@ -5,6 +5,8 @@
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde y, si es una página, con su verificación en navegador.
 
 ## Fase 1 — índice, botones, alertas, modales, tarjetas, estados
+**Estado 08/11/2026: hecha.** T-01 a T-11 cumplidas; resultados en "Verificación — Fase 1" de la spec. Referencia de peso (T-01): `app.js` 333 485 bytes, 106 236 con `gzip -9`, huella `929e56f92a44b641`; sigue idéntico tras la fase. Prueba (T-02): `tests/gallery-pages.test.js`, 35 pruebas, vistas en rojo antes de crear las páginas. Pendiente trasladado a la Fase 2: el marco `AU.openIframe` de la página de modales.
+
 | Id | Tarea | Cubre | Hecho cuando |
 |---|---|---|---|
 | T-01 | Medir `dist/js/app.js` (gzip -9 y bytes exactos) y anotarlo como referencia | RNF-04, CA-12 | Cifra en esta lista |
