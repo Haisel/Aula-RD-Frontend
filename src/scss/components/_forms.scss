@@ -117,6 +117,50 @@
   }
 }
 
+// Control de rango (spec 013, T-12): pista y pulgar con contraste suficiente (WCAG 1.4.11) y
+// anillo de foco sólido en el pulgar. Antes la pista se fundía con el fondo y el pulgar era hueco.
+.form-range {
+  &:focus {
+    outline: 0;
+  }
+
+  &::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--au-border-control);
+  }
+  &::-moz-range-track {
+    height: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--au-border-control);
+  }
+
+  &::-webkit-slider-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: -0.375rem;
+    border: 2px solid var(--au-surface);
+    background-color: var(--au-accent-text);
+  }
+  &::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--au-surface);
+    background-color: var(--au-accent-text);
+  }
+
+  &:focus-visible::-webkit-slider-thumb {
+    box-shadow:
+      0 0 0 2px var(--au-surface),
+      0 0 0 4px var(--au-focus-ring);
+  }
+  &:focus-visible::-moz-range-thumb {
+    box-shadow:
+      0 0 0 2px var(--au-surface),
+      0 0 0 4px var(--au-focus-ring);
+  }
+}
+
 // Campo flotante de varias líneas: Bootstrap exige una altura explícita.
 .au-floating-area {
   height: 8rem;

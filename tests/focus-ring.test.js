@@ -23,6 +23,25 @@ const ruleFor = (selector) => {
   return BASE.slice(open + 1, close);
 };
 
+const FORMS = readFileSync(resolve(import.meta.dirname, '../src/scss/components/_forms.scss'), 'utf8');
+
+describe('control de rango (spec 013, T-12): pista y pulgar visibles y foco sólido', () => {
+  it('la pista usa el color de borde de los controles (≥ 3:1), no el gris que se funde con el fondo', () => {
+    expect(FORMS).toMatch(/::-webkit-slider-runnable-track\s*\{[^}]*--au-border-control/);
+    expect(FORMS).toMatch(/::-moz-range-track\s*\{[^}]*--au-border-control/);
+  });
+
+  it('el pulgar es sólido con el color de acento accesible', () => {
+    expect(FORMS).toMatch(/::-webkit-slider-thumb\s*\{[^}]*background-color:\s*var\(--au-accent-text\)/);
+    expect(FORMS).toMatch(/::-moz-range-thumb\s*\{[^}]*background-color:\s*var\(--au-accent-text\)/);
+  });
+
+  it('con el teclado el pulgar muestra el anillo de foco sólido, no el halo al 25 %', () => {
+    expect(FORMS).toMatch(/:focus-visible::-webkit-slider-thumb\s*\{[^}]*--au-focus-ring/);
+    expect(FORMS).toMatch(/:focus-visible::-moz-range-thumb\s*\{[^}]*--au-focus-ring/);
+  });
+});
+
 describe('anillo de foco sólido en componentes de Bootstrap (spec 013)', () => {
   for (const selector of [
     '.btn:focus-visible',
