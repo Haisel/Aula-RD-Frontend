@@ -10,6 +10,8 @@ Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de a
 - `tests/no-important.test.js`: `!important` solo en las excepciones documentadas.
 - Token `focus-ring-on-dark` (`#52CABB`) para el foco sobre superficies navy.
 - `specs/005-identidad-visual-b/plan.md` y `tasks.md`.
+- API simulada de autenticación para pruebas locales: `npm run mock` (`scripts/mock-api.mjs`, puerto 3100, usuario de demostración). Sin dependencias nuevas; `tests/mock-api.test.js` (10 pruebas).
+- Pruebas de contrato de la fachada (CSRF, carga fallida de librerías, diálogos) y de formularios y máscaras: `tests/facade-contract.test.js` y `tests/forms-masks.test.js`.
 
 **Corregido**
 - `showErrors` (formularios) duplicaba el id del mensaje de error en `aria-describedby` en cada reintento de envío.
