@@ -22,6 +22,8 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina c
 | T-11 | `CHANGELOG.md`, spec y commit de la Fase 1 | — | Commit hecho |
 
 ## Fase 2 — tablas, CRUD, reporte, tablero
+**Estado 08/11/2026: en curso.** Hechas **T-12** (datos con `randomuser.me`, reproducibles, commit `ae753a3`) y **T-14** (lógica pura con 23 pruebas, commit `4f5c2e2`). Pendientes: T-13 (segunda entrada de Vite), T-15 a T-18 (las cuatro páginas con su código de demostración) y T-19 (verificación). Diseño acordado para lo que falta: un solo punto de entrada `src/js/demo/galeria.js` que activa lo que encuentre por `data-demo="tablas|crud|reporte|tablero"`, usa solo `window.AU` y se incluye únicamente en esas páginas (en `build:single` no se emite).
+
 | Id | Tarea | Cubre | Hecho cuando |
 |---|---|---|---|
 | T-12 | `scripts/build-fixtures.mjs` con `randomuser.me` (semilla fija) y `public/data/README.md` | RF-12, CA-16 | JSON generados y origen documentado |
