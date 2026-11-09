@@ -22,6 +22,47 @@
     </div>
   </section>
 
+  <section class="mb-5" aria-labelledby="g-auth">
+    <h2 class="h4 mb-3" id="g-auth">Autenticación</h2>
+    <div class="au-gallery-grid">
+      {{> components/gallery-card href="login.html" icon="layout-sidebar-inset" title="Dividido con marca" text="Panel de marca a un lado y formulario al otro: el inicio de sesión de la plantilla." uses="au-auth · au-auth-aside"}}
+      {{> components/gallery-card href="login-centrado.html" icon="square" title="Centrado en tarjeta" text="Una tarjeta centrada sobre fondo neutro, con el logo encima." uses="au-auth-center · au-auth-card"}}
+      {{> components/gallery-card href="login-ilustracion.html" icon="image" tone="info" title="Con ilustración" text="Formulario con acceso por proveedor externo y un panel ilustrado al lado." uses="au-auth-art · au-art-card"}}
+      {{> components/gallery-card href="login-minimo.html" icon="dash-square" tone="success" title="Mínimo" text="Sin tarjeta: barra superior y formulario directamente sobre la página." uses="au-auth-min"}}
+      {{> components/gallery-card href="login-portada.html" icon="card-image" tone="warning" title="Con portada" text="Fondo a pantalla completa con una tarjeta translúcida encima." uses="au-auth-cover"}}
+      {{> components/gallery-card href="login-portales.html" icon="segmented-nav" title="Por portal" text="Pestañas para elegir cómo entrar: dirección, docentes o familias." uses="data-au-tabs · nav-pills"}}
+      {{> components/gallery-card href="login-codigo.html" icon="key" tone="danger" title="Con código" text="Sin contraseña: un código de 6 dígitos de un solo uso enviado al correo." uses="one-time-code · esquema codigo-acceso"}}
+      {{> components/gallery-card href="recuperar-contrasena.html" icon="arrow-counterclockwise" tone="info" title="Recuperar contraseña" text="Un solo campo de correo y un mensaje que no revela si la cuenta existe." uses="esquema recuperar"}}
+    </div>
+  </section>
+
+  <section class="mb-5" aria-labelledby="g-perfiles">
+    <h2 class="h4 mb-3" id="g-perfiles">Perfiles</h2>
+    <div class="au-gallery-grid">
+      {{> components/gallery-card href="perfil-portada.html" icon="image" title="Con portada" text="Portada, avatar y pestañas de resumen, actividad y seguridad." uses="data-au-tabs · au-profile-cover"}}
+      {{> components/gallery-card href="perfil-lateral.html" icon="layout-sidebar" tone="info" title="Tarjeta lateral" text="Tarjeta de contacto a un lado; indicadores, estudiantes y actividad al otro." uses="au-profile-side · au-stat"}}
+      {{> components/gallery-card href="perfil-compacto.html" icon="list-ul" tone="success" title="Compacto" text="Una sola columna con indicadores, datos y línea de tiempo." uses="au-profile-compact · au-timeline"}}
+      {{> components/gallery-card href="perfil-credencial.html" icon="person-badge" tone="warning" title="Credencial" text="Ficha de identificación imprimible con matrícula, vigencia y código QR." uses="au-profile-id · data-au-qrcode · data-au-action=print"}}
+      {{> components/gallery-card href="perfil-institucion.html" icon="building" tone="danger" title="Institución" text="Plan, indicadores, estudiantes por nivel y actividad de una institución." uses="au-profile-org · progress"}}
+      {{> components/gallery-card href="perfil-editable.html" icon="pencil-square" title="Editable" text="Formulario para editar los datos del perfil, con validación por campo." uses="data-au-validate · data-au-mask"}}
+    </div>
+  </section>
+
+  <section class="mb-5" aria-labelledby="g-formularios">
+    <h2 class="h4 mb-3" id="g-formularios">Formularios</h2>
+    <div class="au-gallery-grid">
+      {{> components/gallery-card href="formulario-basico.html" icon="input-cursor-text" title="Controles básicos" text="Texto, números, fechas, listas, casillas, interruptores, rangos, tamaños y estados." uses="form-control · form-select · form-check"}}
+      {{> components/gallery-card href="formulario-disenos.html" icon="layout-three-columns" tone="info" title="Diseños" text="El mismo formulario en horizontal, en línea y con etiqueta flotante." uses="col-form-label · row-cols-lg-auto · form-floating"}}
+      {{> components/gallery-card href="formulario-validacion.html" icon="shield-check" tone="success" title="Validación" text="Estados válido e inválido y validación en vivo con un esquema Zod." uses="data-au-validate · is-invalid · aria-describedby"}}
+      {{> components/gallery-card href="formulario-secciones.html" icon="list-nested" tone="warning" title="Por secciones" text="Un formulario largo agrupado en secciones con leyenda y ayuda." uses="au-form-section · fieldset"}}
+      {{> components/gallery-card href="formulario-avanzado.html" icon="sliders" tone="danger" title="Avanzado" text="Listas con búsqueda, fechas, máscaras dominicanas y orden por arrastre." uses="data-au-select · data-au-datepicker · data-au-mask · data-au-sortable"}}
+      {{> components/gallery-card href="formulario-asistente.html" icon="signpost-split" title="Asistente por pasos" text="Pasos con Siguiente y Anterior; los errores abren el paso que corresponde." uses="data-au-tabs · data-au-tab-go"}}
+      {{> components/gallery-card href="formulario-editor.html" icon="type" tone="info" title="Editor de texto" text="Texto enriquecido para redactar un comunicado, con validación." uses="data-au-editor · Quill"}}
+      {{> components/gallery-card href="formulario-archivos.html" icon="cloud-upload" tone="success" title="Carga de archivos" text="Campos nativos para uno, varios o solo imágenes, con sus límites explicados." uses="input type=file · accept · multiple"}}
+      {{> components/gallery-card href="formulario-firma.html" icon="pen" tone="warning" title="Firma" text="Autorización firmada sobre un lienzo, con validación." uses="data-au-signature · esquema autorizacion"}}
+    </div>
+  </section>
+
   <section class="mb-5" aria-labelledby="g-otras">
     <h2 class="h4 mb-3" id="g-otras">Otras páginas de la plantilla</h2>
     <div class="au-gallery-grid">
@@ -37,9 +78,9 @@
     <h2 class="h4 mb-3" id="g-proximas">Próximas fases</h2>
     <p class="text-body-secondary mb-2">Todavía no publicadas; se agregan aquí cuando estén listas:</p>
     <ul class="text-body-secondary mb-0">
-      <li>Datos: tablas con DataTable, CRUD, reporte y tablero (kanban).</li>
-      <li>Formularios avanzados, edición, perfiles por rol y carga de archivos.</li>
-      <li>Calendario y agenda, navegación, impresión y códigos QR y de barras.</li>
+      <li>Datos: CRUD completo, reporte y tablero (kanban).</li>
+      <li>Calendario y agenda, bandeja de mensajes y gráficos.</li>
+      <li>Ayuda, preguntas frecuentes, contacto y páginas legales.</li>
     </ul>
   </section>
 {{/layouts/app}}

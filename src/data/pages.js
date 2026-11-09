@@ -105,6 +105,20 @@ const NAV = {
       ],
     },
     {
+      label: 'Autenticación',
+      icon: 'box-arrow-in-right',
+      children: [
+        { label: 'Dividido con marca', icon: 'layout-sidebar-inset', href: 'login.html' },
+        { label: 'Centrado en tarjeta', icon: 'square', href: 'login-centrado.html' },
+        { label: 'Con ilustración', icon: 'image', href: 'login-ilustracion.html' },
+        { label: 'Mínimo', icon: 'dash-square', href: 'login-minimo.html' },
+        { label: 'Con portada', icon: 'card-image', href: 'login-portada.html' },
+        { label: 'Por portal', icon: 'segmented-nav', href: 'login-portales.html' },
+        { label: 'Con código', icon: 'key', href: 'login-codigo.html' },
+        { label: 'Recuperar contraseña', icon: 'arrow-counterclockwise', href: 'recuperar-contrasena.html' },
+      ],
+    },
+    {
       label: 'Perfiles',
       icon: 'person-vcard',
       children: [
@@ -501,7 +515,8 @@ for (const [file, cfg] of Object.entries(PROFILE_PAGES)) {
 const FORM_PAGES = {
   'formulario-basico.html': {
     title: 'Controles básicos',
-    description: 'Campos de texto, números, fechas, listas, casillas, interruptores, rangos, tamaños y estados.',
+    description:
+      'Campos de texto, números, fechas, listas, casillas, interruptores, rangos, tamaños y estados.',
   },
   'formulario-disenos.html': {
     title: 'Diseños de formulario',
@@ -517,7 +532,8 @@ const FORM_PAGES = {
   },
   'formulario-avanzado.html': {
     title: 'Formulario avanzado',
-    description: 'Listas con búsqueda y selección múltiple, fechas, máscaras dominicanas y orden por arrastre.',
+    description:
+      'Listas con búsqueda y selección múltiple, fechas, máscaras dominicanas y orden por arrastre.',
   },
   'formulario-asistente.html': {
     title: 'Asistente por pasos',
