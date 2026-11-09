@@ -28,7 +28,9 @@ describe('RF-05: errores por campo accesibles (spec 008)', () => {
     expect(field.classList.contains('is-invalid')).toBe(true);
     const id = field.getAttribute('aria-describedby');
     expect(id).toBe('correo-error');
-    expect(document.getElementById(/** @type {string} */ (id))?.textContent).toBe('Escriba un correo válido.');
+    expect(document.getElementById(/** @type {string} */ (id))?.textContent).toBe(
+      'Escriba un correo válido.',
+    );
   });
 
   it('conserva un aria-describedby previo y no lo duplica', () => {

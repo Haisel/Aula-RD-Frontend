@@ -23,10 +23,11 @@ import { Scope } from './core/scope.js';
 import { ServiceContainer } from './core/container.js';
 import { ModuleLoader } from './core/module-loader.js';
 import { storage } from './core/storage.js';
-import { client } from './core/http.js';
+import { client, http } from './core/http.js';
 import { SessionService } from './services/session-service.js';
 import { InstitutionContext } from './services/institution-context.js';
 import { AccessPolicy } from './services/access-policy.js';
+import { AuthService } from './services/auth-service.js';
 
 export { bus, logger, storage, client };
 
@@ -40,6 +41,8 @@ export const session = new SessionService({ logger: logger.child('session'), bus
 export const institution = new InstitutionContext({ logger: logger.child('institution'), bus });
 /** Autorización visual. */
 export const access = new AccessPolicy();
+/** Autenticación JWT (token en memoria; decisión 015). No se expone en `AU`. */
+export const auth = new AuthService({ http, logger: logger.child('auth') });
 /** Cargador de módulos de negocio. */
 export const modules = new ModuleLoader({ logger: logger.child('modules') });
 /** Contenedor (solo para la raíz de composición y pruebas). */
@@ -52,11 +55,77 @@ export const container = new ServiceContainer()
   .provideValue('session', session)
   .provideValue('institution', institution)
   .provideValue('access', access)
+  .provideValue('auth', auth)
   .provideValue('modules', modules)
   .freeze();
 
-// La capa HTTP lee la sesión y la institución de forma diferida, sin importarlas.
-client.configure({ session, getInstitution: () => institution.current() });
+// La capa HTTP lee la sesión, la institución y el token de forma diferida, sin importarlos.
+client.configure({
+  session,
+  getInstitution: () => institution.current(),
+  auth: {
+    isEnabled: () => auth.isEnabled(),
+    getToken: () => auth.getToken(),
+    peek: () => auth.peek(),
+    refresh: () => auth.refresh(),
+  },
+});
+
+/**
+ * Lee la respuesta de `meUrl` (o de login) y la aplica a sesión e institución.
+ * Formas aceptadas: `{ user, roles, permissions, institution? }` o el usuario plano con `roles`/`permissions`.
+ * @param {Record<string, any>} body Respuesta.
+ * @returns {{ status: 'authenticated', user: Record<string, unknown>, roles?: unknown[], permissions?: unknown[] }} Resultado para la sesión.
+ */
+function sessionFromBody(body) {
+  const user = body?.user ?? body ?? {};
+  if (body && Object.prototype.hasOwnProperty.call(body, 'institution'))
+    institution.apply(body.institution ?? null);
+  return {
+    status: 'authenticated',
+    user,
+    roles: body?.roles ?? user.roles,
+    permissions: body?.permissions ?? user.permissions,
+  };
+}
+
+/**
+ * Configura la autenticación JWT y conecta los puertos de sesión:
+ * - `session.resolve` → sin token: `unauthenticated`; con token: `GET meUrl` (si existe).
+ * - `session.signOut` → `POST logoutUrl` y olvida el token.
+ * No renueva ni consulta nada todavía: eso lo hacen `bootKernel()` o `AU.configureAuth()`.
+ * @param {import('./services/auth-service.js').AuthOptions} options Rutas y márgenes.
+ * @returns {void}
+ */
+export function configureAuth(options) {
+  auth.configure(options);
+  session.setPorts({
+    resolve: async () => {
+      if (!auth.hasToken()) return { status: 'unauthenticated' };
+      if (!auth.meUrl)
+        return {
+          status: session.status() === 'authenticated' ? 'authenticated' : 'unauthenticated',
+          user: session.user(),
+        };
+      const { data } = await client.request({ url: auth.meUrl });
+      return sessionFromBody(data);
+    },
+    signOut: () => auth.logout(),
+  });
+}
+
+/**
+ * Inicia sesión con JWT y actualiza sesión, institución y permisos.
+ * Usa `meUrl` si está configurada; si no, lo que traiga la respuesta de login.
+ * @param {Record<string, unknown>} credentials Credenciales.
+ * @returns {Promise<import('./services/session-service.js').CurrentUser | null>} Usuario.
+ */
+export async function login(credentials) {
+  const body = await auth.login(credentials);
+  if (auth.meUrl) await session.resolve();
+  else session.apply(sessionFromBody(body));
+  return session.user();
+}
 
 /**
  * Comprueba que una ruta es del mismo origen (evita redirecciones abiertas).
@@ -144,6 +213,8 @@ export function wireKernel({ config, notify }) {
  */
 export async function bootKernel() {
   errorHandler.install();
+  // Opción A: el token vive en memoria; al recargar se pide uno nuevo con la cookie httpOnly.
+  if (auth.isEnabled()) await auth.restore();
   try {
     await session.resolve();
   } catch (error) {

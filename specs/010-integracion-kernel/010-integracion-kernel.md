@@ -1,10 +1,10 @@
 # 010-integracion-kernel
 
-> Estado: Implementada (08/11/2026) · pendiente de aprobación · Versión 1.0
+> Estado: Aprobada e implementada (08/11/2026) · Versión 1.1
 > Origen: núcleo y servicios de la Fase 4 de `E:\AulaRD` (SPEC-004) + plantilla `aulard-frontend` 1.0.
 
 ## Objetivo
-Que la plantilla visual tenga el núcleo de la aplicación: errores tipados, eventos, sesión, institución activa, autorización visual y un cliente HTTP con contexto institucional. Todo detrás de una sola fachada, `AU`, sin inventar identidad ni el mecanismo de contexto (D-02).
+Que la plantilla visual tenga el núcleo de la aplicación: errores tipados, eventos, sesión, institución activa, autorización visual y un cliente HTTP con contexto institucional. Todo detrás de una sola fachada, `AU`, sin inventar identidad. El mecanismo de contexto (D-02) se resolvió con una cabecera (decisión 014).
 
 ## Alcance
 | Pieza | Origen | Destino | Cambio principal |
@@ -29,14 +29,14 @@ Que la plantilla visual tenga el núcleo de la aplicación: errores tipados, eve
 - `window.AR`. La fachada única es `AU` (ADR 013).
 - `ThemeService`, `dialogs`, `confirm`, `loading` y adaptadores de la Fase 4: la plantilla ya tiene equivalentes con la marca B.
 - `select2.js`: jQuery está prohibido por la constitución.
-- Mecanismo de contexto institucional (D-02), endpoints reales de sesión y caché offline: siguen pendientes del backend.
+- Endpoints reales de sesión e institución y caché offline: siguen pendientes del backend.
 - Estilos de `src/styles/**` de la Fase 4: la línea gráfica vigente es la B.
 
 ## Reglas de negocio
 - RN-01 La identidad, los roles, los permisos y la institución solo provienen del backend: el JSON `#au-context` impreso por el servidor, o los puertos configurados con `AU.configurePorts`. Sin ellos, la sesión queda en `unauthenticated` y la institución en `none`.
 - RN-02 `AU.can()` y `data-au-can` son solo presentación. No hay comodín por rol.
 - RN-03 La institución activa la decide el backend. `AU.institution.select(id)` sin puerto lanza error.
-- RN-04 La estrategia de contexto por defecto no añade nada a la solicitud. Cuando se decida D-02, se conecta con `AU.configureApi({ contextStrategy })`, que lee la institución vigente en cada solicitud.
+- RN-04 La institución activa viaja en la cabecera `X-Institution-Id` (configurable con `institutionHeader` en `au-config`, decisión 014). El valor se lee en el momento de cada solicitud. Sin institución activa, la cabecera no se envía. El backend valida la pertenencia en cada solicitud.
 - RN-05 Al pasar de `authenticated` a `unauthenticated`, o al cambiar de una institución a otra, se borran las preferencias `au-*` salvo `theme` y `sidebar-collapsed`.
 - RN-06 Ante un 401, la sesión pasa a `expired`, se emite `au:session:expired` una sola vez, se avisa al usuario y, si existe `loginUrl` (mismo origen), se redirige.
 
@@ -58,6 +58,7 @@ Que la plantilla visual tenga el núcleo de la aplicación: errores tipados, eve
 | CA-04 | Respuesta 503 en GET con `retries: 2` | `AU.api.get` | Reintenta; en POST no reintenta | `tests/http-client.test.js` |
 | CA-05 | Respuesta 401 | Cualquier solicitud | `handleUnauthorized` una vez, `au:session:expired` una vez | `tests/http-client.test.js`, `tests/services.test.js` |
 | CA-06 | `contextStrategy` configurada | Cambia la institución entre dos solicitudes | Cada solicitud lleva la institución vigente en ese momento | `tests/http-client.test.js` |
+| CA-13 | Institución activa `inst-7` | Cualquier solicitud del cliente | Lleva `X-Institution-Id: inst-7`; sin institución no lleva la cabecera; un nombre inválido en `au-config` se registra y la página arranca igual | `tests/http-client.test.js` |
 | CA-07 | `AU.createScope()` con solicitud en curso | `scope.destroy()` | Rechaza `CancelledError`; no se reporta como error | Playwright + `tests/kernel.test.js` |
 | CA-08 | URL `https://evil.example/x` | `AU.api.get` | `INVALID_ARGUMENT`, no sale la solicitud | Playwright + pruebas |
 | CA-09 | `AU.storeSet('token', …)` | — | `INVALID_ARGUMENT` | Playwright |
@@ -66,7 +67,6 @@ Que la plantilla visual tenga el núcleo de la aplicación: errores tipados, eve
 | CA-12 | 8 páginas, `build` y `build:single` | Se abren | Sin errores de consola | Playwright 08/11/2026 |
 
 ## Información faltante
-- D-02: cómo viaja la institución en cada solicitud (cabecera, subdominio o ruta).
 - Endpoints reales de sesión (`/me`, `/logout`) e institución (`/institucion-activa`, `/mis-instituciones`).
 - Catálogo oficial de permisos por rol (necesario porque ya no hay comodín de superadmin).
 - ¿Se activan reintentos en producción (`apiRetries`)? Por defecto, 0.
@@ -79,4 +79,5 @@ Que la plantilla visual tenga el núcleo de la aplicación: errores tipados, eve
 `src/js/kernel.js`, `src/js/core/{errors,events,logger,error-handler,scope,container,module-loader,storage,http,context}.js`, `src/js/services/*.js`, `src/js/helpers/{validators,strings,format,browser}.js`, `src/js/components/{feedback,tabs,modal,misc,forms}.js`, `src/js/facade.js`, `src/js/app.js`, `src/scss/components/_feedback.scss`, `tests/{kernel,services,http-client,ported-helpers}.test.js`, `docs/04-api-au.md`, `docs/06-integracion-backend.md`.
 
 ## Aprobación
-- [ ] Revisada por el propietario — fecha:
+- [x] Revisada y aprobada por el propietario (Haisel Ramírez) — fecha: 08/11/2026
+- Versión 1.1 (08/11/2026): RN-04 y CA-13 por la decisión 014 (D-02 resuelta: cabecera).

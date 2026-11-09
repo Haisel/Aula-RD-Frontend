@@ -19,7 +19,7 @@ Opción 3.
 - `kernel.js` es la raíz de composición del núcleo. El contenedor y el `HttpClient` no se exponen.
 - Una sola fuente de verdad para el contexto: `SessionService` + `InstitutionContext`. `AU.getContext()` se deriva de ellos.
 - `AccessPolicy` reemplaza el `can()` de la 1.0. Se elimina el comodín de `super-admin`.
-- Se conservan las exclusiones de la Fase 4: identidad solo del backend; D-02 pendiente.
+- Se conservan las exclusiones de la Fase 4: la identidad solo viene del backend. D-02 se resolvió después con la decisión 014 (cabecera).
 
 ## Consecuencias
 - (+) Un solo contrato para errores (`AU.errors`), eventos y sesión, documentado en JSDoc y probado (106 casos).
@@ -28,6 +28,6 @@ Opción 3.
 - (−) El núcleo pesa 8 KB gzip más (97 → 105 KB).
 - (−) Los scripts de la Fase 4 que llamen `AR.*` deben migrarse a `AU.*`. Los nombres coinciden en su mayoría (`toast`, `confirm`, `openModal`, `busy`, `can`…).
 
-## Estado: Propuesta
+## Estado: Aceptada
 ## Fecha: 2026-11-08
-## Arquitecto: Claude
+## Arquitecto: Claude · Aprobó: Haisel Ramírez (propietario)

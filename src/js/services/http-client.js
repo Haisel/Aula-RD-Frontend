@@ -11,7 +11,9 @@
  *    añade nada (decisión D-02 pendiente).
  * 3. Envía con axios. Solo reintenta lecturas idempotentes (GET/HEAD/OPTIONS) ante
  *    fallos de red o 5xx; nunca un 4xx ni una escritura.
- * 4. Ante 401 avisa a la sesión (`handleUnauthorized`) y llama `onUnauthorized`.
+ * 4. Con JWT (decisión 015) añade `Authorization: Bearer …`. Ante un 401 renueva el
+ *    token **una vez** (compartida entre solicitudes simultáneas) y reintenta. Si la
+ *    renovación falla, avisa a la sesión (`handleUnauthorized`) y llama `onUnauthorized`.
  * 5. Convierte cualquier fallo en la taxonomía de {@link module:core/errors} con
  *    `message` legible y `fieldErrors` por campo.
  * @module services/http-client
@@ -37,6 +39,15 @@ import {
  * @property {Record<string, string>} [headers] Cabeceras adicionales.
  * @property {AbortSignal} [signal] Señal de cancelación (p. ej. `scope.signal`).
  * @property {{ retries?: number }} [policy] Política por solicitud.
+ * @property {boolean} [auth=true] `false` para no enviar `Authorization` (endpoints públicos).
+ */
+
+/**
+ * @typedef {object} AuthPort
+ * @property {() => boolean} isEnabled ¿Hay autenticación configurada?
+ * @property {() => Promise<string | null>} getToken Token válido (renueva si está por vencer).
+ * @property {() => string | null} peek Token actual sin renovar.
+ * @property {() => Promise<string>} refresh Renovación única (single-flight).
  */
 
 /**
@@ -72,6 +83,7 @@ import {
  * @property {(() => import('./institution-context.js').InstitutionRef | null) | null} getInstitution Lector diferido.
  * @property {{ handleUnauthorized?: () => void } | null} session Servicio de sesión.
  * @property {((error: AppError) => void) | null} onUnauthorized Callback ante 401.
+ * @property {AuthPort | null} auth Autenticación JWT (decisión 015).
  */
 
 const IDEMPOTENT = new Set(['GET', 'HEAD', 'OPTIONS']);
@@ -149,6 +161,40 @@ export function isAllowedUrl(url, baseURL) {
   return Boolean(base) && SCHEME.test(base) && (url === base || url.startsWith(`${base}/`));
 }
 
+const HEADER_NAME = /^[A-Za-z][A-Za-z0-9-]*$/;
+
+/**
+ * Estrategia de contexto por **cabecera** (decisión 014, D-02 resuelta).
+ * Añade `<headerName>: <id de la institución activa>` a cada solicitud. Si no hay
+ * institución activa (p. ej. el superadmin en vista global), no añade nada: el
+ * frontend nunca inventa una institución.
+ *
+ * ⚠ El backend debe comprobar en cada solicitud que el usuario autenticado pertenece
+ * a esa institución. La cabecera es una indicación del cliente, no una autorización.
+ * @param {string} [headerName='X-Institution-Id'] Nombre de la cabecera.
+ * @returns {ContextStrategy} Estrategia.
+ * @throws {AppError} `INVALID_ARGUMENT` si el nombre no es un token de cabecera válido.
+ */
+export function headerContextStrategy(headerName = 'X-Institution-Id') {
+  if (typeof headerName !== 'string' || !HEADER_NAME.test(headerName)) {
+    throw new AppError(`[AU] Nombre de cabecera de institución no válido: "${String(headerName)}".`, {
+      code: 'INVALID_ARGUMENT',
+    });
+  }
+  return Object.freeze({
+    headerName,
+    /**
+     * @param {AxiosLikeRequest} request Solicitud.
+     * @param {import('./institution-context.js').InstitutionRef | null} institution Institución vigente.
+     * @returns {AxiosLikeRequest} Solicitud con la cabecera (o sin cambios).
+     */
+    apply(request, institution) {
+      if (!institution?.id) return request;
+      return { ...request, headers: { ...request.headers, [headerName]: String(institution.id) } };
+    },
+  });
+}
+
 /** Cliente HTTP con estrategia de contexto, reintentos y errores tipados. */
 export class HttpClient {
   /** @type {import('axios').AxiosInstance} */
@@ -183,6 +229,7 @@ export class HttpClient {
       getInstitution: null,
       session: null,
       onUnauthorized: null,
+      auth: null,
     };
     this.configure(config);
   }
@@ -285,8 +332,19 @@ export class HttpClient {
       request = strategy.apply(request, institution) || request;
     }
 
+    const auth =
+      this.#config.auth && spec.auth !== false && this.#config.auth.isEnabled() ? this.#config.auth : null;
+    /** @type {string | null} */
+    let usedToken = null;
+    if (auth) {
+      usedToken = await auth.getToken();
+      if (usedToken)
+        request = { ...request, headers: { ...request.headers, Authorization: `Bearer ${usedToken}` } };
+    }
+
     const retries = Math.max(0, spec.policy?.retries ?? this.#config.retries);
     const attempts = IDEMPOTENT.has(request.method) ? 1 + retries : 1;
+    let authRetried = false;
 
     for (let attempt = 1; ; attempt += 1) {
       try {
@@ -299,6 +357,21 @@ export class HttpClient {
       } catch (raw) {
         const error = toHttpError(raw);
         if (error.code === 'CANCELLED_ERROR') throw error;
+        // Solo se renueva si la solicitud llevaba token: un visitante sin sesión no "expira".
+        if (error.status === 401 && auth && usedToken && !authRetried) {
+          authRetried = true;
+          try {
+            // Si otra solicitud ya renovó, basta con reintentar con el token nuevo.
+            const current = auth.peek();
+            const fresh = current && current !== usedToken ? current : await auth.refresh();
+            usedToken = fresh;
+            request = { ...request, headers: { ...request.headers, Authorization: `Bearer ${fresh}` } };
+            this.#logger.debug('http.auth.retry', { method: request.method });
+            continue;
+          } catch {
+            /* la renovación falló: se trata como sesión expirada */
+          }
+        }
         if (error.status === 401) {
           try {
             this.#config.session?.handleUnauthorized?.();

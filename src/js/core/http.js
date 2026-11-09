@@ -15,7 +15,14 @@
  * @module core/http
  */
 import axios from 'axios';
-import { HttpClient, parseErrorResponse, toHttpError } from '../services/http-client.js';
+import {
+  HttpClient,
+  parseErrorResponse,
+  toHttpError,
+  headerContextStrategy,
+} from '../services/http-client.js';
+
+export { headerContextStrategy };
 import { logger } from './logger.js';
 
 /** @typedef {import('../types.js').ApiErrorShape} ApiErrorShape */
@@ -47,7 +54,8 @@ export const client = new HttpClient({ axios: http, logger: logger.child('http')
  * @property {number} [retries] Reintentos de lecturas idempotentes ante red caída o 5xx.
  * @property {Record<string, string>} [headers] Cabeceras fijas adicionales.
  * @property {Record<string, string>} [endpoints] Registro clave → ruta (`/estudiantes/:id`).
- * @property {import('../services/http-client.js').ContextStrategy} [contextStrategy] Cómo enviar la institución activa.
+ * @property {import('../services/http-client.js').ContextStrategy | null} [contextStrategy] Cómo enviar la institución activa
+ *   (por defecto, cabecera `X-Institution-Id`; `null` la desactiva).
  * @property {(error: import('./errors.js').AppError) => void} [onUnauthorized] Se llama ante un 401.
  */
 

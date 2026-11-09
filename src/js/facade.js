@@ -39,7 +39,7 @@ import { barcode, qrcode } from './adapters/codes.js';
 import { attachSignature } from './adapters/signature.js';
 import { dragSort } from './adapters/sortable.js';
 import { resolveElement, ERRORS } from './core/errors.js';
-import { session, institution, appScope, errorHandler } from './kernel.js';
+import { session, institution, appScope, errorHandler, configureAuth, login, auth } from './kernel.js';
 import { truncate, normalizeSpaces } from './helpers/strings.js';
 import {
   toggleFullscreen,
@@ -248,6 +248,13 @@ export function createFacade({ config, breakpoints }) {
       subscribe: (/** @type {(i: unknown) => void} */ fn) => institution.subscribe(fn),
     }),
     configurePorts,
+    configureAuth: async (/** @type {import('./services/auth-service.js').AuthOptions} */ options) => {
+      configureAuth(options);
+      await auth.restore();
+      return session.resolve();
+    },
+    login,
+    logout: () => session.signOut(),
     getContext,
     setContext,
     can,

@@ -2,7 +2,7 @@
  * Validación de formularios con Zod + estilos de Bootstrap (`.is-invalid`, `.invalid-feedback`).
  *
  * ```html
- * <form data-au-validate="login" data-au-submit="ajax" action="/api/login" method="post" novalidate>
+ * <form data-au-validate="login" data-au-submit="login" data-au-redirect="dashboard-institucion.html" novalidate>
  * ```
  * - `data-au-validate="<esquema>"`: nombre registrado (ver `helpers/validators.js`).
  * - `data-au-submit`:
@@ -10,8 +10,10 @@
  *   - `ajax`: envía JSON con `AU.http` a `action`/`method`; aplica errores del servidor
  *     por campo; emite `au:form:success` / `au:form:error`.
  *   - `event`: no envía; emite `au:form:submit` con `{ form, data }` para que su código decida.
- * - `data-au-success="Mensaje"`: toast al terminar con éxito (modo ajax).
- * - `data-au-redirect="/ruta"`: redirige tras el éxito (modo ajax).
+ *   - `login`: inicia sesión JWT con `auth.loginUrl` (decisión 015). El token queda en memoria;
+ *     la sesión y los permisos se actualizan; errores del servidor por campo como en `ajax`.
+ * - `data-au-success="Mensaje"`: toast al terminar con éxito (modos ajax y login).
+ * - `data-au-redirect="/ruta"`: redirige tras el éxito (modos ajax y login).
  *
  * Accesibilidad: marca `aria-invalid`, enlaza el mensaje con `aria-describedby`
  * y mueve el foco al primer campo con error.
@@ -19,6 +21,7 @@
  */
 import { getSchema, validateWith } from '../helpers/schema-registry.js';
 import { client } from '../core/http.js';
+import { login } from '../kernel.js';
 import { emit, EVENTS } from '../core/events.js';
 import { toAppError } from '../core/errors.js';
 import { toast } from './dialogs.js';
@@ -187,11 +190,15 @@ export const formComponent = {
       }
       setLoading(form, true);
       try {
-        const response = await client.request({
-          url: form.getAttribute('action') ?? '',
-          method: form.getAttribute('method') ?? 'post',
-          body: data,
-        });
+        // Modo `login` (decisión 015): el token queda en memoria; nunca pasa por el DOM.
+        const response =
+          mode === 'login'
+            ? await login(data)
+            : await client.request({
+                url: form.getAttribute('action') ?? '',
+                method: form.getAttribute('method') ?? 'post',
+                body: data,
+              });
         emit(EVENTS.FORM_SUCCESS, { form, data, response }, form);
         if (form.dataset.auSuccess) toast(form.dataset.auSuccess, 'success');
         if (form.dataset.auRedirect) window.location.assign(form.dataset.auRedirect);

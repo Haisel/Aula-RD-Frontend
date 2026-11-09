@@ -7,7 +7,7 @@
 | Presentación | `src/*.html`, `src/partials/`, `src/scss/` | HTML semántico, estilos de marca | — |
 | Configuración | `src/js/config/` | Valores de app, portales, puntos de quiebre. Lee `<meta name="au-config">` | — |
 | Núcleo | `src/js/core/` | Errores tipados, bus de eventos `au:*`, logger, manejador de errores, scope, contenedor, cargador de módulos, registro de componentes, tema, HTTP, plantillas, contexto, almacenamiento | helpers, services |
-| Servicios | `src/js/services/` | Puertos hacia el backend: `HttpClient`, `SessionService`, `InstitutionContext`, `AccessPolicy`. Reciben dependencias por constructor; nunca importan la fachada ni el contenedor | core (errores, eventos) |
+| Servicios | `src/js/services/` | Puertos hacia el backend: `HttpClient`, `AuthService` (JWT), `SessionService`, `InstitutionContext`, `AccessPolicy`. Reciben dependencias por constructor; nunca importan la fachada ni el contenedor | core (errores, eventos) |
 | Kernel | `src/js/kernel.js` | Raíz de composición del núcleo: crea los servicios, los registra en el contenedor y cablea sus reacciones (401, cambio de institución, errores) | core, services |
 | Helpers | `src/js/helpers/` | Funciones **puras** y probadas: formato, validación, sanitización, estados, archivos, config de gráficos | — (salvo su propia librería) |
 | Adaptadores | `src/js/adapters/` | Integran librerías de terceros con **carga diferida** (`lazy()`) | core, helpers |
@@ -76,7 +76,7 @@ aulard-frontend/
 │  ├─ partials/                    Handlebars: layouts/, app/, landing/, components/
 │  ├─ data/pages.js                Contexto de las páginas de ejemplo (menús, usuarios ficticios)
 │  └─ *.html                       8 páginas de ejemplo
-├─ tests/                          Vitest (106 casos)
+├─ tests/                          Vitest (124 casos)
 └─ dist/                           Salida del build (no se versiona)
 ```
 
@@ -86,6 +86,7 @@ aulard-frontend/
 - La identidad y la institución solo provienen del backend (`#au-context` o puertos). Sin ellos, el estado es `unauthenticated`/`none`.
 - `HttpClient` rechaza URLs absolutas fuera de `baseURL`; el almacenamiento rechaza claves sensibles; `AU.openIframe` solo admite `http(s)`.
 - El logger redacta claves sensibles y nunca registra cuerpos de solicitud o respuesta.
+- Con JWT, el token de acceso vive solo en memoria y el de renovación en una cookie `httpOnly` (decisión 015).
 - Todo HTML dinámico pasa por DOMPurify (`AU.sanitize`, `AU.render`, `AU.setModalBody`, salida de Quill).
 - Los diálogos tratan el texto como texto plano; HTML solo con `options.html` (sanitizado).
 - El cliente HTTP envía `X-CSRF-TOKEN`/`X-XSRF-TOKEN` si existe `<meta name="csrf-token">`, y `withCredentials: true`.

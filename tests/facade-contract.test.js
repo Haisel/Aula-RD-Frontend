@@ -65,7 +65,9 @@ describe('RF-08: carga fallida de una librería diferida (spec 007)', () => {
 
   it('reintenta en la siguiente llamada tras un fallo', async () => {
     let calls = 0;
-    const load = lazy('Reintento', () => (++calls === 1 ? Promise.reject(new Error('x')) : Promise.resolve('ok')));
+    const load = lazy('Reintento', () =>
+      ++calls === 1 ? Promise.reject(new Error('x')) : Promise.resolve('ok'),
+    );
     await expect(load()).rejects.toBeInstanceOf(AppError);
     await expect(load()).resolves.toBe('ok');
     expect(calls).toBe(2);

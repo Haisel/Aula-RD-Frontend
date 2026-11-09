@@ -35,7 +35,7 @@
 
 - Vitest + jsdom en `tests/*.test.js`. Toda función de `helpers/` y la lógica pura de `core/`/`adapters/` lleva prueba.
 - No usar cédulas ni RNC reales: los tests **calculan** el dígito verificador.
-- Cobertura actual: formato, validadores, esquemas Zod, normalización de errores HTTP, sanitización, estados, configuración de gráficos, exportación, contexto, tema y registro; kernel (errores, eventos, logger, scope, contenedor, módulos, almacenamiento), servicios (sesión, institución, acceso, cliente HTTP) y helpers portados (106 casos).
+- Cobertura actual: formato, validadores, esquemas Zod, normalización de errores HTTP, sanitización, estados, configuración de gráficos, exportación, contexto, tema y registro; kernel (errores, eventos, logger, scope, contenedor, módulos, almacenamiento), servicios (sesión, institución, acceso, cliente HTTP) y helpers portados (124 casos).
 
 ## 4. Calidad automática
 

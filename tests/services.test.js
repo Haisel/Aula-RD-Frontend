@@ -55,6 +55,13 @@ describe('SessionService', () => {
     expect(s.user()).toBeNull();
     expect(seen.filter(([n]) => n === EVENTS.SESSION_EXPIRED)).toHaveLength(1);
   });
+  it('un 401 sin sesión no la marca como expirada ni emite el evento', () => {
+    const { bus, seen } = setup();
+    const s = new SessionService({ logger, bus });
+    s.handleUnauthorized();
+    expect(s.status()).toBe('unauthenticated');
+    expect(seen.filter(([n]) => n === EVENTS.SESSION_EXPIRED)).toHaveLength(0);
+  });
   it('signOut llama al puerto y limpia aunque falle', async () => {
     const { bus } = setup();
     const s = new SessionService({

@@ -113,3 +113,30 @@ describe('HttpClient', () => {
     );
   });
 });
+
+describe('headerContextStrategy (decisión 014)', () => {
+  it('envía X-Institution-Id con la institución vigente y nada sin institución', async () => {
+    const { headerContextStrategy } = await import('../src/js/services/http-client.js');
+    const ax = fakeAxios({ status: 200 }, { status: 200 });
+    let inst = { id: 'inst-7', displayName: 'Colegio' };
+    const c = new HttpClient({
+      axios: ax,
+      logger,
+      config: { getInstitution: () => inst, contextStrategy: headerContextStrategy() },
+    });
+    await c.request({ url: '/cursos' });
+    inst = null;
+    await c.request({ url: '/plataforma/resumen' });
+    const [first, second] = ax.request.mock.calls.map(([r]) => r.headers);
+    expect(first['X-Institution-Id']).toBe('inst-7');
+    expect(second).not.toHaveProperty('X-Institution-Id');
+  });
+  it('nombre configurable y validado', async () => {
+    const { headerContextStrategy } = await import('../src/js/services/http-client.js');
+    expect(headerContextStrategy('X-Tenant').apply({ headers: {} }, { id: 'a' }).headers['X-Tenant']).toBe(
+      'a',
+    );
+    expect(() => headerContextStrategy('X Bad\n')).toThrow(/no válido/);
+    expect(() => headerContextStrategy('')).toThrow(/no válido/);
+  });
+});

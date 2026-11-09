@@ -73,7 +73,10 @@ describe('API simulada de autenticación (spec 011)', () => {
   });
 
   it('login con contraseña incorrecta: 401 con mensaje', async () => {
-    const res = await call('/auth/login', { method: 'POST', body: { email: DEMO_USER.email, password: 'mala' } });
+    const res = await call('/auth/login', {
+      method: 'POST',
+      body: { email: DEMO_USER.email, password: 'mala' },
+    });
     expect(res.status).toBe(401);
     expect(res.headers.get('set-cookie')).toBeNull();
     expect((await res.json()).message).toMatch(/Correo o contraseña/);
@@ -124,7 +127,11 @@ describe('API simulada de autenticación (spec 011)', () => {
     const origin = 'http://localhost:4173';
     const pre = await fetch(`${base}/auth/login`, {
       method: 'OPTIONS',
-      headers: { Origin: origin, 'Access-Control-Request-Method': 'POST', 'Access-Control-Request-Headers': 'authorization,content-type' },
+      headers: {
+        Origin: origin,
+        'Access-Control-Request-Method': 'POST',
+        'Access-Control-Request-Headers': 'authorization,content-type',
+      },
     });
     expect(pre.status).toBe(204);
     expect(pre.headers.get('access-control-allow-origin')).toBe(origin);

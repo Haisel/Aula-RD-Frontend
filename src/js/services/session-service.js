@@ -187,11 +187,18 @@ export class SessionService {
   }
 
   /**
-   * Lo llama la capa HTTP ante un 401. Emite `au:session:expired` una sola vez.
+   * Lo llama la capa HTTP ante un 401.
+   * - Sesión `authenticated` → `expired` y emite `au:session:expired` (una sola vez).
+   * - Cualquier otro estado → `unauthenticated` en silencio: quien nunca inició
+   *   sesión no "expira" (sin aviso ni redirección).
    * @returns {void}
    */
   handleUnauthorized() {
     if (this.#status === 'expired') return;
+    if (this.#status !== 'authenticated') {
+      if (this.#status !== 'unauthenticated') this.#set('unauthenticated', null);
+      return;
+    }
     this.#set('expired', null);
     this.#bus.emit(EVENTS.SESSION_EXPIRED, {});
   }

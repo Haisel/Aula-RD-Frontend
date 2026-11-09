@@ -21,6 +21,21 @@ Cierre de la spec 005 (identidad visual B): pruebas de guarda y corrección de a
 **Pendiente (spec 008)**
 - El selector de la barra de Quill (`.ql-picker-label`) no tiene nombre accesible.
 
+## 0.3.0 — 08/11/2026
+
+Autenticación JWT, opción A (spec 011, decisión 015).
+
+**Nuevo**
+- `AuthService`: token de acceso solo en memoria; renovación con cookie `httpOnly`; renovación única ante N solicitudes simultáneas; proactiva antes de vencer; `restore()` al cargar.
+- `Authorization: Bearer` automático en `AU.api` / `AU.request` (salvo `auth: false`); un reintento tras renovar.
+- `AU.configureAuth()`, `AU.login()`, `AU.logout()`; `au-config` → `auth`; formularios `data-au-submit="login"`.
+- Con JWT, los componentes con datos se activan después de tener token, usuario e institución.
+- 16 pruebas nuevas (124 en total) + prueba de extremo a extremo contra una API JWT simulada.
+
+**Cambios de comportamiento**
+- Un 401 a un visitante sin sesión ya no muestra "Su sesión expiró" ni pasa la sesión a `expired`: queda en `unauthenticated`.
+- Con `auth` configurado, el API se llama sin cookies (`withCredentials: false`); solo `/auth/*` las usa.
+
 ## 0.2.0 — 08/11/2026
 
 Fusión del núcleo de la Fase 4 (`E:\AulaRD`) en la plantilla. Spec 010, ADR 013.
@@ -30,8 +45,10 @@ Fusión del núcleo de la Fase 4 (`E:\AulaRD`) en la plantilla. Spec 010, ADR 01
 - Servicios: `HttpClient` (endpoints con `:param`, estrategia de contexto institucional, reintentos solo en GET, URLs absolutas bloqueadas), `SessionService`, `InstitutionContext`, `AccessPolicy`.
 - Fachada: `AU.session.*`, `AU.institution.*`, `AU.configurePorts()`, `AU.request()`, `AU.report()`, `AU.busy()`, `AU.progress()`, `AU.inlineAlert()`, `AU.toggleModal/getModal/destroyModal/setModalContent`, `AU.isValidPlaca/isValidCurrency/isNullOrEmpty/isEmpty`, `AU.humanize/truncate/normalizeSpaces`, `AU.toggleFullscreen`, `AU.openIframe`, `AU.assetUrl`, `AU.customSet/customGet`, `AU.storeRemove`, `AU.on(…, { delegate })`, `AU.events.off`.
 - Componente `data-au-tabs` (pestañas accesibles). `data-au-action` ejecuta acciones registradas con `AU.customSet`.
-- `au-config`: `apiRetries`, `loginUrl`, `assetBaseUrl`, `debug`.
-- 44 pruebas nuevas (106 en total).
+- `au-config`: `apiRetries`, `loginUrl`, `assetBaseUrl`, `debug`, `institutionHeader`.
+- **Contexto institucional por cabecera** (decisión 014, D-02 resuelta): cada solicitud lleva `X-Institution-Id` con la institución activa; sin institución no se envía. `headerContextStrategy()` en `services/http-client.js`.
+- Spec 010 y decisiones 013 y 014 aprobadas por el propietario.
+- 46 pruebas nuevas (108 en total).
 
 **Cambios que rompen compatibilidad**
 

@@ -63,6 +63,7 @@ analizar → especificar (spec.md) → criterios de aceptación → pruebas → 
 9. **Seguridad real en el backend.** `data-au-can` y `AU.can()` solo ocultan; no protegen. Nunca invente identidad, roles ni institución: solo vienen de `#au-context` o de los puertos (`AU.configurePorts`).
 11. **Nada de `window.AR`.** El kernel de la Fase 4 ya vive dentro de `AU` (spec 010). Si migra código viejo, traduzca `AR.*` → `AU.*` y los eventos `ar:*` → `au:*`.
 12. **HTTP solo por `AU.api` / `AU.request`.** No importe axios en componentes ni páginas; los errores ya llegan tipados.
+13. **Nunca guarde ni exponga el JWT.** Nada de `localStorage`, `sessionStorage`, atributos `data-*` ni `AU.token`. El token vive solo dentro de `AuthService` (decisión 015). Para el login use `data-au-submit="login"` o `AU.login()`.
 10. **HTML dinámico siempre sanitizado** (`AU.sanitize`, `AU.render` ya lo hace). Nunca `{{{triple}}}` con datos del usuario.
 
 ## 5. Receta: agregar un componente declarativo

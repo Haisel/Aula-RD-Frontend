@@ -114,7 +114,6 @@ AU.configureApi({
   baseURL: '/api/v1', timeout: 15000, retries: 1,               // retries: solo GET ante red caída o 5xx
   headers: { Authorization: 'Bearer …' },
   endpoints: { 'estudiante.ver': '/estudiantes/:id' },           // registro clave → ruta
-  contextStrategy: { apply: (req, inst) => ({ ...req, headers: { ...req.headers, 'X-Institution-Id': inst?.id ?? '' } }) },
   onUnauthorized: (err) => console.warn(err.code),
 });
 const estudiantes = await AU.api.get('/estudiantes', { params: { grado: '4S' } });
@@ -122,10 +121,11 @@ await AU.api.post('/pagos', { estudiante: 12, monto: 12500 });     // put, patch
 const { data, meta } = await AU.request({ endpointKey: 'estudiante.ver', pathParams: { id: 42 } });
 ```
 
-- `AU.api.*` devuelve `data`; `AU.request(spec)` devuelve `{ data, meta: { source, status } }`. `spec`: `method`, `url` o `endpointKey` + `pathParams`, `query`, `body`, `headers`, `signal`, `policy: { retries }`.
+- `AU.api.*` devuelve `data`; `AU.request(spec)` devuelve `{ data, meta: { source, status } }`. `spec`: `method`, `url` o `endpointKey` + `pathParams`, `query`, `body`, `headers`, `signal`, `policy: { retries }`, `auth: false` (no enviar `Authorization`).
+- Con JWT (decisión 015), cada solicitud lleva `Authorization: Bearer …`. Ante un 401, la plantilla renueva el token una vez y reintenta. El token nunca se expone: no existe `AU.token`.
 - Rutas relativas siempre; una URL absoluta solo si empieza por `baseURL`. Otra cosa rechaza con `INVALID_ARGUMENT` (no se envían cookies ni CSRF a terceros).
-- `contextStrategy` decide cómo viaja la institución activa. Por defecto no se envía nada: la decisión D-02 sigue abierta.
-- Un 401 pasa la sesión a `expired` y emite `au:session:expired`. La plantilla avisa y, si `au-config` trae `loginUrl`, redirige.
+- La institución activa viaja en la cabecera **`X-Institution-Id`** (decisión 014), con el `id` vigente en cada solicitud. Sin institución activa no se envía. Cambie el nombre con `institutionHeader` en `au-config` (vacío la desactiva) o reemplace la estrategia con `AU.configureApi({ contextStrategy })` (`null` la desactiva).
+- Un 401 que no se recupera renovando pasa la sesión a `expired` (solo si estaba autenticada) y emite `au:session:expired`. La plantilla avisa y, si `au-config` trae `loginUrl`, redirige. Un visitante sin sesión que recibe 401 queda en `unauthenticated`, sin aviso.
 - Errores: ver [Errores](#errores). `ValidationError` trae `fieldErrors` → `AU.showErrors(form, err.fieldErrors, err.message)`.
 
 ## Cancelación y errores no controlados
@@ -151,6 +151,9 @@ Los errores globales (`error`, `unhandledrejection`) llegan solos al manejador c
 | `AU.institution.status()` · `AU.institution.current()` | `'unknown' \| 'none' \| 'selected'` · `{ id, displayName, … }` |
 | 🕒 `AU.institution.available()` · 🕒 `AU.institution.select(id)` · 🕒 `AU.institution.resolve()` | `select` sin puerto lanza error: el frontend no elige institución por su cuenta. |
 | 🕒 `AU.configurePorts({ session, institution })` | Conecta el backend y vuelve a resolver. Ver `docs/06-integracion-backend.md` §3. |
+| 🕒 `AU.configureAuth({ loginUrl, refreshUrl, logoutUrl, meUrl, refreshMarginMs?, apiCookies? })` | Activa JWT (decisión 015), recupera la sesión con la cookie y resuelve el usuario. También en `au-config` → `"auth": {…}`. |
+| 🕒 `AU.login({ email, password })` | Inicia sesión; devuelve el usuario. Error: `UnauthorizedError` ("Correo o contraseña incorrectos." si el servidor no envía mensaje). |
+| 🕒 `AU.logout()` | Cierra la sesión en el servidor y olvida el token. |
 | `AU.setContext({ user, institution, roles, permissions })` | Aplica datos que **ya vienen del backend** (p. ej. tras un `GET /me`). |
 | `AU.getContext()` | Copia derivada de sesión + institución. |
 | `AU.can('cobros.registrar')` · `AU.hasRole('teacher')` | Solo visibilidad. **No hay comodín para `super-admin`**: el backend envía la lista completa de permisos. |

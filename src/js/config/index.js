@@ -22,6 +22,10 @@
  * @property {string} loginUrl Ruta del login (mismo origen) a la que se redirige tras un 401. Vacía = no redirige.
  * @property {string} assetBaseUrl Base para `AU.assetUrl()` (p. ej. un CDN). Vacía = rutas tal cual.
  * @property {boolean} debug `true` baja el logger a nivel `debug` (solo desarrollo).
+ * @property {import('../services/auth-service.js').AuthOptions | null} auth Autenticación JWT (decisión 015):
+ *   `{ loginUrl, refreshUrl, logoutUrl, meUrl }`. `null` = sin JWT (sesión del servidor o `#au-context`).
+ * @property {string} institutionHeader Cabecera con el id de la institución activa en cada petición
+ *   (decisión 014). Vacía = no se envía.
  */
 
 /** @type {AppConfig} */
@@ -36,6 +40,8 @@ const DEFAULTS = {
   loginUrl: '',
   assetBaseUrl: '',
   debug: false,
+  institutionHeader: 'X-Institution-Id',
+  auth: null,
 };
 
 /** Portales de la plataforma (constitución 4.4). */
