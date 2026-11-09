@@ -39,12 +39,15 @@ Tipografía: Plus Jakarta Sans 400/500/600/700/800. Display (800) solo en la lan
 | `accent` / `accent-text` | `#18B6A4` / `#0E766B` | `#18B6A4` / `#52CABB` | Relleno / texto turquesa |
 | `gold-accent` / `gold-text` | `#C6A15B` / `#6E5328` | `#C6A15B` / `#D6B57A` | Champagne |
 | `focus-ring` | `#0E766B` | `#52CABB` | Anillo de foco 2 px + halo 25 % |
+| `focus-ring-on-dark` | `#52CABB` | `#52CABB` | Anillo de foco sobre superficies navy (menú lateral, navy en ambos temas); 7.1:1 sobre `sidebar-bg` |
 | `success` · `warning` · `danger` · `info` | `#1B7A43` · `#E09A1A` · `#C0392B` · `#2F6FDB` | `#3FBF78` · `#E09A1A` · `#C0392B` · `#2F6FDB` | Estados; cada uno con `-subtle` (fondo) y `-text` |
 | `sidebar-bg` · `sidebar-text` · `sidebar-active-bg` | `#142B4A` · `#B3C3D8` · `#1E3A5F` | `#060E1A` · `#9FB0C6` · `#142B4A` | Menú lateral |
 
 Lista completa con descripción de uso: `src/tokens/tokens.json`.
 
 ## 4. Contraste verificado (WCAG 2.2 AA)
+
+Verificación automática: `tests/contrast.test.js` calcula la razón de contraste desde `tokens.json` para 26 pares en ambos temas (más 1 solo en claro) (texto ≥ 4.5:1; borde de control y foco ≥ 3:1). Si cambia un token y rompe AA, `npm run test` falla. La tabla siguiente muestra los pares principales.
 
 | Par | Ratio |
 |---|---|

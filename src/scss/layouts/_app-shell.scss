@@ -26,6 +26,10 @@ $au-topbar-h: map.get($au-layout, 'topbar-height');
   --bs-offcanvas-bg: var(--au-sidebar-bg);
   --bs-offcanvas-color: var(--au-sidebar-text);
 
+  // El menú es navy en ambos temas: el foco usa el anillo para superficies oscuras
+  // (spec 005, ≥ 3:1 sobre `sidebar-bg`); los hijos lo heredan vía `var(--au-focus-ring)`.
+  --au-focus-ring: var(--au-focus-ring-on-dark);
+
   // Bootstrap fuerza `background-color: transparent !important` en .offcanvas-lg ≥ lg;
   // por eso el fondo de marca va en el cuerpo y la cabecera, no en el contenedor.
   color: var(--au-sidebar-text);
@@ -36,8 +40,13 @@ $au-topbar-h: map.get($au-layout, 'topbar-height');
     padding: 1.25rem 1rem 0.5rem;
     background: var(--au-sidebar-bg);
   }
+  // Cruz blanca por fondo (no por `filter`, que también invertiría el anillo de foco) y
+  // anillo sólido de 2 px con separación del color del menú: el halo por defecto era navy
+  // sobre navy y no se veía.
   .btn-close {
-    filter: invert(1) grayscale(1) brightness(2);
+    --bs-btn-close-filter: none;
+    --bs-btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>");
+    --bs-btn-close-focus-shadow: 0 0 0 2px var(--au-sidebar-bg), 0 0 0 4px var(--au-focus-ring);
   }
 
   .au-sidebar-body {
@@ -108,6 +117,14 @@ $au-topbar-h: map.get($au-layout, 'topbar-height');
   &:hover {
     color: #fff;
     background: rgb(255 255 255 / 6%);
+  }
+
+  // Bootstrap pinta un halo navy al 25 % (invisible sobre navy): se reemplaza por el anillo
+  // sólido del menú, hacia dentro para que `overflow` no lo recorte.
+  &:focus-visible {
+    outline: 2px solid var(--au-focus-ring);
+    outline-offset: -2px;
+    box-shadow: none;
   }
 
   &.active {

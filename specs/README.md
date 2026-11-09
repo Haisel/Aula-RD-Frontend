@@ -5,7 +5,7 @@ Cada capacidad tiene **una carpeta y un archivo**: `specs/NNN-nombre/NNN-nombre.
 | Spec | Capacidad | Estado |
 |---|---|---|
 | [000](000-plantilla/000-plantilla.md) | Plantilla para nuevas specs | — |
-| [005](005-identidad-visual-b/005-identidad-visual-b.md) | Identidad visual B en la interfaz (tokens, temas, SCSS) | Implementada · pendiente de aprobación |
+| [005](005-identidad-visual-b/005-identidad-visual-b.md) | Identidad visual B en la interfaz (tokens, temas, SCSS) · [plan](005-identidad-visual-b/plan.md) · [tareas](005-identidad-visual-b/tasks.md) | **Aprobada** (08/11/2026) · implementada |
 | [006](006-plantilla-neutra-dist/006-plantilla-neutra-dist.md) | Plantilla neutra y salida `dist/` | Implementada · pendiente de aprobación |
 | [007](007-fachada-au/007-fachada-au.md) | Fachada `window.AU` | Implementada · pendiente de aprobación |
 | [008](008-componentes-declarativos/008-componentes-declarativos.md) | Componentes declarativos `data-au-*` y librerías diferidas | Implementada · pendiente de aprobación |
