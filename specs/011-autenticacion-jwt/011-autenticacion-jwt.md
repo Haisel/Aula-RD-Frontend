@@ -79,7 +79,7 @@ Build compilado servido con `vite preview` (puerto distinto) y la API simulada `
 
 **Observación:** con `apiBaseUrl` configurado, las rutas relativas de datos (`data-au-source="data/cobros.json"`) se piden a la API, no a la página (404 en la API simulada). Es coherente con el diseño, pero conviene recordarlo al integrar: los fixtures de `public/data/` no se sirven desde la API.
 
-**Límites:** una sola sesión de Chrome; el formulario `login.html` sigue en modo demostración (`data-au-submit="event"`), así que se probó `AU.login()`, no el envío del formulario con `data-au-submit="login"`.
+**Límites:** una sola sesión de Chrome; `login.html` sigue en modo demostración (`data-au-submit="event"`). Primero se probó `AU.login()` y después, en la verificación de la spec 008, el envío del formulario real con `data-au-submit="login"` (cambiando el atributo): clave incorrecta da el error "Correo o contraseña incorrectos." y la sesión sigue `unauthenticated`; clave correcta deja la sesión `authenticated` sin token en `localStorage` ni `sessionStorage`.
 
 ## Aprobación
 - [x] Revisada por el propietario — fecha: 08/11/2026 (Haisel Ramirez)
