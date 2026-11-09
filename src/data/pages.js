@@ -110,6 +110,7 @@ const NAV = {
       children: [
         { label: 'CRUD', icon: 'pencil-square', href: 'ejemplo-crud.html' },
         { label: 'Reporte', icon: 'bar-chart-line', href: 'ejemplo-reporte.html' },
+        { label: 'Tablero', icon: 'kanban', href: 'ejemplo-kanban.html' },
       ],
     },
     {
@@ -324,6 +325,15 @@ const PAGES = {
     user: GALLERY_USER,
     demo: true,
     crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Datos' }, { label: 'Reporte' }],
+  },
+  'ejemplo-kanban.html': {
+    title: 'Tablero de solicitudes',
+    description: 'Tarjetas que se mueven entre columnas arrastrándolas o con botones accesibles por teclado.',
+    portal: 'galeria',
+    active: 'ejemplo-kanban.html',
+    user: GALLERY_USER,
+    demo: true,
+    crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Datos' }, { label: 'Tablero' }],
   },
   '403.html': {
     title: 'Acceso denegado',

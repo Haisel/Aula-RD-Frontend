@@ -11,6 +11,7 @@
  */
 import { crud } from './crud.js';
 import { reporte } from './reporte-page.js';
+import { tablero } from './tablero-page.js';
 
 /**
  * Activa una demostración sobre su contenedor.
@@ -21,7 +22,7 @@ import { reporte } from './reporte-page.js';
  */
 
 /** @type {Record<string, Demo>} */
-export const demos = { crud, reporte };
+export const demos = { crud, reporte, tablero };
 
 /**
  * Busca los contenedores `[data-demo]` de la página y activa su demostración.

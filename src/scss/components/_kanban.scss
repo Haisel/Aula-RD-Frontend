@@ -1,0 +1,37 @@
+// Tablero tipo kanban de la galería (spec 012, T-18). Solo usa variables --au-*.
+.au-kanban-col {
+  padding: 1rem;
+  border: 1px solid var(--au-border);
+  border-radius: 0.75rem;
+  background: var(--au-surface-alt, var(--au-bg));
+}
+
+// Cada lista conserva una altura mínima para que una columna vacía pueda recibir tarjetas.
+.au-kanban-list {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  min-height: 7rem;
+
+  &:empty::before {
+    content: 'Sin solicitudes: suelte una tarjeta aquí';
+    padding: 1.5rem 0.75rem;
+    border: 1px dashed var(--au-border);
+    border-radius: 0.5rem;
+    color: var(--au-text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}
+
+.au-kanban-card {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .btn {
+    cursor: pointer;
+  }
+}

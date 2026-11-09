@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Tablero de solicitudes" subtitle="Tarjetas que se mueven entre columnas arrastrándolas o con los botones de cada tarjeta."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Las solicitudes son inventadas y los movimientos no se guardan."}}
+
+  <div data-demo="tablero">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+      <p class="text-body-secondary mb-0">Arrastre una tarjeta a otra columna, o use las flechas de la tarjeta con el teclado.</p>
+      <button class="btn btn-outline-primary" type="button" data-tab="reiniciar"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>Restablecer tablero</button>
+    </div>
+    <div data-tab="region"></div>
+    <p class="visually-hidden" role="status" data-tab="anuncio"></p>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="c-uso">
+    <h2 id="c-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Arrastrar:</strong> <code>AU.dragSort</code> con un mismo <code>group</code> en las tres listas permite pasar tarjetas entre columnas; SortableJS se carga solo al abrir la página.</li>
+      <li><strong>Teclado y lectores de pantalla:</strong> arrastrar no es accesible por sí solo, por eso cada tarjeta trae botones «Mover a…» (Tab y Enter). Cada movimiento se anuncia con su posición y el foco sigue a la tarjeta.</li>
+      <li><strong>Conteos:</strong> el número de cada columna se recalcula tras cada movimiento.</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<!-- Una lista por columna, con el mismo group -->
+<ul class="au-kanban-list list-unstyled" data-col="nuevas">
+  <li class="card au-kanban-card" data-id="sol-01">…</li>
+</ul>
+
+// Arrastre entre columnas y alternativa para teclado (solo con la fachada AU)
+await AU.dragSort(lista, { group: 'tablero', draggable: '.au-kanban-card',
+  onEnd: (e) => mover(e.item.dataset.id, e.to.dataset.col, e.newIndex) });
+// Botón por tarjeta: data-tab-move="revision" y aria-label="Mover «título» a En revisión"
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

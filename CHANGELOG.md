@@ -5,6 +5,7 @@
 **Nuevo**
 - Galería, Fase 2 (spec 012): segunda entrada de Vite para el código de demostración (`dist/js/demo.js`, que solo cargan las páginas con `demo` en su contexto; `app.js` queda idéntico) y `ejemplo-crud.html`: crear, editar y borrar estudiantes en memoria con validación, confirmación, aviso, deshacer y los estados vacío, cargando y error. Nueva sección "Datos" en el menú y el índice de la galería. `tests/crud-page.test.js`.
 - Galería, Fase 2: `ejemplo-reporte.html` con filtros por grado, estado y pagos que recalculan indicadores, dos gráficos (`AU.openChart`) y tabla; exportación a Excel de las filas visibles (`AU.exportRows`) e impresión con reglas `@media print` (`_report.scss`, clase `au-no-print`). Los repintados van en cola para no usar dos gráficos sobre un mismo lienzo. `tests/reporte-page.test.js`.
+- Galería, Fase 2: `ejemplo-kanban.html`, tablero de solicitudes en tres columnas: las tarjetas se arrastran entre columnas (`AU.dragSort` con `group`) o se mueven con botones «Mover a…» que sirven al teclado; cada movimiento se anuncia y el foco sigue a la tarjeta. `_kanban.scss`, `tests/tablero-page.test.js`.
 
 ## 0.4.0 — 09/11/2026
 

@@ -27,6 +27,7 @@
     <div class="au-gallery-grid">
       {{> components/gallery-card href="ejemplo-crud.html" icon="pencil-square" title="CRUD de estudiantes" text="Crear, editar y borrar con validación, confirmación, aviso y deshacer; estados vacío, cargando y error." uses="data-au-validate · AU.confirmDeleteByName · AU.createDataTable"}}
       {{> components/gallery-card href="ejemplo-reporte.html" icon="bar-chart-line" tone="info" title="Reporte de estudiantes" text="Filtros que actualizan indicadores, gráficos y tabla; exportación a Excel e impresión." uses="AU.openChart · AU.exportRows · data-au-action=print"}}
+      {{> components/gallery-card href="ejemplo-kanban.html" icon="kanban" tone="success" title="Tablero de solicitudes" text="Tarjetas que se arrastran entre columnas o se mueven con botones accesibles por teclado." uses="AU.dragSort · group · aria-live"}}
     </div>
   </section>
 

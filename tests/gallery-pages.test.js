@@ -20,6 +20,7 @@ const PAGES = [
   'ejemplo-estados.html',
   'ejemplo-crud.html',
   'ejemplo-reporte.html',
+  'ejemplo-kanban.html',
 ];
 const HUB = 'galeria.html';
 const ALL = [HUB, ...PAGES];
