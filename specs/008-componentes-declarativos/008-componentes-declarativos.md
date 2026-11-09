@@ -1,6 +1,6 @@
 # 008-componentes-declarativos
 
-> Estado: Implementada (08/11/2026) · pendiente de aprobación · Versión 1.0 · ADR-003, ADR-009, ADR-010
+> Estado: Aprobada (08/11/2026, por Haisel Ramirez) · Implementada (08/11/2026) · Versión 1.1 · ADR-003, ADR-009, ADR-010
 
 ## Objetivo
 Que cualquier backend obtenga comportamiento completo solo con HTML: atributos `data-au-*` que activan componentes y librerías del ecosistema, inicializados una sola vez y con carga diferida.
@@ -55,4 +55,4 @@ Build compilado servido con `vite preview`, Chrome en Windows. Los modos `ajax` 
 **Límites:** una sola sesión de Chrome. En `suscribir.html` rellené el `<select>` nativo por script, así que Choices siguió mostrando el texto de ayuda aunque el valor era válido; no probé la selección con el ratón. Los modos `native`, `ajax` y `login` no tienen ninguna página de ejemplo (todas usan `event`). No se probó Firefox ni Safari.
 
 ## Aprobación
-- [ ] Revisada por el propietario — fecha:
+- [x] Revisada por el propietario — fecha: 08/11/2026 (Haisel Ramirez)

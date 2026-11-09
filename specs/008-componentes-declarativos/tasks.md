@@ -19,10 +19,10 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina c
 - [x] T-05 Quill: `labelToolbar()` en `src/js/adapters/editor.js`; `tests/editor-a11y.test.js` (6 pruebas, vistas en rojo antes) y medido en navegador: 11 controles con nombre en español, ninguno sin nombre
 - [x] T-06 `CHANGELOG.md` actualizado
 
+- [x] T-07 Aprobación del propietario: 08/11/2026 (Haisel Ramirez)
+
 ## Pendiente
-| Id | Tarea | Cubre | Hecho cuando |
-|---|---|---|---|
-| T-07 | Pedir aprobación al propietario | — | Spec `Aprobada (fecha, por)` |
+Nada.
 
 ## Cobertura
 | Requisito | Tarea | Verificación |
