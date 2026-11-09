@@ -172,6 +172,21 @@ const PAGES = {
     layout: 'auth',
   },
   'login.html': { title: 'Iniciar sesión', description: 'Acceda a su cuenta de Aula RD.', layout: 'auth' },
+  'contacto.html': {
+    title: 'Contacto',
+    description: 'Escríbanos para solicitar una demostración o resolver una duda sobre Aula RD.',
+    layout: 'landing',
+  },
+  'terminos.html': {
+    title: 'Términos de uso',
+    description: 'Condiciones de uso de Aula RD. Texto de relleno: sustitúyalo por el texto legal.',
+    layout: 'landing',
+  },
+  'privacidad.html': {
+    title: 'Política de privacidad',
+    description: 'Cómo se tratan los datos personales en Aula RD. Texto de relleno: sustitúyalo por el texto legal.',
+    layout: 'landing',
+  },
   'login-centrado.html': {
     title: 'Inicio de sesión centrado',
     description: 'Variante de inicio de sesión: tarjeta centrada sobre fondo neutro.',

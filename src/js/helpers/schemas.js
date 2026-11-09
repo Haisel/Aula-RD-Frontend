@@ -87,6 +87,17 @@ export const perfilSchema = z.object({
   bio: z.string().trim().max(280, { message: 'Use 280 caracteres o menos.' }),
 });
 
+/** Contacto y solicitud de demostración (contacto.html): nombre, correo y mensaje. */
+export const contactoSchema = z.object({
+  nombre: fields.nombre('el nombre'),
+  email: fields.email,
+  mensaje: z
+    .string()
+    .trim()
+    .min(12, { message: 'Escriba el mensaje (al menos una oración).' })
+    .max(1000, { message: 'Use 1,000 caracteres o menos.' }),
+});
+
 /** Registro / suscripción de una institución (suscribir.html). */
 export const registroInstitucionSchema = z.object({
   institucion: fields.nombre('el nombre de la institución'),
@@ -150,6 +161,7 @@ export const schemas = new Map(
     ['recuperar', recuperarSchema],
     ['codigo-acceso', codigoAccesoSchema],
     ['perfil', perfilSchema],
+    ['contacto', contactoSchema],
     ['registro-institucion', registroInstitucionSchema],
     ['estudiante', estudianteSchema],
     ['pago', pagoSchema],
