@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Tablas de datos" subtitle="Búsqueda, orden, paginación, selección de filas, acciones masivas, filtros y detalle desplegable."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Las acciones masivas cambian la lista solo en memoria: recargue para recuperar los 60 estudiantes."}}
+
+  <div data-demo="tablas">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-5">
+            <label class="form-label" for="tbl-grado">Grado</label>
+            <select class="form-select" id="tbl-grado" data-tbl="filtro-grado"><option value="">Todos los grados</option></select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="tbl-estado">Estado</label>
+            <select class="form-select" id="tbl-estado" data-tbl="filtro-estado"><option value="">Todos</option><option>Activo</option><option>Inactivo</option><option>Retirado</option></select>
+          </div>
+          <div class="col-md-3 d-grid">
+            <button class="btn btn-outline-primary" type="button" data-tbl="restablecer"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>Restablecer datos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3" role="toolbar" aria-label="Acciones masivas">
+      <span class="fw-semibold me-2" data-tbl="contador">Ninguna fila seleccionada</span>
+      <button class="btn btn-outline-primary btn-sm" type="button" data-tbl="activar" disabled><i class="bi bi-check-circle" aria-hidden="true"></i>Activar</button>
+      <button class="btn btn-outline-primary btn-sm" type="button" data-tbl="desactivar" disabled><i class="bi bi-pause-circle" aria-hidden="true"></i>Desactivar</button>
+      <button class="btn btn-outline-primary btn-sm" type="button" data-tbl="exportar" disabled><i class="bi bi-file-earmark-excel" aria-hidden="true"></i>Exportar selección</button>
+      <button class="btn btn-outline-danger btn-sm" type="button" data-tbl="eliminar" disabled><i class="bi bi-trash3" aria-hidden="true"></i>Eliminar</button>
+    </div>
+
+    <div data-tbl="region"></div>
+    <p class="visually-hidden" role="status" data-tbl="anuncio"></p>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="c-uso">
+    <h2 id="c-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Selección:</strong> una casilla por fila y otra en la cabecera que marca todas las filas que coinciden con los filtros (queda indeterminada si solo hay algunas).</li>
+      <li><strong>Acciones masivas:</strong> se habilitan solo cuando hay filas marcadas; eliminar pide confirmación y exportar descarga únicamente lo marcado.</li>
+      <li><strong>Filtros externos:</strong> los listados de grado y estado filtran columnas de la tabla; la selección descarta lo que deja de verse, para no actuar sobre filas ocultas.</li>
+      <li><strong>Detalle:</strong> el botón de cada fila despliega más datos debajo (<code>aria-expanded</code>).</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<table class="table" data-au-no-sort="0,7">…</table>
+
+// Tabla interactiva, filtro externo por columna y fila de detalle (solo con la fachada AU)
+const tabla = await AU.createDataTable(el, { pageLength: 10 });
+tabla.column(2).search('^3\\.º Primaria$', true, false).draw();   // filtro externo
+tabla.row(tr).child('<dl>…</dl>').show();                           // detalle desplegable
+tabla.rows({ search: 'applied' }).nodes();                          // filas que coinciden
+await AU.exportRows({ rows: marcadas, columns, fileName: 'seleccion', format: 'xlsx' });
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

@@ -108,6 +108,7 @@ const NAV = {
       label: 'Datos',
       icon: 'database',
       children: [
+        { label: 'Tablas', icon: 'table', href: 'ejemplo-tablas.html' },
         { label: 'CRUD', icon: 'pencil-square', href: 'ejemplo-crud.html' },
         { label: 'Reporte', icon: 'bar-chart-line', href: 'ejemplo-reporte.html' },
         { label: 'Tablero', icon: 'kanban', href: 'ejemplo-kanban.html' },
@@ -307,6 +308,15 @@ const PAGES = {
     portal: 'galeria',
     active: 'ejemplo-estados.html',
     user: GALLERY_USER,
+  },
+  'ejemplo-tablas.html': {
+    title: 'Tablas de datos',
+    description: 'Selección de filas, acciones masivas, filtros externos y detalle desplegable.',
+    portal: 'galeria',
+    active: 'ejemplo-tablas.html',
+    user: GALLERY_USER,
+    demo: true,
+    crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Datos' }, { label: 'Tablas' }],
   },
   'ejemplo-crud.html': {
     title: 'CRUD de estudiantes',
