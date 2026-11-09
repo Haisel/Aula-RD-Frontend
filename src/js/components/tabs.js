@@ -65,7 +65,20 @@ export const tabsComponent = {
       emit(EVENTS.TABS_CHANGE, { tab: e.target, previous: e.relatedTarget ?? null }, root);
     };
     nav.addEventListener('shown.bs.tab', onShown);
+    /**
+     * Botones "Siguiente/Anterior" de un asistente: `data-au-tab-go="#panel"` activa ese paso.
+     * @param {Event} event Clic.
+     */
+    const onGo = (event) => {
+      const btn = /** @type {HTMLElement | null} */ (event.target)?.closest?.('[data-au-tab-go]');
+      if (!btn || !root.contains(btn)) return;
+      const dest = btn.getAttribute('data-au-tab-go');
+      const link = links.find((l) => (l.getAttribute('data-bs-target') ?? l.getAttribute('href')) === dest);
+      if (link) Tab.getOrCreateInstance(link).show();
+    };
+    root.addEventListener('click', onGo);
     return () => {
+      root.removeEventListener('click', onGo);
       nav.removeEventListener('shown.bs.tab', onShown);
       links.forEach((link) => Tab.getInstance(link)?.dispose());
     };

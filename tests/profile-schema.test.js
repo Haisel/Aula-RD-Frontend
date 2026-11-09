@@ -12,7 +12,12 @@ import { schemas, validate } from '../src/js/helpers/schemas.js';
  */
 const check = (data) => validate(/** @type {any} */ (schemas.get('perfil')), data);
 
-const ok = { nombre: 'Marisol Peña Cabrera', email: 'marisol.pena@colegio.edu.do', telefono: '(809) 555-0142', bio: 'Docente.' };
+const ok = {
+  nombre: 'Marisol Peña Cabrera',
+  email: 'marisol.pena@colegio.edu.do',
+  telefono: '(809) 555-0142',
+  bio: 'Docente.',
+};
 
 describe('esquema "perfil"', () => {
   it('está registrado', () => {

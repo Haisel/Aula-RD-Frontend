@@ -60,6 +60,7 @@ Catálogo vivo: `componentes.html`. Todo se usa con **clases** (estilo) y **atri
 | `data-au-confirm="texto"` | a / button | Confirma antes de seguir | `data-au-confirm-title`, `-text`, `-variant="danger"` |
 | `data-au-action` | button | Diálogo declarativo o acción propia | `success\|error\|warning\|info\|toast\|confirm\|confirm-delete\|loading\|print`, `data-au-message`, `data-au-type`, `data-au-duration`. Cualquier otro nombre ejecuta la función registrada con `AU.customSet(nombre, (el, evento) => …)` |
 | `data-au-tabs` | contenedor de un `.nav` | Pestañas accesibles: completa `role`, `aria-controls`, `aria-labelledby`, `tabindex`; emite `au:tabs:change` | botones con `data-bs-target="#panel"` |
+| `data-au-tab-go="#panel"` | button dentro de `data-au-tabs` | Botón "Siguiente/Anterior" de un asistente por pasos: activa ese panel y su pestaña. Si el envío falla, `showErrors` abre el paso del primer campo con error y le da el foco | — |
 | `data-au-alerts` | contenedor | Destino por defecto de `AU.inlineAlert()` | — |
 | `data-au-chart="url\|json"` | canvas | Chart.js | Ver contrato §4 |
 | `data-au-datatable` | table | DataTables 2 | `data-au-page-length`, `data-au-no-sort="5,6"`, `data-au-order='[[0,"asc"]]'` |

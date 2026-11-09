@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Estos son campos de archivo nativos del navegador. El tipo y el tamaño permitidos los debe comprobar siempre el servidor; el atributo accept solo orienta."}}
+
+  <div class="au-form-files row g-4">
+    <div class="col-lg-4">
+      <section class="card h-100" aria-labelledby="ar-uno"><div class="card-body d-grid gap-3">
+        <h2 class="au-card-title" id="ar-uno">Un documento</h2>
+        <div>
+          <label class="form-label" for="ar-doc">Acta de nacimiento (PDF)</label>
+          <input class="form-control" id="ar-doc" type="file" accept="application/pdf" aria-describedby="ar-doc-t">
+          <div class="form-text" id="ar-doc-t">Un archivo PDF de hasta 5 MB.</div>
+        </div>
+      </div></section>
+    </div>
+    <div class="col-lg-4">
+      <section class="card h-100" aria-labelledby="ar-varios"><div class="card-body d-grid gap-3">
+        <h2 class="au-card-title" id="ar-varios">Varios archivos</h2>
+        <div>
+          <label class="form-label" for="ar-multi">Comprobantes de pago</label>
+          <input class="form-control" id="ar-multi" type="file" multiple accept=".pdf,.png,.jpg" aria-describedby="ar-multi-t">
+          <div class="form-text" id="ar-multi-t">Puede elegir varios a la vez: PDF, PNG o JPG, hasta 5 MB cada uno.</div>
+        </div>
+      </div></section>
+    </div>
+    <div class="col-lg-4">
+      <section class="card h-100" aria-labelledby="ar-img"><div class="card-body d-grid gap-3">
+        <h2 class="au-card-title" id="ar-img">Solo imágenes</h2>
+        <div>
+          <label class="form-label" for="ar-foto">Foto del estudiante</label>
+          <input class="form-control" id="ar-foto" type="file" accept="image/png,image/jpeg" aria-describedby="ar-foto-t">
+          <div class="form-text" id="ar-foto-t">Una imagen PNG o JPG. En el móvil se puede tomar con la cámara.</div>
+        </div>
+      </div></section>
+    </div>
+    <div class="col-12">
+      <section class="card" aria-labelledby="ar-nota"><div class="card-body">
+        <h2 class="au-card-title mb-2" id="ar-nota">Qué falta, a propósito</h2>
+        <p class="mb-0 text-body-secondary">La plantilla no incluye vista previa, barra de progreso ni arrastrar y soltar: eso depende de cómo su servidor recibe los archivos. Cuando lo defina, se agrega sobre estos mismos campos con su API de carga.</p>
+      </div></section>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

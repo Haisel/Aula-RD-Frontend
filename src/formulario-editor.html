@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="El editor guarda HTML: su servidor debe sanitizarlo antes de guardarlo o mostrarlo."}}
+
+  <form class="au-form-editor card" data-au-validate="comunicado" data-au-submit="event" data-au-success="Comunicado válido (demostración): nada se envía." action="#" method="post" novalidate>
+    <div class="card-body d-grid gap-3">
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div><label class="form-label is-required" for="ed-grados">Para</label>
+        <select class="form-select" id="ed-grados" name="grados" multiple data-au-select data-au-placeholder="Elija secciones"><option value="4A">4.º A</option><option value="4B" selected>4.º B</option><option value="5A">5.º A</option></select></div>
+      <div><label class="form-label is-required" for="ed-asunto">Asunto</label><input class="form-control" id="ed-asunto" name="asunto" type="text" placeholder="Ej.: Reunión de padres" autocomplete="off"></div>
+      <div>
+        <span class="form-label is-required d-block" id="ed-msg-label">Mensaje</span>
+        <div data-au-editor data-au-input="#ed-html" data-au-placeholder="Escriba el comunicado: puede usar negritas, listas y enlaces…" aria-labelledby="ed-msg-label"></div>
+        <input type="hidden" name="mensaje" id="ed-html">
+      </div>
+      <div class="d-flex justify-content-end"><button class="btn btn-primary" type="submit"><i class="bi bi-send" aria-hidden="true"></i>Enviar comunicado</button></div>
+    </div>
+  </form>
+{{/layouts/app}}
+</body>
+</html>

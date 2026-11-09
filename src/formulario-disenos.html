@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <div class="au-form-layouts d-grid gap-4">
+    <section class="card" aria-labelledby="d-horizontal"><div class="card-body">
+      <h2 class="au-card-title mb-3" id="d-horizontal">Horizontal</h2>
+      <p class="text-body-secondary">La etiqueta a la izquierda y el campo a la derecha. Ideal para fichas con muchos datos.</p>
+      <div>
+        <div class="row mb-3"><label class="col-sm-3 col-form-label" for="h-nombre">Nombre</label><div class="col-sm-9"><input class="form-control" id="h-nombre" type="text" autocomplete="off"></div></div>
+        <div class="row mb-3"><label class="col-sm-3 col-form-label" for="h-email">Correo</label><div class="col-sm-9"><input class="form-control" id="h-email" type="email" autocomplete="off"></div></div>
+        <div class="row mb-3"><label class="col-sm-3 col-form-label" for="h-grado">Grado</label><div class="col-sm-9"><select class="form-select" id="h-grado"><option value="">Seleccione…</option><option>4.º Primaria</option><option>5.º Primaria</option></select></div></div>
+        <div class="row"><div class="col-sm-9 offset-sm-3"><button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: el formulario horizontal no envía nada.">Guardar</button></div></div>
+      </div>
+    </div></section>
+
+    <section class="card" aria-labelledby="d-linea"><div class="card-body">
+      <h2 class="au-card-title mb-3" id="d-linea">En línea</h2>
+      <p class="text-body-secondary">Todo en una fila: filtros y búsquedas. En pantallas pequeñas se apila. Las etiquetas se ocultan visualmente pero siguen leyéndose.</p>
+      <div class="row row-cols-lg-auto g-3 align-items-end">
+        <div class="col-12"><label class="visually-hidden" for="i-buscar">Buscar</label><input class="form-control" id="i-buscar" type="search" placeholder="Buscar estudiante" autocomplete="off"></div>
+        <div class="col-12"><label class="visually-hidden" for="i-grado">Grado</label><select class="form-select" id="i-grado"><option value="">Todos los grados</option><option>4.º Primaria</option><option>5.º Primaria</option></select></div>
+        <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="i-pend"><label class="form-check-label" for="i-pend">Solo con pagos pendientes</label></div></div>
+        <div class="col-12"><button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: aquí se aplica el filtro.">Filtrar</button></div>
+      </div>
+    </div></section>
+
+    <section class="card" aria-labelledby="d-flotante"><div class="card-body">
+      <h2 class="au-card-title mb-3" id="d-flotante">Etiqueta flotante</h2>
+      <p class="text-body-secondary">La etiqueta vive dentro del campo y sube al escribir. Ocupa menos espacio; exige un texto de etiqueta corto.</p>
+      <div class="row g-3">
+        <div class="col-md-6"><div class="form-floating"><input class="form-control" id="f-nombre" type="text" placeholder="Nombre" autocomplete="off"><label for="f-nombre">Nombre</label></div></div>
+        <div class="col-md-6"><div class="form-floating"><input class="form-control" id="f-email" type="email" placeholder="Correo" autocomplete="off"><label for="f-email">Correo</label></div></div>
+        <div class="col-md-6"><div class="form-floating"><select class="form-select" id="f-grado"><option value="">Seleccione…</option><option>4.º Primaria</option><option>5.º Primaria</option></select><label for="f-grado">Grado</label></div></div>
+        <div class="col-12"><div class="form-floating"><textarea class="form-control au-floating-area" id="f-nota" placeholder="Observaciones"></textarea><label for="f-nota">Observaciones</label></div></div>
+        <div class="col-12"><button class="btn btn-primary" type="button" data-au-action="toast" data-au-type="info" data-au-message="Demostración: el formulario flotante no envía nada.">Guardar</button></div>
+      </div>
+    </div></section>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

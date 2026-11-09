@@ -114,7 +114,35 @@ export function showErrors(form, errors, general) {
     box.textContent = general;
     box.classList.remove('d-none');
   }
-  first?.focus();
+  // Un campo en un paso (pestaña) oculto no puede recibir el foco: se abre su paso primero.
+  const pane = first?.closest('.tab-pane:not(.active)');
+  const tab = pane?.id ? document.querySelector(`[data-bs-target="#${CSS.escape(pane.id)}"]`) : null;
+  if (first && tab) {
+    const target = first;
+    tab.addEventListener('shown.bs.tab', () => focusField(target), { once: true });
+    /** @type {HTMLElement} */ (tab).click();
+    return;
+  }
+  if (first) focusField(first);
+}
+
+/**
+ * Da el foco a un campo con error. Si el campo está oculto porque lo sustituye un widget (lista
+ * de Choices, editor de texto o lienzo de firma), el foco va al widget: un `focus()` sobre el
+ * campo oculto no hace nada y el foco caería en `body`.
+ * @param {HTMLElement} field Campo con error.
+ * @returns {void}
+ */
+function focusField(field) {
+  const choices = field.closest('.choices');
+  const widget = field.id ? document.querySelector(`[data-au-input="#${CSS.escape(field.id)}"]`) : null;
+  /** @type {HTMLElement} */
+  let el = field;
+  if (choices) el = /** @type {HTMLElement} */ (choices.querySelector('input:not([type=hidden])') ?? choices);
+  else if (widget) el = /** @type {HTMLElement} */ (widget.querySelector('.ql-editor') ?? widget);
+  if (el !== field && !el.matches('input, select, textarea, button, [contenteditable], [tabindex]'))
+    el.setAttribute('tabindex', '-1');
+  el.focus();
 }
 
 /**

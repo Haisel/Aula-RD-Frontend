@@ -116,3 +116,37 @@
     border-top: 1px solid var(--au-border);
   }
 }
+
+// Campo flotante de varias líneas: Bootstrap exige una altura explícita.
+.au-floating-area {
+  height: 8rem;
+}
+
+// Asistente por pasos (spec 013, V-03): pestañas con número, sobre `data-au-tabs`.
+.au-wizard-steps {
+  gap: 0.5rem;
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+  }
+}
+
+.au-wizard-num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  background: var(--au-surface-2);
+  color: var(--au-text);
+
+  .nav-link.active & {
+    background: rgb(255 255 255 / 25%);
+    color: inherit;
+  }
+}

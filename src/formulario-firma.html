@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Pruebe enviar sin firmar para ver el mensaje. Una firma dibujada no reemplaza una firma electrónica con valor legal."}}
+
+  <div class="au-form-signature row justify-content-center">
+    <div class="col-lg-7">
+      <form class="card" data-au-validate="autorizacion" data-au-submit="event" data-au-success="Autorización firmada (demostración): nada se envía." action="#" method="post" novalidate>
+        <div class="card-body d-grid gap-3">
+          <h2 class="au-card-title">Autorización de actividad</h2>
+          <p class="text-body-secondary mb-0">Autorizo a mi hijo o hija a participar en la excursión al Museo de Historia Natural el 20/11/2026.</p>
+          <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+          <div>
+            <span class="form-label is-required d-block" id="fm-label">Firma de quien autoriza</span>
+            <canvas class="au-signature" id="fm-canvas" data-au-signature data-au-input="#fm-firma" aria-labelledby="fm-label"></canvas>
+            <input type="hidden" name="firma" id="fm-firma">
+          </div>
+          <div class="d-flex flex-wrap gap-2 justify-content-end">
+            <button class="btn btn-outline-primary" type="button" data-au-signature-clear="#fm-canvas">Borrar firma</button>
+            <button class="btn btn-primary" type="submit">Firmar y enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

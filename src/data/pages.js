@@ -116,6 +116,21 @@ const NAV = {
         { label: 'Editable', icon: 'pencil-square', href: 'perfil-editable.html' },
       ],
     },
+    {
+      label: 'Formularios',
+      icon: 'ui-checks',
+      children: [
+        { label: 'Controles básicos', icon: 'input-cursor-text', href: 'formulario-basico.html' },
+        { label: 'Diseños', icon: 'layout-three-columns', href: 'formulario-disenos.html' },
+        { label: 'Validación', icon: 'shield-check', href: 'formulario-validacion.html' },
+        { label: 'Por secciones', icon: 'list-nested', href: 'formulario-secciones.html' },
+        { label: 'Avanzado', icon: 'sliders', href: 'formulario-avanzado.html' },
+        { label: 'Asistente por pasos', icon: 'signpost-split', href: 'formulario-asistente.html' },
+        { label: 'Editor de texto', icon: 'type', href: 'formulario-editor.html' },
+        { label: 'Carga de archivos', icon: 'cloud-upload', href: 'formulario-archivos.html' },
+        { label: 'Firma', icon: 'pen', href: 'formulario-firma.html' },
+      ],
+    },
     { label: 'Catálogo de componentes', icon: 'palette', href: 'componentes.html', section: 'Otras páginas' },
     { label: 'Panel de la plataforma', icon: 'speedometer2', href: 'dashboard-superadmin.html' },
     { label: 'Panel de la institución', icon: 'building', href: 'dashboard-institucion.html' },
@@ -443,7 +458,8 @@ const PROFILE_PAGES = {
   'perfil-lateral.html': {
     profile: 'tutor',
     title: 'Perfil con tarjeta lateral',
-    description: 'Perfil con tarjeta de contacto a un lado y el detalle, los estudiantes y la actividad al otro.',
+    description:
+      'Perfil con tarjeta de contacto a un lado y el detalle, los estudiantes y la actividad al otro.',
   },
   'perfil-compacto.html': {
     profile: 'estudiante',
@@ -476,6 +492,59 @@ for (const [file, cfg] of Object.entries(PROFILE_PAGES)) {
     user: GALLERY_USER,
     profileKey: cfg.profile,
     crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Perfiles' }, { label: cfg.title }],
+  };
+}
+
+/**
+ * Páginas de formularios (spec 013, V-03): cada una enseña una técnica distinta. Portal de la galería.
+ */
+const FORM_PAGES = {
+  'formulario-basico.html': {
+    title: 'Controles básicos',
+    description: 'Campos de texto, números, fechas, listas, casillas, interruptores, rangos, tamaños y estados.',
+  },
+  'formulario-disenos.html': {
+    title: 'Diseños de formulario',
+    description: 'El mismo formulario en diseño horizontal, en línea y con etiquetas flotantes.',
+  },
+  'formulario-validacion.html': {
+    title: 'Validación',
+    description: 'Estados válido e inválido, mensajes por campo en español y validación con esquema Zod.',
+  },
+  'formulario-secciones.html': {
+    title: 'Formulario por secciones',
+    description: 'Un formulario largo agrupado en secciones con leyenda, ayudas y validación.',
+  },
+  'formulario-avanzado.html': {
+    title: 'Formulario avanzado',
+    description: 'Listas con búsqueda y selección múltiple, fechas, máscaras dominicanas y orden por arrastre.',
+  },
+  'formulario-asistente.html': {
+    title: 'Asistente por pasos',
+    description: 'Un formulario dividido en pasos con avance, retroceso y resumen antes de enviar.',
+  },
+  'formulario-editor.html': {
+    title: 'Editor de texto',
+    description: 'Editor de texto enriquecido para redactar un comunicado, con validación.',
+  },
+  'formulario-archivos.html': {
+    title: 'Carga de archivos',
+    description: 'Campos de archivo nativos: uno, varios y solo imágenes, con sus límites explicados.',
+  },
+  'formulario-firma.html': {
+    title: 'Firma',
+    description: 'Autorización firmada con el dedo o el ratón sobre un lienzo, con validación.',
+  },
+};
+
+for (const [file, cfg] of Object.entries(FORM_PAGES)) {
+  /** @type {Record<string, any>} */ (PAGES)[file] = {
+    title: cfg.title,
+    description: cfg.description,
+    portal: 'galeria',
+    active: file,
+    user: GALLERY_USER,
+    crumbs: [{ label: 'Galería', href: 'galeria.html' }, { label: 'Formularios' }, { label: cfg.title }],
   };
 }
 

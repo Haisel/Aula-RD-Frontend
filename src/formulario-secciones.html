@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Envíe vacío para ver los mensajes de las tres secciones."}}
+
+  <form class="au-form-sections card" data-au-validate="registro-institucion" data-au-submit="event" data-au-success="Registro válido (demostración): nada se envía." action="#" method="post" novalidate>
+    <div class="card-body d-grid gap-4">
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+
+      <fieldset class="au-form-section">
+        <legend>Datos de la institución</legend>
+        <p class="form-text">Los que aparecen en facturas y reportes.</p>
+        <div class="row g-3">
+          <div class="col-md-8"><label class="form-label is-required" for="s-institucion">Nombre de la institución</label><input class="form-control" id="s-institucion" name="institucion" type="text" autocomplete="organization"></div>
+          <div class="col-md-4"><label class="form-label is-required" for="s-rnc">RNC</label><input class="form-control" id="s-rnc" name="rnc" data-au-mask="rnc" placeholder="0-00-00000-0" autocomplete="off"></div>
+          <div class="col-md-6"><label class="form-label is-required" for="s-provincia">Provincia</label>
+            <select class="form-select" id="s-provincia" name="provincia"><option value="">Seleccione…</option><option>Distrito Nacional</option><option>Santo Domingo</option><option>Santiago</option><option>La Altagracia</option></select></div>
+          <div class="col-md-6"><label class="form-label is-required" for="s-telefono">Teléfono</label><input class="form-control" id="s-telefono" name="telefono" type="tel" data-au-mask="telefono" placeholder="(809) 000-0000" autocomplete="tel"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="au-form-section">
+        <legend>Plan</legend>
+        <p class="form-text">Puede cambiarlo cuando quiera.</p>
+        <div class="d-flex flex-wrap gap-4">
+          <div class="form-check"><input class="form-check-input" type="radio" name="plan" id="s-plan-b" value="basico"><label class="form-check-label" for="s-plan-b">Básico</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="plan" id="s-plan-p" value="profesional"><label class="form-check-label" for="s-plan-p">Profesional</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="plan" id="s-plan-x" value="premium"><label class="form-check-label" for="s-plan-x">Premium</label></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="au-form-section">
+        <legend>Dirección y acceso</legend>
+        <p class="form-text">La persona que dirige será la administradora de la cuenta.</p>
+        <div class="row g-3">
+          <div class="col-md-6"><label class="form-label is-required" for="s-director">Nombre de quien dirige</label><input class="form-control" id="s-director" name="director" type="text" autocomplete="name"></div>
+          <div class="col-md-6"><label class="form-label is-required" for="s-cedula">Cédula</label><input class="form-control" id="s-cedula" name="cedula" data-au-mask="cedula" placeholder="000-0000000-0" autocomplete="off"></div>
+          <div class="col-md-6"><label class="form-label is-required" for="s-email">Correo</label><input class="form-control" id="s-email" name="email" type="email" autocomplete="email"></div>
+          <div class="col-md-6"><label class="form-label is-required" for="s-inicio">Inicio del año escolar</label><input class="form-control" id="s-inicio" name="inicio" data-au-datepicker placeholder="DD/MM/AAAA" autocomplete="off"></div>
+          <div class="col-md-6"><label class="form-label is-required" for="s-clave">Contraseña</label>
+            <div class="input-group"><input class="form-control" id="s-clave" name="password" type="password" autocomplete="new-password" aria-describedby="s-clave-t"><button class="btn btn-outline-primary" type="button" data-au-password-toggle="#s-clave" aria-label="Mostrar u ocultar la contraseña"><i class="bi bi-eye" aria-hidden="true"></i></button></div>
+            <div class="form-text" id="s-clave-t">Al menos 8 caracteres, con letras y números.</div></div>
+        </div>
+      </fieldset>
+
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="s-terminos" name="terminos"><label class="form-check-label" for="s-terminos">Acepto los términos de servicio</label></div>
+      <div class="d-flex justify-content-end gap-2"><button class="btn btn-outline-primary" type="reset">Limpiar</button><button class="btn btn-primary" type="submit">Registrar institución</button></div>
+    </div>
+  </form>
+{{/layouts/app}}
+</body>
+</html>

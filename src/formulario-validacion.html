@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Envíe el formulario vacío para ver los mensajes. La validación del navegador es una ayuda: el servidor debe volver a validar todo."}}
+
+  <div class="au-form-validation row g-4">
+    <div class="col-lg-5">
+      <section class="card h-100" aria-labelledby="v-estados"><div class="card-body d-grid gap-3">
+        <h2 class="au-card-title" id="v-estados">Los estados</h2>
+        <div>
+          <label class="form-label" for="v-ok">Campo válido</label>
+          <input class="form-control is-valid" id="v-ok" type="text" value="María Fernanda Peña" aria-describedby="v-ok-t">
+          <div class="valid-feedback" id="v-ok-t">Se ve bien.</div>
+        </div>
+        <div>
+          <label class="form-label" for="v-mal">Campo inválido</label>
+          <input class="form-control is-invalid" id="v-mal" type="email" value="mariafernanda" aria-invalid="true" aria-describedby="v-mal-t">
+          <div class="invalid-feedback" id="v-mal-t">Escriba un correo válido, p. ej. nombre@colegio.edu.do.</div>
+        </div>
+        <div>
+          <label class="form-label" for="v-sel">Lista inválida</label>
+          <select class="form-select is-invalid" id="v-sel" aria-invalid="true" aria-describedby="v-sel-t"><option value="">Seleccione…</option><option>4.º Primaria</option></select>
+          <div class="invalid-feedback" id="v-sel-t">Seleccione el grado.</div>
+        </div>
+        <p class="small text-body-secondary mb-0">Un campo con error lleva <code>.is-invalid</code>, <code>aria-invalid="true"</code> y un mensaje enlazado con <code>aria-describedby</code>. El color nunca es la única señal: el texto lo explica.</p>
+      </div></section>
+    </div>
+    <div class="col-lg-7">
+      <form class="card h-100" data-au-validate="pago" data-au-submit="event" data-au-success="Pago válido (demostración): nada se envía." action="#" method="post" novalidate>
+        <div class="card-body d-grid gap-3">
+          <h2 class="au-card-title" id="v-vivo">Pruébelo: registrar un pago</h2>
+          <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+          <div><label class="form-label is-required" for="val-estudiante">Estudiante</label>
+            <select class="form-select" id="val-estudiante" name="estudiante" data-au-select data-au-placeholder="Buscar estudiante"><option value="">Buscar estudiante</option><option value="1">María Fernanda Peña · 4.º Secundaria</option><option value="2">José Luis Almonte · 2.º Primaria</option></select></div>
+          <div class="row g-3">
+            <div class="col-sm-6"><label class="form-label is-required" for="val-monto">Monto</label><div class="input-group"><span class="input-group-text">RD$</span><input class="form-control text-end au-tabular" id="val-monto" name="monto" data-au-mask="moneda" placeholder="0.00" autocomplete="off"></div></div>
+            <div class="col-sm-6"><label class="form-label is-required" for="val-fecha">Fecha</label><input class="form-control" id="val-fecha" name="fecha" data-au-datepicker placeholder="DD/MM/AAAA" autocomplete="off"></div>
+          </div>
+          <div><label class="form-label is-required" for="val-metodo">Método</label>
+            <select class="form-select" id="val-metodo" name="metodo"><option value="">Seleccione…</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="cheque">Cheque</option></select></div>
+          <div class="d-flex justify-content-end gap-2"><button class="btn btn-outline-primary" type="reset">Limpiar</button><button class="btn btn-primary" type="submit">Registrar pago</button></div>
+        </div>
+      </form>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>

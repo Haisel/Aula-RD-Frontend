@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="El esquema de validación es el de un comunicado; los demás campos muestran las máscaras y selectores."}}
+
+  <form class="au-form-advanced card" data-au-validate="comunicado" data-au-submit="event" data-au-success="Comunicado válido (demostración): nada se envía." action="#" method="post" novalidate>
+    <div class="card-body d-grid gap-4">
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+
+      <fieldset class="au-form-section">
+        <legend>Listas con búsqueda</legend>
+        <div class="row g-3">
+          <div class="col-md-6"><label class="form-label is-required" for="a-grados">Para (varias secciones)</label>
+            <select class="form-select" id="a-grados" name="grados" multiple data-au-select data-au-placeholder="Elija secciones"><option value="4A">4.º A</option><option value="4B">4.º B</option><option value="5A">5.º A</option><option value="5B">5.º B</option></select></div>
+          <div class="col-md-6"><label class="form-label" for="a-etiquetas">Etiquetas (puede crear nuevas)</label>
+            <select class="form-select" id="a-etiquetas" name="etiquetas" multiple data-au-select data-au-create="true" data-au-placeholder="Escriba y presione Enter"><option value="urgente">Urgente</option><option value="evento">Evento</option></select></div>
+          <div class="col-12"><label class="form-label is-required" for="a-asunto">Asunto</label><input class="form-control" id="a-asunto" name="asunto" type="text" autocomplete="off"></div>
+          <div class="col-12"><label class="form-label is-required" for="a-mensaje">Mensaje</label><textarea class="form-control" id="a-mensaje" name="mensaje" rows="3"></textarea></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="au-form-section">
+        <legend>Fechas</legend>
+        <div class="row g-3">
+          <div class="col-md-4"><label class="form-label" for="a-fecha">Fecha</label><input class="form-control" id="a-fecha" name="fecha" data-au-datepicker placeholder="DD/MM/AAAA" autocomplete="off"></div>
+          <div class="col-md-4"><label class="form-label" for="a-rango">Rango de fechas</label><input class="form-control" id="a-rango" name="periodo" data-au-datepicker="range" placeholder="Desde — hasta" autocomplete="off"></div>
+          <div class="col-md-4"><label class="form-label" for="a-hora">Fecha y hora</label><input class="form-control" id="a-hora" name="envio" data-au-datepicker="datetime" placeholder="DD/MM/AAAA HH:mm" autocomplete="off"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="au-form-section">
+        <legend>Máscaras dominicanas</legend>
+        <div class="row g-3">
+          <div class="col-md-3"><label class="form-label" for="a-cedula">Cédula</label><input class="form-control" id="a-cedula" name="cedula" data-au-mask="cedula" placeholder="000-0000000-0" autocomplete="off"></div>
+          <div class="col-md-3"><label class="form-label" for="a-rnc">RNC</label><input class="form-control" id="a-rnc" name="rnc" data-au-mask="rnc" placeholder="0-00-00000-0" autocomplete="off"></div>
+          <div class="col-md-3"><label class="form-label" for="a-monto">Monto</label><div class="input-group"><span class="input-group-text">RD$</span><input class="form-control text-end au-tabular" id="a-monto" name="monto" data-au-mask="moneda" placeholder="0.00" autocomplete="off"></div></div>
+          <div class="col-md-3"><label class="form-label" for="a-cupos">Cupos</label><input class="form-control text-end au-tabular" id="a-cupos" name="cupos" data-au-mask="entero" placeholder="0" autocomplete="off"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="au-form-section">
+        <legend>Orden por arrastre</legend>
+        <p class="form-text" id="a-orden-t">Arrastre por el asa para cambiar el orden de las asignaturas. Solo funciona con ratón o pantalla táctil: si su proceso lo exige, ofrezca también otra forma de ordenar con teclado.</p>
+        <ul class="list-group" data-au-sortable data-au-input="#a-orden" aria-describedby="a-orden-t">
+          <li class="list-group-item d-flex gap-2" data-id="mat"><i class="bi bi-grip-vertical" data-au-handle aria-hidden="true"></i>Matemática</li>
+          <li class="list-group-item d-flex gap-2" data-id="esp"><i class="bi bi-grip-vertical" data-au-handle aria-hidden="true"></i>Lengua Española</li>
+          <li class="list-group-item d-flex gap-2" data-id="nat"><i class="bi bi-grip-vertical" data-au-handle aria-hidden="true"></i>Ciencias de la Naturaleza</li>
+        </ul>
+        <input type="hidden" id="a-orden" name="orden">
+      </fieldset>
+
+      <div class="d-flex justify-content-end gap-2"><button class="btn btn-outline-primary" type="reset">Limpiar</button><button class="btn btn-primary" type="submit">Enviar comunicado</button></div>
+    </div>
+  </form>
+{{/layouts/app}}
+</body>
+</html>

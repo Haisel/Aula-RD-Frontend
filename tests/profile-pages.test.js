@@ -36,7 +36,10 @@ function register(dir) {
     const p = resolve(dir, e.name);
     if (e.isDirectory()) register(p);
     else if (/\.(hbs|html)$/.test(e.name)) {
-      const id = relative(PARTIALS, p).split(sep).join('/').replace(/\.(hbs|html)$/, '');
+      const id = relative(PARTIALS, p)
+        .split(sep)
+        .join('/')
+        .replace(/\.(hbs|html)$/, '');
       hb.registerPartial(id, readFileSync(p, 'utf8'));
     }
   }
@@ -141,7 +144,9 @@ describe('variantes de perfil (spec 013 · V-02)', () => {
 
   it('cada variante tiene una estructura distinta: ninguna marca aparece en dos páginas', () => {
     for (const a of PAGES) {
-      const otras = PAGES.filter((b) => b.file !== a.file && render(b.file).includes(a.marca)).map((b) => b.file);
+      const otras = PAGES.filter((b) => b.file !== a.file && render(b.file).includes(a.marca)).map(
+        (b) => b.file,
+      );
       expect(otras, `${a.marca} también está en ${otras.join(', ')}`).toEqual([]);
     }
   });

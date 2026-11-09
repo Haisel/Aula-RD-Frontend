@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Los pasos se validan al enviar: si falta algo en un paso anterior, se abre ese paso con el primer error."}}
+
+  <form class="au-form-wizard card" data-au-validate="estudiante" data-au-submit="event" data-au-success="Matrícula válida (demostración): nada se envía." action="#" method="post" novalidate>
+    <div class="card-body" data-au-tabs>
+      <ul class="nav nav-pills au-wizard-steps mb-4">
+        <li class="nav-item"><button class="nav-link active" type="button" data-bs-target="#w-paso-1"><span class="au-wizard-num" aria-hidden="true">1</span>Estudiante</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-bs-target="#w-paso-2"><span class="au-wizard-num" aria-hidden="true">2</span>Tutor y cuota</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-bs-target="#w-paso-3"><span class="au-wizard-num" aria-hidden="true">3</span>Enviar</button></li>
+      </ul>
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="w-paso-1">
+          <h2 class="au-card-title mb-3">Datos del estudiante</h2>
+          <div class="row g-3">
+            <div class="col-md-7"><label class="form-label is-required" for="w-nombre">Nombre del estudiante</label><input class="form-control" id="w-nombre" name="nombre" type="text" autocomplete="off"></div>
+            <div class="col-md-5"><label class="form-label is-required" for="w-grado">Grado</label>
+              <select class="form-select" id="w-grado" name="grado"><option value="">Seleccione…</option><option>1.º Primaria</option><option>2.º Primaria</option><option>3.º Primaria</option><option>4.º Primaria</option></select></div>
+          </div>
+          <div class="d-flex justify-content-end mt-4"><button class="btn btn-primary" type="button" data-au-tab-go="#w-paso-2">Siguiente<i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button></div>
+        </div>
+        <div class="tab-pane fade" id="w-paso-2">
+          <h2 class="au-card-title mb-3">Tutor y cuota</h2>
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label is-required" for="w-tutor">Nombre del tutor</label><input class="form-control" id="w-tutor" name="tutor" type="text" autocomplete="off"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="w-cedula">Cédula del tutor</label><input class="form-control" id="w-cedula" name="cedulaTutor" data-au-mask="cedula" placeholder="000-0000000-0" autocomplete="off"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="w-tel">Teléfono del tutor</label><input class="form-control" id="w-tel" name="telefonoTutor" type="tel" data-au-mask="telefono" placeholder="(809) 000-0000" autocomplete="off"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="w-cuota">Cuota mensual</label><div class="input-group"><span class="input-group-text">RD$</span><input class="form-control text-end au-tabular" id="w-cuota" name="cuota" data-au-mask="moneda" placeholder="0.00" autocomplete="off"></div></div>
+          </div>
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-primary" type="button" data-au-tab-go="#w-paso-1"><i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Anterior</button>
+            <button class="btn btn-primary" type="button" data-au-tab-go="#w-paso-3">Siguiente<i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="w-paso-3">
+          <h2 class="au-card-title mb-3">Revisar y enviar</h2>
+          <p class="text-body-secondary">Vuelva a los pasos anteriores si quiere corregir algo. Al enviar se validan los datos de los dos pasos; si hay un error, se abre el paso correspondiente y el cursor queda en el campo.</p>
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-primary" type="button" data-au-tab-go="#w-paso-2"><i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Anterior</button>
+            <button class="btn btn-primary" type="submit">Enviar matrícula</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+{{/layouts/app}}
+</body>
+</html>

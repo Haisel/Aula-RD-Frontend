@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title=title subtitle=description}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <div class="au-form-basic row g-4">
+    <div class="col-lg-6">
+      <section class="card h-100" aria-labelledby="b-texto"><div class="card-body d-grid gap-3">
+        <h2 class="au-card-title" id="b-texto">Texto y números</h2>
+        <div><label class="form-label" for="b-nombre">Nombre</label><input class="form-control" id="b-nombre" type="text" placeholder="Ej.: María Fernanda Peña" autocomplete="off"></div>
+        <div><label class="form-label" for="b-email">Correo</label><input class="form-control" id="b-email" type="email" placeholder="nombre@colegio.edu.do" autocomplete="off"></div>
+        <div><label class="form-label" for="b-clave">Contraseña</label><input class="form-control" id="b-clave" type="password" autocomplete="new-password"></div>
+        <div class="row g-3">
+          <div class="col-sm-6"><label class="form-label" for="b-edad">Edad</label><input class="form-control" id="b-edad" type="number" min="3" max="99" value="10"></div>
+          <div class="col-sm-6"><label class="form-label" for="b-tel">Teléfono</label><input class="form-control" id="b-tel" type="tel" placeholder="(809) 000-0000" autocomplete="off"></div>
+        </div>
+        <div><label class="form-label" for="b-fecha">Fecha</label><input class="form-control" id="b-fecha" type="date"></div>
+        <div><label class="form-label" for="b-nota">Observaciones</label><textarea class="form-control" id="b-nota" rows="3" placeholder="Escriba aquí…"></textarea></div>
+      </div></section>
+    </div>
+    <div class="col-lg-6">
+      <section class="card h-100" aria-labelledby="b-elegir"><div class="card-body d-grid gap-3">
+        <h2 class="au-card-title" id="b-elegir">Elegir entre opciones</h2>
+        <div><label class="form-label" for="b-grado">Grado</label>
+          <select class="form-select" id="b-grado"><option value="">Seleccione…</option><option>1.º Primaria</option><option>2.º Primaria</option><option>3.º Primaria</option></select></div>
+        <div><label class="form-label" for="b-secciones">Secciones (varias)</label>
+          <select class="form-select" id="b-secciones" multiple size="3"><option>A</option><option selected>B</option><option>C</option></select></div>
+        <fieldset>
+          <legend class="form-label">Jornada</legend>
+          <div class="form-check"><input class="form-check-input" type="radio" name="b-jornada" id="b-jor-m" checked><label class="form-check-label" for="b-jor-m">Matutina</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="b-jornada" id="b-jor-v"><label class="form-check-label" for="b-jor-v">Vespertina</label></div>
+        </fieldset>
+        <fieldset>
+          <legend class="form-label">Servicios</legend>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="b-srv-t" checked><label class="form-check-label" for="b-srv-t">Transporte</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="b-srv-c"><label class="form-check-label" for="b-srv-c">Comedor</label></div>
+        </fieldset>
+        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="b-aviso" checked><label class="form-check-label" for="b-aviso">Avisar por correo</label></div>
+        <div><label class="form-label" for="b-rango">Meta de asistencia: 90 %</label><input class="form-range" id="b-rango" type="range" min="50" max="100" value="90"></div>
+      </div></section>
+    </div>
+    <div class="col-12">
+      <section class="card" aria-labelledby="b-extras"><div class="card-body">
+        <h2 class="au-card-title mb-3" id="b-extras">Tamaños, grupos y estados</h2>
+        <div class="row g-3">
+          <div class="col-md-4"><label class="form-label" for="b-grande">Tamaño grande</label><input class="form-control form-control-lg" id="b-grande" type="text" value="form-control-lg"></div>
+          <div class="col-md-4"><label class="form-label" for="b-peq">Tamaño pequeño</label><input class="form-control form-control-sm" id="b-peq" type="text" value="form-control-sm"></div>
+          <div class="col-md-4"><label class="form-label" for="b-monto">Con prefijo</label><div class="input-group"><span class="input-group-text">RD$</span><input class="form-control text-end" id="b-monto" type="text" value="12,500.00"></div></div>
+          <div class="col-md-4"><label class="form-label" for="b-deshab">Deshabilitado</label><input class="form-control" id="b-deshab" type="text" value="No se puede editar" disabled></div>
+          <div class="col-md-4"><label class="form-label" for="b-lectura">Solo lectura</label><input class="form-control" id="b-lectura" type="text" value="Matrícula 2023-0147" readonly></div>
+          <div class="col-md-4"><label class="form-label" for="b-ayuda">Con ayuda</label><input class="form-control" id="b-ayuda" type="text" aria-describedby="b-ayuda-t"><div class="form-text" id="b-ayuda-t">Texto de ayuda enlazado con aria-describedby.</div></div>
+        </div>
+      </div></section>
+    </div>
+  </div>
+{{/layouts/app}}
+</body>
+</html>
