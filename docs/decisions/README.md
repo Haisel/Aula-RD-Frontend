@@ -16,3 +16,4 @@ Las ADR 001–005 viven en el repositorio original (`E:\AulaRD\docs\decisions`) 
 | [014](014-contexto-institucional-por-cabecera.md) | Contexto institucional por cabecera `X-Institution-Id` (resuelve D-02) | **Aceptada** (08/11/2026) | Spec 010 RN-04 |
 | [015](015-autenticacion-jwt-token-en-memoria.md) | Autenticación JWT: token de acceso en memoria + renovación en cookie `httpOnly` | **Aceptada** (08/11/2026) | Spec 011; modo cookies+CSRF pasa a opcional |
 | [016](016-limite-de-peso-de-app-js.md) | Límite de `app.js`: de 100 KB a 110 KB gzip | **Aceptada** (09/11/2026) | Spec 006 RNF-01 |
+| [017](017-escala-compacta-referencia-adminkit.md) | Escala compacta (tipografía, relleno y márgenes) con AdminKit como referencia | **Aceptada** (09/11/2026) | Spec 005 |

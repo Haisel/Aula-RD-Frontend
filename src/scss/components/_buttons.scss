@@ -69,6 +69,18 @@
   --bs-btn-disabled-border-color: var(--au-border);
 }
 
+// Contorno de peligro: el texto usa el tono accesible en claro y en oscuro (contraste AA).
+.btn-outline-danger {
+  --bs-btn-color: var(--au-danger-text);
+  --bs-btn-border-color: var(--au-danger-text);
+  --bs-btn-hover-bg: var(--au-danger-text);
+  --bs-btn-hover-color: var(--au-surface);
+  --bs-btn-hover-border-color: var(--au-danger-text);
+  --bs-btn-active-bg: var(--au-danger-text);
+  --bs-btn-active-color: var(--au-surface);
+  --bs-btn-active-border-color: var(--au-danger-text);
+}
+
 .btn-ghost {
   --bs-btn-color: var(--au-text);
   --bs-btn-bg: transparent;

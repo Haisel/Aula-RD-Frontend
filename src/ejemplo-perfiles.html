@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Perfiles por rol" subtitle="El perfil propio de cada rol: datos, pestañas y acciones distintos, según el contexto de la sesión."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Cambiar de rol solo modifica el contexto de ejemplo en memoria."}}
+
+  <div class="alert alert-warning" role="note"><i class="bi bi-shield-exclamation" aria-hidden="true"></i><div><p class="au-alert-title">Ocultar no es proteger</p><code>data-au-can</code> y <code>AU.can()</code> solo muestran u ocultan elementos. El control real de acceso debe estar en el servidor.</div></div>
+
+  <div data-demo="perfiles">
+    <div class="alert alert-danger" role="alert" data-pf="error" hidden>No se pudieron cargar los perfiles de ejemplo. Recargue la página.</div>
+    <div data-pf="region" hidden>
+      <div class="card mb-3"><div class="card-body">
+        <label class="form-label" for="pf-rol">Rol para ver el perfil</label>
+        <select class="form-select" id="pf-rol" data-pf="rol"></select>
+      </div></div>
+
+      <div class="card mb-3"><div class="card-body d-flex flex-wrap align-items-center gap-3">
+        <span class="au-avatar au-avatar-lg" aria-hidden="true" data-pf="iniciales"></span>
+        <div class="flex-grow-1">
+          <h2 class="h4 mb-0" data-au-bind="user.name"></h2>
+          <p class="mb-0 text-body-secondary"><span data-au-bind="user.role"></span> · <span data-au-bind="institution.name"></span></p>
+          <p class="mb-0 small">Permisos de ejemplo: <span data-pf="permisos"></span></p>
+        </div>
+      </div></div>
+
+      <div class="row g-3 mb-3" data-pf="stats"></div>
+
+      <div class="card mb-3"><div class="card-body">
+        <h3 class="au-card-title">Acciones disponibles</h3>
+        <div class="d-flex flex-wrap gap-2" data-pf="acciones"></div>
+      </div></div>
+
+      <div class="card"><div class="card-body" data-pf="tabs"></div></div>
+    </div>
+    <p class="visually-hidden" role="status" data-pf="anuncio"></p>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="pf-uso">
+    <h2 id="pf-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Un perfil por rol:</strong> superadmin, administrador, docente, estudiante y tutor, cada uno con indicadores, pestañas y acciones propios.</li>
+      <li><strong>Contexto:</strong> <code>AU.setContext</code> cambia usuario, institución, roles y permisos; <code>data-au-bind</code> pone los textos y <code>data-au-can</code> muestra solo lo permitido.</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<h2 data-au-bind="user.name"></h2>
+<button class="btn btn-primary" type="button" data-au-can="cobros.registrar">Registrar cobro</button>
+
+// El contexto sale del servidor o de #au-context; aquí se cambia para la demostración
+AU.setContext({ user, institution, roles: ['teacher'], permissions: ['notas.registrar'] });
+AU.can('notas.registrar');   // true (solo oculta botones: no protege)
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

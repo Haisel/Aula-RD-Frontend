@@ -22,6 +22,13 @@ const PAGES = [
   'ejemplo-reporte.html',
   'ejemplo-kanban.html',
   'ejemplo-tablas.html',
+  'ejemplo-formularios.html',
+  'ejemplo-edicion.html',
+  'ejemplo-perfiles.html',
+  'ejemplo-archivos.html',
+  'ejemplo-calendario.html',
+  'ejemplo-navegacion.html',
+  'ejemplo-impresion.html',
 ];
 const HUB = 'galeria.html';
 const ALL = [HUB, ...PAGES];

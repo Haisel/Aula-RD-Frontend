@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Edición con deshacer" subtitle="Aviso de cambios sin guardar al salir, deshacer el último cambio y foco que vuelve al botón de origen."}}
+    <a class="btn btn-outline-primary" href="galeria.html" data-ed="salir"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Pruebe a editar un campo y pulsar «Volver a la galería» o recargar: la página avisa antes de perder los cambios."}}
+
+  <div data-demo="edicion">
+    <div class="alert alert-danger" role="alert" data-ed="error" hidden>No se pudo cargar el perfil de ejemplo. Recargue la página para intentarlo de nuevo.</div>
+
+    <div class="card" data-ed="region" hidden>
+      <div class="card-body">
+        <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+          <h2 class="au-card-title mb-0">Perfil del docente</h2>
+          <span class="au-status au-status-success" data-ed="estado">Sin cambios</span>
+        </div>
+        <dl class="row mb-3">
+          <dt class="col-sm-3">Nombre</dt><dd class="col-sm-9" data-ed="ver-nombre"></dd>
+          <dt class="col-sm-3">Correo</dt><dd class="col-sm-9" data-ed="ver-correo"></dd>
+          <dt class="col-sm-3">Teléfono</dt><dd class="col-sm-9" data-ed="ver-telefono"></dd>
+          <dt class="col-sm-3">Cargo</dt><dd class="col-sm-9" data-ed="ver-cargo"></dd>
+        </dl>
+        <button class="btn btn-primary" type="button" data-ed="editar"><i class="bi bi-pencil" aria-hidden="true"></i>Editar perfil</button>
+
+        <form data-ed="form" novalidate hidden>
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label is-required" for="ed-nombre">Nombre completo</label><input class="form-control" id="ed-nombre" name="nombre" type="text" autocomplete="off"></div>
+            <div class="col-md-6"><label class="form-label" for="ed-correo">Correo</label><input class="form-control" id="ed-correo" name="correo" type="email" autocomplete="off"></div>
+            <div class="col-md-6"><label class="form-label" for="ed-telefono">Teléfono</label><input class="form-control" id="ed-telefono" name="telefono" type="tel" data-au-mask="telefono" placeholder="(809) 000-0000" autocomplete="off"></div>
+            <div class="col-md-6"><label class="form-label" for="ed-cargo">Cargo</label><input class="form-control" id="ed-cargo" name="cargo" type="text" autocomplete="off"></div>
+          </div>
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-check-lg" aria-hidden="true"></i>Guardar cambios</button>
+            <button class="btn btn-outline-primary" type="button" data-ed="deshacer" disabled><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>Deshacer último cambio</button>
+            <button class="btn btn-outline-primary" type="button" data-ed="cancelar">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <p class="visually-hidden" role="status" data-ed="anuncio"></p>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="ed-uso">
+    <h2 id="ed-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Cambios sin guardar:</strong> el contador cambia al salir de cada campo; salir de la página (enlace o recarga) pide confirmación mientras haya cambios.</li>
+      <li><strong>Deshacer:</strong> el botón restaura el último campo modificado y lo enfoca.</li>
+      <li><strong>Foco:</strong> al guardar o cancelar, el foco regresa a «Editar perfil».</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+// Borrador con historial (lógica pura) y aviso al salir
+const draft = createDraft({ nombre: 'Marisol Peña' });
+draft.set('nombre', 'Marisol Peña Cabrera');   // anota el cambio
+draft.isDirty();                                // true: hay cambios sin guardar
+draft.undo();                                   // { field: 'nombre', value: 'Marisol Peña' }
+window.addEventListener('beforeunload', (e) => { if (draft.isDirty()) e.preventDefault(); });
+const ok = await AU.confirm({ title: 'Hay cambios sin guardar', text: '…', variant: 'danger' });
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

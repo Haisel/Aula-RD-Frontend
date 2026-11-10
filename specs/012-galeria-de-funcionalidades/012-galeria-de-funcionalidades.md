@@ -1,6 +1,7 @@
 # 012-galeria-de-funcionalidades
 
-> Estado: Aprobada (08/11/2026, por Haisel Ramirez) · Versión 1.0 · Fecha: 08/11/2026
+> Estado: Implementada (09/11/2026) · Aprobada (08/11/2026, por Haisel Ramirez) · Versión 1.0 · Fecha: 08/11/2026
+> Las páginas de la galería de las Fases 1 a 4 están publicadas; los resultados por fase están en `tasks.md`. Tras la implementación, el propietario pidió una escala más compacta (decisión 017).
 
 ## Objetivo
 Dar a quien integre la plantilla una **galería de páginas de ejemplo por contexto** (CRUD, reporte, formularios avanzados, tablas, tarjetas, perfiles, edición, botones, modales y alertas) que muestre cada funcionalidad de los componentes funcionando y cómo se usa, para copiarla en su backend.

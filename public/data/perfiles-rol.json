@@ -1,0 +1,93 @@
+{
+  "_nota": "Datos de demostración (spec 012, T-23). Nombres genéricos; nada es real. Los permisos solo muestran u ocultan elementos: el control real está en el servidor.",
+  "superadmin": {
+    "etiqueta": "Superadministrador",
+    "user": { "id": "u-sa", "name": "Persona Superadmin", "role": "Superadministrador de la plataforma" },
+    "institution": { "id": "plataforma", "name": "Aula RD (plataforma)" },
+    "roles": ["superadmin"],
+    "permissions": ["plataforma.administrar", "instituciones.crear", "planes.editar", "estudiantes.ver"],
+    "stats": [
+      { "label": "Instituciones", "value": "48" },
+      { "label": "Suscripciones activas", "value": "41" },
+      { "label": "Ingreso mensual", "value": "RD$ 412,500.00" }
+    ],
+    "tabs": [
+      { "titulo": "Resumen", "items": [{ "label": "Último acceso", "value": "09/11/2026, 7:05 a. m." }, { "label": "Alcance", "value": "Todas las instituciones" }] },
+      { "titulo": "Plataforma", "items": [{ "label": "Planes publicados", "value": "3" }, { "label": "Solicitudes de alta", "value": "5 pendientes" }] },
+      { "titulo": "Auditoría", "items": [{ "label": "Eventos hoy", "value": "126" }, { "label": "Alertas de seguridad", "value": "0" }] }
+    ],
+    "acciones": ["instituciones.crear", "planes.editar"]
+  },
+  "administrador": {
+    "etiqueta": "Administrador de institución",
+    "user": { "id": "u-ad", "name": "Persona Administradora", "role": "Directora" },
+    "institution": { "id": "inst-demo", "name": "Colegio de Demostración" },
+    "roles": ["institution-admin"],
+    "permissions": ["estudiantes.ver", "cobros.registrar", "usuarios.invitar", "reportes.ver"],
+    "stats": [
+      { "label": "Estudiantes", "value": "860" },
+      { "label": "Asistencia hoy", "value": "94.2 %" },
+      { "label": "Por cobrar", "value": "RD$ 257,800.00" }
+    ],
+    "tabs": [
+      { "titulo": "Resumen", "items": [{ "label": "Plan", "value": "Profesional" }, { "label": "Año escolar", "value": "2026-2027" }] },
+      { "titulo": "Finanzas", "items": [{ "label": "Cuotas vencidas", "value": "37" }, { "label": "Cobrado este mes", "value": "RD$ 1,284,000.00" }] },
+      { "titulo": "Personal", "items": [{ "label": "Docentes", "value": "42" }, { "label": "Invitaciones pendientes", "value": "3" }] }
+    ],
+    "acciones": ["cobros.registrar", "usuarios.invitar"]
+  },
+  "docente": {
+    "etiqueta": "Docente",
+    "user": { "id": "u-do", "name": "Persona Docente", "role": "Docente de Matemática" },
+    "institution": { "id": "inst-demo", "name": "Colegio de Demostración" },
+    "roles": ["teacher"],
+    "permissions": ["estudiantes.ver", "notas.registrar", "asistencia.tomar"],
+    "stats": [
+      { "label": "Secciones", "value": "4" },
+      { "label": "Estudiantes", "value": "112" },
+      { "label": "Asistencia promedio", "value": "96 %" }
+    ],
+    "tabs": [
+      { "titulo": "Resumen", "items": [{ "label": "Áreas", "value": "Matemática, Estadística" }, { "label": "Horario", "value": "Lunes a viernes, 7:30 a. m." }] },
+      { "titulo": "Mis secciones", "items": [{ "label": "2.º B", "value": "28 estudiantes" }, { "label": "3.º A", "value": "30 estudiantes" }] },
+      { "titulo": "Evaluaciones", "items": [{ "label": "Primer corte", "value": "Registrado" }, { "label": "Segundo corte", "value": "Pendiente" }] }
+    ],
+    "acciones": ["notas.registrar", "asistencia.tomar"]
+  },
+  "estudiante": {
+    "etiqueta": "Estudiante",
+    "user": { "id": "u-es", "name": "Persona Estudiante", "role": "Estudiante de 3.º Primaria" },
+    "institution": { "id": "inst-demo", "name": "Colegio de Demostración" },
+    "roles": ["student"],
+    "permissions": ["boletin.ver", "tareas.entregar"],
+    "stats": [
+      { "label": "Promedio", "value": "88.5" },
+      { "label": "Asistencia", "value": "97 %" },
+      { "label": "Tareas pendientes", "value": "2" }
+    ],
+    "tabs": [
+      { "titulo": "Resumen", "items": [{ "label": "Grado", "value": "3.º Primaria, sección A" }, { "label": "Matrícula", "value": "2026-0142" }] },
+      { "titulo": "Calificaciones", "items": [{ "label": "Matemática", "value": "90" }, { "label": "Lengua Española", "value": "87" }] },
+      { "titulo": "Tareas", "items": [{ "label": "Ensayo corto", "value": "Vence 12/11/2026" }, { "label": "Problemas de fracciones", "value": "Vence 14/11/2026" }] }
+    ],
+    "acciones": ["boletin.ver", "tareas.entregar"]
+  },
+  "tutor": {
+    "etiqueta": "Tutor o familia",
+    "user": { "id": "u-tu", "name": "Persona Tutora", "role": "Tutor de 2 estudiantes" },
+    "institution": { "id": "inst-demo", "name": "Colegio de Demostración" },
+    "roles": ["guardian"],
+    "permissions": ["boletin.ver", "cuotas.pagar", "ausencias.justificar"],
+    "stats": [
+      { "label": "Estudiantes a cargo", "value": "2" },
+      { "label": "Cuotas pendientes", "value": "1" },
+      { "label": "Saldo", "value": "RD$ 6,500.00" }
+    ],
+    "tabs": [
+      { "titulo": "Resumen", "items": [{ "label": "Contacto", "value": "(809) 555-0100" }, { "label": "Vínculo", "value": "Madre/Padre" }] },
+      { "titulo": "Estado de cuenta", "items": [{ "label": "Cuota de noviembre", "value": "RD$ 6,500.00 · vence 15/11/2026" }, { "label": "Última cuota pagada", "value": "Octubre" }] },
+      { "titulo": "Asistencia", "items": [{ "label": "Ausencias del mes", "value": "1 por justificar" }, { "label": "Tardanzas", "value": "0" }] }
+    ],
+    "acciones": ["cuotas.pagar", "ausencias.justificar"]
+  }
+}

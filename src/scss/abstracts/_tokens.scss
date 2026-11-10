@@ -161,7 +161,7 @@ $au-radius: (
 $au-layout: (
   "sidebar-width": 264px,
   "sidebar-collapsed": 76px,
-  "topbar-height": 64px,
+  "topbar-height": 56px,
   "container-max": 1200px,
   "content-max": none
 );
@@ -181,16 +181,16 @@ $au-shadow-dark: (
 $au-type-styles: (
   "display-1": (size: 56px, line-height: 64px, weight: 800, letter-spacing: -0.02em),
   "display-2": (size: 44px, line-height: 52px, weight: 800, letter-spacing: -0.015em),
-  "h1": (size: 32px, line-height: 40px, weight: 700, letter-spacing: -0.01em),
-  "h2": (size: 24px, line-height: 32px, weight: 700, letter-spacing: normal),
-  "h3": (size: 20px, line-height: 28px, weight: 700, letter-spacing: normal),
-  "h4": (size: 16px, line-height: 24px, weight: 700, letter-spacing: normal),
-  "body-lg": (size: 18px, line-height: 28px, weight: 400, letter-spacing: normal),
-  "body": (size: 16px, line-height: 24px, weight: 400, letter-spacing: normal),
-  "body-sm": (size: 14px, line-height: 20px, weight: 400, letter-spacing: normal),
-  "label": (size: 14px, line-height: 20px, weight: 600, letter-spacing: normal),
+  "h1": (size: 24px, line-height: 32px, weight: 700, letter-spacing: -0.01em),
+  "h2": (size: 20px, line-height: 28px, weight: 700, letter-spacing: normal),
+  "h3": (size: 18px, line-height: 24px, weight: 700, letter-spacing: normal),
+  "h4": (size: 15px, line-height: 22px, weight: 700, letter-spacing: normal),
+  "body-lg": (size: 16px, line-height: 24px, weight: 400, letter-spacing: normal),
+  "body": (size: 14px, line-height: 22px, weight: 400, letter-spacing: normal),
+  "body-sm": (size: 13px, line-height: 20px, weight: 400, letter-spacing: normal),
+  "label": (size: 13px, line-height: 18px, weight: 600, letter-spacing: normal),
   "caption": (size: 12px, line-height: 16px, weight: 500, letter-spacing: normal),
   "overline": (size: 12px, line-height: 16px, weight: 700, letter-spacing: 0.08em),
-  "kpi": (size: 32px, line-height: 40px, weight: 700, letter-spacing: -0.01em),
-  "table-num": (size: 14px, line-height: 20px, weight: 500, letter-spacing: normal)
+  "kpi": (size: 24px, line-height: 32px, weight: 700, letter-spacing: -0.01em),
+  "table-num": (size: 13px, line-height: 20px, weight: 500, letter-spacing: normal)
 );

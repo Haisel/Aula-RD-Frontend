@@ -9,7 +9,7 @@
     <a class="btn btn-outline-primary" href="componentes.html"><i class="bi bi-palette" aria-hidden="true"></i>Catálogo de componentes</a>
   {{/components/page-header}}
 
-  {{> components/demo-note extra="La galería se publica por fases: aquí aparecen solo las páginas ya disponibles."}}
+  {{> components/demo-note}}
 
   <section class="mb-5" aria-labelledby="g-interfaz">
     <h2 class="h4 mb-3" id="g-interfaz">Interfaz</h2>
@@ -29,6 +29,19 @@
       {{> components/gallery-card href="ejemplo-crud.html" icon="pencil-square" title="CRUD de estudiantes" text="Crear, editar y borrar con validación, confirmación, aviso y deshacer; estados vacío, cargando y error." uses="data-au-validate · AU.confirmDeleteByName · AU.createDataTable"}}
       {{> components/gallery-card href="ejemplo-reporte.html" icon="bar-chart-line" tone="info" title="Reporte de estudiantes" text="Filtros que actualizan indicadores, gráficos y tabla; exportación a Excel e impresión." uses="AU.openChart · AU.exportRows · data-au-action=print"}}
       {{> components/gallery-card href="ejemplo-kanban.html" icon="kanban" tone="success" title="Tablero de solicitudes" text="Tarjetas que se arrastran entre columnas o se mueven con botones accesibles por teclado." uses="AU.dragSort · group · aria-live"}}
+    </div>
+  </section>
+
+  <section class="mb-5" aria-labelledby="g-avanzado">
+    <h2 class="h4 mb-3" id="g-avanzado">Avanzado</h2>
+    <div class="au-gallery-grid">
+      {{> components/gallery-card href="ejemplo-formularios.html" icon="ui-checks" tone="info" title="Formularios avanzados" text="Asistente con validación por paso, listas dependientes, filas repetibles y errores del servidor." uses="data-au-select · data-au-datepicker · AU.showErrors"}}
+      {{> components/gallery-card href="ejemplo-edicion.html" icon="pencil" tone="warning" title="Edición con deshacer" text="Aviso de cambios sin guardar al salir, deshacer el último cambio y foco que regresa." uses="AU.confirm · beforeunload"}}
+      {{> components/gallery-card href="ejemplo-perfiles.html" icon="person-badge" tone="success" title="Perfiles por rol" text="Los cinco roles, cada uno con datos, pestañas y acciones propios." uses="AU.setContext · data-au-bind · data-au-can"}}
+      {{> components/gallery-card href="ejemplo-archivos.html" icon="cloud-upload" tone="danger" title="Carga de archivos" text="Zona para soltar o elegir archivos con revisión de tipo, tamaño y cantidad." uses="input type=file · accept · drop"}}
+      {{> components/gallery-card href="ejemplo-calendario.html" icon="calendar3" title="Calendario y agenda" text="Calendario mensual con eventos de colores y agenda filtrable por categoría." uses="data-au-calendar · AU.openCalendar"}}
+      {{> components/gallery-card href="ejemplo-navegacion.html" icon="signpost-split" tone="info" title="Navegación" text="Pestañas, píldoras, paginación, acordeón, menú desplegable y lista de enlaces." uses="nav · pagination · accordion"}}
+      {{> components/gallery-card href="ejemplo-impresion.html" icon="printer" tone="success" title="Impresión y códigos" text="Carnet con QR y boleta con código de barras y firma, listos para imprimir." uses="data-au-qrcode · data-au-barcode · data-au-signature"}}
     </div>
   </section>
 
@@ -84,15 +97,6 @@
     </div>
   </section>
 
-  <section aria-labelledby="g-proximas">
-    <h2 class="h4 mb-3" id="g-proximas">Próximas fases</h2>
-    <p class="text-body-secondary mb-2">Todavía no publicadas; se agregan aquí cuando estén listas:</p>
-    <ul class="text-body-secondary mb-0">
-      <li>Datos: CRUD completo, reporte y tablero (kanban).</li>
-      <li>Calendario y agenda, bandeja de mensajes y gráficos.</li>
-      <li>Ayuda, preguntas frecuentes, contacto y páginas legales.</li>
-    </ul>
-  </section>
 {{/layouts/app}}
 </body>
 </html>

@@ -22,7 +22,7 @@ Nunca edite `_tokens.scss` ni escriba hex en componentes. Funciones disponibles:
 | Champagne | `#C6A15B` | Detalles premium (≤ 5 % de la pantalla), meta en gráficos, plan Premium |
 | White | `#FFFFFF` | Superficies |
 
-Tipografía: Plus Jakarta Sans 400/500/600/700/800. Display (800) solo en la landing; dashboards hasta `h1` 32 px.
+Tipografía: Plus Jakarta Sans 400/500/600/700/800. Display (800) solo en la landing; dashboards hasta `h1` 24 px. Escala compacta (decisión 017): cuerpo 14 px, `h2` 20, `h3` 18, `h4` 15, texto pequeño 13; tarjetas con 16 px de relleno, contenido con 20 px y espaciado Bootstrap 3/4/5 = 12/16/32 px.
 
 ## 3. Tokens semánticos (variables CSS `--au-*`)
 

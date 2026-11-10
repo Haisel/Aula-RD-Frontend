@@ -1,0 +1,37 @@
+// Hojas imprimibles de la galería (spec 012, T-28): carnet y boleta.
+// Las reglas que ocultan el menú y los controles al imprimir están en `_report.scss`.
+.au-print-sheet {
+  max-width: 42rem;
+  padding: 1.5rem;
+  border: 1px solid var(--au-border);
+  border-radius: 0.75rem;
+  background: var(--au-surface, var(--au-bg));
+
+  table {
+    width: 100%;
+  }
+}
+
+.au-print-sign {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  height: 8rem;
+  border: 1px dashed var(--au-border);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+@media print {
+  .au-print-sheet {
+    max-width: none;
+    border: 1px solid #000;
+    color: #000;
+    background: #fff;
+    break-inside: avoid;
+  }
+
+  .au-print-sheet + .au-print-sheet {
+    break-before: page;
+  }
+}

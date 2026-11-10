@@ -15,7 +15,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 0.75rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 
   .au-card-title {
     margin-right: auto;
@@ -103,8 +103,8 @@
   --bs-accordion-active-bg: var(--au-surface);
   --bs-accordion-active-color: var(--au-text);
   --bs-accordion-btn-focus-box-shadow: 0 0 0 3px var(--au-focus-halo);
-  --bs-accordion-btn-padding-y: 1.25rem;
-  --bs-accordion-body-padding-y: 0 1.25rem 1.25rem;
+  --bs-accordion-btn-padding-y: 0.875rem;
+  --bs-accordion-body-padding-y: 0 1rem 1rem;
 
   .accordion-button {
     font-weight: 700;

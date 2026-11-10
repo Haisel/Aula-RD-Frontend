@@ -1,0 +1,26 @@
+// Zona para soltar archivos de la galería (spec 012, T-24). Solo usa variables --au-*.
+.au-dropzone {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  padding: 2rem 1rem;
+  border: 2px dashed var(--au-border);
+  border-radius: 0.75rem;
+  color: var(--au-text-muted);
+  text-align: center;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &.is-over {
+    border-color: var(--au-accent-text);
+    background: var(--au-surface-alt, transparent);
+  }
+
+  // El campo nativo queda oculto salvo cuando recibe el foco con el teclado.
+  .visually-hidden-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0.5rem 0;
+    clip-path: none;
+  }
+}

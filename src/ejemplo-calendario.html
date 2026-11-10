@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Calendario y agenda" subtitle="Calendario mensual con eventos de colores y una agenda en lista, filtrable por categoría."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Los eventos son de ejemplo y no se pueden crear ni mover."}}
+
+  <div data-demo="calendario">
+    <div class="card mb-3"><div class="card-body">
+      <h2 class="au-card-title">Calendario</h2>
+      <div data-au-calendar="data/eventos.json" data-au-initial-date="2026-11-01"></div>
+    </div></div>
+
+    <div class="card"><div class="card-body">
+      <div class="d-flex flex-wrap align-items-end gap-3 mb-3">
+        <h2 class="au-card-title mb-0">Agenda</h2>
+        <div class="ms-auto">
+          <label class="form-label mb-1" for="cal-categoria">Categoría</label>
+          <select class="form-select" id="cal-categoria" data-cal="categoria"><option value="">Todas</option></select>
+        </div>
+      </div>
+      <ul class="list-group" data-cal="lista"></ul>
+      <p class="visually-hidden" role="status" data-cal="anuncio"></p>
+    </div></div>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="cal-uso">
+    <h2 id="cal-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Calendario:</strong> vista de mes, semana y lista; los colores identifican la categoría.</li>
+      <li><strong>Agenda:</strong> la misma información en una lista que se lee y se recorre con teclado y lector de pantalla.</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div data-au-calendar="data/eventos.json" data-au-initial-date="2026-11-01"></div>
+
+// Desde JS, con la fachada
+const calendario = await AU.openCalendar(el, { events: '/data/eventos.json' });
+// Formato de cada evento: { "title": "…", "start": "2026-11-20", "allDay": true, "className": "au-event-danger" }
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

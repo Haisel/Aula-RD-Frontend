@@ -13,6 +13,11 @@ import { crud } from './crud.js';
 import { reporte } from './reporte-page.js';
 import { tablero } from './tablero-page.js';
 import { tablas } from './tablas-page.js';
+import { edicion } from './edicion-page.js';
+import { formularios } from './formularios-page.js';
+import { perfiles } from './perfiles-page.js';
+import { archivos } from './archivos-page.js';
+import { calendario } from './calendario-page.js';
 
 /**
  * Activa una demostración sobre su contenedor.
@@ -23,7 +28,7 @@ import { tablas } from './tablas-page.js';
  */
 
 /** @type {Record<string, Demo>} */
-export const demos = { crud, reporte, tablero, tablas };
+export const demos = { crud, reporte, tablero, tablas, edicion, formularios, perfiles, archivos, calendario };
 
 /**
  * Busca los contenedores `[data-demo]` de la página y activa su demostración.

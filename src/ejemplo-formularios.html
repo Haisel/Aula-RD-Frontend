@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Formularios avanzados" subtitle="Asistente con validación por paso, listas dependientes, selección múltiple, rango de fechas, filas repetibles y errores del servidor."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Para ver un error del servidor, escriba «duplicado» como nombre del estudiante y envíe."}}
+
+  <div data-demo="formularios">
+    <form class="card" data-fm="form" novalidate>
+      <div class="card-body">
+        <ol class="nav nav-pills au-wizard-steps mb-4 list-unstyled" aria-label="Pasos de la matrícula">
+          <li class="nav-item"><span class="nav-link active" data-fm-go="1"><span class="au-wizard-num" aria-hidden="true">1</span>Estudiante</span></li>
+          <li class="nav-item"><span class="nav-link" data-fm-go="2"><span class="au-wizard-num" aria-hidden="true">2</span>Tutores y período</span></li>
+          <li class="nav-item"><span class="nav-link" data-fm-go="3"><span class="au-wizard-num" aria-hidden="true">3</span>Enviar</span></li>
+        </ol>
+
+        <section data-fm-paso="1" aria-labelledby="fm-t1">
+          <h2 class="au-card-title mb-3" id="fm-t1">Datos del estudiante</h2>
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label is-required" for="fm-nombre">Nombre del estudiante</label><input class="form-control" id="fm-nombre" name="nombre" type="text" autocomplete="off"></div>
+            <div class="col-md-3"><label class="form-label is-required" for="fm-grado">Grado</label><select class="form-select" id="fm-grado" name="grado"><option value="">Seleccione…</option></select></div>
+            <div class="col-md-3"><label class="form-label is-required" for="fm-seccion">Sección</label><select class="form-select" id="fm-seccion" name="seccion" disabled><option value="">Seleccione…</option></select><div class="form-text">Depende del grado elegido.</div></div>
+          </div>
+          <div class="d-flex justify-content-end mt-4"><button class="btn btn-primary" type="button" data-fm-next>Siguiente<i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button></div>
+        </section>
+
+        <section data-fm-paso="2" aria-labelledby="fm-t2" hidden>
+          <h2 class="au-card-title mb-3" id="fm-t2">Tutores y período</h2>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label is-required" for="fm-tutor1">Tutores (hasta 3)</label>
+              <div data-fm="tutores"><div class="input-group mb-2"><input class="form-control" id="fm-tutor1" name="tutor1" type="text" autocomplete="off"></div></div>
+              <button class="btn btn-outline-primary btn-sm" type="button" data-fm="agregar"><i class="bi bi-plus-lg" aria-hidden="true"></i>Agregar tutor</button>
+            </div>
+            <div class="col-md-6"><label class="form-label is-required" for="fm-periodo">Período</label><input class="form-control" id="fm-periodo" name="periodo" data-au-datepicker="range" placeholder="Desde — hasta" autocomplete="off"></div>
+            <div class="col-12"><label class="form-label" for="fm-materias">Materias de refuerzo</label>
+              <select class="form-select" id="fm-materias" name="materias" multiple data-au-select data-au-placeholder="Elija una o varias"><option>Matemática</option><option>Lengua Española</option><option>Ciencias</option><option>Inglés</option></select></div>
+          </div>
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-primary" type="button" data-fm-prev><i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Anterior</button>
+            <button class="btn btn-primary" type="button" data-fm-next>Siguiente<i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button>
+          </div>
+        </section>
+
+        <section data-fm-paso="3" aria-labelledby="fm-t3" hidden>
+          <h2 class="au-card-title mb-3" id="fm-t3">Revisar y enviar</h2>
+          <p class="text-body-secondary mb-2">Resumen de la matrícula:</p>
+          <p class="fw-semibold" data-fm="resumen"></p>
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-primary" type="button" data-fm-prev><i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Anterior</button>
+            <button class="btn btn-primary" type="submit">Enviar matrícula</button>
+          </div>
+        </section>
+      </div>
+    </form>
+    <p class="visually-hidden" role="status" data-fm="anuncio"></p>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="fm-uso">
+    <h2 id="fm-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Validación por paso:</strong> «Siguiente» no avanza si el paso tiene errores; marca los campos y deja el foco en el primero.</li>
+      <li><strong>Listas dependientes:</strong> la sección solo ofrece las del grado elegido.</li>
+      <li><strong>Filas repetibles:</strong> «Agregar tutor» suma campos (hasta 3) y cada uno se quita con su botón.</li>
+      <li><strong>Errores del servidor:</strong> un rechazo por campo vuelve al paso correspondiente y marca el campo.</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<select class="form-select" name="materias" multiple data-au-select data-au-placeholder="Elija una o varias">…</select>
+<input class="form-control" name="periodo" data-au-datepicker="range" placeholder="Desde — hasta">
+
+// Errores por campo (de la validación o del servidor)
+AU.clearErrors(form);
+AU.showErrors(form, { nombre: 'Ya existe un estudiante con ese nombre.' });
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Carga de archivos" subtitle="Zona para soltar o elegir archivos, con revisión de tipo, tamaño y cantidad, y lista con motivos de rechazo."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Los archivos no se suben a ningún lado: solo se revisan en su navegador."}}
+
+  <div data-demo="archivos">
+    <div class="card mb-3"><div class="card-body">
+      <div class="au-dropzone" data-ar="zona">
+        <i class="bi bi-cloud-upload fs-2" aria-hidden="true"></i>
+        <p class="mb-2">Arrastre archivos aquí o elíjalos con el botón.</p>
+        <label class="btn btn-primary mb-2" for="ar-input"><i class="bi bi-folder2-open" aria-hidden="true"></i>Elegir archivos</label>
+        <input class="visually-hidden-focusable" id="ar-input" type="file" multiple accept="image/png,image/jpeg,application/pdf" data-ar="input" aria-describedby="ar-ayuda">
+        <p class="form-text mb-0" id="ar-ayuda">PNG, JPG o PDF; hasta 5 archivos de 2.0 MB cada uno.</p>
+      </div>
+    </div></div>
+
+    <div class="alert alert-warning" role="alert" data-ar="rechazados" hidden></div>
+
+    <div class="card"><div class="card-body">
+      <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+        <h2 class="au-card-title mb-0">Archivos aceptados</h2>
+        <span class="text-body-secondary" data-ar="contador">0 de 5 archivos</span>
+        <button class="btn btn-outline-danger btn-sm ms-auto" type="button" data-ar="limpiar"><i class="bi bi-trash3" aria-hidden="true"></i>Quitar todos</button>
+      </div>
+      <ul class="list-group" data-ar="lista"></ul>
+    </div></div>
+    <p class="visually-hidden" role="status" data-ar="anuncio"></p>
+  </div>
+
+  <section class="au-specimen mt-4" aria-labelledby="ar-uso">
+    <h2 id="ar-uso">Qué muestra esta página</h2>
+    <ul>
+      <li><strong>Dos formas de elegir:</strong> arrastrar y soltar, o el botón (que también se opera con teclado).</li>
+      <li><strong>Revisión:</strong> los archivos de tipo no permitido, demasiado grandes o por encima del máximo se rechazan con su motivo.</li>
+      <li><strong>Importante:</strong> esta revisión es una comodidad; el servidor debe volver a validar tipo y tamaño.</li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<input type="file" multiple accept="image/png,image/jpeg,application/pdf" aria-describedby="ayuda">
+
+// Revisión previa en el navegador (el servidor debe repetirla)
+for (const f of input.files) {
+  if (!['image/png', 'image/jpeg', 'application/pdf'].includes(f.type)) { /* rechazar */ }
+  if (f.size > 2 * 1024 * 1024) { /* rechazar */ }
+}
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

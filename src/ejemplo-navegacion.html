@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{> components/breadcrumb}}
+  {{#> components/page-header title="Navegación" subtitle="Migas de pan, pestañas, píldoras, paginación, acordeón, menú desplegable y lista de enlaces."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <section class="au-specimen" aria-labelledby="n-pestanas">
+    <h2 id="n-pestanas">Pestañas y píldoras</h2>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item" role="presentation"><button class="nav-link active" id="n-t1" data-bs-toggle="tab" data-bs-target="#n-p1" type="button" role="tab" aria-controls="n-p1" aria-selected="true">Resumen</button></li>
+      <li class="nav-item" role="presentation"><button class="nav-link" id="n-t2" data-bs-toggle="tab" data-bs-target="#n-p2" type="button" role="tab" aria-controls="n-p2" aria-selected="false">Actividad</button></li>
+      <li class="nav-item" role="presentation"><button class="nav-link" id="n-t3" data-bs-toggle="tab" data-bs-target="#n-p3" type="button" role="tab" aria-controls="n-p3" aria-selected="false">Seguridad</button></li>
+    </ul>
+    <div class="tab-content border border-top-0 rounded-bottom p-3">
+      <div class="tab-pane fade show active" id="n-p1" role="tabpanel" aria-labelledby="n-t1" tabindex="0">Contenido del resumen.</div>
+      <div class="tab-pane fade" id="n-p2" role="tabpanel" aria-labelledby="n-t2" tabindex="0">Contenido de la actividad.</div>
+      <div class="tab-pane fade" id="n-p3" role="tabpanel" aria-labelledby="n-t3" tabindex="0">Contenido de la seguridad.</div>
+    </div>
+    <ul class="nav nav-pills mt-3" aria-label="Filtro por estado">
+      <li class="nav-item"><a class="nav-link active" href="#n-pestanas" aria-current="page">Todos</a></li>
+      <li class="nav-item"><a class="nav-link" href="#n-pestanas">Activos</a></li>
+      <li class="nav-item"><a class="nav-link" href="#n-pestanas">Inactivos</a></li>
+    </ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#panel" type="button" role="tab">Resumen</button></li>
+</ul>
+<div class="tab-content"><div class="tab-pane fade show active" id="panel" role="tabpanel" tabindex="0">…</div></div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="n-paginacion">
+    <h2 id="n-paginacion">Paginación</h2>
+    <nav aria-label="Paginación de resultados">
+      <ul class="pagination mb-0">
+        <li class="page-item disabled"><span class="page-link">Anterior</span></li>
+        <li class="page-item active"><a class="page-link" href="#n-paginacion" aria-current="page">1</a></li>
+        <li class="page-item"><a class="page-link" href="#n-paginacion">2</a></li>
+        <li class="page-item"><a class="page-link" href="#n-paginacion">3</a></li>
+        <li class="page-item"><a class="page-link" href="#n-paginacion">Siguiente</a></li>
+      </ul>
+    </nav>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<nav aria-label="Paginación de resultados">
+  <ul class="pagination">
+    <li class="page-item active"><a class="page-link" href="?pagina=1" aria-current="page">1</a></li>
+    <li class="page-item"><a class="page-link" href="?pagina=2">2</a></li>
+  </ul>
+</nav>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="n-acordeon">
+    <h2 id="n-acordeon">Acordeón y menú desplegable</h2>
+    <div class="accordion mb-3" id="n-acc">
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#n-a1" aria-expanded="true" aria-controls="n-a1">¿Cómo cambio de institución?</button></h3>
+        <div id="n-a1" class="accordion-collapse collapse show" data-bs-parent="#n-acc"><div class="accordion-body">Use el selector de institución de la barra superior.</div></div></div>
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#n-a2" aria-expanded="false" aria-controls="n-a2">¿Dónde veo mis permisos?</button></h3>
+        <div id="n-a2" class="accordion-collapse collapse" data-bs-parent="#n-acc"><div class="accordion-body">En su perfil, pestaña Seguridad.</div></div></div>
+    </div>
+    <div class="dropdown d-inline-block">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Acciones</button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#n-acordeon">Ver detalle</a></li>
+        <li><a class="dropdown-item" href="#n-acordeon">Editar</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-danger" href="#n-acordeon">Eliminar</a></li>
+      </ul>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#detalle" aria-expanded="true" aria-controls="detalle">Pregunta</button>
+<div id="detalle" class="accordion-collapse collapse show">…</div>
+<button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Acciones</button>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="n-lista">
+    <h2 id="n-lista">Lista de enlaces</h2>
+    <div class="list-group">
+      <a class="list-group-item list-group-item-action active" href="#n-lista" aria-current="true">Panel principal</a>
+      <a class="list-group-item list-group-item-action" href="#n-lista">Estudiantes</a>
+      <a class="list-group-item list-group-item-action" href="#n-lista">Cobros</a>
+      <span class="list-group-item disabled" aria-disabled="true">Reportes (sin permiso)</span>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="list-group">
+  <a class="list-group-item list-group-item-action active" href="galeria.html" aria-current="true">Galería</a>
+  <a class="list-group-item list-group-item-action" href="componentes.html">Componentes</a>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>
