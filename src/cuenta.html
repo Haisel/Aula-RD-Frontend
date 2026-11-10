@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Mi cuenta" subtitle="Perfil, seguridad, preferencias y notificaciones de la persona que inició sesión."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Los cambios no se guardan."}}
+
+  <div class="card" data-demo="esquemas"><div class="card-body">
+    <ul class="nav nav-tabs mb-3" role="tablist">
+      <li class="nav-item" role="presentation"><button class="nav-link active" id="cu-t1" data-bs-toggle="tab" data-bs-target="#cu-p1" type="button" role="tab" aria-controls="cu-p1" aria-selected="true">Perfil</button></li>
+      <li class="nav-item" role="presentation"><button class="nav-link" id="cu-t2" data-bs-toggle="tab" data-bs-target="#cu-p2" type="button" role="tab" aria-controls="cu-p2" aria-selected="false">Seguridad</button></li>
+      <li class="nav-item" role="presentation"><button class="nav-link" id="cu-t3" data-bs-toggle="tab" data-bs-target="#cu-p3" type="button" role="tab" aria-controls="cu-p3" aria-selected="false">Preferencias</button></li>
+      <li class="nav-item" role="presentation"><button class="nav-link" id="cu-t4" data-bs-toggle="tab" data-bs-target="#cu-p4" type="button" role="tab" aria-controls="cu-p4" aria-selected="false">Notificaciones</button></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="cu-p1" role="tabpanel" aria-labelledby="cu-t1" tabindex="0">
+        <form data-au-validate="perfil" data-au-submit="event" data-au-success="Perfil válido (demostración): nada se guarda." action="#" method="post" novalidate>
+          <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label is-required" for="cu-nombre">Nombre completo</label><input class="form-control" id="cu-nombre" name="nombre" type="text" value="Persona de demostración" autocomplete="name"></div>
+            <div class="col-md-6"><label class="form-label is-required" for="cu-email">Correo</label><input class="form-control" id="cu-email" name="email" type="email" value="persona@colegio.edu.do" autocomplete="email"></div>
+            <div class="col-md-6"><label class="form-label" for="cu-tel">Teléfono</label><input class="form-control" id="cu-tel" name="telefono" type="tel" data-au-mask="telefono" placeholder="(809) 000-0000" autocomplete="tel"></div>
+            <div class="col-12"><label class="form-label" for="cu-bio">Presentación</label><textarea class="form-control" id="cu-bio" name="bio" rows="3" maxlength="280"></textarea></div>
+          </div>
+          <button class="btn btn-primary mt-3" type="submit">Guardar perfil</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="cu-p2" role="tabpanel" aria-labelledby="cu-t2" tabindex="0">
+        <form data-au-validate="cuenta-password" data-au-submit="event" data-au-success="Contraseña válida (demostración): nada se guarda." action="#" method="post" novalidate>
+          <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+          <div class="row g-3">
+            <div class="col-md-4"><label class="form-label is-required" for="cu-actual">Contraseña actual</label><input class="form-control" id="cu-actual" name="actual" type="password" autocomplete="current-password"></div>
+            <div class="col-md-4"><label class="form-label is-required" for="cu-nueva">Contraseña nueva</label><input class="form-control" id="cu-nueva" name="password" type="password" autocomplete="new-password"></div>
+            <div class="col-md-4"><label class="form-label is-required" for="cu-rep">Repita la nueva</label><input class="form-control" id="cu-rep" name="confirmar" type="password" autocomplete="new-password"></div>
+          </div>
+          <button class="btn btn-primary mt-3" type="submit">Cambiar contraseña</button>
+        </form>
+        <hr>
+        <h2 class="h5">Sesiones abiertas</h2>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">Este dispositivo · Santo Domingo<span class="au-status au-status-success">Actual</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Teléfono · hace 2 días<button class="btn btn-outline-danger btn-sm" type="button" data-au-action="toast" data-au-type="success" data-au-message="Demostración: aquí se cierra esa sesión en el servidor.">Cerrar</button></li>
+        </ul>
+        <p class="form-text mt-2">Verificación en dos pasos: <a href="verificacion-dos-pasos.html">ver pantalla de verificación</a>.</p>
+      </div>
+      <div class="tab-pane fade" id="cu-p3" role="tabpanel" aria-labelledby="cu-t3" tabindex="0">
+        <div class="row g-3">
+          <div class="col-md-4"><label class="form-label" for="cu-idioma">Idioma</label><select class="form-select" id="cu-idioma"><option>Español (República Dominicana)</option></select></div>
+          <div class="col-md-4"><label class="form-label" for="cu-zona">Zona horaria</label><select class="form-select" id="cu-zona"><option>América/Santo Domingo (UTC−4)</option></select></div>
+          <div class="col-md-4"><label class="form-label" for="cu-vista">Registros por página</label><select class="form-select" id="cu-vista"><option>10</option><option>25</option><option>50</option></select></div>
+        </div>
+        <p class="form-text mt-2">El tema claro u oscuro se cambia con el botón de la barra superior.</p>
+      </div>
+      <div class="tab-pane fade" id="cu-p4" role="tabpanel" aria-labelledby="cu-t4" tabindex="0">
+        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" role="switch" id="cu-n1" checked><label class="form-check-label" for="cu-n1">Avisos de calificaciones por correo</label></div>
+        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" role="switch" id="cu-n2" checked><label class="form-check-label" for="cu-n2">Recordatorios de cuotas</label></div>
+        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="cu-n3"><label class="form-check-label" for="cu-n3">Comunicados generales</label></div>
+      </div>
+    </div>
+  </div></div>
+
+  <section class="au-specimen mt-3" aria-labelledby="cu-uso">
+    <h2 id="cu-uso">Qué muestra esta página</h2>
+    <ul><li>Cuatro pestañas de cuenta con formularios validados por campo y alternables de notificación.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<form data-au-validate="cuenta-password" data-au-submit="event" novalidate>…</form>
+<div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="aviso"><label class="form-check-label" for="aviso">Avisos</label></div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

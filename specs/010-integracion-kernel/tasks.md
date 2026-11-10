@@ -1,6 +1,6 @@
 # Tareas — 010-integracion-kernel
 
-> Estado: Borrador · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [010-integracion-kernel.md](010-integracion-kernel.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [010-integracion-kernel.md](010-integracion-kernel.md)
 
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde.
 

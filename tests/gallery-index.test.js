@@ -22,6 +22,10 @@ const AUTENTICACION = [
   'login-portales.html',
   'login-codigo.html',
   'recuperar-contrasena.html',
+  'registro.html',
+  'restablecer-contrasena.html',
+  'verificacion-dos-pasos.html',
+  'bloqueo-pantalla.html',
 ];
 
 const hb = Handlebars.create();
@@ -71,7 +75,7 @@ describe('menú de la galería (spec 013 · V-04)', () => {
     }
   });
 
-  it('"Autenticación" lista las ocho páginas de acceso, en orden', () => {
+  it('"Autenticación" lista las doce páginas de acceso, en orden', () => {
     expect(grupo('Autenticación').children.map((/** @type {any} */ c) => c.href)).toEqual(AUTENTICACION);
   });
 

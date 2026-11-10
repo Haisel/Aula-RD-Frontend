@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Contactos" subtitle="Directorio de personas con búsqueda y filtro por rol."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <div data-demo="filtro">
+    <div class="card mb-3"><div class="card-body"><div class="row g-3">
+      <div class="col-md-8"><label class="form-label" for="co-texto">Buscar contacto</label><input class="form-control" id="co-texto" type="search" data-filtro="texto" placeholder="Nombre, cargo o correo" autocomplete="off"></div>
+      <div class="col-md-4"><label class="form-label" for="co-rol">Rol</label><select class="form-select" id="co-rol" data-filtro="categoria"><option value="">Todos</option><option value="docente">Docentes</option><option value="tutor">Tutores</option><option value="administracion">Administración</option></select></div>
+    </div><p class="visually-hidden" role="status" data-filtro="anuncio"></p></div></div>
+    <div class="au-grid-auto">
+      <article class="card" data-filtro-item data-categoria="docente"><div class="card-body d-flex gap-3"><span class="au-avatar" aria-hidden="true">D1</span><div><h2 class="h6 mb-0">Docente de demostración 1</h2><p class="small text-body-secondary mb-1">Matemática · docente1@colegio.edu.do</p><a href="#co-texto" class="small">Escribir</a></div></div></article>
+      <article class="card" data-filtro-item data-categoria="docente"><div class="card-body d-flex gap-3"><span class="au-avatar" aria-hidden="true">D2</span><div><h2 class="h6 mb-0">Docente de demostración 2</h2><p class="small text-body-secondary mb-1">Lengua Española · docente2@colegio.edu.do</p><a href="#co-texto" class="small">Escribir</a></div></div></article>
+      <article class="card" data-filtro-item data-categoria="tutor"><div class="card-body d-flex gap-3"><span class="au-avatar" aria-hidden="true">T1</span><div><h2 class="h6 mb-0">Tutor de demostración 1</h2><p class="small text-body-secondary mb-1">Tutor de 3.º Primaria · tutor1@correo.do</p><a href="#co-texto" class="small">Escribir</a></div></div></article>
+      <article class="card" data-filtro-item data-categoria="administracion"><div class="card-body d-flex gap-3"><span class="au-avatar" aria-hidden="true">A1</span><div><h2 class="h6 mb-0">Secretaría de demostración</h2><p class="small text-body-secondary mb-1">Administración · secretaria@colegio.edu.do</p><a href="#co-texto" class="small">Escribir</a></div></div></article>
+    </div>
+    <div class="au-empty mt-3" data-filtro="vacio" hidden><h2 class="h5">Sin contactos</h2><p>Ningún contacto coincide con la búsqueda.</p></div>
+  </div>
+
+  <section class="au-specimen mt-3" aria-labelledby="co-uso">
+    <h2 id="co-uso">Qué muestra esta página</h2>
+    <ul><li>Tarjetas de personas con búsqueda en vivo y filtro por rol.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<article class="card" data-filtro-item data-categoria="docente">…</article>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

@@ -1,6 +1,6 @@
 # 013-plantilla-profesional
 
-> Estado: Aprobada (08/11/2026, por Haisel Ramirez) · Versión 1.1 (ampliada el 08/11/2026 por pedido del propietario: variantes de diseño) · Fecha: 08/11/2026
+> Estado: Implementada (09/11/2026) · Aprobada (08/11/2026, por Haisel Ramirez) · Versión 1.1 (ampliada el 08/11/2026 por pedido del propietario: variantes de diseño) · Fecha: 08/11/2026
 
 ## Objetivo
 Dejar la plantilla **completa y profesional, al nivel de AdminLTE, AdminKit y CoreUI**: un menú por categorías donde cada ítem abre su página de demostración, cada componente y cada función de `AU` con ejemplo, calidad verificada con medidas y una guía para integrarla. Es la etapa previa a adecuar páginas para el sistema de gestión.

@@ -1,6 +1,6 @@
 # Tareas — 008-componentes-declarativos
 
-> Estado: Borrador · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [008-componentes-declarativos.md](008-componentes-declarativos.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [008-componentes-declarativos.md](008-componentes-declarativos.md)
 
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde.
 

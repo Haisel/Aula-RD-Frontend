@@ -1,6 +1,6 @@
 # Plan — 012-galeria-de-funcionalidades
 
-> Estado: Aprobado (08/11/2026) · Spec: [012-galeria-de-funcionalidades.md](012-galeria-de-funcionalidades.md)
+> Estado: Implementado (09/11/2026) · Aprobado (08/11/2026) · Spec: [012-galeria-de-funcionalidades.md](012-galeria-de-funcionalidades.md)
 
 ## Punto de partida
 Spec aprobada. Dieciséis páginas de ejemplo más un índice. Se construyen por fases, cada una con su `npm run check` en verde, su verificación en navegador y su commit.

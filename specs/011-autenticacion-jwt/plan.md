@@ -1,9 +1,9 @@
 # Plan — 011-autenticacion-jwt
 
-> Estado: Borrador · Fecha: 08/11/2026 · Spec: [011-autenticacion-jwt.md](011-autenticacion-jwt.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [011-autenticacion-jwt.md](011-autenticacion-jwt.md)
 
 ## Situación de partida
-Implementada y pendiente de aprobación. Es la spec que bloquea el login real. Su código (`src/js/services/auth-service.js`, `tests/auth.test.js` y cambios en `kernel.js`, `facade.js`, `login.html`) está **sin commit**. El flujo SDD pide aprobar antes de implementar; aquí se hizo al revés, como reconoce `specs/README.md`.
+Implementada y aprobada por el propietario (08/11/2026). Es la spec que bloquea el login real. Su código (`src/js/services/auth-service.js`, `tests/auth.test.js` y cambios en `kernel.js`, `facade.js`, `login.html`) está **sin commit**. El flujo SDD pide aprobar antes de implementar; aquí se hizo al revés, como reconoce `specs/README.md`.
 
 ## Verificado el 08/11/2026
 | Criterio | Resultado |

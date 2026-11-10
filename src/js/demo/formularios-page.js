@@ -66,7 +66,8 @@ export function formularios(root, au) {
     });
     if (n === PASOS) {
       const d = datos();
-      el('resumen').textContent = `${d.nombre} · ${d.grado} ${d.seccion} · Tutor: ${d.tutor1} · Período: ${d.periodo}`;
+      el('resumen').textContent =
+        `${d.nombre} · ${d.grado} ${d.seccion} · Tutor: ${d.tutor1} · Período: ${d.periodo}`;
     }
   };
 

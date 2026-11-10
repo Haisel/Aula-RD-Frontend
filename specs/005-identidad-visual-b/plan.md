@@ -1,9 +1,9 @@
 # Plan — 005-identidad-visual-b
 
-> Estado: Borrador · Fecha: 08/11/2026 · Spec: [005-identidad-visual-b.md](005-identidad-visual-b.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [005-identidad-visual-b.md](005-identidad-visual-b.md)
 
 ## Situación de partida
-La spec 005 ya está **implementada** (08/11/2026) y **pendiente de aprobación**. Este plan no construye la identidad visual: ordena el **cierre**. Cubre los criterios de aceptación que hoy solo tienen verificación manual o una tabla, resuelve las dos preguntas abiertas y deja la spec lista para aprobar.
+La spec 005 ya está **implementada** (08/11/2026) y **aprobada** por el propietario (08/11/2026). Este plan no construye la identidad visual: ordena el **cierre**. Cubre los criterios de aceptación que hoy solo tienen verificación manual o una tabla, resuelve las dos preguntas abiertas y deja la spec lista para aprobar.
 
 ## Qué ya existe (verificado por nombre de archivo, no por ejecución)
 | Requisito | Evidencia en el repo |

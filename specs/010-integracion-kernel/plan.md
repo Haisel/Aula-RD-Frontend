@@ -1,6 +1,6 @@
 # Plan — 010-integracion-kernel
 
-> Estado: Borrador · Fecha: 08/11/2026 · Spec: [010-integracion-kernel.md](010-integracion-kernel.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [010-integracion-kernel.md](010-integracion-kernel.md)
 
 ## Situación de partida
 Aprobada e implementada (08/11/2026, versión 1.1). Este plan no reabre el diseño: confirma que lo aprobado sigue cumpliéndose tras la spec 011 y deja visibles las preguntas que dependen del backend.

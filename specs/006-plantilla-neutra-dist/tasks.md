@@ -1,6 +1,6 @@
 # Tareas — 006-plantilla-neutra-dist
 
-> Estado: Borrador · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [006-plantilla-neutra-dist.md](006-plantilla-neutra-dist.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [006-plantilla-neutra-dist.md](006-plantilla-neutra-dist.md)
 
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde.
 

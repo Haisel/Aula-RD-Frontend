@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Componentes de interfaz" subtitle="Tipografía, íconos con buscador, insignias, progreso, tooltips, carrusel, línea de tiempo y cuadrícula."}}
+    <a class="btn btn-outline-primary" href="componentes.html"><i class="bi bi-palette" aria-hidden="true"></i>Catálogo de componentes</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <section class="au-specimen" aria-labelledby="ic-tipografia">
+    <h2 id="ic-tipografia">Tipografía</h2>
+    <p class="h1 mb-1">Título 1 · 24 px</p><p class="h2 mb-1">Título 2 · 20 px</p><p class="h3 mb-1">Título 3 · 18 px</p><p class="h4 mb-2">Título 4 · 15 px</p>
+    <p class="mb-1">Texto de cuerpo, 14 px: «Las calificaciones del primer período ya están disponibles».</p>
+    <p class="small text-body-secondary mb-0">Texto pequeño, 13 px, para notas y ayudas.</p>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<h2 class="h2">Título</h2>
+<p>Texto de cuerpo</p>
+<p class="small text-body-secondary">Texto pequeño</p>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="ic-iconos" data-demo="filtro">
+    <h2 id="ic-iconos">Íconos con buscador</h2>
+    <label class="form-label" for="ic-buscar">Buscar un ícono</label>
+    <input class="form-control mb-3" id="ic-buscar" type="search" data-filtro="texto" placeholder="Por ejemplo: calendario" autocomplete="off">
+    <p class="visually-hidden" role="status" data-filtro="anuncio"></p>
+    <div class="au-grid-auto">
+      <div class="d-flex align-items-center gap-2" data-filtro-item><i class="bi bi-calendar3 fs-4" aria-hidden="true"></i>calendario</div>
+      <div class="d-flex align-items-center gap-2" data-filtro-item><i class="bi bi-people fs-4" aria-hidden="true"></i>personas</div>
+      <div class="d-flex align-items-center gap-2" data-filtro-item><i class="bi bi-cash-coin fs-4" aria-hidden="true"></i>cobros</div>
+      <div class="d-flex align-items-center gap-2" data-filtro-item><i class="bi bi-journal-check fs-4" aria-hidden="true"></i>calificaciones</div>
+      <div class="d-flex align-items-center gap-2" data-filtro-item><i class="bi bi-printer fs-4" aria-hidden="true"></i>imprimir</div>
+      <div class="d-flex align-items-center gap-2" data-filtro-item><i class="bi bi-envelope fs-4" aria-hidden="true"></i>correo</div>
+    </div>
+    <div class="au-empty mt-3" data-filtro="vacio" hidden><p class="mb-0">Ningún ícono coincide.</p></div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<i class="bi bi-calendar3" aria-hidden="true"></i>   <!-- decorativo: el texto del botón lo describe -->
+<button class="btn btn-outline-primary au-btn-icon" aria-label="Calendario"><i class="bi bi-calendar3" aria-hidden="true"></i></button>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="ic-insignias">
+    <h2 id="ic-insignias">Insignias, progreso y tooltips</h2>
+    <p class="d-flex flex-wrap gap-2"><span class="au-status au-status-success">Activo</span><span class="au-status au-status-warning">Pendiente</span><span class="au-status au-status-danger">Vencida</span><span class="au-status au-status-info">Información</span><span class="badge text-bg-primary">12</span></p>
+    <div class="progress mb-3" role="progressbar" aria-label="Avance del curso" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar au-w-65"></div></div>
+    <button class="btn btn-outline-primary au-btn-icon" type="button" aria-label="Información" data-bs-toggle="tooltip" data-bs-title="Un tooltip con ayuda breve"><i class="bi bi-info-circle" aria-hidden="true"></i></button>
+    <button class="btn btn-outline-primary ms-2" type="button" data-bs-toggle="popover" data-bs-title="Popover" data-bs-content="Contenido adicional que aparece al pulsar.">Abrir popover</button>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<span class="au-status au-status-success">Activo</span>
+<button class="btn btn-outline-primary au-btn-icon" aria-label="Información" data-bs-toggle="tooltip" data-bs-title="Ayuda breve">…</button>
+<button class="btn btn-outline-primary" data-bs-toggle="popover" data-bs-title="Título" data-bs-content="Contenido">Abrir</button>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="ic-carrusel">
+    <h2 id="ic-carrusel">Carrusel</h2>
+    <div id="ic-car" class="carousel slide" aria-roledescription="carrusel" aria-label="Avisos del colegio">
+      <div class="carousel-inner rounded">
+        <div class="carousel-item active"><div class="au-photo-tile is-navy p-5" role="group" aria-label="1 de 3"><div class="text-center"><h3 class="h4 mb-1">Reunión de tutores</h3><p class="mb-0">Jueves 12/11/2026, 6:00 p. m.</p></div></div></div>
+        <div class="carousel-item"><div class="au-photo-tile is-accent p-5" role="group" aria-label="2 de 3"><div class="text-center"><h3 class="h4 mb-1">Cierre de calificaciones</h3><p class="mb-0">Hasta el 20/11/2026</p></div></div></div>
+        <div class="carousel-item"><div class="au-photo-tile is-gold p-5" role="group" aria-label="3 de 3"><div class="text-center"><h3 class="h4 mb-1">Entrega de boletines</h3><p class="mb-0">27/11/2026</p></div></div></div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#ic-car" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#ic-car" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span></button>
+    </div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div id="car" class="carousel slide" aria-roledescription="carrusel" aria-label="Avisos">
+  <div class="carousel-inner"><div class="carousel-item active">…</div></div>
+  <button class="carousel-control-next" data-bs-target="#car" data-bs-slide="next"><span class="visually-hidden">Siguiente</span></button>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="ic-tiempo">
+    <h2 id="ic-tiempo">Línea de tiempo y cuadrícula</h2>
+    <ol class="au-timeline mb-3">
+      <li><strong>Matrícula abierta</strong><br><span class="small text-body-secondary">01/08/2026</span></li>
+      <li><strong>Inicio de clases</strong><br><span class="small text-body-secondary">18/08/2026</span></li>
+      <li><strong>Primer corte de notas</strong><br><span class="small text-body-secondary">30/10/2026</span></li>
+    </ol>
+    <div class="row g-2"><div class="col-6 col-md-3"><div class="card"><div class="card-body text-center">col-6 col-md-3</div></div></div><div class="col-6 col-md-3"><div class="card"><div class="card-body text-center">col-6 col-md-3</div></div></div><div class="col-12 col-md-6"><div class="card"><div class="card-body text-center">col-12 col-md-6</div></div></div></div>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<ol class="au-timeline"><li><strong>Hito</strong><br><span class="small">01/08/2026</span></li></ol>
+<div class="row g-2"><div class="col-6 col-md-3">…</div></div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

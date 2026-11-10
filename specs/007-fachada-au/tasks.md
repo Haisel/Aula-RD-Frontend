@@ -1,6 +1,6 @@
 # Tareas — 007-fachada-au
 
-> Estado: Borrador · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [007-fachada-au.md](007-fachada-au.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [007-fachada-au.md](007-fachada-au.md)
 
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde.
 

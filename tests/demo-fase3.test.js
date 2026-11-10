@@ -1,7 +1,12 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import { createDraft } from '../src/js/demo/edicion.js';
-import { seccionesDe, validarPaso, primerPasoInvalido, respuestaServidor } from '../src/js/demo/formularios.js';
+import {
+  seccionesDe,
+  validarPaso,
+  primerPasoInvalido,
+  respuestaServidor,
+} from '../src/js/demo/formularios.js';
 import { revisarArchivos, tamano, LIMITES } from '../src/js/demo/archivos.js';
 
 /** Spec 012, Fase 3: lógica pura de edición (RF-09), formularios (RF-05) y archivos (RF-15). */
@@ -64,7 +69,13 @@ describe('formularios (RF-05 · CA-06)', () => {
   it('encuentra el primer paso inválido', () => {
     expect(primerPasoInvalido({ nombre: 'Ana', grado: '1.º Primaria', seccion: 'A' })?.paso).toBe(2);
     expect(
-      primerPasoInvalido({ nombre: 'Ana', grado: '1.º Primaria', seccion: 'A', tutor1: 'Luis', periodo: 'x' }),
+      primerPasoInvalido({
+        nombre: 'Ana',
+        grado: '1.º Primaria',
+        seccion: 'A',
+        tutor1: 'Luis',
+        periodo: 'x',
+      }),
     ).toBeNull();
   });
   it('el servidor simulado rechaza el nombre duplicado', () => {
@@ -87,7 +98,10 @@ describe('archivos (RF-15)', () => {
     expect(r.rechazados[1].motivo).toMatch(/máximo/);
   });
   it('respeta la cantidad máxima', () => {
-    const r = revisarArchivos(Array.from({ length: 7 }, () => ok), 0);
+    const r = revisarArchivos(
+      Array.from({ length: 7 }, () => ok),
+      0,
+    );
     expect(r.aceptados).toHaveLength(LIMITES.maxArchivos);
     expect(r.rechazados).toHaveLength(2);
   });

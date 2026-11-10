@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Ayuda y preguntas frecuentes" subtitle="Busque una respuesta o escriba a soporte."}}
+    <a class="btn btn-outline-primary" href="contacto.html"><i class="bi bi-envelope" aria-hidden="true"></i>Contactar a soporte</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Las respuestas son texto de relleno."}}
+
+  <div data-demo="filtro">
+    <div class="card mb-3"><div class="card-body">
+      <label class="form-label" for="ay-buscar">Buscar en la ayuda</label>
+      <input class="form-control" id="ay-buscar" type="search" data-filtro="texto" placeholder="Por ejemplo: contraseña" autocomplete="off">
+      <p class="visually-hidden" role="status" data-filtro="anuncio"></p>
+    </div></div>
+    <div class="accordion" id="ay-acc">
+      <div class="accordion-item" data-filtro-item><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ay-1" aria-expanded="true" aria-controls="ay-1">¿Cómo restablezco mi contraseña?</button></h2><div id="ay-1" class="accordion-collapse collapse show" data-bs-parent="#ay-acc"><div class="accordion-body">Use «¿La olvidó?» en el inicio de sesión; recibirá un enlace en su correo.</div></div></div>
+      <div class="accordion-item" data-filtro-item><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ay-2" aria-expanded="false" aria-controls="ay-2">¿Cómo cambio de institución?</button></h2><div id="ay-2" class="accordion-collapse collapse" data-bs-parent="#ay-acc"><div class="accordion-body">Elija la institución en el selector de la barra superior.</div></div></div>
+      <div class="accordion-item" data-filtro-item><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ay-3" aria-expanded="false" aria-controls="ay-3">¿Cómo registro las calificaciones?</button></h2><div id="ay-3" class="accordion-collapse collapse" data-bs-parent="#ay-acc"><div class="accordion-body">Abra «Calificaciones», elija la sección y escriba las notas en la cuadrícula.</div></div></div>
+      <div class="accordion-item" data-filtro-item><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ay-4" aria-expanded="false" aria-controls="ay-4">¿Cómo descargo un reporte en Excel?</button></h2><div id="ay-4" class="accordion-collapse collapse" data-bs-parent="#ay-acc"><div class="accordion-body">En «Reportes» pulse «Exportar a Excel» para bajar las filas visibles.</div></div></div>
+    </div>
+    <div class="au-empty" data-filtro="vacio" hidden><h2 class="h5">Sin resultados</h2><p>Pruebe con otras palabras o <a href="contacto.html">escriba a soporte</a>.</p></div>
+  </div>
+
+  <section class="au-specimen mt-3" aria-labelledby="ay-uso">
+    <h2 id="ay-uso">Qué muestra esta página</h2>
+    <ul><li>Acordeón de preguntas con un buscador que ignora acentos y mayúsculas y anuncia el total de resultados.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div data-demo="filtro">
+  <input type="search" data-filtro="texto"><p role="status" data-filtro="anuncio"></p>
+  <div data-filtro-item data-categoria="docs">…</div>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

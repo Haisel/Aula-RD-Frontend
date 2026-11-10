@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Panel académico" subtitle="Rendimiento, asistencia y secciones del período."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Las cifras son de ejemplo."}}
+
+  <div class="au-grid-auto mb-3">
+    {{> components/stat-card label="Promedio general" value="86.3" icon="journal-check" delta="0.8 pts" note="vs. período anterior" trend="up"}}
+    {{> components/stat-card label="Asistencia" value="94.6%" icon="calendar-check" tone="success" delta="1.1%" note="vs. ayer" trend="up"}}
+    {{> components/stat-card label="En riesgo" value="42" icon="exclamation-triangle" tone="danger" delta="5 más" note="que el mes pasado" trend="down"}}
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-7"><section class="card" aria-labelledby="pa-g1"><div class="card-body"><h2 class="au-card-title" id="pa-g1">Evolución de calificaciones</h2>
+      <div class="au-chart"><canvas data-au-chart="data/charts/calificaciones.json" role="img" aria-label="Líneas con la evolución del promedio de calificaciones por período"></canvas></div></div></section></div>
+    <div class="col-lg-5"><section class="card" aria-labelledby="pa-g2"><div class="card-body"><h2 class="au-card-title" id="pa-g2">Asistencia de la semana</h2>
+      <div class="au-chart"><canvas data-au-chart="data/charts/asistencia-semana.json" role="img" aria-label="Barras de asistencia por día, esta semana y la anterior"></canvas></div></div></section></div>
+  </div>
+
+  <section class="card mt-3" aria-labelledby="pa-t"><div class="card-body"><h2 class="au-card-title" id="pa-t">Secciones con menor promedio</h2>
+    <div class="table-responsive"><table class="table au-table">
+      <thead><tr><th scope="col">Sección</th><th scope="col">Docente</th><th scope="col" class="text-end">Promedio</th><th scope="col" class="text-end">Asistencia</th></tr></thead>
+      <tbody>
+        <tr><td>2.º B Secundaria</td><td>Docente de demostración 1</td><td class="text-end au-tabular">74.2</td><td class="text-end au-tabular">91 %</td></tr>
+        <tr><td>5.º A Primaria</td><td>Docente de demostración 2</td><td class="text-end au-tabular">76.8</td><td class="text-end au-tabular">95 %</td></tr>
+        <tr><td>3.º A Secundaria</td><td>Docente de demostración 3</td><td class="text-end au-tabular">78.1</td><td class="text-end au-tabular">93 %</td></tr>
+      </tbody></table></div></div></section>
+
+  <section class="au-specimen mt-3" aria-labelledby="pa-uso">
+    <h2 id="pa-uso">Qué muestra esta página</h2>
+    <ul><li>Indicadores, dos gráficos declarativos y una tabla de secciones con cifras alineadas a la derecha.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<canvas data-au-chart="data/charts/calificaciones.json" role="img" aria-label="Líneas de calificaciones"></canvas>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Plan — 007-fachada-au
 
-> Estado: Borrador · Fecha: 08/11/2026 · Spec: [007-fachada-au.md](007-fachada-au.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [007-fachada-au.md](007-fachada-au.md)
 
 ## Situación de partida
 Implementada y pendiente de aprobación. Es la fachada `window.AU`; las specs 010 y 011 la ampliaron después (sesión, institución, autenticación).

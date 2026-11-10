@@ -41,7 +41,10 @@ export function revisarArchivos(archivos, yaCargados = 0) {
     if (!LIMITES.tipos.includes(f.type)) {
       rechazados.push({ name: f.name, motivo: 'Tipo no permitido: use PNG, JPG o PDF.' });
     } else if (f.size > LIMITES.maxBytes) {
-      rechazados.push({ name: f.name, motivo: `Pesa ${tamano(f.size)}; el máximo es ${tamano(LIMITES.maxBytes)}.` });
+      rechazados.push({
+        name: f.name,
+        motivo: `Pesa ${tamano(f.size)}; el máximo es ${tamano(LIMITES.maxBytes)}.`,
+      });
     } else if (yaCargados + aceptados.length >= LIMITES.maxArchivos) {
       rechazados.push({ name: f.name, motivo: `Solo se admiten ${LIMITES.maxArchivos} archivos.` });
     } else {

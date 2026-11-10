@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Gráficos y widgets" subtitle="Barras, líneas, dona y área con Chart.js diferido, más indicadores y widgets."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <div class="au-grid-auto mb-3">
+    {{> components/stat-card label="Estudiantes activos" value="1,248" icon="people" delta="3.2%" note="vs. octubre" trend="up"}}
+    {{> components/stat-card label="Asistencia" value="94.6%" icon="calendar-check" tone="success" delta="1.1%" note="vs. ayer" trend="up"}}
+    {{> components/stat-card label="Cuotas pendientes" value="RD$ 386K" icon="cash-coin" tone="warning" delta="37 familias" note="con atraso" trend="down"}}
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-6"><section class="card" aria-labelledby="gr-barras"><div class="card-body"><h2 class="au-card-title" id="gr-barras">Barras: asistencia por día</h2>
+      <div class="au-chart"><canvas data-au-chart="data/charts/asistencia-semana.json" role="img" aria-label="Barras que comparan la asistencia de esta semana con la anterior, de lunes a viernes"></canvas></div></div></section></div>
+    <div class="col-lg-6"><section class="card" aria-labelledby="gr-lineas"><div class="card-body"><h2 class="au-card-title" id="gr-lineas">Líneas: evolución de calificaciones</h2>
+      <div class="au-chart"><canvas data-au-chart="data/charts/calificaciones.json" role="img" aria-label="Líneas con la evolución del promedio de calificaciones por período"></canvas></div></div></section></div>
+    <div class="col-lg-6"><section class="card" aria-labelledby="gr-dona"><div class="card-body"><h2 class="au-card-title" id="gr-dona">Dona: instituciones por plan</h2>
+      <div class="au-chart"><canvas data-au-chart="data/charts/planes.json" role="img" aria-label="Dona con la cantidad de instituciones en cada plan"></canvas></div></div></section></div>
+    <div class="col-lg-6"><section class="card" aria-labelledby="gr-area"><div class="card-body"><h2 class="au-card-title" id="gr-area">Área: ingreso mensual recurrente</h2>
+      <div class="au-chart"><canvas data-au-chart="data/charts/mrr.json" role="img" aria-label="Área con el ingreso mensual recurrente de los últimos meses"></canvas></div></div></section></div>
+  </div>
+
+  <section class="au-specimen mt-3" aria-labelledby="gr-uso">
+    <h2 id="gr-uso">Qué muestra esta página</h2>
+    <ul><li>Los cuatro tipos de gráfico se declaran con <code>data-au-chart</code> y un JSON; Chart.js se carga solo al hacer falta y cada lienzo lleva su descripción.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="au-chart"><canvas data-au-chart="data/charts/asistencia-semana.json" role="img" aria-label="Barras de asistencia"></canvas></div>
+// Desde JS
+const grafico = await AU.openChart(canvas, { type: 'bar', data: { labels, datasets } });
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

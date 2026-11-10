@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Inicio rápido" subtitle="Una página en blanco con el diseño de aplicación: copie este archivo y empiece."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Esta página no tiene contenido: es la plantilla de partida."}}
+
+  <section class="card"><div class="card-body">
+    <h2 class="au-card-title">Su contenido aquí</h2>
+    <p class="mb-0 text-body-secondary">Sustituya este bloque por los componentes de su pantalla. La guía de integración explica cómo copiar la página a su proyecto.</p>
+  </div></section>
+
+  <section class="au-specimen mt-3" aria-labelledby="ir-uso">
+    <h2 id="ir-uso">Cómo empezar</h2>
+    <ol>
+      <li>Copie <code>src/inicio-rapido.html</code> con otro nombre y cambie el título.</li>
+      <li>Agregue la página en <code>src/data/pages.js</code> (título, portal, menú).</li>
+      <li>Ejecute <code>npm run dev</code> y abra la página.</li>
+    </ol>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+{{#> layouts/app}}
+  {{#> components/page-header title="Mi página" subtitle="Descripción breve"}}{{/components/page-header}}
+  <section class="card"><div class="card-body">…</div></section>
+{{/layouts/app}}
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

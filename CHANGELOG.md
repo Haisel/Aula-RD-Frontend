@@ -2,6 +2,16 @@
 
 ## Sin publicar
 
+_Versión 0.5.0 (09/11/2026), pendiente de etiquetar._
+
+**Nuevo (spec 013, cierre)**
+- Autenticación y cuenta: `registro.html`, `restablecer-contrasena.html`, `verificacion-dos-pasos.html`, `bloqueo-pantalla.html`, `cuenta.html` (perfil, seguridad, preferencias y notificaciones) y `ayuda.html`, con los esquemas `registro-usuario`, `restablecer`, `dos-pasos`, `desbloqueo` y `cuenta-password` registrados desde `src/js/demo/esquemas.js` para no aumentar `app.js`.
+- Aplicaciones y paneles: `app-chat`, `app-proyectos`, `app-contactos`, `app-galeria`, `app-busqueda`, `graficos`, `panel-financiero`, `panel-academico`, `interfaz-componentes` e `inicio-rapido`. Filtro en vivo reutilizable (`filtro.js`, `data-filtro-*`), chat que escapa el HTML y estilos `_apps.scss`. `tests/demo-fase5.test.js`.
+- `tests/coverage.test.js` (spec 013, CA-02): cada `data-au-*` registrado y cada función pública de `AU` aparece en alguna página; las listas de pendientes están vacías. `referencia-au.html` documenta las 73 funciones que no tenían demostración.
+- `docs/guia-integracion.md`: cómo llevar una página a otro proyecto, conectar el backend y qué revisar antes de publicar.
+- Lighthouse (escritorio) sobre `registro`, `cuenta` y `graficos`: accesibilidad 96–97, mejores prácticas 100, SEO 92.
+- Especificaciones 005 a 013: planes y tareas cerrados como «Implementado»; la 012 y la 013, «Implementada» (09/11/2026). Decisión 017.
+
 **Cambiado**
 - Escala compacta (decisión 017): cuerpo de 14 px, `h1` de 24 px, relleno de tarjeta de 16 px, relleno del contenido de 20 px, espaciado Bootstrap 3/4/5 de 12/16/32 px, controles y celdas de tabla más bajos, barra superior de 56 px, con AdminKit como referencia aproximada. Los tamaños salen de `tokens.json`.
 - `btn-outline-danger` usa el tono de texto accesible (`--au-danger-text`): en oscuro tenía un contraste de 3.0:1.

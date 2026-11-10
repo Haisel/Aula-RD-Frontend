@@ -1,6 +1,6 @@
 # Tareas — 012-galeria-de-funcionalidades
 
-> Estado: Aprobado (08/11/2026) · Plan: [plan.md](plan.md) · Spec: [012-galeria-de-funcionalidades.md](012-galeria-de-funcionalidades.md)
+> Estado: Implementado (09/11/2026) · Aprobado (08/11/2026) · Plan: [plan.md](plan.md) · Spec: [012-galeria-de-funcionalidades.md](012-galeria-de-funcionalidades.md)
 
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde y, si es una página, con su verificación en navegador.
 

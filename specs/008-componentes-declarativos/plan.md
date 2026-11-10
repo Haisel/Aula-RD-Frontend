@@ -1,9 +1,9 @@
 # Plan — 008-componentes-declarativos
 
-> Estado: Borrador · Fecha: 08/11/2026 · Spec: [008-componentes-declarativos.md](008-componentes-declarativos.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [008-componentes-declarativos.md](008-componentes-declarativos.md)
 
 ## Situación de partida
-Implementada y pendiente de aprobación. Hay 24 componentes `data-au-*` registrados; la prueba automática que existe cubre solo el registro (`tests/theme-registry.test.js`).
+Implementada y aprobada por el propietario (08/11/2026). Hay 24 componentes `data-au-*` registrados; la prueba automática que existe cubre solo el registro (`tests/theme-registry.test.js`).
 
 ## Verificado el 08/11/2026 (navegador, build real)
 | Criterio | Resultado |

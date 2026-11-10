@@ -1,6 +1,6 @@
 # Plan — 009-paginas-de-ejemplo
 
-> Estado: Borrador · Fecha: 08/11/2026 · Spec: [009-paginas-de-ejemplo.md](009-paginas-de-ejemplo.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [009-paginas-de-ejemplo.md](009-paginas-de-ejemplo.md)
 
 ## Situación de partida
 Implementada y pendiente de aprobación. Son las 8 páginas de ejemplo (landing, login, suscripción, 4 portales y catálogo de componentes). La spec trae tres preguntas de contenido sin responder.

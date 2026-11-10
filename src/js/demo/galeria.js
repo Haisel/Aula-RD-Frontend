@@ -18,6 +18,9 @@ import { formularios } from './formularios-page.js';
 import { perfiles } from './perfiles-page.js';
 import { archivos } from './archivos-page.js';
 import { calendario } from './calendario-page.js';
+import { esquemas } from './esquemas.js';
+import { filtro } from './filtro-page.js';
+import { chat } from './chat-page.js';
 
 /**
  * Activa una demostración sobre su contenedor.
@@ -28,7 +31,20 @@ import { calendario } from './calendario-page.js';
  */
 
 /** @type {Record<string, Demo>} */
-export const demos = { crud, reporte, tablero, tablas, edicion, formularios, perfiles, archivos, calendario };
+export const demos = {
+  crud,
+  reporte,
+  tablero,
+  tablas,
+  edicion,
+  formularios,
+  perfiles,
+  archivos,
+  calendario,
+  esquemas,
+  filtro,
+  chat,
+};
 
 /**
  * Busca los contenedores `[data-demo]` de la página y activa su demostración.

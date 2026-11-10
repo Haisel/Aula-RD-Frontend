@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Chat" subtitle="Conversación con un tutor: enviar y recibir mensajes."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Los mensajes no se envían a nadie; la respuesta es automática."}}
+
+  <div class="card" data-demo="chat"><div class="card-body">
+    <h2 class="au-card-title">Tutor de demostración</h2>
+    <ul class="au-chat-log" data-chat="mensajes" role="log" aria-live="polite" aria-label="Conversación" tabindex="0">
+      <li class="au-chat-msg">Buenos días, ¿pudo ver el comunicado de la reunión?</li>
+      <li class="au-chat-msg is-mine">Buenos días. Sí, asistiré el jueves.</li>
+    </ul>
+    <form class="d-flex gap-2 mt-3" data-chat="form" novalidate>
+      <label class="visually-hidden" for="ch-texto">Escriba un mensaje</label>
+      <input class="form-control" id="ch-texto" data-chat="texto" type="text" placeholder="Escriba un mensaje…" autocomplete="off">
+      <button class="btn btn-primary" type="submit"><i class="bi bi-send" aria-hidden="true"></i>Enviar</button>
+    </form>
+  </div></div>
+
+  <section class="au-specimen mt-3" aria-labelledby="ch-uso">
+    <h2 id="ch-uso">Qué muestra esta página</h2>
+    <ul><li>Registro de mensajes con <code>role="log"</code> que anuncia lo nuevo; el texto se inserta como texto, nunca como HTML.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<ul class="au-chat-log" data-chat="mensajes" role="log" aria-live="polite">
+  <li class="au-chat-msg">Mensaje recibido</li><li class="au-chat-msg is-mine">Mensaje propio</li>
+</ul>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

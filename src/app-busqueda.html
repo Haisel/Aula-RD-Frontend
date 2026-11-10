@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Búsqueda" subtitle="Resultados de búsqueda por tipo, con filtro en vivo."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note}}
+
+  <div data-demo="filtro">
+    <div class="card mb-3"><div class="card-body"><div class="row g-3">
+      <div class="col-md-8"><label class="form-label" for="bu-texto">Buscar</label><input class="form-control" id="bu-texto" type="search" data-filtro="texto" placeholder="Estudiante, tutor, factura…" autocomplete="off"></div>
+      <div class="col-md-4"><label class="form-label" for="bu-tipo">Tipo</label><select class="form-select" id="bu-tipo" data-filtro="categoria"><option value="">Todos</option><option value="estudiante">Estudiantes</option><option value="factura">Facturas</option><option value="comunicado">Comunicados</option></select></div>
+    </div><p class="visually-hidden" role="status" data-filtro="anuncio"></p></div></div>
+    <ul class="list-group">
+      <li class="list-group-item" data-filtro-item data-categoria="estudiante"><span class="au-status au-status-info me-2">Estudiante</span><strong>Persona Estudiante 1</strong> · 3.º Primaria A</li>
+      <li class="list-group-item" data-filtro-item data-categoria="estudiante"><span class="au-status au-status-info me-2">Estudiante</span><strong>Persona Estudiante 2</strong> · 5.º Primaria B</li>
+      <li class="list-group-item" data-filtro-item data-categoria="factura"><span class="au-status au-status-warning me-2">Factura</span><strong>FAC-2026-0143</strong> · RD$ 6,500.00 · vence 15/11/2026</li>
+      <li class="list-group-item" data-filtro-item data-categoria="factura"><span class="au-status au-status-warning me-2">Factura</span><strong>FAC-2026-0144</strong> · RD$ 4,200.00 · pagada</li>
+      <li class="list-group-item" data-filtro-item data-categoria="comunicado"><span class="au-status au-status-success me-2">Comunicado</span><strong>Reunión de tutores</strong> · 12/11/2026</li>
+      <li class="list-group-item" data-filtro-item data-categoria="comunicado"><span class="au-status au-status-success me-2">Comunicado</span><strong>Entrega de boletines</strong> · 27/11/2026</li>
+    </ul>
+    <div class="au-empty mt-3" data-filtro="vacio" hidden><h2 class="h5">Sin resultados</h2><p>Pruebe con otras palabras o cambie el tipo.</p></div>
+  </div>
+
+  <section class="au-specimen mt-3" aria-labelledby="bu-uso">
+    <h2 id="bu-uso">Qué muestra esta página</h2>
+    <ul><li>Búsqueda por texto y por tipo; el estado vacío aparece cuando nada coincide.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<select data-filtro="categoria">…</select>
+<li data-filtro-item data-categoria="factura">FAC-2026-0143</li>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

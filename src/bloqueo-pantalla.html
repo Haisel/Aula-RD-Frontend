@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<main id="contenido" class="au-auth-otp" tabindex="-1">
+  <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+    <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+    <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+  </a>
+  <div class="au-auth-card" data-demo="esquemas">
+    <form class="au-login-form" data-au-validate="desbloqueo" data-au-submit="event" data-au-success="Contraseña válida (demostración). Con su API confirme la sesión en el servidor." action="#" method="post" novalidate>
+      <div class="text-center">
+        <span class="au-avatar au-avatar-xl mb-2" aria-hidden="true">PD</span>
+        <h1>Sesión bloqueada</h1>
+        <p class="text-body-secondary mb-0">Persona de demostración · Su sesión se bloqueó por inactividad. Escriba su contraseña para continuar.</p>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div><label class="form-label" for="bq-clave">Contraseña</label><input class="form-control" id="bq-clave" name="password" type="password" autocomplete="current-password"></div>
+      <button class="btn btn-primary w-100" type="submit">Desbloquear</button>
+      <p class="text-center text-body-secondary small mb-0">¿No es usted? <a href="login.html">Entrar con otra cuenta</a></p>
+    </form>
+  </div>
+</main>
+</body>
+</html>

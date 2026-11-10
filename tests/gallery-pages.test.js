@@ -29,6 +29,19 @@ const PAGES = [
   'ejemplo-calendario.html',
   'ejemplo-navegacion.html',
   'ejemplo-impresion.html',
+  'cuenta.html',
+  'ayuda.html',
+  'interfaz-componentes.html',
+  'inicio-rapido.html',
+  'referencia-au.html',
+  'app-chat.html',
+  'app-proyectos.html',
+  'app-contactos.html',
+  'app-galeria.html',
+  'app-busqueda.html',
+  'graficos.html',
+  'panel-financiero.html',
+  'panel-academico.html',
 ];
 const HUB = 'galeria.html';
 const ALL = [HUB, ...PAGES];

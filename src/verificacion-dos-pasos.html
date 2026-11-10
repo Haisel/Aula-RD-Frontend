@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<main id="contenido" class="au-auth-otp" tabindex="-1">
+  <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+    <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+    <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+  </a>
+  <div class="au-auth-card" data-demo="esquemas">
+    <form class="au-login-form" data-au-validate="dos-pasos" data-au-submit="event" data-au-success="Código válido (demostración). Con su API verifique el segundo factor en el servidor." action="#" method="post" novalidate>
+      <div>
+        <h1>Verificación en dos pasos</h1>
+        <p class="text-body-secondary mb-0">Abra su aplicación de autenticación y escriba el código de 6 dígitos de Aula RD.</p>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div>
+        <label class="form-label is-required" for="dp-codigo">Código de 6 dígitos</label>
+        <input class="form-control form-control-lg au-otp-input" id="dp-codigo" name="codigo" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000">
+      </div>
+      <button class="btn btn-primary w-100" type="submit">Verificar</button>
+      <p class="text-center text-body-secondary small mb-0">¿Perdió el acceso a su aplicación? <a href="contacto.html">Contacte a soporte</a></p>
+    </form>
+  </div>
+</main>
+</body>
+</html>

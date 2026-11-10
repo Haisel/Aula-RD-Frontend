@@ -1,6 +1,6 @@
 # Plan — 006-plantilla-neutra-dist
 
-> Estado: Borrador · Fecha: 08/11/2026 · Spec: [006-plantilla-neutra-dist.md](006-plantilla-neutra-dist.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [006-plantilla-neutra-dist.md](006-plantilla-neutra-dist.md)
 
 ## Situación de partida
 Implementada y pendiente de aprobación. Este plan ordena el cierre: lo verificado hoy, las brechas y las decisiones del propietario.

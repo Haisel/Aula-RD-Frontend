@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Panel financiero" subtitle="Cobros, ingresos y cuentas por cobrar del mes."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Las cifras son de ejemplo."}}
+
+  <div class="au-grid-auto mb-3">
+    {{> components/stat-card label="Cobrado en noviembre" value="RD$ 1.28M" icon="cash-stack" tone="success" delta="6.4%" note="vs. octubre" trend="up"}}
+    {{> components/stat-card label="Por cobrar" value="RD$ 257,800" icon="hourglass-split" tone="warning" delta="37 familias" note="con atraso" trend="down"}}
+    {{> components/stat-card label="Ingreso recurrente" value="RD$ 412,500" icon="graph-up-arrow" delta="2.1%" note="mensual" trend="up"}}
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-7"><section class="card" aria-labelledby="pf-g1"><div class="card-body"><h2 class="au-card-title" id="pf-g1">Ingreso mensual recurrente</h2>
+      <div class="au-chart"><canvas data-au-chart="data/charts/mrr.json" role="img" aria-label="Área con el ingreso mensual recurrente de los últimos meses"></canvas></div></div></section></div>
+    <div class="col-lg-5"><section class="card" aria-labelledby="pf-g2"><div class="card-body"><h2 class="au-card-title" id="pf-g2">Cobranza por nivel</h2>
+      <div class="d-grid gap-3">
+        <div><div class="d-flex justify-content-between small"><span>Inicial</span><span>100 %</span></div><div class="progress" role="progressbar" aria-label="Cobranza de Inicial" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar w-100"></div></div></div>
+        <div><div class="d-flex justify-content-between small"><span>Primaria</span><span>92 %</span></div><div class="progress" role="progressbar" aria-label="Cobranza de Primaria" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar au-w-92"></div></div></div>
+        <div><div class="d-flex justify-content-between small"><span>Secundaria</span><span>78 %</span></div><div class="progress" role="progressbar" aria-label="Cobranza de Secundaria" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar bg-warning au-w-78"></div></div></div>
+      </div></div></section></div>
+  </div>
+
+  <section class="card mt-3" aria-labelledby="pf-t"><div class="card-body"><h2 class="au-card-title" id="pf-t">Facturas recientes</h2>
+    <div class="table-responsive"><table class="table au-table">
+      <thead><tr><th scope="col">Factura</th><th scope="col">Familia</th><th scope="col" class="text-end">Monto</th><th scope="col">Estado</th></tr></thead>
+      <tbody>
+        <tr><td>FAC-2026-0143</td><td>Familia de demostración 1</td><td class="text-end au-tabular">RD$ 6,500.00</td><td><span class="au-status au-status-warning">Pendiente</span></td></tr>
+        <tr><td>FAC-2026-0144</td><td>Familia de demostración 2</td><td class="text-end au-tabular">RD$ 4,200.00</td><td><span class="au-status au-status-success">Pagada</span></td></tr>
+        <tr><td>FAC-2026-0145</td><td>Familia de demostración 3</td><td class="text-end au-tabular">RD$ 8,900.00</td><td><span class="au-status au-status-danger">Vencida</span></td></tr>
+      </tbody></table></div></div></section>
+
+  <section class="au-specimen mt-3" aria-labelledby="pf-uso">
+    <h2 id="pf-uso">Qué muestra esta página</h2>
+    <ul><li>Indicadores, un gráfico de área, barras de cobranza y una tabla con montos en <code>RD$ 12,500.00</code>.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+{{> components/stat-card label="Por cobrar" value="RD$ 257,800" icon="hourglass-split" tone="warning"}}
+<td class="text-end au-tabular">RD$ 6,500.00</td>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

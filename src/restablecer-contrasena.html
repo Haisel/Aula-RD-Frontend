@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<main id="contenido" class="au-auth-otp" tabindex="-1">
+  <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+    <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+    <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+  </a>
+  <div class="au-auth-card" data-demo="esquemas">
+    <form class="au-login-form" data-au-validate="restablecer" data-au-submit="event" data-au-success="Contraseña válida (demostración). Con su API verifique el enlace y guarde la contraseña nueva." action="#" method="post" novalidate>
+      <div>
+        <h1>Cree una contraseña nueva</h1>
+        <p class="text-body-secondary mb-0">Llegó aquí desde el enlace enviado a su correo. Elija una contraseña que no use en otros sitios.</p>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div><label class="form-label is-required" for="rs-clave">Contraseña nueva</label><input class="form-control" id="rs-clave" name="password" type="password" autocomplete="new-password" aria-describedby="rs-ayuda"><div class="form-text" id="rs-ayuda">Al menos 8 caracteres, con letras y números.</div></div>
+      <div><label class="form-label is-required" for="rs-confirmar">Repita la contraseña</label><input class="form-control" id="rs-confirmar" name="confirmar" type="password" autocomplete="new-password"></div>
+      <button class="btn btn-primary w-100" type="submit">Guardar contraseña</button>
+      <p class="text-center text-body-secondary small mb-0"><a href="login.html">Volver al inicio de sesión</a></p>
+    </form>
+  </div>
+</main>
+</body>
+</html>

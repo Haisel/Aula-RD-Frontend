@@ -1,6 +1,6 @@
 # Tareas — 011-autenticacion-jwt
 
-> Estado: Borrador · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [011-autenticacion-jwt.md](011-autenticacion-jwt.md)
+> Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Plan: [plan.md](plan.md) · Spec: [011-autenticacion-jwt.md](011-autenticacion-jwt.md)
 
 Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina con `npm run check` en verde.
 

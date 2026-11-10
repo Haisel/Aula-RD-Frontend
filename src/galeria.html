@@ -45,6 +45,25 @@
     </div>
   </section>
 
+  <section class="mb-5" aria-labelledby="g-apps">
+    <h2 class="h4 mb-3" id="g-apps">Aplicaciones, paneles y cuenta</h2>
+    <div class="au-gallery-grid">
+      {{> components/gallery-card href="app-chat.html" icon="chat-dots" title="Chat" text="Conversación con envío y respuesta de ejemplo." uses="role=log · aria-live"}}
+      {{> components/gallery-card href="app-proyectos.html" icon="folder2-open" tone="info" title="Proyectos" text="Proyectos escolares con avance, responsable y fecha." uses="progress · au-status"}}
+      {{> components/gallery-card href="app-contactos.html" icon="person-lines-fill" tone="success" title="Contactos" text="Directorio con búsqueda y filtro por rol." uses="data-filtro"}}
+      {{> components/gallery-card href="app-galeria.html" icon="images" tone="warning" title="Galería de imágenes" text="Cuadrícula con filtro por álbum y título." uses="au-photo-grid"}}
+      {{> components/gallery-card href="app-busqueda.html" icon="search" tone="danger" title="Búsqueda" text="Resultados por tipo con filtro en vivo." uses="data-filtro"}}
+      {{> components/gallery-card href="graficos.html" icon="graph-up" title="Gráficos y widgets" text="Barras, líneas, dona y área con indicadores." uses="data-au-chart"}}
+      {{> components/gallery-card href="panel-financiero.html" icon="cash-stack" tone="info" title="Panel financiero" text="Cobros, ingresos y cuentas por cobrar." uses="au-stat · data-au-chart"}}
+      {{> components/gallery-card href="panel-academico.html" icon="mortarboard" tone="success" title="Panel académico" text="Rendimiento, asistencia y secciones del período." uses="au-stat · data-au-chart"}}
+      {{> components/gallery-card href="cuenta.html" icon="person-circle" tone="warning" title="Mi cuenta" text="Perfil, seguridad, preferencias y notificaciones." uses="data-au-validate · form-switch"}}
+      {{> components/gallery-card href="ayuda.html" icon="question-circle" tone="danger" title="Ayuda y preguntas frecuentes" text="Acordeón de preguntas con buscador." uses="accordion · data-filtro"}}
+      {{> components/gallery-card href="interfaz-componentes.html" icon="puzzle" title="Componentes de interfaz" text="Tipografía, íconos, insignias, tooltips, carrusel y cuadrícula." uses="Bootstrap · au-timeline"}}
+      {{> components/gallery-card href="inicio-rapido.html" icon="rocket-takeoff" tone="info" title="Inicio rápido" text="Página en blanco con el diseño de aplicación." uses="layouts/app"}}
+      {{> components/gallery-card href="referencia-au.html" icon="braces" tone="success" title="Referencia de AU" text="Las funciones públicas de la fachada, por tema, con su llamada." uses="window.AU"}}
+    </div>
+  </section>
+
   <section class="mb-5" aria-labelledby="g-auth">
     <h2 class="h4 mb-3" id="g-auth">Autenticación</h2>
     <div class="au-gallery-grid">
@@ -56,6 +75,10 @@
       {{> components/gallery-card href="login-portales.html" icon="segmented-nav" title="Por portal" text="Pestañas para elegir cómo entrar: dirección, docentes o familias." uses="data-au-tabs · nav-pills"}}
       {{> components/gallery-card href="login-codigo.html" icon="key" tone="danger" title="Con código" text="Sin contraseña: un código de 6 dígitos de un solo uso enviado al correo." uses="one-time-code · esquema codigo-acceso"}}
       {{> components/gallery-card href="recuperar-contrasena.html" icon="arrow-counterclockwise" tone="info" title="Recuperar contraseña" text="Un solo campo de correo y un mensaje que no revela si la cuenta existe." uses="esquema recuperar"}}
+      {{> components/gallery-card href="registro.html" icon="person-plus" tone="success" title="Crear cuenta" text="Registro con contraseña repetida y aceptación de términos." uses="esquema registro-usuario"}}
+      {{> components/gallery-card href="restablecer-contrasena.html" icon="key" tone="warning" title="Contraseña nueva" text="Crear una contraseña nueva desde el enlace del correo." uses="esquema restablecer"}}
+      {{> components/gallery-card href="verificacion-dos-pasos.html" icon="shield-lock" tone="danger" title="Verificación en dos pasos" text="Código de 6 dígitos de la aplicación de autenticación." uses="one-time-code · esquema dos-pasos"}}
+      {{> components/gallery-card href="bloqueo-pantalla.html" icon="lock" title="Sesión bloqueada" text="Pantalla de bloqueo por inactividad." uses="esquema desbloqueo"}}
     </div>
   </section>
 

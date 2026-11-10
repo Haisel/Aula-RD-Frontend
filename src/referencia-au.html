@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Referencia de la fachada AU" subtitle="Las funciones públicas de window.AU agrupadas por tema, con su llamada. El detalle completo está en docs/04-api-au.md."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Esta página es una referencia escrita: no ejecuta las llamadas."}}
+
+  <section class="au-specimen" aria-labelledby="r-tema">
+    <h2 id="r-tema">Tema, estructura y DOM</h2>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+AU.setTheme('system');  AU.getTheme();  AU.toggleTheme();  AU.toggleSidebar();
+AU.init(document);                       // inicializa los data-au-* tras insertar HTML
+AU.qa('.fila', tabla);  AU.isHidden(panel);  AU.toggleFullscreen(panel);  AU.isFullscreen();
+AU.isBusy(region);
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="r-dialogos">
+    <h2 id="r-dialogos">Diálogos, avisos y modales</h2>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+AU.toastSuccess('Guardado');  AU.toastWarning('Revise los datos');  AU.toastInfo('Hay una novedad');
+await AU.confirmDanger('Se eliminará el registro.');  await AU.confirmInsert();  await AU.confirmUpdate();
+AU.inlineAlert('No se pudo guardar', { variant: 'error', dismissible: true });  AU.dismissInlineAlert(alerta);
+AU.toggleModal('#modal');  AU.getModal('#modal');  AU.destroyModal('#modal');  AU.getModalData('#modal');
+AU.setModalTitle('#modal', 'Título');  AU.setModalBody('#modal', '<p>Texto</p>');
+AU.setModalContent('#modal', { title: 'Título', body: '<p>Texto</p>' });
+AU.onModalOpen('#modal', (datos, el) => {});  AU.onModalClose('#modal', () => {});
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="r-forms">
+    <h2 id="r-forms">Formularios y validación</h2>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+const { valid, data } = await AU.validForm(form, 'estudiante');  AU.serializeForm(form);
+const z = await AU.zod();
+AU.isValidCedula(v);  AU.isValidRnc(v);  AU.isValidPhone(v);  AU.isValidEmail(v);
+AU.isValidPlaca(v);   AU.isValidCurrency(v);  AU.isNullOrEmpty(v);  AU.isEmpty(v);
+AU.createSelect(select);  AU.createDatepicker(input);  AU.editWithQuill(el);  AU.attachSignature(canvas);
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="r-formato">
+    <h2 id="r-formato">Formato (es-DO) y texto</h2>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+AU.formatCompactCurrency(386450);   // RD$ 386.5K
+AU.formatDateTime('2026-11-08T14:30:00');   AU.formatRelative(fecha);
+AU.formatCedula(v);  AU.formatRnc(v);  AU.formatPhone(v);
+AU.humanize(1234567);               // 1.2 M
+AU.truncate(texto, 80);  AU.normalizeSpaces(texto);  AU.groupBy(lista, (x) => x.grado);
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+
+  <section class="au-specimen" aria-labelledby="r-sesion">
+    <h2 id="r-sesion">Sesión, API y archivos</h2>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+AU.configureApi({ baseURL: '/api/v1' });
+AU.configureAuth({ loginUrl: '/auth/login', refreshUrl: '/auth/refresh', logoutUrl: '/auth/logout', meUrl: '/auth/me' });
+AU.configurePorts({ session, institution });
+const { data } = await AU.request({ method: 'GET', url: '/estudiantes' });
+AU.getContext();  AU.hasRole('teacher');  await AU.logout();
+const scope = AU.createScope();  AU.report(error, { context: 'importar' });
+AU.assetUrl('/img/brand/logo.svg');  AU.openIframe('/ayuda.html', { title: 'Ayuda' });
+AU.customSet('nombre', (el, evento) => {});  AU.customGet('nombre');
+AU.readText(archivo);  AU.readJson(archivo);  AU.excelExport({ rows, fileName: 'estudiantes' });
+AU.storeSet('densidad', 'compacta');  AU.storeGet('densidad', 'normal');  AU.storeRemove('densidad');
+AU.registerHelper('mayusculas', (t) => String(t).toUpperCase());  AU.sanitize(html);
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+<a class="au-skip-link" href="#contenido">Saltar al formulario</a>
+<main id="contenido" class="au-auth-otp" tabindex="-1">
+  <a class="au-auth-logo" href="index.html" aria-label="Aula RD, inicio">
+    <img class="au-logo-light" src="img/brand/logo-horizontal-claro.svg" alt="Aula RD">
+    <img class="au-logo-dark" src="img/brand/logo-horizontal-oscuro.svg" alt="Aula RD">
+  </a>
+  <div class="au-auth-card" data-demo="esquemas">
+    <form class="au-login-form" data-au-validate="registro-usuario" data-au-submit="event" data-au-success="Cuenta válida (demostración). Con su API cree el usuario en el servidor." action="#" method="post" novalidate>
+      <div>
+        <h1>Cree su cuenta</h1>
+        <p class="text-body-secondary mb-0">Complete los datos para empezar. Es una demostración: no se crea ninguna cuenta.</p>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" data-au-form-error></div>
+      <div><label class="form-label is-required" for="rg-nombre">Nombre completo</label><input class="form-control" id="rg-nombre" name="nombre" type="text" autocomplete="name"></div>
+      <div><label class="form-label is-required" for="rg-email">Correo</label><input class="form-control" id="rg-email" name="email" type="email" autocomplete="email" placeholder="nombre@colegio.edu.do"></div>
+      <div><label class="form-label is-required" for="rg-clave">Contraseña</label><input class="form-control" id="rg-clave" name="password" type="password" autocomplete="new-password" aria-describedby="rg-ayuda"><div class="form-text" id="rg-ayuda">Al menos 8 caracteres, con letras y números.</div></div>
+      <div><label class="form-label is-required" for="rg-confirmar">Repita la contraseña</label><input class="form-control" id="rg-confirmar" name="confirmar" type="password" autocomplete="new-password"></div>
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="rg-terminos" name="terminos"><label class="form-check-label" for="rg-terminos">Acepto los <a href="terminos.html">términos</a> y la <a href="privacidad.html">política de privacidad</a>.</label></div>
+      <button class="btn btn-primary w-100" type="submit">Crear cuenta</button>
+      <p class="text-center text-body-secondary small mb-0">¿Ya tiene cuenta? <a href="login.html">Iniciar sesión</a></p>
+    </form>
+  </div>
+</main>
+</body>
+</html>

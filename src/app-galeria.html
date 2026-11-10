@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+{{> layouts/head}}
+</head>
+<body>
+{{#> layouts/app}}
+  {{#> components/page-header title="Galería de imágenes" subtitle="Cuadrícula de imágenes con filtro por álbum y búsqueda por título."}}
+    <a class="btn btn-outline-primary" href="galeria.html"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>Volver a la galería</a>
+  {{/components/page-header}}
+
+  {{> components/demo-note extra="Las imágenes son recuadros de color: la demostración no carga fotos ni recursos externos."}}
+
+  <div data-demo="filtro">
+    <div class="card mb-3"><div class="card-body"><div class="row g-3">
+      <div class="col-md-8"><label class="form-label" for="ga-texto">Buscar por título</label><input class="form-control" id="ga-texto" type="search" data-filtro="texto" autocomplete="off"></div>
+      <div class="col-md-4"><label class="form-label" for="ga-album">Álbum</label><select class="form-select" id="ga-album" data-filtro="categoria"><option value="">Todos</option><option value="feria">Feria de ciencias</option><option value="deportes">Deportes</option><option value="arte">Arte</option></select></div>
+    </div><p class="visually-hidden" role="status" data-filtro="anuncio"></p></div></div>
+    <div class="au-photo-grid">
+      <figure class="au-photo" data-filtro-item data-categoria="feria"><div class="au-photo-tile is-navy" role="img" aria-label="Recuadro de color que representa una foto"><i class="bi bi-image" aria-hidden="true"></i></div><figcaption>Feria de ciencias: volcán</figcaption></figure>
+      <figure class="au-photo" data-filtro-item data-categoria="feria"><div class="au-photo-tile is-accent" role="img" aria-label="Recuadro de color que representa una foto"><i class="bi bi-image" aria-hidden="true"></i></div><figcaption>Feria de ciencias: circuitos</figcaption></figure>
+      <figure class="au-photo" data-filtro-item data-categoria="deportes"><div class="au-photo-tile is-gold" role="img" aria-label="Recuadro de color que representa una foto"><i class="bi bi-image" aria-hidden="true"></i></div><figcaption>Torneo de voleibol</figcaption></figure>
+      <figure class="au-photo" data-filtro-item data-categoria="deportes"><div class="au-photo-tile is-navy" role="img" aria-label="Recuadro de color que representa una foto"><i class="bi bi-image" aria-hidden="true"></i></div><figcaption>Carrera de relevos</figcaption></figure>
+      <figure class="au-photo" data-filtro-item data-categoria="arte"><div class="au-photo-tile is-accent" role="img" aria-label="Recuadro de color que representa una foto"><i class="bi bi-image" aria-hidden="true"></i></div><figcaption>Mural del patio</figcaption></figure>
+      <figure class="au-photo" data-filtro-item data-categoria="arte"><div class="au-photo-tile is-gold" role="img" aria-label="Recuadro de color que representa una foto"><i class="bi bi-image" aria-hidden="true"></i></div><figcaption>Taller de pintura</figcaption></figure>
+    </div>
+    <div class="au-empty mt-3" data-filtro="vacio" hidden><h2 class="h5">Sin imágenes</h2><p>Ninguna imagen coincide con el filtro.</p></div>
+  </div>
+
+  <section class="au-specimen mt-3" aria-labelledby="ga-uso">
+    <h2 id="ga-uso">Qué muestra esta página</h2>
+    <ul><li>Cuadrícula responsiva con texto alternativo y filtro por álbum y título.</li></ul>
+    {{#> components/how-to title="Cómo se usa"}}
+{{{{code}}}}
+<div class="au-photo-grid">
+  <figure class="au-photo" data-filtro-item data-categoria="arte">
+    <img src="img/mural.jpg" alt="Mural del patio" loading="lazy"><figcaption>Mural del patio</figcaption>
+  </figure>
+</div>
+{{{{/code}}}}
+    {{/components/how-to}}
+  </section>
+{{/layouts/app}}
+</body>
+</html>
