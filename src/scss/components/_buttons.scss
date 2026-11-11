@@ -143,3 +143,16 @@
     transform: rotate(360deg);
   }
 }
+
+/* Dispositivos táctiles: objetivos de al menos 44 px (36 px en botones pequeños). Decisión 017. */
+@media (pointer: coarse) {
+  .btn,
+  .form-control,
+  .form-select {
+    min-height: 44px;
+  }
+
+  .btn-sm {
+    min-height: 36px;
+  }
+}

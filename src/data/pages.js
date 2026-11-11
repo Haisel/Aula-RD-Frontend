@@ -293,12 +293,14 @@ const PAGES = {
   },
   'dashboard-superadmin.html': {
     title: 'Resumen de la plataforma',
+    description: 'Indicadores de la plataforma: instituciones, suscripciones y cobros.',
     portal: 'super-admin',
     active: 'dashboard-superadmin.html',
     user: { name: 'Haisel Ramírez', role: 'Superadmin', initials: 'HR' },
   },
   'dashboard-institucion.html': {
     title: 'Panel de la institución',
+    description: 'Panel de la institución con indicadores, asistencia semanal y estados de pago.',
     portal: 'institution-admin',
     active: 'dashboard-institucion.html',
     org: ORG,
@@ -306,6 +308,7 @@ const PAGES = {
   },
   'dashboard-docente.html': {
     title: 'Panel docente',
+    description: 'Panel docente con secciones, asistencia y calificaciones pendientes.',
     portal: 'teacher',
     active: 'dashboard-docente.html',
     org: ORG,
@@ -313,6 +316,7 @@ const PAGES = {
   },
   'dashboard-tutor.html': {
     title: 'Portal de familia',
+    description: 'Portal de familia con calificaciones, asistencia y estado de cuenta.',
     portal: 'student-guardian',
     active: 'dashboard-tutor.html',
     org: ORG,
@@ -320,6 +324,7 @@ const PAGES = {
   },
   'componentes.html': {
     title: 'Componentes',
+    description: 'Catálogo de componentes de la plantilla Aula RD con sus variantes.',
     portal: 'super-admin',
     active: 'componentes.html',
     user: { name: 'Haisel Ramírez', role: 'Superadmin', initials: 'HR' },

@@ -223,7 +223,7 @@ export class AuthService {
    * Inicia sesión. El servidor responde el token de acceso y pone la cookie de renovación.
    * @param {Record<string, unknown>} credentials Credenciales (p. ej. `{ email, password }`).
    * @returns {Promise<Record<string, any>>} Cuerpo de la respuesta sin el token (p. ej. `{ user, roles, permissions }`).
-   * @throws {import('../core/errors.js').AppError} `UnauthorizedError` con "Correo o contraseña incorrectos." si el servidor no envía mensaje.
+   * @throws {Error} AppError con code `UnauthorizedError`: con "Correo o contraseña incorrectos." si el servidor no envía mensaje.
    */
   async login(credentials) {
     if (!this.#options.loginUrl) {
@@ -259,7 +259,7 @@ export class AuthService {
    * Pide un token nuevo con la cookie de renovación. Si ya hay una renovación en curso,
    * devuelve la misma promesa (una sola llamada aunque fallen 10 solicitudes a la vez).
    * @returns {Promise<string>} Token nuevo.
-   * @throws {import('../core/errors.js').AppError} `UnauthorizedError` si no hay sesión que renovar.
+   * @throws {Error} AppError con code `UnauthorizedError`: si no hay sesión que renovar.
    */
   refresh() {
     if (this.#refreshing) return this.#refreshing;

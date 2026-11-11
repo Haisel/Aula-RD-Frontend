@@ -30,7 +30,7 @@ const ACCIONES = /** @type {Record<string, [string, string]>} */ ({
  * @property {string[]} roles Roles.
  * @property {string[]} permissions Permisos.
  * @property {{ label: string, value: string }[]} stats Indicadores.
- * @property {{ titulo: string, items: { label: string, value: string }[] }[]} tabs Pestañas propias.
+ * @property {Array<{ titulo: string, items: Array<{ label: string, value: string }> }>} tabs Pestañas propias.
  * @property {string[]} acciones Permisos que se muestran como botones.
  */
 

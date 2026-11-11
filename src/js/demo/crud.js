@@ -60,7 +60,7 @@ export async function crud(root, au) {
   const title = /** @type {HTMLElement} */ (modal.querySelector('[data-crud="titulo"]'));
   const live = /** @type {HTMLElement} */ (root.querySelector('[data-crud="anuncio"]'));
 
-  /** @type {ReturnType<typeof createStore<Estudiante>> | null} */
+  /** @type {any} */
   let store = null;
   /** @type {any} */
   let table = null;

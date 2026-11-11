@@ -19,7 +19,8 @@
 - `npm run check` en verde.
 
 ## Pendiente
-- Revisar la escala compacta en las pantallas que no se vieron (decisión 017) y la medición completa con Lighthouse (solo se midieron 3 páginas).
+- Lighthouse completo: solo se midieron 6 de 103 páginas, sin mediana de 3 ejecuciones ni rendimiento; sin revisar a 1920 y 2560 px.
+- Precios (RD$ 3,200 y 6,400), contacto y textos legales son de ejemplo o borrador: faltan los reales y la revisión jurídica (spec 009).
 - Aclarar el catálogo de permisos por rol: ¿lo envía completo el backend, o hay que redactarlo como spec?
 - No hay backend todavía: el trabajo es local con `#au-context` y `public/data/*.json`. Opcional: API simulada (`scripts/mock-api.mjs`, `npm run mock`) para probar el login JWT.
 - Regenerar `docs/api/` con `npm run docs` tras cambios en JSDoc.

@@ -2,7 +2,14 @@
 
 ## Sin publicar
 
-_Versión 0.5.0 (09/11/2026), pendiente de etiquetar._
+_Versión 0.5.0 (09/11/2026), etiquetada `v0.5.0` el 10/11/2026._
+
+**Cambiado (revisión de la escala compacta, 10/11/2026)**
+- Recorrido de las 103 páginas: sin desbordamiento horizontal a 1440 ni a 390 px; cuerpo de 14 px en todas. Botón del acordeón de 17 a 15 px; títulos de las páginas legales de 44 a 24 px.
+- Dispositivos táctiles (`pointer: coarse`): botones y campos con un mínimo de 44 px (36 px los `btn-sm`).
+- Meta descripción en los cuatro paneles y en `componentes.html`.
+- JSDoc: corregidos los 7 errores de `npm run docs` (`auth-service.js`, `crud.js`, `perfiles-page.js`); `docs/api/` regenerado.
+- Lighthouse (escritorio) sobre `index`, `dashboard-institucion` y `ejemplo-tablas`: accesibilidad 100, mejores prácticas 100, SEO 83–92.
 
 **Cambiado (spec 009, respuestas del propietario)**
 - Pago solo con tarjeta en RD$, mensual o anual (preguntas frecuentes); datos de contacto de ejemplo en `contacto.html` y el pie; Premium «a medida». Precios de referencia: Básico RD$ 3,200 (300 estudiantes) y Profesional RD$ 6,400 (800), anual a 10 meses de 12; cálculo en la spec 009. Páginas legales redactadas como borrador (`terminos`, `privacidad`, nuevas `cookies` y `reembolsos`), pendientes de revisión jurídica.
