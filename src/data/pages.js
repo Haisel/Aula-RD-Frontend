@@ -237,13 +237,23 @@ const PAGES = {
   },
   'terminos.html': {
     title: 'Términos de uso',
-    description: 'Condiciones de uso de Aula RD. Texto de relleno: sustitúyalo por el texto legal.',
+    description: 'Condiciones de uso de Aula RD. Borrador pendiente de revisión jurídica.',
     layout: 'landing',
   },
   'privacidad.html': {
     title: 'Política de privacidad',
     description:
-      'Cómo se tratan los datos personales en Aula RD. Texto de relleno: sustitúyalo por el texto legal.',
+      'Cómo se tratan los datos personales en Aula RD. Borrador pendiente de revisión jurídica.',
+    layout: 'landing',
+  },
+  'cookies.html': {
+    title: 'Política de cookies',
+    description: 'Qué cookies y almacenamiento usa Aula RD. Borrador pendiente de revisión jurídica.',
+    layout: 'landing',
+  },
+  'reembolsos.html': {
+    title: 'Cancelación y reembolsos',
+    description: 'Cómo cancelar la suscripción y cuándo se reembolsa. Borrador pendiente de revisión jurídica.',
     layout: 'landing',
   },
   'login-centrado.html': {

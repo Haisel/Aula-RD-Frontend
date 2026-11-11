@@ -3,7 +3,7 @@
 > Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [007-fachada-au.md](007-fachada-au.md)
 
 ## Situación de partida
-Implementada y pendiente de aprobación. Es la fachada `window.AU`; las specs 010 y 011 la ampliaron después (sesión, institución, autenticación).
+Implementada y aprobada por el propietario (10/11/2026). Es la fachada `window.AU`; las specs 010 y 011 la ampliaron después (sesión, institución, autenticación).
 
 ## Verificado el 08/11/2026
 | Criterio | Resultado |

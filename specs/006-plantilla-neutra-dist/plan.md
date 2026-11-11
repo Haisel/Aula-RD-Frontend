@@ -3,7 +3,7 @@
 > Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [006-plantilla-neutra-dist.md](006-plantilla-neutra-dist.md)
 
 ## Situación de partida
-Implementada y pendiente de aprobación. Este plan ordena el cierre: lo verificado hoy, las brechas y las decisiones del propietario.
+Implementada y aprobada por el propietario (10/11/2026). Este plan ordena el cierre: lo verificado hoy, las brechas y las decisiones del propietario.
 
 ## Verificado el 08/11/2026 (build real y navegador)
 | Criterio | Resultado |

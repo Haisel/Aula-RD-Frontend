@@ -15,7 +15,7 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · `P` en paralelo. Cada tarea termina c
 | T-02 | Corregir los campos propios (`id` o `name`); los de librerías, documentarlos | Aviso de consola sin los campos propios |
 | T-03 | **Decisión del propietario:** ¿mover los datos de ejemplo a `public/data/` o documentar la excepción? | Decisión anotada en la spec |
 | T-04 | Aplicar T-03 | Sin datos de ejemplo fuera de lo decidido |
-| T-05 P | **Decisión del propietario:** responder precios y métodos de pago, datos de contacto y enlaces legales, y si "Premium" es a medida | Respuestas en "Información faltante" |
+| T-05 P | **Decisión del propietario:** responder precios y métodos de pago, datos de contacto y enlaces legales, y si "Premium" es a medida | Respuestas en "Información faltante" (parcial 10/11/2026: faltan precios y tope de estudiantes) |
 | T-06 | Revisión de teclado y contraste de las páginas completas (no solo el menú) | Resultado por página en la spec |
 | T-07 | Trazabilidad, `CHANGELOG.md` y `specs/README.md` | Consistentes con el estado real |
 | T-08 | Pedir aprobación al propietario | Spec `Aprobada (fecha, por)` |

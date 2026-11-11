@@ -3,7 +3,7 @@
 > Estado: Implementado (08/11/2026) · Fecha: 08/11/2026 · Spec: [009-paginas-de-ejemplo.md](009-paginas-de-ejemplo.md)
 
 ## Situación de partida
-Implementada y pendiente de aprobación. Son las 8 páginas de ejemplo (landing, login, suscripción, 4 portales y catálogo de componentes). La spec trae tres preguntas de contenido sin responder.
+Implementada y aprobada por el propietario (10/11/2026). Son las 8 páginas de ejemplo (landing, login, suscripción, 4 portales y catálogo de componentes). La spec trae tres preguntas de contenido sin responder.
 
 ## Verificado el 08/11/2026 (build real y navegador)
 | Comprobación | Resultado |

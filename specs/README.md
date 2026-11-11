@@ -6,10 +6,10 @@ Cada capacidad tiene **una carpeta y un archivo**: `specs/NNN-nombre/NNN-nombre.
 |---|---|---|
 | [000](000-plantilla/000-plantilla.md) | Plantilla para nuevas specs | — |
 | [005](005-identidad-visual-b/005-identidad-visual-b.md) | Identidad visual B en la interfaz (tokens, temas, SCSS) · [plan](005-identidad-visual-b/plan.md) · [tareas](005-identidad-visual-b/tasks.md) | **Aprobada** (08/11/2026) · implementada |
-| [006](006-plantilla-neutra-dist/006-plantilla-neutra-dist.md) | Plantilla neutra y salida `dist/` | Implementada · pendiente de aprobación |
-| [007](007-fachada-au/007-fachada-au.md) | Fachada `window.AU` | Implementada · pendiente de aprobación |
+| [006](006-plantilla-neutra-dist/006-plantilla-neutra-dist.md) | Plantilla neutra y salida `dist/` | Implementada · aprobada (10/11/2026) |
+| [007](007-fachada-au/007-fachada-au.md) | Fachada `window.AU` | Implementada · aprobada (10/11/2026) |
 | [008](008-componentes-declarativos/008-componentes-declarativos.md) | Componentes declarativos `data-au-*` y librerías diferidas · [plan](008-componentes-declarativos/plan.md) · [tareas](008-componentes-declarativos/tasks.md) | **Aprobada** (08/11/2026) · implementada |
-| [009](009-paginas-de-ejemplo/009-paginas-de-ejemplo.md) | Páginas de ejemplo (landing, auth, 4 portales, catálogo) | Implementada · pendiente de aprobación |
+| [009](009-paginas-de-ejemplo/009-paginas-de-ejemplo.md) | Páginas de ejemplo (landing, auth, 4 portales, catálogo) | Implementada · aprobada (10/11/2026) |
 | [010](010-integracion-kernel/010-integracion-kernel.md) | Integración del kernel y servicios de la Fase 4 en `AU` | **Aprobada** (08/11/2026) · implementada |
 | [011](011-autenticacion-jwt/011-autenticacion-jwt.md) | Autenticación JWT (token en memoria, renovación con cookie `httpOnly`) · [plan](011-autenticacion-jwt/plan.md) · [tareas](011-autenticacion-jwt/tasks.md) | **Aprobada** (08/11/2026) · implementada |
 | [012](012-galeria-de-funcionalidades/012-galeria-de-funcionalidades.md) | Galería de páginas de ejemplo por contexto (CRUD, reporte, formularios avanzados, tablas, tarjetas, perfiles, edición, botones, modales, alertas) | **Aprobada** (08/11/2026) · **implementada** (09/11/2026) · [plan](012-galeria-de-funcionalidades/plan.md) · [tareas](012-galeria-de-funcionalidades/tasks.md) |

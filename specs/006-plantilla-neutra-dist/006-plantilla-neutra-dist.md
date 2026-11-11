@@ -1,6 +1,6 @@
 # 006-plantilla-neutra-dist
 
-> Estado: Implementada (08/11/2026) · pendiente de aprobación · Versión 1.0 · ADR-007
+> Estado: Implementada (08/11/2026) · Aprobada por el propietario (10/11/2026) · Versión 1.0 · ADR-007
 
 ## Objetivo
 Entregar una plantilla visual utilizable con **cualquier backend**: al compilar, `dist/` contiene un CSS, un JS principal, fuentes, imágenes y páginas de ejemplo, sin acoplarse a Blade ni a otro motor.

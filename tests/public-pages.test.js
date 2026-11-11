@@ -14,8 +14,8 @@ import { schemas, validate } from '../src/js/helpers/schemas.js';
 const SRC = resolve(import.meta.dirname, '../src');
 const PARTIALS = resolve(SRC, 'partials');
 
-const PUBLICAS = ['contacto.html', 'terminos.html', 'privacidad.html'];
-const LEGALES = ['terminos.html', 'privacidad.html'];
+const PUBLICAS = ['contacto.html', 'terminos.html', 'privacidad.html', 'cookies.html', 'reembolsos.html'];
+const LEGALES = ['terminos.html', 'privacidad.html', 'cookies.html', 'reembolsos.html'];
 
 const hb = Handlebars.create();
 hb.registerHelper(helpers);
@@ -92,8 +92,8 @@ describe('páginas públicas (spec 013)', () => {
     describe(`${file} (texto legal)`, () => {
       const html = () => render(file);
 
-      it('avisa que el texto es de relleno y debe sustituirse por el legal de la institución', () => {
-        expect(html()).toMatch(/role="note"[^>]*>[\s\S]*Texto de relleno/);
+      it('avisa que es un borrador pendiente de revisión jurídica', () => {
+        expect(html()).toMatch(/role="note"[^>]*>[\s\S]*Borrador pendiente de revisión jurídica/);
       });
 
       it('tiene al menos cinco secciones con título h2 e id', () => {
@@ -138,7 +138,8 @@ describe('páginas públicas (spec 013)', () => {
     });
 
     it('los datos de contacto son de ejemplo y están rotulados como tales', () => {
-      expect(html()).toMatch(/\[correo@aulard\.do\]|\[Teléfono/);
+      expect(html()).toMatch(/contacto@ejemplo\.do/);
+      expect(html()).toMatch(/datos de contacto son de ejemplo/);
     });
   });
 });

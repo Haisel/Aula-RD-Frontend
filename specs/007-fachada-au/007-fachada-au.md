@@ -1,6 +1,6 @@
 # 007-fachada-au
 
-> Estado: Implementada (08/11/2026) · pendiente de aprobación · Versión 1.0 · ADR-008, ADR-012
+> Estado: Implementada (08/11/2026) · Aprobada por el propietario (10/11/2026) · Versión 1.0 · ADR-008, ADR-012
 
 ## Objetivo
 Exponer una única superficie global `window.AU`, inmutable, con funciones planas al estilo de `AR`, para que páginas y backends nunca dependan de librerías internas.

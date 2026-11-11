@@ -4,6 +4,9 @@
 
 _Versión 0.5.0 (09/11/2026), pendiente de etiquetar._
 
+**Cambiado (spec 009, respuestas del propietario)**
+- Pago solo con tarjeta en RD$, mensual o anual (preguntas frecuentes); datos de contacto de ejemplo en `contacto.html` y el pie; Premium «a medida». Precios de referencia: Básico RD$ 3,200 (300 estudiantes) y Profesional RD$ 6,400 (800), anual a 10 meses de 12; cálculo en la spec 009. Páginas legales redactadas como borrador (`terminos`, `privacidad`, nuevas `cookies` y `reembolsos`), pendientes de revisión jurídica.
+
 **Nuevo (spec 013, cierre)**
 - Autenticación y cuenta: `registro.html`, `restablecer-contrasena.html`, `verificacion-dos-pasos.html`, `bloqueo-pantalla.html`, `cuenta.html` (perfil, seguridad, preferencias y notificaciones) y `ayuda.html`, con los esquemas `registro-usuario`, `restablecer`, `dos-pasos`, `desbloqueo` y `cuenta-password` registrados desde `src/js/demo/esquemas.js` para no aumentar `app.js`.
 - Aplicaciones y paneles: `app-chat`, `app-proyectos`, `app-contactos`, `app-galeria`, `app-busqueda`, `graficos`, `panel-financiero`, `panel-academico`, `interfaz-componentes` e `inicio-rapido`. Filtro en vivo reutilizable (`filtro.js`, `data-filtro-*`), chat que escapa el HTML y estilos `_apps.scss`. `tests/demo-fase5.test.js`.

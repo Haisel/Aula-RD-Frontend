@@ -1,6 +1,6 @@
 # 009-paginas-de-ejemplo
 
-> Estado: Implementada (08/11/2026) · pendiente de aprobación · Versión 1.0
+> Estado: Implementada (08/11/2026) · Aprobada por el propietario (10/11/2026) · Versión 1.0
 
 ## Objetivo
 Mostrar la plantilla aplicada a los casos reales de Aula RD: captar suscripciones de instituciones y los cuatro portales (constitución §4.4).
@@ -40,9 +40,12 @@ Lógica de negocio real, guardado en servidor, navegación entre módulos intern
 | CA-04 | Topbar | "Cerrar sesión" | Pide confirmación | Manual |
 
 ## Información faltante
-- Precios reales de los planes y métodos de pago.
-- Datos de contacto y enlaces legales.
-- ¿Plan "Premium" es "a medida" o tiene precio?
+Respuestas del propietario (10/11/2026):
+- **Métodos de pago:** solo tarjeta, en pesos dominicanos (RD$), con facturación mensual o anual.
+- **Datos de contacto:** de ejemplo (`contacto@ejemplo.do`, `(809) 555-0100`, lunes a viernes de 8:00 a. m. a 5:00 p. m.); se sustituyen por los reales antes de publicar.
+- **Plan Premium:** «a medida», sin precio publicado; se llega por «Hablar con nosotros».
+- **Precios de referencia (10/11/2026):** no se hallaron precios en RD$ de proveedores dominicanos; solo ATL Software (Santo Domingo) con «desde US$ 97» sin detallar el período, y OurSchoolSoftware con US$ 10 al mes hasta 300 estudiantes (Capterra). Promedio: (10 + 97) / 2 = US$ 53.5 × RD$ 60 por dólar [Suposición: tasa] ≈ **RD$ 3,200 al mes para Básico (hasta 300 estudiantes)**. Profesional = el doble, **RD$ 6,400 (hasta 800)** [Suposición: escalera de planes]. Anual = 10 meses de 12 (RD$ 32,000 y 64,000; se muestra RD$ 2,667 y 5,333 por mes). Son cifras de referencia de una muestra de dos datos, no un estudio de mercado; el propietario fija el precio final.
+- **Páginas legales:** `terminos.html`, `privacidad.html` (apoyada en la Ley 172-13), `cookies.html` y `reembolsos.html` redactadas como borrador pendiente de revisión jurídica. Los plazos de reembolso (15 días) y exportación (30 días) son valores de ejemplo.
 
 ## Trazabilidad
 `src/*.html`, `src/partials/**`, `src/data/pages.js`, `public/data/*`.
